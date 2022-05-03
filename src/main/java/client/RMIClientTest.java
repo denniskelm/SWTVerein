@@ -43,7 +43,7 @@ public class RMIClientTest {
     }
 
     public static String handleResponse(String message) {
-        return "lalala: " + message + " Zeichen";
+        return "Länge: " + message + " Zeichen";
     }
 
 

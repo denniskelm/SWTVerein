@@ -14,6 +14,9 @@ Dennis Kelm
 import com.formdev.flatlaf.FlatLightLaf;
 
 import javax.swing.*;
+import java.awt.*;
+import java.io.File;
+import java.io.IOException;
 
 /*Stellt die Startseite dar, und leitet somit auf die weiteren Fenster der Anwendung weiter (unterscheidet dabei
  * in angemeldet und unangemeldet)
@@ -42,10 +45,6 @@ public class Startseite {
 
         FlatLightLaf.setup();
         JFrame frame = new JFrame("Startseite");
-        frame.setContentPane(new Startseite().startseite);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.pack();
-        frame.setLocationRelativeTo(null);
-        frame.setVisible(true);
+        frame = DefaultsClient.standardizeFrame(frame, new Startseite().startseite);
     }
 }
