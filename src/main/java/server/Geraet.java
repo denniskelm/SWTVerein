@@ -22,18 +22,56 @@ public class Geraet {
     private String geraeteID;
     private String name;
     private String spenderName;
-    private int leihfrist;
+    private int leihfrist; // muss in Tagen angegeben werden
     private String kategorie;
     private String beschreibung;
-    //private Ausleiher[] reservierungsliste;
-    //private Status leihstatus;
+    private String abholort;
+    private ArrayList<Ausleiher> reservierungsliste;
+    // reservierdatum: LocalDateTime
+    // fristbeginn: LocalDateTime
+    // abgegeben: boolean
+    // mitgliedsID: int
+    private Status leihstatus; // frei / beansprucht / ausgeliehen
 
-    public void reservierungHinzufuegen(String PersonenID) {
 
+
+    public Geraet(String geraeteID, String name, String spenderName, int leihfrist, String kategorie, String beschreibung, String abholort) {
+        this.geraeteID = geraeteID;
+        this.name = name;
+        this.spenderName = spenderName;
+        this.leihfrist = leihfrist;
+        this.kategorie = kategorie;
+        this.beschreibung = beschreibung;
+        this.abholort = abholort;
+        reservierungsliste = new ArrayList<>();
+        leihstatus = Status.FREI;
     }
 
-    public void reservierungEntfernen() {
+    public void reservierungHinzufuegen(String personenID) {
+        Ausleiher ausleiher = new Ausleiher(personenID);
 
+        // ausrechnen, wann er das Gerät abholen kann
+        if (reservierungsliste.isEmpty()) {
+            ausleiher.setFristBeginn(LocalDateTime.now());
+            leihstatus = Status.BEANSPRUCHT;
+        } else {
+            Ausleiher letzter = reservierungsliste.get(reservierungsliste.size() - 1);
+            ausleiher.setFristBeginn(letzter.getFristBeginn().plusDays(leihfrist));
+        }
+
+        reservierungsliste.add(ausleiher);
+    }
+        
+
+    // Entfernt eine Reservierung von der Reservierungsliste.
+    // TODO: wie soll damit umgegangen werden, wenn die methode nicht erfolgreich ausgeführt werden kann? (z.B. wenn die Person das Gerät momentan ausgeliehen hat)
+    public void reservierungEntfernen(String personenID) {
+        for (int i = 1; i < reservierungsliste.size(); i++) {
+            if (reservierungsliste.get(i).getMitlgiedsID() == personenID){
+                if (reservierungsliste.get(i).getFristBeginn().isAfter(LocalDateTime.now()) || leihstatus == Status.BEANSPRUCHT)
+                    reservierungsliste.remove(i);
+            }
+        }
     }
 
     public void ausgeben() {
