@@ -22,5 +22,19 @@ public class Geraet {
     //private Ausleiher[] reservierungsliste;
     //private Status leihstatus;
 
+    public void reservierungHinzufuegen(String PersonenID) {
 
+    }
+
+    public void reservierungEntfernen() {
+
+    }
+
+    public void ausgeben() {
+
+    }
+
+    public void annehmen() {
+
+    }
 }
