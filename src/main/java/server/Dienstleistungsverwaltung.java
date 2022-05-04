@@ -1,5 +1,7 @@
 package server;
 
+import com.mysql.cj.x.protobuf.MysqlxDatatypes;
+
 import java.awt.Image;
 import java.time.LocalDateTime;
 import java.lang.Object;

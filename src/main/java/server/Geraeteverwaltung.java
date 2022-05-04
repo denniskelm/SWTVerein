@@ -11,14 +11,20 @@ Bastian Reichert
 Dennis Kelm
 */
 
+import java.util.ArrayList;
+
 public class Geraeteverwaltung {
+    private static ArrayList<Geraet> geraete;
 
-    public static void main(String[] args) {
-
+    public static void geraeteVerwaltungLaden() {
+        geraete = new ArrayList<>();
     }
 
     public static void geraetHinzufuegen(String name, String spender, int leihfrist, String kategorie, String beschreibung, String abholort) {
-
+        if (geraete.size() < 50000) {
+            Geraet g = new Geraet("", name, spender, leihfrist, kategorie, beschreibung, abholort);
+            geraete.add(g);
+        }
     }
 
     public static void geraetReservieren(Geraet geraet) {
