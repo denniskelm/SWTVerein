@@ -11,6 +11,9 @@
 # AWS User-specific
 .idea/**/aws.xml
 
+# Project exclude paths
+/target/
+
 # Generated files
 .idea/**/contentModel.xml
 
