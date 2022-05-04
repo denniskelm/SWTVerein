@@ -24,7 +24,8 @@ public class Dienstleistungsverwaltung {
 
     }
 
-    public static void angebotErstellen(String titel, String beschreibung, String kategorie, LocalDateTime ab, LocalDateTime bis) {
+    public static void angebotErstellen(String titel, String beschreibung, String kategorie, LocalDateTime ab, LocalDateTime bis, Mitglied ersteller) {
+        Dienstleistungsangebot angebot = new Dienstleistungsangebot(titel, beschreibung, kategorie, ab, bis, ersteller);
 
     }
 
