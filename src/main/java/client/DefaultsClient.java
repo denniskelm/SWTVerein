@@ -30,4 +30,12 @@ public class DefaultsClient {
         return frame;
     }
 
+    public static void standardizeBigHeadline(JLabel[] label) {
+        for (JLabel l :
+                label) {
+            l.setFont(l.getFont().deriveFont(26));
+        }
+
+    }
+
 }
