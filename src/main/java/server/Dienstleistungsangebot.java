@@ -1,5 +1,7 @@
 package server;
 
+import server.users.Mitglied;
+
 import java.time.LocalDateTime;
 
 public class Dienstleistungsangebot {
@@ -21,6 +23,4 @@ public class Dienstleistungsangebot {
         this.bis = bis;
         this.dienstleister = dienstleister;
     }
-
-
 }

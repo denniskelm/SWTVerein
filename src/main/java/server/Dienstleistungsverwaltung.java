@@ -1,6 +1,7 @@
 package server;
 
 import com.mysql.cj.x.protobuf.MysqlxDatatypes;
+import server.users.Mitglied;
 
 import java.awt.Image;
 import java.time.LocalDateTime;
@@ -25,7 +26,7 @@ public class Dienstleistungsverwaltung {
     }
 
     public static void angebotErstellen(String titel, String beschreibung, String kategorie, LocalDateTime ab, LocalDateTime bis, Mitglied ersteller) {
-        Dienstleistungsangebot angebot = new Dienstleistungsangebot(titel, beschreibung, kategorie, ab, bis, ersteller);
+        //Dienstleistungsangebot angebot = new Dienstleistungsangebot(titel, beschreibung, kategorie, ab, bis, ersteller);
 
     }
 
