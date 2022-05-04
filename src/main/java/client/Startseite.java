@@ -63,11 +63,7 @@ public class Startseite {
         }
 
         JFrame frame = new JFrame("Startseite");
-        Startseite startseiteClass = new Startseite();
-        JLabel[] headlines = {startseiteClass.headlineLeftMainMenu, startseiteClass.headlineRightMainMenu, startseiteClass.secondLeftHeadline, startseiteClass.welcomeBigHeadline};
-        DefaultsClient.standardizeBigHeadline(headlines);
-
-        frame = DefaultsClient.standardizeFrame(frame, startseiteClass.startseite);
+        frame = DefaultsClient.standardizeFrame(frame, new Startseite().startseite);
     }
 
     public static void setUIFont(javax.swing.plaf.FontUIResource f) {

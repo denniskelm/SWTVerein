@@ -12,8 +12,6 @@ Dennis Kelm
 */
 
 import javax.swing.*;
-import java.awt.*;
-import java.io.*;
 
 //TODO Was macht diese Klasse?
 public class DefaultsClient {
@@ -28,14 +26,6 @@ public class DefaultsClient {
         frame.setVisible(true);
 
         return frame;
-    }
-
-    public static void standardizeBigHeadline(JLabel[] label) {
-        for (JLabel l :
-                label) {
-            l.setFont(l.getFont().deriveFont(26));
-        }
-
     }
 
 }
