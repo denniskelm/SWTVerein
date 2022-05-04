@@ -19,7 +19,7 @@ public class MysqlConnectionTest {
 /*
         public static void main(String[] args){
 
-            String url = "jdbc:mysql://139.30.96.135/sakila";
+            String url = "jdbc:mysql://localhost:3306/sakila";
             String user = "root";
             String pass = "root";
 
