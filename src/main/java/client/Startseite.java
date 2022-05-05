@@ -36,7 +36,6 @@ public class Startseite {
     private JLabel headlineRightMainMenu;
     private JButton firstLeftButton;
     private JButton secondLeftButton;
-    private JLabel secondLeftDescriptionText;
     private JLabel secondLeftHeadline;
     private JLabel firstLeftDescriptionText;
     private JButton jetztHelferImVereinButton;
@@ -54,7 +53,7 @@ public class Startseite {
         try {
             GraphicsEnvironment ge =
                     GraphicsEnvironment.getLocalGraphicsEnvironment();
-            Font newFont = Font.createFont(Font.TRUETYPE_FONT, new File("src/main/resources/fonts/radio.ttf")).deriveFont(Font.PLAIN, 15);
+            Font newFont = Font.createFont(Font.TRUETYPE_FONT, new File("src/main/resources/fonts/Asap-VariableFont_wght.ttf")).deriveFont(Font.PLAIN, 15);
             ge.registerFont(newFont);
             System.out.println(Arrays.toString(ge.getAvailableFontFamilyNames()));
             setUIFont(new FontUIResource(newFont));
