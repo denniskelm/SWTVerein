@@ -3,7 +3,7 @@ package client;
 @author
 TODO Raphael Kleebaum
 TODO Jonny Schlutter
-TODO Gabriel Kleebaum
+Gabriel Kleebaum
 TODO Mhd Esmail Kanaan
 TODO Gia Huy Hans Tran
 TODO Ole Björn Adelmann
@@ -11,49 +11,33 @@ TODO Bastian Reichert
 Dennis Kelm
 */
 
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.IOException;
-import java.net.Socket;
+
+import server.Dienstleistungsverwaltung;
+import server.Geraeteverwaltung;
+
+import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
+import java.rmi.registry.LocateRegistry;
+import java.rmi.registry.Registry;
 
 //TODO WAS MACHT DIESE KLASSE?
 public class RMIClientTest {
-    private final String address = "meta.informatik.uni-rostock.de";
-    private int port;
-
-    public RMIClientTest(int port) {
-        this.port = port;
-    }
-
-    public void sendMessage(String message) throws IOException {
-        Socket server = new Socket(address, port);
-
-        // --> Nachricht zum Server senden
-        DataOutputStream output = new DataOutputStream(server.getOutputStream());
-        output.writeUTF(message);
-
-        // --> Antwort vom Server empfangen & verarbeiten
-        DataInputStream input = new DataInputStream(server.getInputStream());
-        String serverResponse = input.readUTF();
-        String handledResponse = handleResponse(serverResponse);
-
-        // --> Server schließen & Nachricht am Client ausgeben
-        server.close();
-        System.out.println(handledResponse);
-    }
-
-    public static String handleResponse(String message) {
-        return "Länge: " + message + " Zeichen";
-    }
-
-
-    // CLIENT STARTEN UND NACHRICHT SENDEN
+    static Geraeteverwaltung geraeteverwaltung;
+    static Dienstleistungsverwaltung dienstleistungsverwaltung;
     public static void main(String[] args) {
-        try {
-            RMIClientTest client = new RMIClientTest(1234);
-            client.sendMessage("Dies ist eine Testnachricht!");
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
+        try { initializeRMI(); }
+        catch (RemoteException e) {
+            throw new RuntimeException(e);
+        } catch (NotBoundException e) {
+            throw new RuntimeException(e);
         }
+
+    }
+
+    public static void initializeRMI() throws RemoteException, NotBoundException {
+        Registry registry = LocateRegistry.getRegistry("127.0.0.1", 1234);
+
+        geraeteverwaltung = (Geraeteverwaltung) registry.lookup("Geraeteverwaltung");
+        dienstleistungsverwaltung = (Dienstleistungsverwaltung) registry.lookup("Dienstleistungsverwaltung");
     }
 }
