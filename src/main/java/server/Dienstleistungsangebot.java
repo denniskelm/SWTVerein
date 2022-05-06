@@ -22,7 +22,7 @@ public class Dienstleistungsangebot {
         this.ab = ab;
         this.bis = bis;
         this.dienstleister = dienstleister;
-        String anfrage = "insert into  Dienstleitunsgangebot(angebots_ID, Titel, Beschreibung, Kategorie) values (" + angebots_ID + ", " + titel + ", "+ beschreibung + ", " + kategorie + ");";
+        String anfrage = "insert into  Dienstleitunsgangebot(angebots_ID, Titel, Beschreibung, Kategorie) values (" + angebots_ID + ", " + titel + ", "+ beschreibung + ", " + kategorie + ", " + dienstleister + " );";
 
     }
 }

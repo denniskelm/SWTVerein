@@ -5,20 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f4f0b02d-8308-4655-ae26-185c3a51e4b0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/intellij/uiDesigner/core/AbstractLayout.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/intellij/uiDesigner/core/DimensionInfo.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/intellij/uiDesigner/core/GridConstraints.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/intellij/uiDesigner/core/GridLayoutManager.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/intellij/uiDesigner/core/HorizontalInfo.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/intellij/uiDesigner/core/LayoutState.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/intellij/uiDesigner/core/Spacer.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/intellij/uiDesigner/core/SupportCode$TextWithMnemonic.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/intellij/uiDesigner/core/SupportCode.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/intellij/uiDesigner/core/Util.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/intellij/uiDesigner/core/VerticalInfo.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/fonts/Asap-VariableFont_wght.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/fonts/radio.ttf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/Dienstleistungsangebot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/Dienstleistungsangebot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/Dienstleistungsgesuch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/Dienstleistungsgesuch.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/users/Gast.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/users/Gast.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/users/Mitglied.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/users/Mitglied.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,6 +24,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="Ole &lt;ole.adelmann@gmx.net&gt;" />
+      </list>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -74,7 +70,7 @@
       <workItem from="1651669341601" duration="59000" />
       <workItem from="1651841097551" duration="793000" />
       <workItem from="1651842013216" duration="488000" />
-      <workItem from="1651843935137" duration="2830000" />
+      <workItem from="1651843935137" duration="4228000" />
     </task>
     <task id="LOCAL-00001" summary="dienstleistungs klassen änderungen">
       <created>1651845036936</created>
@@ -83,14 +79,33 @@
       <option name="project" value="LOCAL" />
       <updated>1651845036936</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="dienstleistungs klassen geändert">
+      <created>1651856772345</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1651856772345</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="dienstleistungs klassen änderungen" />
-    <option name="LAST_COMMIT_MESSAGE" value="dienstleistungs klassen änderungen" />
+    <MESSAGE value="dienstleistungs klassen geändert" />
+    <option name="LAST_COMMIT_MESSAGE" value="dienstleistungs klassen geändert" />
   </component>
 </project>

@@ -22,4 +22,8 @@ public class Gast {
         this.telefonnummer = telefonnummer;
         this.spender = spender;
     }
+
+    public String getPersonenID() {
+        return personenID;
+    }
 }

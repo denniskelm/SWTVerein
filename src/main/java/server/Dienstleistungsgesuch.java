@@ -1,5 +1,7 @@
 package server;
 
+import server.users.Mitglied;
+
 public class Dienstleistungsgesuch {
 
     private String gesuch_ID;
@@ -14,7 +16,7 @@ public class Dienstleistungsgesuch {
         this.beschreibung = beschreibung;
         this.kategorie = kategorie;
         this.suchender = suchender;
-        String anfrage = "insert into  Dienstleitunsgangebot(angebots_ID, Titel, Beschreibung, Kategorie) values (" + gesuch_ID + ", " + titel + ", "+ beschreibung + ", " + kategorie + ");";
+        String anfrage = "insert into  Dienstleitunsgesuch(angebots_ID, Titel, Beschreibung, Kategorie) values (" + gesuch_ID + ", " + titel + ", "+ beschreibung + ", " + kategorie + ", " + suchender + ");";
     }
 
 
