@@ -1,4 +1,4 @@
 package server.users;
 
-public class Mitarbeiter extends Gast {
+public class Mitarbeiter extends Mitglied {
 }
