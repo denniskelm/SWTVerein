@@ -4,114 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f4f0b02d-8308-4655-ae26-185c3a51e4b0" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/Dienstleistungsangebot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/Dienstleistungsangebot.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/Dienstleistungsgesuch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/Dienstleistungsgesuch.java" afterDir="false" />
+    <list default="true" id="fdcaf245-cf10-44b0-9a61-d656d52dbb8b" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Class" />
-      </list>
-    </option>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
   </component>
-  <component name="Git.Settings">
-    <option name="PREVIOUS_COMMIT_AUTHORS">
-      <list>
-        <option value="Ole &lt;ole.adelmann@gmx.net&gt;" />
-      </list>
-    </option>
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="MarkdownSettingsMigration">
-    <option name="stateVersion" value="1" />
-  </component>
-  <component name="ProjectId" id="28hWXYZQsdP9cCVkGhfd4aaY4XY" />
-  <component name="ProjectViewState">
-    <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showLibraryContents" value="true" />
-  </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;
-  }
-}</component>
-  <component name="RecentsManager">
-    <key name="CreateClassDialog.RecentsKey">
-      <recent name="server" />
-    </key>
-  </component>
-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
-  <component name="SvnConfiguration" cleanupOnStartRun="true">
+  <component name="SvnConfiguration">
     <configuration />
-    <supportedVersion>125</supportedVersion>
   </component>
   <component name="TaskManager">
-    <task active="true" id="Default" summary="Default task">
-      <changelist id="f4f0b02d-8308-4655-ae26-185c3a51e4b0" name="Changes" comment="" />
-      <created>1651669338940</created>
-      <option name="number" value="Default" />
-      <option name="presentableId" value="Default" />
-      <updated>1651669338940</updated>
-      <workItem from="1651669341601" duration="59000" />
-      <workItem from="1651841097551" duration="793000" />
-      <workItem from="1651842013216" duration="488000" />
-      <workItem from="1651843935137" duration="6916000" />
-    </task>
-    <task id="LOCAL-00001" summary="dienstleistungs klassen änderungen">
-      <created>1651845036936</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1651845036936</updated>
-    </task>
-    <task id="LOCAL-00002" summary="dienstleistungs klassen geändert">
-      <created>1651856772345</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1651856772345</updated>
-    </task>
-    <task id="LOCAL-00003" summary="Mahnungen angefangen">
-      <created>1651858186151</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1651858186151</updated>
-    </task>
-    <option name="localTasksCounter" value="4" />
     <servers />
-  </component>
-  <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="3" />
-  </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
-  </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="dienstleistungs klassen änderungen" />
-    <MESSAGE value="dienstleistungs klassen geändert" />
-    <MESSAGE value="Mahnungen angefangen" />
-    <option name="LAST_COMMIT_MESSAGE" value="Mahnungen angefangen" />
   </component>
 </project>
