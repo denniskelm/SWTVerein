@@ -40,8 +40,13 @@ public class Startseite {
     private JLabel firstLeftDescriptionText;
     private JButton jetztHelferImVereinButton;
     private JButton bietenSieJetztIhreButton;
-    private JPanel newsPanel;
     private JLabel newsHeadline;
+    private JPanel newsPanel;
+    private JScrollPane scrollNews;
+    private JButton rollenverwaltungButton;
+    private JPanel managePanel;
+    private JLabel newsText;
+    private JButton dienstleistungsdatenbankButton;
 
     public Startseite() {
 
