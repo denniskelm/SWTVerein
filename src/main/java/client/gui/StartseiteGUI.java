@@ -1,4 +1,4 @@
-package client;
+package client.gui;
 /*
 @author
 TODO Raphael Kleebaum
@@ -11,6 +11,7 @@ TODO Bastian Reichert
 Dennis Kelm
 */
 
+import client.DefaultsClient;
 import com.formdev.flatlaf.FlatLightLaf;
 
 import javax.swing.*;
@@ -24,7 +25,7 @@ import java.util.Enumeration;
 /*Stellt die Startseite dar, und leitet somit auf die weiteren Fenster der Anwendung weiter (unterscheidet dabei
  * in angemeldet und unangemeldet)
  * */
-public class Startseite {
+public class StartseiteGUI {
     private JPanel startseite;
     private JPanel buttonsTopRight;
     private JButton loginButton;
@@ -48,7 +49,7 @@ public class Startseite {
     private JLabel newsText;
     private JButton dienstleistungsdatenbankButton;
 
-    public Startseite() {
+    public StartseiteGUI() {
 
     }
 
@@ -67,7 +68,7 @@ public class Startseite {
         }
 
         JFrame frame = new JFrame("Startseite");
-        frame = DefaultsClient.standardizeFrame(frame, new Startseite().startseite);
+        frame = DefaultsClient.standardizeFrame(frame, new StartseiteGUI().startseite);
     }
 
     public static void setUIFont(javax.swing.plaf.FontUIResource f) {
