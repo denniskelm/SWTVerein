@@ -11,9 +11,8 @@ TODO Bastian Reichert
 Dennis Kelm
 */
 
-
-import server.Dienstleistungsverwaltung;
-import server.Geraeteverwaltung;
+import shared.communication.IDienstleistungsverwaltung;
+import shared.communication.IGeraeteverwaltung;
 
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
@@ -22,8 +21,8 @@ import java.rmi.registry.Registry;
 
 //TODO WAS MACHT DIESE KLASSE?
 public class RMIClientTest {
-    static Geraeteverwaltung geraeteverwaltung;
-    static Dienstleistungsverwaltung dienstleistungsverwaltung;
+    static IGeraeteverwaltung geraeteverwaltung;
+    static IDienstleistungsverwaltung dienstleistungsverwaltung;
     public static void main(String[] args) {
         try { initializeRMI(); }
         catch (RemoteException e) {
@@ -37,7 +36,7 @@ public class RMIClientTest {
     public static void initializeRMI() throws RemoteException, NotBoundException {
         Registry registry = LocateRegistry.getRegistry("127.0.0.1", 1234);
 
-        geraeteverwaltung = (Geraeteverwaltung) registry.lookup("Geraeteverwaltung");
-        dienstleistungsverwaltung = (Dienstleistungsverwaltung) registry.lookup("Dienstleistungsverwaltung");
+        geraeteverwaltung = (IGeraeteverwaltung) registry.lookup("Geraeteverwaltung");
+        dienstleistungsverwaltung = (IDienstleistungsverwaltung) registry.lookup("Dienstleistungsverwaltung");
     }
 }
