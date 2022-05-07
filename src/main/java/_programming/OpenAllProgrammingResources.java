@@ -25,7 +25,9 @@ public class OpenAllProgrammingResources {
                 new URI("https://denniskelm.de/SWTentwurf.pdf"),
                 new URI("https://miro.com/app/board/uXjVO8j4qS4=/"),
                 new URI("https://miro.com/app/board/uXjVOdeTj8g=/"),
-                new URI("https://trello.com/b/NJwc4JyC/swt2022")
+                new URI("https://trello.com/b/NJwc4JyC/swt2022"),
+                new URI("https://github.com/denniskelm/SWTVerein"),
+                new URI("https://github.com/denniskelm/SWTVereinServer")
         };
 
         if (Desktop.isDesktopSupported() && Desktop.getDesktop().isSupported(Desktop.Action.BROWSE)
