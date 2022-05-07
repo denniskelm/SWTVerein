@@ -25,9 +25,7 @@ public class RMIClientTest {
     static IDienstleistungsverwaltung dienstleistungsverwaltung;
     public static void main(String[] args) {
         try { initializeRMI(); }
-        catch (RemoteException e) {
-            throw new RuntimeException(e);
-        } catch (NotBoundException e) {
+        catch (RemoteException | NotBoundException e) {
             throw new RuntimeException(e);
         }
 

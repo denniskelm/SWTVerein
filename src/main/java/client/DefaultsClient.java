@@ -12,6 +12,7 @@ Dennis Kelm
 */
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 
 //TODO Was macht diese Klasse?
 public class DefaultsClient {
@@ -26,6 +27,13 @@ public class DefaultsClient {
         frame.setVisible(true);
 
         return frame;
+    }
+
+    public static void createColumnsFromArray(String[] columns, DefaultTableModel model) {
+        for (String c :
+                columns) {
+            model.addColumn(c);
+        }
     }
 
 }
