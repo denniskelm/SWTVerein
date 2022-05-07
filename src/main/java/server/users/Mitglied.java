@@ -1,5 +1,7 @@
 package server.users;
 
+import server.Mahnungsverwaltung;
+
 import java.time.LocalDateTime;
 
 public class Mitglied extends Gast {
@@ -17,4 +19,6 @@ public class Mitglied extends Gast {
         this.profilseite = profilseite;
         this.mitglied_seit = mitglied_seit;
     }
+
+
 }

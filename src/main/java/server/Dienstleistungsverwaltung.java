@@ -21,13 +21,12 @@ Dennis Kelm
 
 public class Dienstleistungsverwaltung {
 
-    public static void gesuchErstellen(String titel, String beschreibung, String kategorie, Image[] bilder, String ersteller) {
-
+    public static void gesuchErstellen(String d_ID, String titel, String beschreibung, String kategorie, Mitglied ersteller) {
+        new Dienstleistungsgesuch(d_ID, titel, beschreibung, kategorie, ersteller);
     }
 
-    public static void angebotErstellen(String titel, String beschreibung, String kategorie, LocalDateTime ab, LocalDateTime bis, Mitglied ersteller) {
-        //Dienstleistungsangebot angebot = new Dienstleistungsangebot(titel, beschreibung, kategorie, ab, bis, ersteller);
-
+    public static void angebotErstellen(String d_id, String titel, String beschreibung, String kategorie, LocalDateTime ab, LocalDateTime bis, Mitglied ersteller) {
+        new Dienstleistungsangebot(d_id, titel, beschreibung, kategorie, ab, bis, ersteller);
     }
 
     public static void gesuchLoeschen(Dienstleistungsgesuch gesuch) {
