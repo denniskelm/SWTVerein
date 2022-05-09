@@ -265,7 +265,7 @@
                   <text value="&lt;html&gt;&lt;p style=&quot;width:300px&quot;&gt;Sie brauchen Unterstützung bei Ihren Arbeiten? Stellen Sie jetzt ein Dienstleistungsgesuch!&lt;/p&gt;"/>
                 </properties>
               </component>
-              <component id="ce8a4" class="javax.swing.JButton" binding="jetztHelferImVereinButton" default-binding="true">
+              <component id="ce8a4" class="javax.swing.JButton" binding="dienstleistungsangeboteButton">
                 <constraints>
                   <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
                     <preferred-size width="-1" height="40"/>
@@ -296,7 +296,7 @@
                   <text value="&lt;html&gt;&lt;p style=&quot;width:300px&quot;&gt;Verdienen Sie sich wertvolle Stunden auf Ihrem Stundenkonto!"/>
                 </properties>
               </component>
-              <component id="971f1" class="javax.swing.JButton" binding="bietenSieJetztIhreButton" default-binding="true">
+              <component id="971f1" class="javax.swing.JButton" binding="dienstleistungsgesucheButton">
                 <constraints>
                   <grid row="12" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
                     <preferred-size width="-1" height="40"/>

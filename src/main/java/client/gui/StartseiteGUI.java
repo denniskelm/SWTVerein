@@ -12,6 +12,8 @@ Dennis Kelm
 */
 
 import client.DefaultsClient;
+import client.gui.dienstleistungen.DienstleistungsangeboteGUI;
+import client.gui.dienstleistungen.DienstleistungsgesucheGUI;
 import com.formdev.flatlaf.FlatLightLaf;
 
 import javax.swing.*;
@@ -19,7 +21,6 @@ import javax.swing.plaf.FontUIResource;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.Enumeration;
 
 /*Stellt die Startseite dar, und leitet somit auf die weiteren Fenster der Anwendung weiter (unterscheidet dabei
@@ -39,8 +40,8 @@ public class StartseiteGUI {
     private JButton secondLeftButton;
     private JLabel secondLeftHeadline;
     private JLabel firstLeftDescriptionText;
-    private JButton jetztHelferImVereinButton;
-    private JButton bietenSieJetztIhreButton;
+    private JButton dienstleistungsangeboteButton;
+    private JButton dienstleistungsgesucheButton;
     private JLabel newsHeadline;
     private JPanel newsPanel;
     private JScrollPane scrollNews;
@@ -49,7 +50,14 @@ public class StartseiteGUI {
     private JLabel newsText;
     private JButton dienstleistungsdatenbankButton;
 
+    //Fügt Funktionalität der Startseite hinzu
     public StartseiteGUI() {
+        dienstleistungsangeboteButton.addActionListener(e -> {
+            DienstleistungsangeboteGUI dienstleistungsangeboteGUI = new DienstleistungsangeboteGUI();
+        });
+        dienstleistungsgesucheButton.addActionListener(e -> {
+            DienstleistungsgesucheGUI dienstleistungsgesucheGUI = new DienstleistungsgesucheGUI();
+        });
 
     }
 
@@ -61,7 +69,6 @@ public class StartseiteGUI {
                     GraphicsEnvironment.getLocalGraphicsEnvironment();
             Font newFont = Font.createFont(Font.TRUETYPE_FONT, new File("src/main/resources/fonts/Asap-VariableFont_wght.ttf")).deriveFont(Font.PLAIN, 15);
             ge.registerFont(newFont);
-            System.out.println(Arrays.toString(ge.getAvailableFontFamilyNames()));
             setUIFont(new FontUIResource(newFont));
         } catch (IOException | FontFormatException e) {
             System.out.println("Fehler " + e);

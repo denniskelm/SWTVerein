@@ -19,17 +19,17 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
 //TODO Was macht diese Klasse?
-public class DienstleistungsangeboteGUI {
-    private JPanel dienstleistungsangebotePanel;
+public class DienstleistungsgesucheGUI {
+    private JPanel dienstleistungsgesuchePanel;
     private JScrollPane bigTableScrollPanel;
-    private JTable dienstleistungsangeboteTable;
+    private JTable dienstleistungsgesucheTable;
     private JTextPane suchenTextPane;
 
 
-    public DienstleistungsangeboteGUI() {
-        JFrame frame = new JFrame("Dienstleistungsangebote");
-        //DienstleistungsangeboteGUI thisgui = new DienstleistungsangeboteGUI();
-        frame = DefaultsClient.standardizeFrame(frame, this.dienstleistungsangebotePanel);
+    public DienstleistungsgesucheGUI() {
+        JFrame frame = new JFrame("Dienstleistungsgesuche");
+        //DienstleistungsgesucheGUI thisgui = new DienstleistungsgesucheGUI();
+        frame = DefaultsClient.standardizeFrame(frame, this.dienstleistungsgesuchePanel);
 
         this.generateTable();
     }
@@ -43,12 +43,12 @@ public class DienstleistungsangeboteGUI {
                 return false;
             }
         };
-        dienstleistungsangeboteTable.setModel(model);
+        dienstleistungsgesucheTable.setModel(model);
 
         //set TableCellRenderer into a specified JTable column class
 
         String[] columns = new String[]{
-                "Dienstleistung",
+                "Gesuch",
                 "Beschreibung",
                 "Kategorie",
                 "Datum",
@@ -58,18 +58,18 @@ public class DienstleistungsangeboteGUI {
 
         //Testdaten
         model.addRow(new Object[]{
-                "Dienstleistung 1",
+                "Gesuch 1",
                 "Beschreibung 1",
                 "Kategorie 1",
                 "07.05.2022 - 14.05.2022",
                 "Stefan"
         });
 
-        dienstleistungsangeboteTable.addMouseListener(new java.awt.event.MouseAdapter() {
+        dienstleistungsgesucheTable.addMouseListener(new java.awt.event.MouseAdapter() {
             @Override
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                int row = dienstleistungsangeboteTable.rowAtPoint(evt.getPoint());
-                int col = dienstleistungsangeboteTable.columnAtPoint(evt.getPoint());
+                int row = dienstleistungsgesucheTable.rowAtPoint(evt.getPoint());
+                int col = dienstleistungsgesucheTable.columnAtPoint(evt.getPoint());
                 if (row >= 0 && col >= 0) {
                     System.out.println(row + ", " + col);
                     DefaultSmallPopup smallPopup = new DefaultSmallPopup("Test test", "Du hast den Button in Zeile " + row + " und Spalte " + col + " geklickt!");
@@ -82,13 +82,6 @@ public class DienstleistungsangeboteGUI {
     public static void main(String[] args) {
         //TODO Am Ende entfernen
         FlatLightLaf.setup();
-
-
-    }
-
-
-    private void createUIComponents() {
-        // TODO: place custom component creation code here
 
 
     }
