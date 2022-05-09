@@ -23,7 +23,7 @@ public class DefaultSmallPopup {
 
     public DefaultSmallPopup(String title, String popupText) {
         JFrame frame = new JFrame(title);
-        textLabel.setText("<html><p style=\"width: 500px; text-align: center; margin-right: 20px;\">" + popupText + "</p>");
+        textLabel.setText("<html><p style=\"width: 500px; text-align: center; margin-left: 20px; margin-right: 20px;\">" + popupText + "</p>");
         frame = DefaultsClient.standardizeFrame(frame, defaultPanel);
 
 

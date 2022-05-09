@@ -24,6 +24,8 @@ public class DienstleistungsangeboteGUI {
     private JScrollPane bigTableScrollPanel;
     private JTable dienstleistungsangeboteTable;
     private JTextPane suchenTextPane;
+    private JButton dienstleistungsgesuchErstellenButton;
+    private JButton dienstleistungsangebotErstellenButton;
 
 
     public DienstleistungsangeboteGUI() {
@@ -32,6 +34,10 @@ public class DienstleistungsangeboteGUI {
         frame = DefaultsClient.standardizeFrame(frame, this.dienstleistungsangebotePanel);
 
         this.generateTable();
+
+        dienstleistungsangebotErstellenButton.addActionListener(e -> {
+            DienstleistungsangebotErstellenGUI dienstleistungsangebotErstellenGUI = new DienstleistungsangebotErstellenGUI();
+        });
     }
 
     private void generateTable() {
