@@ -23,9 +23,13 @@ import java.rmi.registry.Registry;
 public class RMIClientTest {
     static IGeraeteverwaltung geraeteverwaltung;
     static IDienstleistungsverwaltung dienstleistungsverwaltung;
+
     public static void main(String[] args) {
-        try { initializeRMI(); }
-        catch (RemoteException | NotBoundException e) {
+
+        //RMI ermöglichen
+        try {
+            initializeRMI();
+        } catch (RemoteException | NotBoundException e) {
             throw new RuntimeException(e);
         }
 
@@ -35,6 +39,10 @@ public class RMIClientTest {
         Registry registry = LocateRegistry.getRegistry("127.0.0.1", 1234);
 
         geraeteverwaltung = (IGeraeteverwaltung) registry.lookup("Geraeteverwaltung");
-        dienstleistungsverwaltung = (IDienstleistungsverwaltung) registry.lookup("Dienstleistungsverwaltung");
+        //dienstleistungsverwaltung = (IDienstleistungsverwaltung) registry.lookup("Dienstleistungsverwaltung");
+
+        /* TESTEN
+        geraeteverwaltung.geraetHinzufuegen("Schaufel", "Gabriel", 2, "Schaufeln", "Dies ist eine tolle Schaufel!", "Raum 1");
+        System.out.println(geraeteverwaltung.geraeteDatenAusgeben("0"));    */
     }
 }
