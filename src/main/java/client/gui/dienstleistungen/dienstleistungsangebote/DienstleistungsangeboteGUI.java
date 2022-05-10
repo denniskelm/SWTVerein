@@ -1,4 +1,4 @@
-package client.gui.dienstleistungen;
+package client.gui.dienstleistungen.dienstleistungsangebote;
 /*
 @author
 TODO Raphael Kleebaum
@@ -13,30 +13,39 @@ Dennis Kelm
 
 import client.DefaultsClient;
 import client.gui.DefaultSmallPopup;
+import client.gui.dienstleistungen.dienstleistungsgesuche.DienstleistungsgesuchErstellenGUI;
 import com.formdev.flatlaf.FlatLightLaf;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import java.util.HashMap;
+import java.util.Map;
 
-//TODO Was macht diese Klasse?
+//Erstellt das GUI für die Dienstleistungsangebote, wo Nutzer alle Angebote einsehen können (Verwaltung ist extra)
 public class DienstleistungsangeboteGUI {
     private JPanel dienstleistungsangebotePanel;
     private JScrollPane bigTableScrollPanel;
     private JTable dienstleistungsangeboteTable;
-    private JTextPane suchenTextPane;
     private JButton dienstleistungsgesuchErstellenButton;
     private JButton dienstleistungsangebotErstellenButton;
+    private JTextField suchenTextField;
 
+    private Map<JTextField, Boolean> onceChanged = new HashMap<JTextField, Boolean>();
 
     public DienstleistungsangeboteGUI() {
-        JFrame frame = new JFrame("Dienstleistungsangebote");
+        JFrame frame = new JFrame("Alle Dienstleistungsangebote");
+        this.generateTable();
         //DienstleistungsangeboteGUI thisgui = new DienstleistungsangeboteGUI();
         frame = DefaultsClient.standardizeFrame(frame, this.dienstleistungsangebotePanel);
 
-        this.generateTable();
+        DefaultsClient.enhanceTextField(suchenTextField, onceChanged);
 
         dienstleistungsangebotErstellenButton.addActionListener(e -> {
             DienstleistungsangebotErstellenGUI dienstleistungsangebotErstellenGUI = new DienstleistungsangebotErstellenGUI();
+        });
+
+        dienstleistungsgesuchErstellenButton.addActionListener(e -> {
+            DienstleistungsgesuchErstellenGUI dienstleistungsgesuchErstellenGUI = new DienstleistungsgesuchErstellenGUI();
         });
     }
 
@@ -57,17 +66,18 @@ public class DienstleistungsangeboteGUI {
                 "Dienstleistung",
                 "Beschreibung",
                 "Kategorie",
-                "Datum",
+                "Verfügbar ab",
+                "Verfügbar bis",
                 "Anbieter"
         };
         DefaultsClient.createColumnsFromArray(columns, model);
 
-        //Testdaten
         model.addRow(new Object[]{
                 "Dienstleistung 1",
                 "Beschreibung 1",
                 "Kategorie 1",
-                "07.05.2022 - 14.05.2022",
+                "07.05.2022",
+                "14.05.2022",
                 "Stefan"
         });
 
@@ -78,7 +88,8 @@ public class DienstleistungsangeboteGUI {
                 int col = dienstleistungsangeboteTable.columnAtPoint(evt.getPoint());
                 if (row >= 0 && col >= 0) {
                     System.out.println(row + ", " + col);
-                    DefaultSmallPopup smallPopup = new DefaultSmallPopup("Test test", "Du hast den Button in Zeile " + row + " und Spalte " + col + " geklickt!");
+                    //TODO Implementierung Klick auf Zelle
+                    DefaultSmallPopup smallPopup = new DefaultSmallPopup("Test test", "TODO");
                 }
             }
         });
@@ -89,35 +100,5 @@ public class DienstleistungsangeboteGUI {
         //TODO Am Ende entfernen
         FlatLightLaf.setup();
 
-
-    }
-
-
-    private void createUIComponents() {
-        // TODO: place custom component creation code here
-
-
     }
 }
-/*
-    class MultiLineTableCellRenderer extends JList<String> implements TableCellRenderer {
-
-        @Override
-        public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
-            //make multi line where the cell value is String[]
-            if (value instanceof String[]) {
-                setListData((String[]) value);
-            }
-
-            //cell backgroud color when selected
-            if (isSelected) {
-                setBackground(UIManager.getColor("Table.selectionBackground"));
-            } else {
-                setBackground(UIManager.getColor("Table.background"));
-            }
-
-            return this;
-        }
-    }
-
-*/
