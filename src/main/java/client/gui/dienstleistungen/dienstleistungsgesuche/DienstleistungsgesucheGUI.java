@@ -1,4 +1,4 @@
-package client.gui.dienstleistungen;
+package client.gui.dienstleistungen.dienstleistungsgesuche;
 /*
 @author
 TODO Raphael Kleebaum
@@ -13,25 +13,40 @@ Dennis Kelm
 
 import client.DefaultsClient;
 import client.gui.DefaultSmallPopup;
+import client.gui.dienstleistungen.dienstleistungsangebote.DienstleistungsangebotErstellenGUI;
 import com.formdev.flatlaf.FlatLightLaf;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import java.util.HashMap;
+import java.util.Map;
 
-//TODO Was macht diese Klasse?
+//Erstellt das GUI für die Dienstleistungsgesuche, wo Nutzer alle Gesuche einsehen können (Verwaltung ist extra)
 public class DienstleistungsgesucheGUI {
     private JPanel dienstleistungsgesuchePanel;
     private JScrollPane bigTableScrollPanel;
     private JTable dienstleistungsgesucheTable;
-    private JTextPane suchenTextPane;
+    private JButton dienstleistungsgesuchErstellenButton;
+    private JButton dienstleistungsangebotErstellenButton;
+    private JTextField suchenTextField;
 
+    private Map<JTextField, Boolean> onceChanged = new HashMap<JTextField, Boolean>();
 
     public DienstleistungsgesucheGUI() {
-        JFrame frame = new JFrame("Dienstleistungsgesuche");
-        //DienstleistungsgesucheGUI thisgui = new DienstleistungsgesucheGUI();
+        JFrame frame = new JFrame("Alle Dienstleistungsgesuche");
+        this.generateTable();
+        //DienstleistungsangeboteGUI thisgui = new DienstleistungsangeboteGUI();
         frame = DefaultsClient.standardizeFrame(frame, this.dienstleistungsgesuchePanel);
 
-        this.generateTable();
+        DefaultsClient.enhanceTextField(suchenTextField, onceChanged);
+
+        dienstleistungsangebotErstellenButton.addActionListener(e -> {
+            DienstleistungsangebotErstellenGUI dienstleistungsangebotErstellenGUI = new DienstleistungsangebotErstellenGUI();
+        });
+
+        dienstleistungsgesuchErstellenButton.addActionListener(e -> {
+            DienstleistungsgesuchErstellenGUI dienstleistungsgesuchErstellenGUI = new DienstleistungsgesuchErstellenGUI();
+        });
     }
 
     private void generateTable() {
@@ -51,18 +66,15 @@ public class DienstleistungsgesucheGUI {
                 "Gesuch",
                 "Beschreibung",
                 "Kategorie",
-                "Datum",
                 "Anbieter"
         };
         DefaultsClient.createColumnsFromArray(columns, model);
 
-        //Testdaten
         model.addRow(new Object[]{
                 "Gesuch 1",
                 "Beschreibung 1",
                 "Kategorie 1",
-                "07.05.2022 - 14.05.2022",
-                "Stefan"
+                "Dieter"
         });
 
         dienstleistungsgesucheTable.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -72,7 +84,8 @@ public class DienstleistungsgesucheGUI {
                 int col = dienstleistungsgesucheTable.columnAtPoint(evt.getPoint());
                 if (row >= 0 && col >= 0) {
                     System.out.println(row + ", " + col);
-                    DefaultSmallPopup smallPopup = new DefaultSmallPopup("Test test", "Du hast den Button in Zeile " + row + " und Spalte " + col + " geklickt!");
+                    //TODO Implementierung Klick auf Zelle
+                    DefaultSmallPopup smallPopup = new DefaultSmallPopup("Test test", "TODO");
                 }
             }
         });
@@ -83,28 +96,5 @@ public class DienstleistungsgesucheGUI {
         //TODO Am Ende entfernen
         FlatLightLaf.setup();
 
-
     }
 }
-/*
-    class MultiLineTableCellRenderer extends JList<String> implements TableCellRenderer {
-
-        @Override
-        public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
-            //make multi line where the cell value is String[]
-            if (value instanceof String[]) {
-                setListData((String[]) value);
-            }
-
-            //cell backgroud color when selected
-            if (isSelected) {
-                setBackground(UIManager.getColor("Table.selectionBackground"));
-            } else {
-                setBackground(UIManager.getColor("Table.background"));
-            }
-
-            return this;
-        }
-    }
-
-*/

@@ -12,8 +12,9 @@ Dennis Kelm
 */
 
 import client.DefaultsClient;
-import client.gui.dienstleistungen.DienstleistungsangeboteGUI;
-import client.gui.dienstleistungen.DienstleistungsgesucheGUI;
+import client.gui.dienstleistungen.dienstleistungsangebote.DienstleistungsangeboteGUI;
+import client.gui.dienstleistungen.dienstleistungsangebote.DienstleistungsangebotsVerwaltungGUI;
+import client.gui.dienstleistungen.dienstleistungsgesuche.DienstleistungsgesucheGUI;
 import com.formdev.flatlaf.FlatLightLaf;
 
 import javax.swing.*;
@@ -48,7 +49,9 @@ public class StartseiteGUI {
     private JButton rollenverwaltungButton;
     private JPanel managePanel;
     private JLabel newsText;
-    private JButton dienstleistungsdatenbankButton;
+    private JButton dienstleistungsgesuchsverwaltungButton;
+    private JButton dienstleistungsangebotsverwaltungButton;
+    private JButton geraeteverwaltungButton;
 
     //Fügt Funktionalität der Startseite hinzu
     public StartseiteGUI() {
@@ -57,6 +60,9 @@ public class StartseiteGUI {
         });
         dienstleistungsgesucheButton.addActionListener(e -> {
             DienstleistungsgesucheGUI dienstleistungsgesucheGUI = new DienstleistungsgesucheGUI();
+        });
+        dienstleistungsangebotsverwaltungButton.addActionListener(e -> {
+            DienstleistungsangebotsVerwaltungGUI dienstleistungsangebotsVerwaltungGUI = new DienstleistungsangebotsVerwaltungGUI();
         });
 
     }

@@ -293,7 +293,7 @@
                 </constraints>
                 <properties>
                   <font size="18"/>
-                  <text value="&lt;html&gt;&lt;p style=&quot;width:300px&quot;&gt;Verdienen Sie sich wertvolle Stunden auf Ihrem Stundenkonto!"/>
+                  <text value="&lt;html&gt;&lt;p style=&quot;width:300px&quot;&gt;Verdienen Sie sich wertvolle Stunden auf Ihrem Stundenkonto! Sehen Sie sich alle Hilfegesuche der Vereinsmitglieder an!"/>
                 </properties>
               </component>
               <component id="971f1" class="javax.swing.JButton" binding="dienstleistungsgesucheButton">
@@ -306,7 +306,7 @@
                   <background color="-10146637"/>
                   <font size="18" style="1"/>
                   <foreground color="-1"/>
-                  <text value="Bieten Sie jetzt Ihre Hilfe an"/>
+                  <text value="Jetzt alle Gesuche einsehen"/>
                 </properties>
               </component>
               <vspacer id="733d2">
@@ -418,20 +418,7 @@
             <properties/>
             <border type="none" title="Vereinsverwaltung"/>
             <children>
-              <component id="5763" class="javax.swing.JButton" binding="rollenverwaltungButton" default-binding="true">
-                <constraints>
-                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
-                    <preferred-size width="-1" height="40"/>
-                  </grid>
-                </constraints>
-                <properties>
-                  <background color="-1"/>
-                  <font size="16" style="1"/>
-                  <foreground color="-15947895"/>
-                  <text value="Rollenverwaltung"/>
-                </properties>
-              </component>
-              <component id="b00af" class="javax.swing.JButton" binding="dienstleistungsdatenbankButton">
+              <component id="b00af" class="javax.swing.JButton" binding="dienstleistungsgesuchsverwaltungButton">
                 <constraints>
                   <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
                     <preferred-size width="-1" height="40"/>
@@ -444,7 +431,7 @@
                   <text value="Dienstleistungsgesuche"/>
                 </properties>
               </component>
-              <component id="88e1a" class="javax.swing.JButton" default-binding="true">
+              <component id="88e1a" class="javax.swing.JButton" binding="dienstleistungsangebotsverwaltungButton">
                 <constraints>
                   <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
                     <preferred-size width="-1" height="40"/>
@@ -457,7 +444,7 @@
                   <text value="Dienstleistungsangebote"/>
                 </properties>
               </component>
-              <component id="bc92f" class="javax.swing.JButton" default-binding="true">
+              <component id="bc92f" class="javax.swing.JButton" binding="geraeteverwaltungButton">
                 <constraints>
                   <grid row="7" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
                     <preferred-size width="-1" height="40"/>
@@ -498,6 +485,19 @@
                   </grid>
                 </constraints>
               </vspacer>
+              <component id="5763" class="javax.swing.JButton" binding="rollenverwaltungButton" default-binding="true">
+                <constraints>
+                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
+                    <preferred-size width="-1" height="40"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <background color="-1"/>
+                  <font size="16" style="1"/>
+                  <foreground color="-15947895"/>
+                  <text value="Rollenverwaltung"/>
+                </properties>
+              </component>
             </children>
           </grid>
           <vspacer id="8ee56">
