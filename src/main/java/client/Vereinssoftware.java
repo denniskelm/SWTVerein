@@ -13,17 +13,18 @@ Dennis Kelm
 
 import shared.communication.IDienstleistungsverwaltung;
 import shared.communication.IGeraeteverwaltung;
+import shared.communication.IMahnungsverwaltung;
 
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
-import java.time.LocalDateTime;
 
-//TODO WAS MACHT DIESE KLASSE?
-public class RMIClientTest {
+//Klasse, die das Programm startet
+public class Vereinssoftware {
     static IGeraeteverwaltung geraeteverwaltung;
     static IDienstleistungsverwaltung dienstleistungsverwaltung;
+    static IMahnungsverwaltung mahnungsverwaltung;
 
     public static void main(String[] args) {
 
@@ -34,6 +35,8 @@ public class RMIClientTest {
             throw new RuntimeException(e);
         }
 
+        //TODO: GUI starten
+
     }
 
     public static void initializeRMI() throws RemoteException, NotBoundException {
@@ -42,16 +45,6 @@ public class RMIClientTest {
 
         geraeteverwaltung = (IGeraeteverwaltung) registry.lookup("Geraeteverwaltung");
         dienstleistungsverwaltung = (IDienstleistungsverwaltung) registry.lookup("Dienstleistungsverwaltung");
-
-        // ZUM TESTEN
-        /* geraeteverwaltung.geraetHinzufuegen("Schaufel", "Gabriel", 2, "Schaufeln", "Dies ist eine tolle Schaufel!", "Raum 1");
-        System.out.println(geraeteverwaltung.geraeteDatenAusgeben("0")); */
-
-        /* try {
-            dienstleistungsverwaltung.angebotErstellen("Zaun streichen", "Ich biete an, deinen Zaun zu streichen.", "Malern", LocalDateTime.now(), LocalDateTime.of(2022, 5, 26, 15, 10), "Gabriel");
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        } */
-
+        mahnungsverwaltung = (IMahnungsverwaltung) registry.lookup("Mahnungsverwaltung");
     }
 }
