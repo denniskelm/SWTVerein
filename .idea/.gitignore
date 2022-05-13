@@ -9,6 +9,8 @@
 .idea/**/shelf
 .idea/**/misc.xml
 
+pom.xml
+
 # AWS User-specific
 .idea/**/aws.xml
 
