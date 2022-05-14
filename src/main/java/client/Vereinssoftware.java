@@ -11,6 +11,7 @@ TODO Bastian Reichert
 Dennis Kelm
 */
 
+import client.gui.StartseiteGUI;
 import shared.communication.IDienstleistungsverwaltung;
 import shared.communication.IGeraeteverwaltung;
 import shared.communication.IMahnungsverwaltung;
@@ -36,6 +37,7 @@ public class Vereinssoftware {
         }
 
         //TODO: GUI starten
+        //StartseiteGUI startseiteGUI = new StartseiteGUI();
 
     }
 

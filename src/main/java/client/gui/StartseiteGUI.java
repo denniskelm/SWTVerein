@@ -12,6 +12,8 @@ Dennis Kelm
 */
 
 import client.DefaultsClient;
+import client.gui.Geräte.GeraetAnzeigenGUI;
+import client.gui.Profilseite.ProfilseiteEigene;
 import client.gui.dienstleistungen.dienstleistungsangebote.DienstleistungsangeboteGUI;
 import client.gui.dienstleistungen.dienstleistungsangebote.DienstleistungsangebotsVerwaltungGUI;
 import client.gui.dienstleistungen.dienstleistungsgesuche.DienstleistungsgesucheGUI;
@@ -63,6 +65,10 @@ public class StartseiteGUI {
         });
         dienstleistungsangebotsverwaltungButton.addActionListener(e -> {
             DienstleistungsangebotsVerwaltungGUI dienstleistungsangebotsVerwaltungGUI = new DienstleistungsangebotsVerwaltungGUI();
+        });
+
+        secondLeftButton.addActionListener(e -> {
+            GeraetAnzeigenGUI geraetAnzeigenGUI = new GeraetAnzeigenGUI();
         });
 
     }
