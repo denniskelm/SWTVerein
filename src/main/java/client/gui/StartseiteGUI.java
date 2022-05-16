@@ -12,6 +12,7 @@ Dennis Kelm
 */
 
 import client.DefaultsClient;
+import client.Vereinssoftware;
 import client.gui.Geräte.GeraetAnzeigenGUI;
 import client.gui.Profilseite.ProfilseiteEigene;
 import client.gui.dienstleistungen.dienstleistungsangebote.DienstleistungsangeboteGUI;
@@ -24,6 +25,8 @@ import javax.swing.plaf.FontUIResource;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.Enumeration;
 
 /*Stellt die Startseite dar, und leitet somit auf die weiteren Fenster der Anwendung weiter (unterscheidet dabei
@@ -55,27 +58,11 @@ public class StartseiteGUI {
     private JButton dienstleistungsangebotsverwaltungButton;
     private JButton geraeteverwaltungButton;
 
+
     //Fügt Funktionalität der Startseite hinzu
     public StartseiteGUI() {
-        dienstleistungsangeboteButton.addActionListener(e -> {
-            DienstleistungsangeboteGUI dienstleistungsangeboteGUI = new DienstleistungsangeboteGUI();
-        });
-        dienstleistungsgesucheButton.addActionListener(e -> {
-            DienstleistungsgesucheGUI dienstleistungsgesucheGUI = new DienstleistungsgesucheGUI();
-        });
-        dienstleistungsangebotsverwaltungButton.addActionListener(e -> {
-            DienstleistungsangebotsVerwaltungGUI dienstleistungsangebotsVerwaltungGUI = new DienstleistungsangebotsVerwaltungGUI();
-        });
-
-        secondLeftButton.addActionListener(e -> {
-            GeraetAnzeigenGUI geraetAnzeigenGUI = new GeraetAnzeigenGUI();
-        });
-
-    }
-
-    public static void main(String[] args) {
-
         FlatLightLaf.setup();
+
         try {
             GraphicsEnvironment ge =
                     GraphicsEnvironment.getLocalGraphicsEnvironment();
@@ -87,7 +74,31 @@ public class StartseiteGUI {
         }
 
         JFrame frame = new JFrame("Startseite");
-        frame = DefaultsClient.standardizeFrame(frame, new StartseiteGUI().startseite);
+        frame = DefaultsClient.standardizeFrame(frame, startseite);
+
+
+        dienstleistungsangeboteButton.addActionListener(e -> {
+            DienstleistungsangeboteGUI dienstleistungsangeboteGUI = new DienstleistungsangeboteGUI();
+        });
+        dienstleistungsgesucheButton.addActionListener(e -> {
+            DienstleistungsgesucheGUI dienstleistungsgesucheGUI = new DienstleistungsgesucheGUI();
+        });
+        dienstleistungsangebotsverwaltungButton.addActionListener(e -> {
+            DienstleistungsangebotsVerwaltungGUI dienstleistungsangebotsVerwaltungGUI = new DienstleistungsangebotsVerwaltungGUI();
+        });
+
+        secondLeftButton.addActionListener(e -> {
+            try {
+                System.out.println(Vereinssoftware.dienstleistungsverwaltung.angebotErstellen("Hilfe bei Kaka machen",
+                        "Ich helfe Ihnen", "Kaka machen", LocalDateTime.now(),
+                        LocalDateTime.now().plusDays(15), "P00001"));
+            } catch (Exception ex) {
+                throw new RuntimeException(ex);
+            }
+            //ProfilseiteEigene profilseiteEigene = new ProfilseiteEigene();
+
+        });
+
     }
 
     public static void setUIFont(javax.swing.plaf.FontUIResource f) {

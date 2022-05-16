@@ -12,7 +12,9 @@ Dennis Kelm
 */
 
 import client.DefaultsClient;
+import client.Vereinssoftware;
 import client.gui.DefaultSmallPopup;
+import shared.communication.IDienstleistungsverwaltung;
 
 import javax.swing.*;
 import java.util.HashMap;

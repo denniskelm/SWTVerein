@@ -24,10 +24,10 @@ import java.rmi.registry.Registry;
 
 //Klasse, die das Programm startet
 public class Vereinssoftware {
-    static IGeraeteverwaltung geraeteverwaltung;
-    static IDienstleistungsverwaltung dienstleistungsverwaltung;
-    static IMahnungsverwaltung mahnungsverwaltung;
-    static IRollenverwaltung rollenverwaltung;
+    public static IGeraeteverwaltung geraeteverwaltung;
+    public static IDienstleistungsverwaltung dienstleistungsverwaltung;
+    public static IMahnungsverwaltung mahnungsverwaltung;
+    public static IRollenverwaltung rollenverwaltung;
 
     public static void main(String[] args) {
 
@@ -39,13 +39,14 @@ public class Vereinssoftware {
         }
 
         //TODO: GUI starten
-        //StartseiteGUI startseiteGUI = new StartseiteGUI();
+        StartseiteGUI startseiteGUI = new StartseiteGUI();
+        System.out.println("Startseite startet");
 
     }
 
     public static void initializeRMI() throws RemoteException, NotBoundException {
-        //Registry registry = LocateRegistry.getRegistry("meta.informatik.uni-rostock.de", 1234);
-        Registry registry = LocateRegistry.getRegistry("127.0.0.1", 1234);
+        Registry registry = LocateRegistry.getRegistry("meta.informatik.uni-rostock.de", 1234);
+        //Registry registry = LocateRegistry.getRegistry("127.0.0.1", 1234);
 
         geraeteverwaltung = (IGeraeteverwaltung) registry.lookup("Geraeteverwaltung");
         dienstleistungsverwaltung = (IDienstleistungsverwaltung) registry.lookup("Dienstleistungsverwaltung");
