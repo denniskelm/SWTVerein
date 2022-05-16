@@ -59,8 +59,4 @@ public class GeraetAnzeigenGUI {
 
 
     }
-
-    private void createUIComponents() {
-
-    }
 }
