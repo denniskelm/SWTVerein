@@ -12,14 +12,12 @@ TODO Dennis Kelm
 */
 
 import client.DefaultsClient;
-import org.intellij.lang.annotations.Flow;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.net.URL;
 
 //TODO Was macht diese Klasse?
@@ -44,7 +42,8 @@ public class GeraetAnzeigenGUI {
 
     public GeraetAnzeigenGUI() {
         JFrame frame = new JFrame("Gerätedetails");
-        insertImageToPanel(imageLabel, "https://pixabay.com/get/g0be4ab385c9f7060b89ca00db37e4a2ff0903aa13857046e68c8a617bdac13ded0460d8096e1d0064ffb4af1de9ea83add2c57e86d4c362931816e1a9fa8f5b1ec50d3f4a3ff402e3078b1f88972909a_1920.jpg");
+        String pathToImage = "https://bilder.gartenpaul.de/item/images/456/full/456-R1-M1.jpg";
+        insertImageToPanel(imageLabel, pathToImage);
         frame = DefaultsClient.standardizeFrame(frame, geraetAnzeigenGUI);
     }
 
@@ -58,10 +57,6 @@ public class GeraetAnzeigenGUI {
             throw new RuntimeException(e);
         }
 
-
-    }
-
-    private void createUIComponents() {
 
     }
 }
