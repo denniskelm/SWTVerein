@@ -1,6 +1,10 @@
 package shared.communication;
 
+import server.users.Personendaten;
+import server.users.Rolle;
+
 import java.rmi.Remote;
+import java.rmi.RemoteException;
 
 /*
 @author
@@ -16,13 +20,11 @@ TODO Dennis Kelm
 
 // Interface, um RMI für Klasse Rollenverwaltung zu ermöglichen
 public interface IRollenverwaltung extends Remote {
-/*
-    void gastListeAnzeigen() throws RemoteException;
-    void mitgliedListeAnzeigen() throws RemoteException;
-    void mitarbeiterListeAnzeigen() throws RemoteException;
-    void vorsitzListeAnzeigen() throws RemoteException;
-    void rolleAendern(Mitglied mitglied, Rolle rolle) throws RemoteException;
-    void nutzereintragAendern(Mitglied mitglied, Object attr, Object wert) throws RemoteException;
-    void mahnungsverwaltungAnzeigen() throws RemoteException;
-*/
+    Object[] gastListeAnzeigen() throws RemoteException;
+    Object[] mitgliedListeAnzeigen() throws RemoteException;
+    Object[] mitarbeiterListeAnzeigen() throws RemoteException;
+    Object[] vorsitzListeAnzeigen() throws RemoteException;
+    void rolleAendern(String mitgliedsID, Rolle rolle) throws RemoteException;
+    void nutzereintragAendern(String mitgliedsID, Personendaten attr, String wert) throws RemoteException;
+    Object[] mahnungsverwaltungAnzeigen() throws RemoteException;
 }

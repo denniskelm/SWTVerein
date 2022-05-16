@@ -15,6 +15,7 @@ import client.gui.StartseiteGUI;
 import shared.communication.IDienstleistungsverwaltung;
 import shared.communication.IGeraeteverwaltung;
 import shared.communication.IMahnungsverwaltung;
+import shared.communication.IRollenverwaltung;
 
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
@@ -26,6 +27,7 @@ public class Vereinssoftware {
     static IGeraeteverwaltung geraeteverwaltung;
     static IDienstleistungsverwaltung dienstleistungsverwaltung;
     static IMahnungsverwaltung mahnungsverwaltung;
+    static IRollenverwaltung rollenverwaltung;
 
     public static void main(String[] args) {
 
@@ -48,5 +50,6 @@ public class Vereinssoftware {
         geraeteverwaltung = (IGeraeteverwaltung) registry.lookup("Geraeteverwaltung");
         dienstleistungsverwaltung = (IDienstleistungsverwaltung) registry.lookup("Dienstleistungsverwaltung");
         mahnungsverwaltung = (IMahnungsverwaltung) registry.lookup("Mahnungsverwaltung");
+        rollenverwaltung = (IRollenverwaltung) registry.lookup("Rollenverwaltung");
     }
 }
