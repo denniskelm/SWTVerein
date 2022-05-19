@@ -17,8 +17,11 @@ import client.gui.DefaultSmallPopup;
 import shared.communication.IDienstleistungsverwaltung;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 //GUI Funktionalität für das Erstellen von Dienstleistungsangeboten
 public class DienstleistungsangebotErstellenGUI {
@@ -57,10 +60,18 @@ public class DienstleistungsangebotErstellenGUI {
             DefaultsClient.enhanceTextField(textField, onceChangedFields);
         }
 
+        //TODO Kategorien in die ComboBox packen
+
         DefaultsClient.enhanceTextArea(beschreibungTextArea, onceChangedAreas);
 
         angebotErstellenButton.addActionListener(e -> {
-            angebotErstellenGUI();
+            angebotErstellenGUI(
+                    titleTextField.getText(),
+                    urlTextField.getText(),
+                    beschreibungTextArea.getText(),
+                    Objects.requireNonNull(kategorieComboBox.getSelectedItem()).toString(),
+                    verfuegbarAbTextField.getText(),
+                    verfuegbarBisTextField.getText());
         });
 
     }
@@ -69,7 +80,9 @@ public class DienstleistungsangebotErstellenGUI {
         DienstleistungsangebotErstellenGUI thisgui = new DienstleistungsangebotErstellenGUI();
     }
 
-    private void angebotErstellenGUI() {
+    private void angebotErstellenGUI(String titel, String urlToImage, String beschreibung, String kategorie, String ab, String bis) {
+
+
         DefaultSmallPopup smallPopup = new DefaultSmallPopup("Angebot erfolgreich erstellt", "Ihr Dienstleistungsangebot wurde erfolgreich erstellt!");
     }
 

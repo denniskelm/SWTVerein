@@ -20,6 +20,7 @@ public class DefaultSmallPopup {
     private JPanel defaultPanel;
     private JScrollPane textScrollbar;
     private JLabel textLabel;
+    private JButton button1;
 
     public DefaultSmallPopup(String title, String popupText) {
         JFrame frame = new JFrame(title);

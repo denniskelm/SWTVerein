@@ -61,18 +61,6 @@ public class StartseiteGUI {
 
     //Fügt Funktionalität der Startseite hinzu
     public StartseiteGUI() {
-        FlatLightLaf.setup();
-
-        try {
-            GraphicsEnvironment ge =
-                    GraphicsEnvironment.getLocalGraphicsEnvironment();
-            Font newFont = Font.createFont(Font.TRUETYPE_FONT, new File("src/main/resources/fonts/Asap-VariableFont_wght.ttf")).deriveFont(Font.PLAIN, 15);
-            ge.registerFont(newFont);
-            setUIFont(new FontUIResource(newFont));
-        } catch (IOException | FontFormatException e) {
-            System.out.println("Fehler " + e);
-        }
-
         JFrame frame = new JFrame("Startseite");
         frame = DefaultsClient.standardizeFrame(frame, startseite);
 
@@ -88,26 +76,10 @@ public class StartseiteGUI {
         });
 
         secondLeftButton.addActionListener(e -> {
-            try {
-                System.out.println(Vereinssoftware.dienstleistungsverwaltung.angebotErstellen("Hilfe bei Kaka machen",
-                        "Ich helfe Ihnen", "Kaka machen", LocalDateTime.now(),
-                        LocalDateTime.now().plusDays(15), "P00001"));
-            } catch (Exception ex) {
-                throw new RuntimeException(ex);
-            }
-            //ProfilseiteEigene profilseiteEigene = new ProfilseiteEigene();
+            DefaultTextWithButton defaultTextWithButton = new DefaultTextWithButton("String titel", "String popupText", "String buttonText");
+            defaultTextWithButton.getActionButton().addActionListener(ev -> System.out.println("Funktioniert"));
 
         });
 
-    }
-
-    public static void setUIFont(javax.swing.plaf.FontUIResource f) {
-        Enumeration<Object> keys = UIManager.getDefaults().keys();
-        while (keys.hasMoreElements()) {
-            Object key = keys.nextElement();
-            Object value = UIManager.get(key);
-            if (value instanceof javax.swing.plaf.FontUIResource)
-                UIManager.put(key, f);
-        }
     }
 }
