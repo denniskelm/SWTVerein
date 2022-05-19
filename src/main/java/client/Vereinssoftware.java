@@ -28,8 +28,10 @@ public class Vereinssoftware {
     public static IDienstleistungsverwaltung dienstleistungsverwaltung;
     public static IMahnungsverwaltung mahnungsverwaltung;
     public static IRollenverwaltung rollenverwaltung;
+    public static Session session;
 
     public static void main(String[] args) {
+        session = new Session();
 
         //RMI ermöglichen
         try {
