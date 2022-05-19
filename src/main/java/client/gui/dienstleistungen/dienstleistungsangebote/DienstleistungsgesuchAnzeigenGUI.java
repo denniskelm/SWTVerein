@@ -1,4 +1,4 @@
-package client.gui.Geräte;
+package client.gui.dienstleistungen.dienstleistungsangebote;
 /*
 @author
 TODO Raphael Kleebaum
@@ -14,16 +14,13 @@ Dennis Kelm
 import client.DefaultsClient;
 import client.Vereinssoftware;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
-import java.awt.*;
-import java.awt.image.BufferedImage;
-import java.io.IOException;
-import java.net.URL;
+import java.rmi.RemoteException;
+import java.time.LocalDateTime;
 
 //TODO Was macht diese Klasse?
-public class GeraetAnzeigenGUI {
-    private JPanel geraetAnzeigenGUI;
+public class DienstleistungsgesuchAnzeigenGUI {
+    private JPanel dienstleistungsangebotAnzeigenGUI;
     private JLabel headlineLabel;
     private JPanel metaOuterPanel;
     private JPanel metaLeftPanel;
@@ -41,24 +38,28 @@ public class GeraetAnzeigenGUI {
     private JLabel imageLabel;
 
 
-    //Zeigt die Gerätedetailinformationen an
+    //Zeigt die Details eines Dienstleistungsgesuchs an
     //TODO Implementation Infos fetchen von IGeraeteverwaltung, vllt. die Infos per Parameter übergeben sondern hier fetchen
-    public GeraetAnzeigenGUI(String geraeteID, String pathToImage, String titel, String spender, String raum, int reservierungen, int leihfrist, String beschreibung) {
-        JFrame frame = new JFrame("Gerätedetails");
+    public DienstleistungsgesuchAnzeigenGUI(String gesuch_ID, String pathToImage, String titel, String beschreibung, String kategorie, String suchenderID) {
+        JFrame frame = new JFrame("Details des Dienstleistungsangebots");
         DefaultsClient.insertImageToPanel(imageLabel, pathToImage); //URL zum Bild, z.B. "https://bilder.gartenpaul.de/item/images/456/full/456-R1-M1.jpg"
-        frame = DefaultsClient.standardizeFrame(frame, geraetAnzeigenGUI);
+        frame = DefaultsClient.standardizeFrame(frame, dienstleistungsangebotAnzeigenGUI);
 
         //Anpassen der Texte
         headlineLabel.setText("TODO TITEL"); //sowas wie Vereinssoftware.dienstleistungsverwaltung.getGeraetInformation(String geraeteID)[0]
-        metaInfoText1.setText("Spender: " + spender);
-        metaInfoText2.setText("Raum: " + raum);
-        metaInfoText3.setText("Aktuell " + reservierungen + " Reservierungen");
-        metaInfoText4.setText("Leihfrist:  " + leihfrist + " Tage");
+        metaInfoText1.setText("Kategorie: " + kategorie);
+        frame.remove(metaInfoText2);
+        metaInfoText3.setText("Wird gesucht von: " + suchenderID); //TODO so was wie suchenderID.getName
+        frame.remove(metaInfoText4);
 
         descriptionText.setText("<html><p style=\"width: 600px;\">" + beschreibung + "</p>");
 
         jetztReservierenButton.addActionListener(e -> {
-            //TODO Implemtierung Reservierung hinzufügen
+            try { //TODO Ist das Gesuch annehmen?
+                Vereinssoftware.dienstleistungsverwaltung.gesuchAnnehmen(gesuch_ID, suchenderID, "P00002" /* TODO SESSION */, 10 /* TODO STUNDEN */);
+            } catch (Exception ex) {
+                throw new RuntimeException(ex);
+            }
         });
     }
 

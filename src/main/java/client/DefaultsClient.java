@@ -11,12 +11,17 @@ TODO Bastian Reichert
 Dennis Kelm
 */
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;
+import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.net.URL;
 import java.util.Map;
 
 //TODO Was macht diese Klasse?
@@ -39,6 +44,19 @@ public class DefaultsClient {
                 columns) {
             model.addColumn(c);
         }
+    }
+
+    public static void insertImageToPanel(JLabel imageLabel, String pathToImageURL) {
+        try {
+            URL url = new URL(pathToImageURL);
+            BufferedImage image = ImageIO.read(url);
+            Image resizedIMG = image.getScaledInstance(800, 450, Image.SCALE_SMOOTH);
+            imageLabel.setIcon(new ImageIcon(resizedIMG));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+
     }
 
     //Bei Klick: Entferne den Text "Eingeben", aber nur wenn noch nicht eingegeben wurde
