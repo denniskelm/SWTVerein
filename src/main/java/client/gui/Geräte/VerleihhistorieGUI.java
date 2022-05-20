@@ -7,6 +7,7 @@ import server.geraetemodul.Geraet;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 public class VerleihhistorieGUI extends JFrame{
@@ -23,14 +24,18 @@ public class VerleihhistorieGUI extends JFrame{
         super(title);
         this.geraeteID = geraeteID;
 
-        creatTable();
+        try {
+            creatTable();
+        } catch (RemoteException e) {
+            throw new RuntimeException(e);
+        }
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setContentPane(Verleihhsitorie);
         this.pack();
     }
 
 
-    private void creatTable() {
+    private void creatTable() throws RemoteException {
         String[][] data = null;
 
         String[] columns = {"Nutzername", "NutzerID", "von", "bis"};

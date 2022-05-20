@@ -26,7 +26,7 @@ public class GeräteListeGUI extends JFrame{
         super(title);
 
 
-        creatTable();
+        //creatTable();
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setContentPane(GeräteListe);
         this.pack();
@@ -66,7 +66,7 @@ public class GeräteListeGUI extends JFrame{
 
     }
 
-    private void creatTable() {
+    /*private void creatTable() {
         String[] columns = {"Gerät", "Spender", "Ausgabeort", "Gerätebeschreibung", "Reservieren"};
         String[][] data = new String[Vereinssoftware.geraeteverwaltung.getGeraete().size()][5];
 
@@ -81,7 +81,7 @@ public class GeräteListeGUI extends JFrame{
         Geraeteliste.setModel(new DefaultTableModel(
                 data, columns));
 
-    }
+    } */
 
     public static void main(String[] args) {
         JFrame frame = new GeräteListeGUI("Geräteliste");
