@@ -1,7 +1,11 @@
 package shared.communication;
 
+import server.geraetemodul.Geraet;
+import server.geraetemodul.Geraetedaten;
+
 import java.rmi.Remote;
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 
 /*
 @author
@@ -18,14 +22,16 @@ TODO Dennis Kelm
 // Interface, um RMI für Klasse Geraeteverwaltung zu ermöglichen
 public interface IGeraeteverwaltung extends Remote {
 
-    void geraetHinzufuegen(String name, String spender, int leihfrist, String kategorie, String beschreibung, String abholort) throws RemoteException;
-    void geraetReservieren(String geraeteID, String ausleiherID) throws RemoteException;
-    void geraetAusgeben(String geraeteID) throws RemoteException;
-    void geraetAnnehmen(String geraeteID) throws RemoteException;
+    String geraetHinzufuegen(String name, String spender, int leihfrist, String kategorie, String beschreibung, String abholort) throws RemoteException;
+    void geraetReservieren(String geraeteID, String ausleiherID) throws Exception;
+    void geraetAusgeben(String geraeteID) throws Exception;
+    void geraetAnnehmen(String geraeteID) throws Exception;
     void geraetEntfernen(String geraeteID) throws RemoteException;
-    void geraeteDatenVerwalten(String geraeteID, Object attr, Object wert) throws RemoteException;
+    void geraeteDatenVerwalten(String geraeteID, Geraetedaten attr, Object wert) throws RemoteException;
     void historieZuruecksetzen(String geraeteID) throws RemoteException;
-    void geraeteAnzeigen() throws RemoteException;
+    ArrayList geraeteAnzeigen() throws RemoteException;
     String geraeteDatenAusgeben(String geraeteID) throws RemoteException;
+    long getIdCounter();
+    ArrayList getGeraete();
 
 }
