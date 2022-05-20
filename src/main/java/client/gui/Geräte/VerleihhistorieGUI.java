@@ -7,6 +7,7 @@ import server.geraetemodul.Geraet;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 public class VerleihhistorieGUI extends JFrame{
@@ -19,7 +20,7 @@ public class VerleihhistorieGUI extends JFrame{
     // Gerätnamen anzeigen
     // Stuff hinzufügen
 
-    public VerleihhistorieGUI(String title, String geraeteID) {
+    public VerleihhistorieGUI(String title, String geraeteID) throws RemoteException {
         super(title);
         this.geraeteID = geraeteID;
 
@@ -30,7 +31,7 @@ public class VerleihhistorieGUI extends JFrame{
     }
 
 
-    private void creatTable() {
+    private void creatTable() throws RemoteException {
         String[][] data = null;
 
         String[] columns = {"Nutzername", "NutzerID", "von", "bis"};
@@ -58,7 +59,12 @@ public class VerleihhistorieGUI extends JFrame{
 
 
     public static void main(String[] args) {
-        JFrame frame = new VerleihhistorieGUI("Verleihhistorie", "0");
+        JFrame frame = null;
+        try {
+            frame = new VerleihhistorieGUI("Verleihhistorie", "0");
+        } catch (RemoteException e) {
+            throw new RuntimeException(e);
+        }
         frame.setVisible(true);
 
     }

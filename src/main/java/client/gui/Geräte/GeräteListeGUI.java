@@ -3,13 +3,19 @@ package client.gui.Geräte;
 
 
 import client.Vereinssoftware;
+import client.gui.dienstleistungen.dienstleistungsangebote.DienstleistungsangebotAnzeigenGUI;
 import server.geraetemodul.Geraet;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.rmi.RemoteException;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.List;
 
 //TODO Searchbar
 // Kategorie
@@ -21,12 +27,17 @@ public class GeräteListeGUI extends JFrame{
     private JTextField kategorieTextField;
     private JTextField sucheTextField;
     private JButton geraetHinzufügenButton;
+    String[][] data;
 
     public GeräteListeGUI(String title) {
         super(title);
 
 
-        creatTable();
+        try {
+            createTable();
+        } catch (RemoteException e) {
+            throw new RuntimeException(e);
+        }
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setContentPane(GeräteListe);
         this.pack();
@@ -59,16 +70,30 @@ public class GeräteListeGUI extends JFrame{
     //Maximale Anzahl an Reservierungen erreicht
     private void table1MouseClicked(java.awt.event.MouseEvent evt) {
 
+        int row = Geraeteliste.rowAtPoint(evt.getPoint());
+        int col = Geraeteliste.columnAtPoint(evt.getPoint());
+        if (row >= 0 && col >= 0) {
+            System.out.println(row + ", " + col);
+            //TODO Implementierung Klick auf Zelle
+            String gname = data[row][0].toString(); //Gerät
+            String spender = data[row][1].toString(); //Spender
+            String ort = data[row][2].toString(); //Ausgabeort
+            String beschreibung = data[row][1].toString(); //Gerätebeschreibung
+        }
+
         GeraetReservierenGUI gast = new GeraetReservierenGUI("Geraet Reservieren", "", "");
         gast.setVisible(true);
         GeräteListeGUI.this.setVisible(false);
 
-
     }
 
-    private void creatTable() {
+    private void createTable() throws RemoteException {
+        ArrayList<Geraet> gl;
+            gl = (ArrayList<Geraet>) Vereinssoftware.geraeteverwaltung.getGeraete();
+
         String[] columns = {"Gerät", "Spender", "Ausgabeort", "Gerätebeschreibung", "Reservieren"};
-        String[][] data = new String[Vereinssoftware.geraeteverwaltung.getGeraete().size()][5];
+
+        data = new String[gl.size()][5];
 
         for (int i = 0; i < Vereinssoftware.geraeteverwaltung.getGeraete().size(); i++) {
             data[i][0] = ((Geraet) (Vereinssoftware.geraeteverwaltung.getGeraete().get(i))).getGeraetName();
@@ -80,6 +105,7 @@ public class GeräteListeGUI extends JFrame{
 
         Geraeteliste.setModel(new DefaultTableModel(
                 data, columns));
+
 
     }
 
