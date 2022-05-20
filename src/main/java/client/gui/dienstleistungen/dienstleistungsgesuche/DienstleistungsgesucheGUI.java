@@ -11,7 +11,7 @@ TODO Bastian Reichert
 Dennis Kelm
 */
 
-import client.DefaultsClient;
+import client.ClientDefaults;
 import client.gui.DefaultSmallPopup;
 import client.gui.dienstleistungen.dienstleistungsangebote.DienstleistungsangebotErstellenGUI;
 import com.formdev.flatlaf.FlatLightLaf;
@@ -36,9 +36,9 @@ public class DienstleistungsgesucheGUI {
         JFrame frame = new JFrame("Alle Dienstleistungsgesuche");
         this.generateTable();
         //DienstleistungsangeboteGUI thisgui = new DienstleistungsangeboteGUI();
-        frame = DefaultsClient.standardizeFrame(frame, this.dienstleistungsgesuchePanel);
+        frame = ClientDefaults.standardizeFrame(frame, this.dienstleistungsgesuchePanel);
 
-        DefaultsClient.enhanceTextField(suchenTextField, onceChanged);
+        ClientDefaults.enhanceTextField(suchenTextField, onceChanged);
 
         dienstleistungsangebotErstellenButton.addActionListener(e -> {
             DienstleistungsangebotErstellenGUI dienstleistungsangebotErstellenGUI = new DienstleistungsangebotErstellenGUI();
@@ -68,7 +68,7 @@ public class DienstleistungsgesucheGUI {
                 "Kategorie",
                 "Anbieter"
         };
-        DefaultsClient.createColumnsFromArray(columns, model);
+        ClientDefaults.createColumnsFromArray(columns, model);
 
         model.addRow(new Object[]{
                 "Gesuch 1",

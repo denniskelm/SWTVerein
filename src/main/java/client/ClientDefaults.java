@@ -28,7 +28,7 @@ import java.util.Arrays;
 import java.util.Map;
 
 //TODO Was macht diese Klasse?
-public class DefaultsClient {
+public class ClientDefaults {
 
 
     //Nimmt einen frame und das dazugehörige Panel der Klasse und nimmt grundlegende Einstellungen vor

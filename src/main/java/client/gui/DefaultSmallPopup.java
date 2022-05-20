@@ -11,7 +11,7 @@ TODO Bastian Reichert
 TODO Dennis Kelm
 */
 
-import client.DefaultsClient;
+import client.ClientDefaults;
 
 import javax.swing.*;
 
@@ -25,7 +25,7 @@ public class DefaultSmallPopup {
     public DefaultSmallPopup(String title, String popupText) {
         JFrame frame = new JFrame(title);
         textLabel.setText("<html><p style=\"width: 500px; text-align: center; margin-left: 20px; margin-right: 20px;\">" + popupText + "</p>");
-        frame = DefaultsClient.standardizeFrame(frame, defaultPanel);
+        frame = ClientDefaults.standardizeFrame(frame, defaultPanel);
 
 
     }

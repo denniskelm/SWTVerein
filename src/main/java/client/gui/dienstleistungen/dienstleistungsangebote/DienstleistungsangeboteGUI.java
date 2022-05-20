@@ -11,9 +11,8 @@ TODO Bastian Reichert
 Dennis Kelm
 */
 
-import client.DefaultsClient;
+import client.ClientDefaults;
 import client.Vereinssoftware;
-import client.gui.DefaultSmallPopup;
 import client.gui.dienstleistungen.dienstleistungsgesuche.DienstleistungsgesuchErstellenGUI;
 import shared.communication.IDienstleistungsverwaltung;
 
@@ -46,9 +45,9 @@ public class DienstleistungsangeboteGUI {
         //    throw new RuntimeException(e);
         //}
 
-        frame = DefaultsClient.standardizeFrame(frame, this.dienstleistungsangebotePanel);
+        frame = ClientDefaults.standardizeFrame(frame, this.dienstleistungsangebotePanel);
 
-        DefaultsClient.enhanceTextField(suchenTextField, onceChanged);
+        ClientDefaults.enhanceTextField(suchenTextField, onceChanged);
 
         dienstleistungsangebotErstellenButton.addActionListener(e -> {
             DienstleistungsangebotErstellenGUI dienstleistungsangebotErstellenGUI = new DienstleistungsangebotErstellenGUI();
@@ -83,7 +82,7 @@ public class DienstleistungsangeboteGUI {
                 "Verfügbar bis",
                 "Anbieter"
         };
-        DefaultsClient.createColumnsFromArray(columns, model);
+        ClientDefaults.createColumnsFromArray(columns, model);
 
         model.addRow(new Object[]{
                 "Dienstleistung 1",
@@ -144,7 +143,7 @@ public class DienstleistungsangeboteGUI {
         });
 
         //////////// SUCHE //////////////////////
-        DefaultsClient.addSearchFunctionality(dienstleistungsangeboteTable, suchenTextField);
+        ClientDefaults.addSearchFunctionality(dienstleistungsangeboteTable, suchenTextField);
     }
 
 

@@ -4,11 +4,10 @@ package client.gui.dienstleistungen.dienstleistungsangebote;
 Dennis Kelm
 */
 
-import client.DefaultsClient;
+import client.ClientDefaults;
 import client.Vereinssoftware;
 
 import javax.swing.*;
-import java.rmi.RemoteException;
 import java.time.LocalDateTime;
 
 //TODO Was macht diese Klasse?
@@ -35,8 +34,8 @@ public class DienstleistungsangebotAnzeigenGUI {
     //TODO Implementation Infos fetchen von IGeraeteverwaltung, vllt. die Infos per Parameter übergeben sondern hier fetchen
     public DienstleistungsangebotAnzeigenGUI(String angebots_ID, String titel, String pathToImage, String beschreibung, String kategorie, LocalDateTime ab, LocalDateTime bis, String personen_ID) {
         JFrame frame = new JFrame("Details des Dienstleistungsangebots");
-        DefaultsClient.insertImageToPanel(imageLabel, pathToImage); //URL zum Bild, z.B. "https://bilder.gartenpaul.de/item/images/456/full/456-R1-M1.jpg"
-        frame = DefaultsClient.standardizeFrame(frame, dienstleistungsgesuchAnzeigenGUI);
+        ClientDefaults.insertImageToPanel(imageLabel, pathToImage); //URL zum Bild, z.B. "https://bilder.gartenpaul.de/item/images/456/full/456-R1-M1.jpg"
+        frame = ClientDefaults.standardizeFrame(frame, dienstleistungsgesuchAnzeigenGUI);
 
         //Anpassen der Texte
         headlineLabel.setText("TODO TITEL"); //sowas wie Vereinssoftware.dienstleistungsverwaltung.getGeraetInformation(String geraeteID)[0]

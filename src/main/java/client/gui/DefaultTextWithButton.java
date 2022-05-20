@@ -11,7 +11,7 @@ TODO Bastian Reichert
 Dennis Kelm
 */
 
-import client.DefaultsClient;
+import client.ClientDefaults;
 
 import javax.swing.*;
 
@@ -27,7 +27,7 @@ public class DefaultTextWithButton {
     public DefaultTextWithButton(String title, String popupText, String actionButtonText) {
         JFrame frame = new JFrame(title);
         textLabel.setText("<html><p style=\"width: 500px; text-align: center; margin-left: 20px; margin-right: 20px;\">" + popupText + "</p>");
-        frame = DefaultsClient.standardizeFrame(frame, defaultTextWithButtonPanel);
+        frame = ClientDefaults.standardizeFrame(frame, defaultTextWithButtonPanel);
         actionButton.setText(actionButtonText);
 
 

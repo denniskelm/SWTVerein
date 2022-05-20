@@ -11,13 +11,13 @@ TODO Bastian Reichert
 Dennis Kelm
 */
 
-import client.DefaultsClient;
-import client.gui.DefaultSmallPopup;
-import client.gui.dienstleistungen.dienstleistungsgesuche.DienstleistungsgesuchErstellenGUI;
+import client.ClientDefaults;
+import client.Vereinssoftware;
 import com.formdev.flatlaf.FlatLightLaf;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -32,14 +32,18 @@ public class DienstleistungsangebotsVerwaltungGUI {
 
     public DienstleistungsangebotsVerwaltungGUI() {
         JFrame frame = new JFrame("Dienstleistungsangebots-Datenbank");
-        this.generateTable();
+        try {
+            this.generateTable();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
         //DienstleistungsangeboteGUI thisgui = new DienstleistungsangeboteGUI();
-        frame = DefaultsClient.standardizeFrame(frame, this.dienstleistungsangebotsverwaltungPanel);
+        frame = ClientDefaults.standardizeFrame(frame, this.dienstleistungsangebotsverwaltungPanel);
 
-        DefaultsClient.enhanceTextField(suchenTextField, onceChanged);
+        ClientDefaults.enhanceTextField(suchenTextField, onceChanged);
     }
 
-    private void generateTable() {
+    private void generateTable() throws Exception {
         DefaultTableModel model = new DefaultTableModel() {
 
             @Override
@@ -60,7 +64,7 @@ public class DienstleistungsangebotsVerwaltungGUI {
                 "Datum",
                 "Anbieter"
         };
-        DefaultsClient.createColumnsFromArray(columns, model);
+        ClientDefaults.createColumnsFromArray(columns, model);
 
         model.addRow(new Object[]{
                 "D00001",
@@ -71,20 +75,54 @@ public class DienstleistungsangebotsVerwaltungGUI {
                 "Stefan"
         });
 
+        Object[][] angebote = (Object[][]) Vereinssoftware.dienstleistungsverwaltung.OmniAngebotDaten();
+
+
+        for (Object[] angebot :
+                angebote) {
+            LocalDateTime abTime = ((LocalDateTime) angebot[3]);
+            String ab = abTime.getDayOfMonth() + "." + abTime.getMonthValue() + "." + abTime.getYear();
+
+            LocalDateTime bisTime = ((LocalDateTime) angebot[4]);
+            String bis = bisTime.getDayOfMonth() + "." + bisTime.getMonthValue() + "." + bisTime.getYear();
+
+            model.addRow(new Object[]{
+                    angebot[0],
+                    angebot[1],
+                    angebot[2],
+                    ab,
+                    bis,
+                    Vereinssoftware.rollenverwaltung.getMitgliedsNamen((String) angebot[5])
+            });
+        }
+
+
         dienstleistungsangeboteTable.addMouseListener(new java.awt.event.MouseAdapter() {
             @Override
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 int row = dienstleistungsangeboteTable.rowAtPoint(evt.getPoint());
                 int col = dienstleistungsangeboteTable.columnAtPoint(evt.getPoint());
-                //TODO row ist ID in der Tabelle
                 if (row >= 0 && col >= 0) {
                     System.out.println(row + ", " + col);
                     //TODO Implementierung Klick auf Zelle
-                    DienstleistungsangebotBearbeitenGUI dienstleistungsangebotBearbeitenGUI = new DienstleistungsangebotBearbeitenGUI();
+                    try {
+                        DienstleistungsangebotAnzeigenGUI dienstleistungsangebotAnzeigenGUI = new DienstleistungsangebotAnzeigenGUI(
+                                "kaka", //ID
+                                angebote[row][1].toString(), //Titel
+                                angebote[row][1].toString(), //pathToImage
+                                angebote[row][1].toString(), //beschreibung
+                                angebote[row][1].toString(), //Kategorie
+                                (LocalDateTime) angebote[row][1], //ab
+                                (LocalDateTime) angebote[row][1], //bis
+                                Vereinssoftware.rollenverwaltung.getMitgliedsNamen((String) angebote[row][5]) //PersonenID
+
+                        );
+                    } catch (Exception e) {
+                        throw new RuntimeException(e);
+                    }
                 }
             }
         });
-    }
 
 
     public static void main(String[] args) {

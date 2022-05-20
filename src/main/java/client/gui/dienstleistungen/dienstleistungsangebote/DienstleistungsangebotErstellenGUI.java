@@ -11,14 +11,10 @@ TODO Bastian Reichert
 Dennis Kelm
 */
 
-import client.DefaultsClient;
-import client.Vereinssoftware;
+import client.ClientDefaults;
 import client.gui.DefaultSmallPopup;
-import shared.communication.IDienstleistungsverwaltung;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
@@ -46,7 +42,7 @@ public class DienstleistungsangebotErstellenGUI {
 
     public DienstleistungsangebotErstellenGUI() {
         JFrame frame = new JFrame("Dienstleistungsangebot erstellen");
-        frame = DefaultsClient.standardizeFrame(frame, this.dienstleistungsangebotErstellenPanel);
+        frame = ClientDefaults.standardizeFrame(frame, this.dienstleistungsangebotErstellenPanel);
         JTextField[] allTextFields = new JTextField[]{
                 titleTextField,
                 verfuegbarAbTextField,
@@ -57,12 +53,12 @@ public class DienstleistungsangebotErstellenGUI {
 
         for (JTextField textField :
                 allTextFields) {
-            DefaultsClient.enhanceTextField(textField, onceChangedFields);
+            ClientDefaults.enhanceTextField(textField, onceChangedFields);
         }
 
         //TODO Kategorien in die ComboBox packen
 
-        DefaultsClient.enhanceTextArea(beschreibungTextArea, onceChangedAreas);
+        ClientDefaults.enhanceTextArea(beschreibungTextArea, onceChangedAreas);
 
         angebotErstellenButton.addActionListener(e -> {
             angebotErstellenGUI(

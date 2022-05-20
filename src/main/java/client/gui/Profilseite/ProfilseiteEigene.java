@@ -11,11 +11,8 @@ TODO Bastian Reichert
 TODO Dennis Kelm
 */
 
-import client.DefaultsClient;
-import client.Session;
+import client.ClientDefaults;
 import client.Vereinssoftware;
-import client.gui.DefaultSmallPopup;
-import client.gui.dienstleistungen.dienstleistungsangebote.DienstleistungsangebotAnzeigenGUI;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -48,7 +45,7 @@ public class ProfilseiteEigene {
 
         JFrame frame = new JFrame("Profilseite");
         generateTable();
-        frame = DefaultsClient.standardizeFrame(frame, eigeneprofilseitePanel);
+        frame = ClientDefaults.standardizeFrame(frame, eigeneprofilseitePanel);
     }
 
     private void generateTable() {
@@ -71,7 +68,7 @@ public class ProfilseiteEigene {
                 "Verfügbar ab",
                 "Verfügbar bis"
         };
-        DefaultsClient.createColumnsFromArray(columns, model);
+        ClientDefaults.createColumnsFromArray(columns, model);
 
         //TODO Alle Geräte, Dienstleistungsgesuche und Dienstleistungsangebote abfragen und jeweils Längen feststellen / in ein Array zusammenfassen & Typ abfragen
 

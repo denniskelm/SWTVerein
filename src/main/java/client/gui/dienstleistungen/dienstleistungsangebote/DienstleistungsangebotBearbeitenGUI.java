@@ -11,14 +11,12 @@ TODO Bastian Reichert
 Dennis Kelm
 */
 
-import client.DefaultsClient;
+import client.ClientDefaults;
 import client.Kategorie;
 import client.Vereinssoftware;
 import client.gui.DefaultSmallPopup;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.WindowEvent;
 import java.rmi.RemoteException;
 import java.time.LocalDateTime;
 import java.util.HashMap;
@@ -48,7 +46,7 @@ public class DienstleistungsangebotBearbeitenGUI {
 
     public DienstleistungsangebotBearbeitenGUI() {
         frame = new JFrame("Dienstleistungsangebot bearbeiten");
-        frame = DefaultsClient.standardizeFrame(frame, this.dienstleistungsangebotBearbeitenPanel);
+        frame = ClientDefaults.standardizeFrame(frame, this.dienstleistungsangebotBearbeitenPanel);
         JTextField[] allTextFields = new JTextField[]{
                 titleTextField,
                 verfuegbarAbTextField,
@@ -68,14 +66,14 @@ public class DienstleistungsangebotBearbeitenGUI {
         }
 
         for (String kategorie :
-                DefaultsClient.getKategorien(Kategorie.class)) {
+                ClientDefaults.getKategorien(Kategorie.class)) {
             kategorieComboBox.addItem(kategorie);
         }
 
 
         for (JTextField textField :
                 allTextFields) {
-            DefaultsClient.enhanceTextField(textField, onceChanged);
+            ClientDefaults.enhanceTextField(textField, onceChanged);
         }
 
         angebotBearbeitenButton.addActionListener(e -> {
