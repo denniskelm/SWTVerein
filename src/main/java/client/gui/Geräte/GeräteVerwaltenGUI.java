@@ -153,7 +153,11 @@ public class GeräteVerwaltenGUI extends JFrame{
         verleihhistorieButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                try {
+                    new VerleihhistorieGUI("Verleihhistorie von " + gerätnameTextField.getText(), geraeteID);
+                } catch (RemoteException ex) {
+                    throw new RuntimeException(ex);
+                }
                 System.exit(0);
             }
         });

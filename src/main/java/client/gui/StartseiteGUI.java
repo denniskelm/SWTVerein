@@ -12,6 +12,8 @@ Dennis Kelm
 */
 
 import client.ClientDefaults;
+import client.gui.Geräte.GerätHinzufügenGUI;
+import client.gui.Geräte.GeräteDatenbankGUI;
 import client.gui.dienstleistungen.dienstleistungsangebote.DienstleistungsangeboteGUI;
 import client.gui.dienstleistungen.dienstleistungsangebote.DienstleistungsangebotsVerwaltungGUI;
 import client.gui.dienstleistungen.dienstleistungsgesuche.DienstleistungsgesucheGUI;
@@ -32,7 +34,7 @@ public class StartseiteGUI {
     private JLabel headlineLeftMainMenu;
     private JLabel headlineRightMainMenu;
     private JButton firstLeftButton;
-    private JButton secondLeftButton;
+    private JButton geraetHinzufuegen;
     private JLabel secondLeftHeadline;
     private JLabel firstLeftDescriptionText;
     private JButton dienstleistungsangeboteButton;
@@ -64,15 +66,16 @@ public class StartseiteGUI {
             DienstleistungsangebotsVerwaltungGUI dienstleistungsangebotsVerwaltungGUI = new DienstleistungsangebotsVerwaltungGUI();
         });
 
-        secondLeftButton.addActionListener(e -> {
-            DefaultTextWithButton defaultTextWithButton = new DefaultTextWithButton("String titel", "String popupText", "String buttonText");
-            defaultTextWithButton.getActionButton().addActionListener(ev -> System.out.println("Funktioniert"));
-
+        geraetHinzufuegen.addActionListener(e -> {
+            GerätHinzufügenGUI ghg = new GerätHinzufügenGUI("Neues Gerät hinzufügen");
+            ghg.setVisible(true);
         });
 
         anfragenButton.addActionListener(e -> {
             //TODO Anfrageliste
         });
+
+
 
     }
 }

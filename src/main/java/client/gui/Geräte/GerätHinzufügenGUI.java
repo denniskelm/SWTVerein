@@ -1,6 +1,7 @@
 package client.gui.Geräte;
 
 import client.Vereinssoftware;
+import client.gui.DefaultSmallPopup;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -38,7 +39,7 @@ public class GerätHinzufügenGUI extends JFrame{
                                                                         gerätebeschreibungTextField.getText(),
                                                                         abholortTextField.getText());
                 } catch (RemoteException ex) {
-                    throw new RuntimeException(ex);
+                    DefaultSmallPopup popup = new DefaultSmallPopup("Hinweis", ex.getMessage());
                 }
                 System.exit(0);
             }
