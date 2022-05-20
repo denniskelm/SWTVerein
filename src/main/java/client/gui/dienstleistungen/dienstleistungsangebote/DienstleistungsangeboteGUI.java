@@ -12,16 +12,14 @@ Dennis Kelm
 */
 
 import client.DefaultsClient;
+import client.Vereinssoftware;
 import client.gui.DefaultSmallPopup;
 import client.gui.dienstleistungen.dienstleistungsgesuche.DienstleistungsgesuchErstellenGUI;
 import shared.communication.IDienstleistungsverwaltung;
 
 import javax.swing.*;
-import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableModel;
-import javax.swing.table.TableRowSorter;
+import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -92,7 +90,27 @@ public class DienstleistungsangeboteGUI {
                 "Stefan"
         });
 
-        //model.addRow(Vereinssoftware.dienstleistungsverwaltung.getAngeboteInformationen("DA00001"));
+        Object[][] ar = (Object[][]) Vereinssoftware.dienstleistungsverwaltung.OmniAngebotDaten();
+
+
+        for (Object[] angebot :
+                ar) {
+            LocalDateTime abTime = ((LocalDateTime) angebot[3]);
+            String ab = abTime.getDayOfMonth() + "." + abTime.getMonthValue() + "." + abTime.getYear();
+
+            LocalDateTime bisTime = ((LocalDateTime) angebot[4]);
+            String bis = bisTime.getDayOfMonth() + "." + bisTime.getMonthValue() + "." + bisTime.getYear();
+
+            model.addRow(new Object[]{
+                    angebot[0],
+                    angebot[1],
+                    angebot[2],
+                    ab,
+                    bis,
+                    Vereinssoftware.rollenverwaltung.fetch((String) angebot[5])
+            });
+        }
+
 
         dienstleistungsangeboteTable.addMouseListener(new java.awt.event.MouseAdapter() {
             @Override
@@ -102,7 +120,7 @@ public class DienstleistungsangeboteGUI {
                 if (row >= 0 && col >= 0) {
                     System.out.println(row + ", " + col);
                     //TODO Implementierung Klick auf Zelle
-                    DefaultSmallPopup smallPopup = new DefaultSmallPopup("Test test", "TODO");
+                    //DienstleistungsangebotAnzeigenGUI dienstleistungsangebotAnzeigenGUI = new DienstleistungsangebotAnzeigenGUI(...);
                 }
             }
         });

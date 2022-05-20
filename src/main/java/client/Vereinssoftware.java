@@ -48,6 +48,20 @@ public class Vereinssoftware {
 
         session = new Session();
 
+        Object[][] ar = new Object[][]{
+                new Object[]{"Kaka machen", "Wieso muss ich nur so doll?"},
+                new Object[]{"Kaka machen", "Wieso muss ich nur so doll?"},
+                new Object[]{"Kaka machen", "Wieso muss ich nur so doll?"},
+                new Object[]{"Kaka machen", "Wieso muss ich nur so doll?"}
+        };
+
+        System.out.println(ar[0][0]);
+
+        Object ar2 = (Object) ar;
+
+        System.out.println(((Object[][]) ar2)[0][0]);
+
+
         //RMI ermöglichen
         try {
             initializeRMI();
