@@ -1,8 +1,8 @@
 package client.gui.Geräte.GeräteAusleihenNochNIcht;
 
-import client.gui.Login.HinweisGUI;
-
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class AusgeliehenMitarbeiterGUI extends  JFrame{
     private JPanel panel1;
@@ -15,6 +15,24 @@ public class AusgeliehenMitarbeiterGUI extends  JFrame{
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setContentPane(panel1);
         this.pack();
+
+        //TODO Reservieren
+
+        jetztReservierenButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                System.exit(0);
+            }
+        });
+
+        abbrechenButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                System.exit(0);
+            }
+        });
     }
 
     public static void main(String[] args) {

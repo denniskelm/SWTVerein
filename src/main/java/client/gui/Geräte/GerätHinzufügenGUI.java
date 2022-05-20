@@ -1,8 +1,8 @@
 package client.gui.Geräte;
 
-import client.gui.Login.LoginGUI;
-
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class GerätHinzufügenGUI extends JFrame{
     private JPanel Geräthinzufügen;
@@ -13,6 +13,7 @@ public class GerätHinzufügenGUI extends JFrame{
     private JTextField leihfristTextField;
     private JTextField abholortTextField;
     private JLabel Picture;
+    private JButton geraetErstellenButton;
 
     public GerätHinzufügenGUI(String title)    {
         super(title);
@@ -20,7 +21,16 @@ public class GerätHinzufügenGUI extends JFrame{
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setContentPane(Geräthinzufügen);
         this.pack();
-        Picture.add(new JLabel(new ImageIcon("Path/To/Your/Image.png")));
+
+
+        //TODO Gerät erstellen
+        geraetErstellenButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                System.exit(0);
+            }
+        });
     }
 
     public static void main(String[] args) {

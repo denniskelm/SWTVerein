@@ -49,8 +49,8 @@ public class DienstleistungsangebotAnzeigenGUI {
 
         jetztReservierenButton.addActionListener(e -> {
             try {
-                Vereinssoftware.dienstleistungsverwaltung.angebotAnfragen(angebots_ID, personen_ID, "P00002" /* TODO Session PersonenID */);
-            } catch (RemoteException ex) {
+                Vereinssoftware.dienstleistungsverwaltung.angebotAnnehmen(angebots_ID, personen_ID, "P00002", 0);
+            } catch (Exception ex) {
                 throw new RuntimeException(ex);
             }
         });

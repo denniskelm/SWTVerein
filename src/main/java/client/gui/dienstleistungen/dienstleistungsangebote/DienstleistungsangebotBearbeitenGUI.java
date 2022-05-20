@@ -12,7 +12,7 @@ Dennis Kelm
 */
 
 import client.DefaultsClient;
-import client.KATEGORIE;
+import client.Kategorie;
 import client.Vereinssoftware;
 import client.gui.DefaultSmallPopup;
 
@@ -68,7 +68,7 @@ public class DienstleistungsangebotBearbeitenGUI {
         }
 
         for (String kategorie :
-                DefaultsClient.getKategorien(KATEGORIE.class)) {
+                DefaultsClient.getKategorien(Kategorie.class)) {
             kategorieComboBox.addItem(kategorie);
         }
 

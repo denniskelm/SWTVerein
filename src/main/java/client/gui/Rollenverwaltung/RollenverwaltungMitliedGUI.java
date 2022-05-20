@@ -2,7 +2,8 @@ package client.gui.Rollenverwaltung;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 
 public class RollenverwaltungMitliedGUI extends JFrame {
@@ -21,6 +22,42 @@ public class RollenverwaltungMitliedGUI extends JFrame {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setContentPane(RollenVerwaltungMitglied);
         this.pack();
+
+        // geht auf Mitglied
+
+        mitarbeiterButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                RollenVerwaltungMitarbeiterGUI Mitarbeiter = new RollenVerwaltungMitarbeiterGUI("Rollen Verwaltung Mitarbeiter");
+                Mitarbeiter.setVisible(true);
+                RollenverwaltungMitliedGUI.this.setVisible(false);
+            }
+
+
+        });
+
+        // geht auf Vereinsvorstand
+        vereinsvorstandButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                RollenverwaltungVereinsvorstandGUI Vorstand = new RollenverwaltungVereinsvorstandGUI("Rollen Verwaltung Vereinsvorstände");
+                Vorstand.setVisible(true);
+                RollenverwaltungMitliedGUI.this.setVisible(false);
+            }
+
+
+        });
+        // geht auf Gäste
+        gästeButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                RollenVerwaltungGastGUI Gast = new RollenVerwaltungGastGUI("Rollen Verwaltung Gäste");
+                Gast.setVisible(true);
+                RollenverwaltungMitliedGUI.this.setVisible(false);
+            }
+
+
+        });
     }
 
 

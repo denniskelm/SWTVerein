@@ -1,7 +1,12 @@
 package client.gui.Rollenverwaltung;
 
+import client.gui.Login.LoginGUI;
+import client.gui.Registrieren.RegistrierenGUI;
+
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class RollenVerwaltungGastGUI extends JFrame{
     private JPanel RollenverwaltungGast;
@@ -11,6 +16,8 @@ public class RollenVerwaltungGastGUI extends JFrame{
     private JButton vereinsvorständeButton;
     private JButton gästeButton;
 
+
+
     public RollenVerwaltungGastGUI(String title) {
         super(title);
 
@@ -19,6 +26,46 @@ public class RollenVerwaltungGastGUI extends JFrame{
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setContentPane(RollenverwaltungGast);
         this.pack();
+
+
+        // geht auf Mitglied
+        mitgliederButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                RollenverwaltungMitliedGUI Mitglied = new RollenverwaltungMitliedGUI("Rollen Verwaltung Mitglied");
+                Mitglied.setVisible(true);
+                RollenVerwaltungGastGUI.this.setVisible(false);
+            }
+
+
+        });
+
+        // geht auf Mitarbeiter
+        mitarbeiterButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                RollenVerwaltungMitarbeiterGUI Mitarbeiter = new RollenVerwaltungMitarbeiterGUI("Rollen Verwaltung Mitarbeiter");
+                Mitarbeiter.setVisible(true);
+                RollenVerwaltungGastGUI.this.setVisible(false);
+            }
+        });
+
+
+
+        // geht auf Vereinsvorstand
+        vereinsvorständeButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                RollenverwaltungVereinsvorstandGUI Vorstand = new RollenverwaltungVereinsvorstandGUI("Rollen Verwaltung Vorstand");
+                Vorstand.setVisible(true);
+                RollenVerwaltungGastGUI.this.setVisible(false);
+            }
+        });
+
+
+
+
+
     }
 
 

@@ -10,6 +10,10 @@ public class VerleihhistorieGUI extends JFrame{
     private JTextField gerätTextField;
     private JTable table1;
 
+    //TODO
+    // Gerätnamen anzeigen
+    // Stuff hinzufügen
+
     public VerleihhistorieGUI(String title) {
         super(title);
 

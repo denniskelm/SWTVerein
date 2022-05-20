@@ -1,12 +1,10 @@
 package shared.communication;
 
-import server.users.Personendaten;
-import server.users.Rolle;
+import server.users.*;
 
-import java.rmi.NoSuchObjectException;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
-import java.time.LocalDateTime;
+import java.util.ArrayList;
 
 /*
 @author
@@ -32,6 +30,12 @@ public interface IRollenverwaltung extends Remote {
     Object[] mahnungsverwaltungAnzeigen() throws RemoteException;
     void gastHinzufuegen(String nachname, String vorname, String email, String password, String anschrift, String mitgliedsnr, int telefonnummer, boolean spender);
     boolean login(String email, int password) throws Exception;
+    ArrayList getGaeste();
+    ArrayList getMitglieder();
+    ArrayList getMitarbeiter();
+    ArrayList getVorsitze();
+    ArrayList getMahnungen();
+    long getIdCounter();
 
     public String getMitgliedsNamen(String MitgliedsID) throws Exception;
 
