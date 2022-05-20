@@ -2,6 +2,7 @@ package client.gui.Geräte;
 
 import client.Vereinssoftware;
 import client.gui.DefaultSmallPopup;
+import client.gui.StartseiteGUI;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -22,10 +23,12 @@ public class GerätHinzufügenGUI extends JFrame{
     public GerätHinzufügenGUI(String title)    {
         super(title);
 
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.setContentPane(Geräthinzufügen);
+
         this.pack();
 
+        this.setLocationRelativeTo(null);
 
         //TODO Gerät erstellen
         geraetErstellenButton.addActionListener(new ActionListener() {
@@ -45,7 +48,6 @@ public class GerätHinzufügenGUI extends JFrame{
                 } catch (RemoteException ex) {
                     DefaultSmallPopup popup = new DefaultSmallPopup("Hinweis", ex.getMessage());
                 }
-                System.exit(0);
             }
         });
     }

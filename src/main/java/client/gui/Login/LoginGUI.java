@@ -1,5 +1,6 @@
 package client.gui.Login;
 
+import client.Vereinssoftware;
 import client.gui.DefaultSmallPopup;
 import client.gui.Registrieren.RegistrierenGUI;
 
@@ -34,7 +35,14 @@ public class LoginGUI extends JFrame{
         loginButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                try {
+                    Vereinssoftware.rollenverwaltung.login(eMailAdresseTextField.getText(), passwortTextField.getText());
+                } catch (Exception ex) {
                     DefaultSmallPopup smallPopup = new DefaultSmallPopup("Hinweis", "E-Mail-Adresse und/oder Passwort sind falsch");
+                }
+
+                dispose();
+
                 }
         });
 

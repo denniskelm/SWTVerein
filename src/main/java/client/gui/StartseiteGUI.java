@@ -12,7 +12,6 @@ Dennis Kelm
 */
 
 import client.ClientDefaults;
-import client.gui.Geräte.GerätHinzufügenGUI;
 import client.gui.Geräte.GeräteDatenbankGUI;
 import client.gui.dienstleistungen.dienstleistungsangebote.DienstleistungsangeboteGUI;
 import client.gui.dienstleistungen.dienstleistungsangebote.DienstleistungsangebotsVerwaltungGUI;
@@ -33,7 +32,7 @@ public class StartseiteGUI {
     private JPanel rightMainMenu;
     private JLabel headlineLeftMainMenu;
     private JLabel headlineRightMainMenu;
-    private JButton firstLeftButton;
+    private JButton geraeteAnzeigen;
     private JButton geraetHinzufuegen;
     private JLabel secondLeftHeadline;
     private JLabel firstLeftDescriptionText;
@@ -67,8 +66,8 @@ public class StartseiteGUI {
         });
 
         geraetHinzufuegen.addActionListener(e -> {
-            GerätHinzufügenGUI ghg = new GerätHinzufügenGUI("Neues Gerät hinzufügen");
-            ghg.setVisible(true);
+            // hier vielleicht pop-up mit einer Beschreibung wie man Mitarbeiter kontaktieren kann um ein Gerät zu spenden.
+            JOptionPane.showMessageDialog(startseite, "Sie können einen unserer Mitarbeiter über ... kontaktieren.", "Sie möchten ein Gerät spenden?", JOptionPane.PLAIN_MESSAGE);
         });
 
         geraeteverwaltungButton.addActionListener(e -> {
@@ -80,7 +79,15 @@ public class StartseiteGUI {
             //TODO Anfrageliste
         });
 
+        loginButton.addActionListener(e -> {
+            LoginGUI loginGUI = new LoginGUI("Login");
+            loginGUI.setVisible(true);
+        });
 
+        registrierenButton.addActionListener(e -> {
+            RegistrierenGUI registrierenGUI = new RegistrierenGUI("Registrierung");
+            registrierenGUI.setVisible(true);
+        });
 
     }
 }

@@ -2,6 +2,7 @@ package client.gui.Geräte;
 
 
 
+import client.ClientDefaults;
 import client.Vereinssoftware;
 import server.geraetemodul.Geraet;
 
@@ -28,11 +29,7 @@ public class GeräteListeGUI extends JFrame{
     public GeräteListeGUI(String title) {
         super(title);
 
-        try {
-            createTable();
-        } catch (RemoteException e) {
-            throw new RuntimeException(e);
-        }
+        createTable();
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setContentPane(GeräteListe);
         this.pack();
@@ -70,7 +67,6 @@ public class GeräteListeGUI extends JFrame{
         }
 
         try {
-            ArrayList<Geraet> gl = (ArrayList<Geraet>) Vereinssoftware.geraeteverwaltung.getGeraete();
             if (iD != null) return; // TODO Exception
 
             GeraetReservierenGUI reservierenGUI = new GeraetReservierenGUI("Geraet Reservieren", iD, Vereinssoftware.session.getID());
@@ -78,27 +74,67 @@ public class GeräteListeGUI extends JFrame{
             GeräteListeGUI.this.setVisible(false);
         } catch (NoSuchObjectException e) {
             throw new RuntimeException(e);
-        } catch (RemoteException e) {
-            throw new RuntimeException(e);
         }
     }
 
-    private void createTable() throws RemoteException {
-        ArrayList<Geraet> gl = (ArrayList<Geraet>) Vereinssoftware.geraeteverwaltung.getGeraete();
+    private void createTable() {
 
-        String[] columns = {"Gerät", "Spender", "Ausgabeort", "Gerätebeschreibung", "Reservieren"};
+        try {
+            Object[][] geraete = Vereinssoftware.geraeteverwaltung.OmniGeraeteDaten();
 
-        data = new String[gl.size()][6];
-        for (int i = 0; i < gl.size(); i++) {
-            data[i][0] = gl.get(i).getGeraeteID();
-            data[i][1] = gl.get(i).getGeraetName();
-            data[i][2] = gl.get(i).getSpenderName();
-            data[i][3] = gl.get(i).getGeraetAbholort();
-            data[i][4] = gl.get(i).getGeraetBeschreibung();
-            data[i][5] = "Jetzt reservieren";
+            DefaultTableModel model = new DefaultTableModel() {
+
+                @Override
+                public boolean isCellEditable(int row, int column) {
+                    //macht Tabelle für den Nutzer unbearbeitbar
+                    return false;
+                }
+            };
+
+            String[] columns = {"GeräteID", "Gerät", "Beschreibung", "Kategorie", "Spender", "Leihfrist", "Status", "Abholort", "Aktion"};
+            ClientDefaults.createColumnsFromArray(columns, model);
+
+            for (Object[] geraet : geraete) {
+
+                if (geraet[0] == null)
+                    break;
+
+                model.addRow(new Object[]{
+                        geraet[0],
+                        geraet[1],
+                        geraet[2],
+                        geraet[3],
+                        geraet[4],
+                        geraet[5],
+                        geraet[6],
+                        geraet[7],
+                        "Reservieren"
+                });
+            }
+
+           /* data = new String[geraete.length][8];
+            for (int i = 0; i < gl.size(); i++) {
+
+                data[i][0] = ((Geraet) gl.get(i)).getGeraeteID();
+                data[i][1] = ((Geraet) gl.get(i)).getGeraetName();
+                data[i][2] = ((Geraet) gl.get(i)).getGeraetBeschreibung();
+                data[i][3] = ((Geraet) gl.get(i)).getKategorie();
+                data[i][4] = ((Geraet) gl.get(i)).getSpenderName();
+                data[i][5] = String.valueOf(((Geraet) gl.get(i)).getLeihfrist());
+                data[i][6] = ((Geraet) gl.get(i)).getLeihstatus().getName();
+                data[i][7] = "Verwalten";
+            }
+
+            String[] columns = {"GeräteID", "Gerät", "Beschreibung", "Kategorie", "Spender", "Leihfrist", "Status", "Verwalten"}; */
+
+            Geraeteliste.setModel(model);
+
+            JTable table = new JTable(data, columns);
+
+        } catch (RemoteException e) {
+            System.out.println("Fehler");
+            throw new RuntimeException(e);
         }
-        Geraeteliste.setModel(new DefaultTableModel(
-                data, columns));
     }
 
     public static void main(String[] args) {

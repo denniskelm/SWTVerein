@@ -1,7 +1,9 @@
 package shared.communication;
 
+import server.geraetemodul.Geraet;
 import server.geraetemodul.Geraetedaten;
 
+import java.rmi.NoSuchObjectException;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
@@ -32,5 +34,6 @@ public interface IGeraeteverwaltung extends Remote {
     String geraeteDatenAusgeben(String geraeteID) throws RemoteException;
     int getIdCounter() throws RemoteException;
     Object getGeraete() throws RemoteException;    //ArrayList<Geraet>
+    Object[][] OmniGeraeteDaten() throws NoSuchObjectException, RemoteException;
 
 }

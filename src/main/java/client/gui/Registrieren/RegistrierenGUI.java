@@ -1,10 +1,13 @@
 package client.gui.Registrieren;
 
+import client.Vereinssoftware;
 import client.gui.DefaultSmallPopup;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.rmi.RemoteException;
+
 public class RegistrierenGUI extends JFrame{
     private JPanel Registrieren;
     private JTextField vornameTextField;
@@ -39,10 +42,24 @@ public class RegistrierenGUI extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
 
+                try {
+                    Vereinssoftware.rollenverwaltung.gastHinzufuegen(nachnameTextField.getText(),
+                                                                    vornameTextField.getName(),
+                                                                    eMailTextField.getText(),
+                                                                    passwortTextField.getText(),
+                                                                    anschriftTextField.getText(),
+                                                                    mitgliedsnummerTextField.getText(),
+                                                                    Integer.parseInt(telefonnummerTextField.getText()),
+                                                                    false);
+                } catch (RemoteException ex) {
+                    throw new RuntimeException(ex);
+                }
 
-                    DefaultSmallPopup smallPopup = new DefaultSmallPopup("Hinweis", "     Sie haben sich\n" +
+                DefaultSmallPopup smallPopup = new DefaultSmallPopup("Hinweis", "     Sie haben sich\n" +
                             "erfolgreich registriert.\n" +
                             "Schicken Sie noch Ihre Registrierungsdaten und Ihre Mitgliedsbescheinigung an mitarbeiter@vereinev.de");
+
+                dispose();
 
             }
          });

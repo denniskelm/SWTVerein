@@ -1,5 +1,6 @@
 package client.gui.Geräte;
 
+import client.ClientDefaults;
 import client.Vereinssoftware;
 import server.geraetemodul.Geraet;
 
@@ -7,8 +8,13 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.rmi.NoSuchObjectException;
 import java.rmi.RemoteException;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Date;
+import java.util.List;
 
 public class GeräteDatenbankGUI extends JFrame {
     private JPanel Gerätedatenbank;
@@ -33,8 +39,9 @@ public class GeräteDatenbankGUI extends JFrame {
         geraetHinzufügenButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
-                System.exit(0);
+                GerätHinzufügenGUI ghg = new GerätHinzufügenGUI("Neues Gerät hinzufügen");
+                ghg.setVisible(true);
+                dispose();
             }
         });
 
@@ -73,37 +80,66 @@ public class GeräteDatenbankGUI extends JFrame {
     private void creatTable() {
 
         try {
-            ArrayList<Geraet> gl = (ArrayList<Geraet>) Vereinssoftware.geraeteverwaltung.getGeraete();
+            Object[][] geraete = Vereinssoftware.geraeteverwaltung.OmniGeraeteDaten();
 
-            data = new String[gl.size()][8];
+            DefaultTableModel model = new DefaultTableModel() {
+
+                @Override
+                public boolean isCellEditable(int row, int column) {
+                    //macht Tabelle für den Nutzer unbearbeitbar
+                    return false;
+                }
+            };
+
+            String[] columns = {"GeräteID", "Gerät", "Beschreibung", "Kategorie", "Spender", "Leihfrist", "Status", "Abholort", "Aktion"};
+            ClientDefaults.createColumnsFromArray(columns, model);
+
+            for (Object[] geraet : geraete) {
+
+                if (geraet[0] == null)
+                    break;
+
+                model.addRow(new Object[]{
+                        geraet[0],
+                        geraet[1],
+                        geraet[2],
+                        geraet[3],
+                        geraet[4],
+                        geraet[5],
+                        geraet[6],
+                        geraet[7],
+                        "Verwalten"
+                });
+            }
+
+           /* data = new String[geraete.length][8];
             for (int i = 0; i < gl.size(); i++) {
-                data[i][0] = gl.get(i).getGeraeteID();
-                data[i][1] = gl.get(i).getGeraetName();
-                data[i][2] = gl.get(i).getGeraetBeschreibung();
-                data[i][3] = gl.get(i).getKategorie();
-                data[i][4] = gl.get(i).getSpenderName();
-                data[i][5] = String.valueOf(gl.get(i).getLeihfrist());
-                data[i][6] = gl.get(i).getLeihstatus().getName();
+
+                data[i][0] = ((Geraet) gl.get(i)).getGeraeteID();
+                data[i][1] = ((Geraet) gl.get(i)).getGeraetName();
+                data[i][2] = ((Geraet) gl.get(i)).getGeraetBeschreibung();
+                data[i][3] = ((Geraet) gl.get(i)).getKategorie();
+                data[i][4] = ((Geraet) gl.get(i)).getSpenderName();
+                data[i][5] = String.valueOf(((Geraet) gl.get(i)).getLeihfrist());
+                data[i][6] = ((Geraet) gl.get(i)).getLeihstatus().getName();
                 data[i][7] = "Verwalten";
             }
 
             String[] columns = {"GeräteID", "Gerät", "Beschreibung", "Kategorie", "Spender", "Leihfrist", "Status", "Verwalten"};
 
-            Datenbank.setModel(new DefaultTableModel(
-                data, columns)
-            );
+            Datenbank.setModel(model);
 
             JTable table = new JTable(data, columns);
 
         } catch (RemoteException e) {
+            System.out.println("Fehler");
             throw new RuntimeException(e);
         }
-
     }
 
-    public static void main(String[] args) {
-        JFrame frame = new GeräteDatenbankGUI("Geräte Datenbank");
-        frame.setVisible(true);
+        public static void main (String[] args){
+            JFrame frame = new GeräteDatenbankGUI("Geräte Datenbank");
+            frame.setVisible(true);
 
+        }
     }
-}
