@@ -17,9 +17,6 @@ import client.Vereinssoftware;
 import client.gui.DefaultSmallPopup;
 
 import javax.swing.*;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
@@ -37,8 +34,8 @@ public class DienstleistungsgesuchErstellenGUI {
     private JFormattedTextField urlTextField;
     private JPanel urlPanel;
 
-    private Map<JTextField, Boolean> onceChangedFields = new HashMap<JTextField, Boolean>();
-    private Map<JTextArea, Boolean> onceChangedAreas = new HashMap<JTextArea, Boolean>();
+    private final Map<JTextField, Boolean> onceChangedFields = new HashMap<JTextField, Boolean>();
+    private final Map<JTextArea, Boolean> onceChangedAreas = new HashMap<JTextArea, Boolean>();
 
     public DienstleistungsgesuchErstellenGUI() {
         JFrame frame = new JFrame("Dienstleistungsgesuch erstellen");

@@ -1,7 +1,6 @@
 package client.gui.Geräte;
 
 import client.Vereinssoftware;
-import client.gui.Rollenverwaltung.RollenVerwaltungGastGUI;
 import server.geraetemodul.Ausleiher;
 import server.geraetemodul.Geraet;
 
@@ -10,11 +9,11 @@ import javax.swing.table.DefaultTableModel;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
-public class VerleihhistorieGUI extends JFrame{
+public class VerleihhistorieGUI extends JFrame {
     private JPanel Verleihhsitorie;
     private JTextField gerätTextField;
     private JTable table1;
-    private String geraeteID;
+    private final String geraeteID;
 
     //TODO
     // Gerätnamen anzeigen
@@ -58,9 +57,8 @@ public class VerleihhistorieGUI extends JFrame{
                 data, columns)
         );
 
-        JTable table = new JTable(data,columns);
+        JTable table = new JTable(data, columns);
     }
-
 
 
     public static void main(String[] args) {

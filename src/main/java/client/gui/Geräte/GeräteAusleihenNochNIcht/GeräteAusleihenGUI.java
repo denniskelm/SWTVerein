@@ -2,18 +2,17 @@ package client.gui.Geräte.GeräteAusleihenNochNIcht;
 
 import client.gui.DefaultSmallPopup;
 import client.gui.DefaultTextWithButton;
-import client.gui.Geräte.GeräteVerwaltenGUI;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class GeräteAusleihenGUI extends JFrame{
+public class GeräteAusleihenGUI extends JFrame {
     private JButton jetztReservierenButton;
     private JPanel GerätAusleihen;
     private JLabel picture;
 
-    public GeräteAusleihenGUI(String title)    {
+    public GeräteAusleihenGUI(String title) {
         super(title);
 
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -64,7 +63,7 @@ public class GeräteAusleihenGUI extends JFrame{
 
         //TODO funktionalität
         // (AnzahlDerReserviertenGeräte von der Person)
-         jetztReservierenButton.addActionListener(new ActionListener() {
+        jetztReservierenButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 DefaultSmallPopup smallPopup = new DefaultSmallPopup("Hinweis", "Sie haben bereits <Anzahl> Geräte ausgeliehen bzw. reserviert.");
@@ -92,9 +91,6 @@ public class GeräteAusleihenGUI extends JFrame{
 
             }
         });
-
-
-
 
 
     }

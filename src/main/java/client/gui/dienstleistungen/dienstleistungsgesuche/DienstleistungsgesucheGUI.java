@@ -6,15 +6,10 @@ Dennis Kelm
 
 import client.ClientDefaults;
 import client.Vereinssoftware;
-import client.gui.DefaultSmallPopup;
-import client.gui.dienstleistungen.dienstleistungsangebote.DienstleistungsangebotAnzeigenGUI;
 import client.gui.dienstleistungen.dienstleistungsangebote.DienstleistungsangebotErstellenGUI;
-import com.formdev.flatlaf.FlatLightLaf;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -27,7 +22,7 @@ public class DienstleistungsgesucheGUI {
     private JButton dienstleistungsangebotErstellenButton;
     private JTextField suchenTextField;
 
-    private Map<JTextField, Boolean> onceChanged = new HashMap<JTextField, Boolean>();
+    private final Map<JTextField, Boolean> onceChanged = new HashMap<JTextField, Boolean>();
 
 
     public DienstleistungsgesucheGUI() {

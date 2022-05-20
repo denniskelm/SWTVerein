@@ -5,7 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 
-public class MahnungsverwaltungGUI extends JFrame{
+public class MahnungsverwaltungGUI extends JFrame {
     private JPanel MahnungVerwaltung;
 
     private JButton erstellenButton;
@@ -14,9 +14,8 @@ public class MahnungsverwaltungGUI extends JFrame{
 
     //TODO funktionalität
 
-    public MahnungsverwaltungGUI(String title)    {
+    public MahnungsverwaltungGUI(String title) {
         super(title);
-
 
 
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -32,9 +31,6 @@ public class MahnungsverwaltungGUI extends JFrame{
         });
 
     }
-
-
-
 
 
     public static void main(String[] args) {

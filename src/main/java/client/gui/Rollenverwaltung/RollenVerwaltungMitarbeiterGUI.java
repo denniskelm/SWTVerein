@@ -5,7 +5,7 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class RollenVerwaltungMitarbeiterGUI extends JFrame{
+public class RollenVerwaltungMitarbeiterGUI extends JFrame {
     private JPanel RollenVerwaltungMitarbeiter;
     private JTable table1;
     private JButton mitgliederButton;
@@ -22,7 +22,6 @@ public class RollenVerwaltungMitarbeiterGUI extends JFrame{
         this.setContentPane(RollenVerwaltungMitarbeiter);
         this.pack();
         setLocationRelativeTo(null);
-
 
 
         // geht auf Mitglied
@@ -67,9 +66,9 @@ public class RollenVerwaltungMitarbeiterGUI extends JFrame{
 
     private void creatTable() {
         String[][] data = {
-                {"1", "2", "3", "4", "5", "6", "7", "8", "9","10"},
+                {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"},
         };
-        String[] columns = {"ID", "Name", "E-Mail", "Wohnadresse", "Mitgliedsnummer", "telefonnummer","StundenKonto", "istSpender", "Rolle", "Mahnung"};
+        String[] columns = {"ID", "Name", "E-Mail", "Wohnadresse", "Mitgliedsnummer", "telefonnummer", "StundenKonto", "istSpender", "Rolle", "Mahnung"};
 
         table1.setModel(new DefaultTableModel(
                 data, columns)
@@ -77,9 +76,8 @@ public class RollenVerwaltungMitarbeiterGUI extends JFrame{
 
         );
 
-        JTable table = new JTable(data,columns);
+        JTable table = new JTable(data, columns);
     }
-
 
 
     public static void main(String[] args) {
@@ -87,7 +85,6 @@ public class RollenVerwaltungMitarbeiterGUI extends JFrame{
         frame.setVisible(true);
 
     }
-
 
 
 }

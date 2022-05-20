@@ -19,7 +19,7 @@ TODO Dennis Kelm
 
 //Diese Klasse speichert (Nutzer-)Daten auf dem PC des Nutzers
 public class Session {
-    private Preferences prefs;
+    private final Preferences prefs;
     private final String ERROR = "FEHLER";
 
     public Session() {
@@ -31,7 +31,7 @@ public class Session {
 
     //Speichert den Wert value und macht ihn mit Schlüssel key erreichbar/auslesbar
     public void setPreference(String key, String value) {
-        prefs.put(key , value);
+        prefs.put(key, value);
     }
 
     //Liest den Wert vom Schlüssel key aus; wenn kein Wert eingetragen, dann wird def zurückgegeben
@@ -43,7 +43,7 @@ public class Session {
     public String getPreference(String key) throws NoSuchObjectException {
         String preference = getPreference(key, ERROR);
 
-        if(preference.equals(ERROR))
+        if (preference.equals(ERROR))
             throw new NoSuchObjectException("Wert nicht gesetzt!");
 
         return preference;
@@ -53,7 +53,7 @@ public class Session {
     public String getUsername() throws NoSuchObjectException {
         String username = getPreference("Username", ERROR);
 
-        if(username.equals(ERROR))
+        if (username.equals(ERROR))
             throw new NoSuchObjectException("Wert nicht gesetzt!");
 
         return username;
@@ -63,7 +63,7 @@ public class Session {
     public Rolle getRolle() throws NoSuchObjectException {
         String rolleStr = getPreference("Rolle", ERROR);
 
-        if(rolleStr.equals(ERROR))
+        if (rolleStr.equals(ERROR))
             throw new NoSuchObjectException("Wert nicht gesetzt!");
 
         Rolle rolle = Rolle.valueOf(rolleStr);
@@ -75,7 +75,7 @@ public class Session {
     public String getPasswort() throws NoSuchObjectException {
         String passwort = getPreference("Passwort", ERROR);
 
-        if(passwort.equals(ERROR))
+        if (passwort.equals(ERROR))
             throw new NoSuchObjectException("Wert nicht gesetzt!");
 
         return passwort;
@@ -108,7 +108,7 @@ public class Session {
     public String getID() throws NoSuchObjectException {
         String id = getPreference("ID", ERROR);
 
-        if(id.equals(ERROR))
+        if (id.equals(ERROR))
             throw new NoSuchObjectException("Wert nicht gesetzt");
 
         return id;

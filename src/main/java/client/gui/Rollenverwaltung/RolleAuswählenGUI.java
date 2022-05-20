@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class RolleAuswählenGUI extends JFrame{
+public class RolleAuswählenGUI extends JFrame {
     private JPanel RolleAuswählen;
     private JTextField IDhiereinfügen;
     private JButton OKButton;
@@ -14,8 +14,7 @@ public class RolleAuswählenGUI extends JFrame{
     private JRadioButton VereinsvorstandButton;
 
 
-
-    public RolleAuswählenGUI(String title)    {
+    public RolleAuswählenGUI(String title) {
         super(title);
 
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -26,7 +25,6 @@ public class RolleAuswählenGUI extends JFrame{
 
         // TODO ID anzeigen
         // TODO JRadioButton
-
 
 
         OKButton.addActionListener(new ActionListener() {
@@ -43,8 +41,6 @@ public class RolleAuswählenGUI extends JFrame{
             }
         });
     }
-
-
 
 
     public static void main(String[] args) {

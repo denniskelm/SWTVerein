@@ -8,13 +8,14 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class GeraetReservierenGUI extends JFrame{
+public class GeraetReservierenGUI extends JFrame {
     private JPanel GastReservieren;
     private JButton jaButton;
     private JButton neinButton;
-    private String geraeteID, ausleiherID;
+    private final String geraeteID;
+    private final String ausleiherID;
 
-    public GeraetReservierenGUI(String title, String geraeteID, String ausleiherID)    {
+    public GeraetReservierenGUI(String title, String geraeteID, String ausleiherID) {
         super(title);
         this.geraeteID = geraeteID;
         this.ausleiherID = ausleiherID;

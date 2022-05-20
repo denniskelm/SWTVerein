@@ -37,7 +37,7 @@ public class DienstleistungsgesuchBearbeitenGUI {
 
     private JFrame frame;
 
-    private Map<JTextField, Boolean> onceChanged = new HashMap<JTextField, Boolean>();
+    private final Map<JTextField, Boolean> onceChanged = new HashMap<JTextField, Boolean>();
 
     public DienstleistungsgesuchBearbeitenGUI(String gesuchsID, String titel, String pathToImage, String beschreibung, String kategorieText) {
         frame = new JFrame("Dienstleistungsgesuch bearbeiten");

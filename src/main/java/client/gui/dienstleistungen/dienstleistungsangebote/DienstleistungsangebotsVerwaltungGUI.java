@@ -18,7 +18,6 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -29,7 +28,7 @@ public class DienstleistungsangebotsVerwaltungGUI {
     private JTable dienstleistungsangeboteTable;
     private JTextField suchenTextField;
 
-    private Map<JTextField, Boolean> onceChanged = new HashMap<JTextField, Boolean>();
+    private final Map<JTextField, Boolean> onceChanged = new HashMap<JTextField, Boolean>();
 
     public DienstleistungsangebotsVerwaltungGUI() {
         JFrame frame = new JFrame("Dienstleistungsangebots-Datenbank");
@@ -71,7 +70,7 @@ public class DienstleistungsangebotsVerwaltungGUI {
         ClientDefaults.createColumnsFromArray(columns, model);
 
 
-        Object[][] angebote = (Object[][]) Vereinssoftware.dienstleistungsverwaltung.OmniAngebotDaten();
+        Object[][] angebote = Vereinssoftware.dienstleistungsverwaltung.OmniAngebotDaten();
 
 
         for (Object[] angebot :

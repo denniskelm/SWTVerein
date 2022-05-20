@@ -2,14 +2,13 @@ package client.gui.Geräte;
 
 import client.Vereinssoftware;
 import client.gui.DefaultSmallPopup;
-import client.gui.StartseiteGUI;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.rmi.RemoteException;
 
-public class GerätHinzufügenGUI extends JFrame{
+public class GerätHinzufügenGUI extends JFrame {
     private JPanel Geräthinzufügen;
     private JTextField gerätenameTextField;
     private JTextField spenderTextField;
@@ -20,7 +19,7 @@ public class GerätHinzufügenGUI extends JFrame{
     private JLabel Picture;
     private JButton geraetErstellenButton;
 
-    public GerätHinzufügenGUI(String title)    {
+    public GerätHinzufügenGUI(String title) {
         super(title);
 
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -43,7 +42,7 @@ public class GerätHinzufügenGUI extends JFrame{
                             gerätebeschreibungTextField.getText(),
                             abholortTextField.getText());
 
-                    JOptionPane.showMessageDialog(GerätHinzufügenGUI.super.rootPane, "Gerät erfolgreich hinzugefügt", "",JOptionPane.PLAIN_MESSAGE);
+                    JOptionPane.showMessageDialog(GerätHinzufügenGUI.super.rootPane, "Gerät erfolgreich hinzugefügt", "", JOptionPane.PLAIN_MESSAGE);
 
                     dispose();
 

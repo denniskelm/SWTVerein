@@ -1,10 +1,8 @@
 package client.gui.Geräte;
 
 
-
 import client.ClientDefaults;
 import client.Vereinssoftware;
-import server.geraetemodul.Geraet;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -12,11 +10,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.rmi.NoSuchObjectException;
 import java.rmi.RemoteException;
-import java.util.ArrayList;
 
 //TODO Searchbar
 // Kategorie
-public class GeräteListeGUI extends JFrame{
+public class GeräteListeGUI extends JFrame {
     private JPanel GeräteListe;
     private JTable Geraeteliste;
 

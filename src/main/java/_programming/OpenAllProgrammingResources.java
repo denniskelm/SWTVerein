@@ -1,13 +1,6 @@
 package _programming;
 /*
 @author
-Raphael Kleebaum
-Jonny Schlutter
-Gabriel Kleebaum
-Mhd Esmail Kanaan
-Gia Huy Hans Tran
-Ole Björn Adelmann
-Bastian Reichert
 x Dennis Kelm
 */
 

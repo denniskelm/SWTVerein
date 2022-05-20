@@ -17,7 +17,6 @@ import client.Vereinssoftware;
 import client.gui.DefaultSmallPopup;
 
 import javax.swing.*;
-import java.rmi.RemoteException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -43,8 +42,8 @@ public class DienstleistungsangebotErstellenGUI {
     private JFormattedTextField urlTextField;
     private JPanel urlPanel;
 
-    private Map<JTextField, Boolean> onceChangedFields = new HashMap<JTextField, Boolean>();
-    private Map<JTextArea, Boolean> onceChangedAreas = new HashMap<JTextArea, Boolean>();
+    private final Map<JTextField, Boolean> onceChangedFields = new HashMap<JTextField, Boolean>();
+    private final Map<JTextArea, Boolean> onceChangedAreas = new HashMap<JTextArea, Boolean>();
 
     public DienstleistungsangebotErstellenGUI() {
         JFrame frame = new JFrame("Dienstleistungsangebot erstellen");

@@ -1,13 +1,11 @@
 package client.gui.Rollenverwaltung;
 
-import client.gui.Mahnung.MahnungsverwaltungGUI;
-
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class RollenverwaltungVereinsvorstandGUI extends  JFrame{
+public class RollenverwaltungVereinsvorstandGUI extends JFrame {
     private JPanel RollenVerwaltungVereinsVorstand;
     private JButton mitgliedButton;
     private JButton mitarbeiterButton;
@@ -15,7 +13,7 @@ public class RollenverwaltungVereinsvorstandGUI extends  JFrame{
     private JButton gästeButton;
     private JTable table1;
 
-    public RollenverwaltungVereinsvorstandGUI(String title)    {
+    public RollenverwaltungVereinsvorstandGUI(String title) {
         super(title);
 
 
@@ -24,7 +22,6 @@ public class RollenverwaltungVereinsvorstandGUI extends  JFrame{
         this.setContentPane(RollenVerwaltungVereinsVorstand);
         this.pack();
         setLocationRelativeTo(null);
-
 
 
         // geht auf Mitglied
@@ -36,7 +33,7 @@ public class RollenverwaltungVereinsvorstandGUI extends  JFrame{
                 RollenverwaltungVereinsvorstandGUI.this.setVisible(false);
             }
 
-            });
+        });
         // geht auf Mitarbeiter
 
         mitarbeiterButton.addActionListener(new ActionListener() {
@@ -47,9 +44,6 @@ public class RollenverwaltungVereinsvorstandGUI extends  JFrame{
                 RollenverwaltungVereinsvorstandGUI.this.setVisible(false);
             }
         });
-
-
-
 
 
         // geht auf Gäste
@@ -64,14 +58,14 @@ public class RollenverwaltungVereinsvorstandGUI extends  JFrame{
     }
 
 
-    private void creatTable()   {
+    private void creatTable() {
         String[][] data = {
-                {"1","2","3","4","5","6","7"},
+                {"1", "2", "3", "4", "5", "6", "7"},
         };
 
         table1.setModel(new DefaultTableModel(
                 data,
-                new String[] {"ID", "Name", "E-Mail", "Wohnadresse", "Mitgliedsnummer","istSpender", "telefonnummer", "Studenkonto"}
+                new String[]{"ID", "Name", "E-Mail", "Wohnadresse", "Mitgliedsnummer", "istSpender", "telefonnummer", "Studenkonto"}
 
         ));
 

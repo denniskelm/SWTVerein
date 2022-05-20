@@ -64,9 +64,9 @@ public class RollenverwaltungMitliedGUI extends JFrame {
 
     private void creatTable() {
         String[][] data = {
-                {"1", "2", "3", "4", "5", "6", "7", "8", "9","10"},
+                {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"},
         };
-        String[] columns = {"ID", "Name", "E-Mail", "Wohnadresse", "Mitgliedsnummer", "telefonnummer", "istSpender","StundenKonto", "Rolle", "Mahnung"};
+        String[] columns = {"ID", "Name", "E-Mail", "Wohnadresse", "Mitgliedsnummer", "telefonnummer", "istSpender", "StundenKonto", "Rolle", "Mahnung"};
 
         table1.setModel(new DefaultTableModel(
                 data, columns)
@@ -74,20 +74,18 @@ public class RollenverwaltungMitliedGUI extends JFrame {
 
         );
 
-        JTable table = new JTable(data,columns);
+        JTable table = new JTable(data, columns);
     }
-
 
 
     public static void main(String[] args) {
         JFrame frame = new RollenverwaltungMitliedGUI("Rollenverwaltung Mitglied");
         frame.setVisible(true);
 
-            }
-
-
-
     }
+
+
+}
 
 
 

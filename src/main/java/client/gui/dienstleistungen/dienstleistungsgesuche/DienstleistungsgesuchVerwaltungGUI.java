@@ -19,7 +19,7 @@ public class DienstleistungsgesuchVerwaltungGUI {
     private JTable dienstleistungsgesucheTable;
     private JTextField suchenTextField;
 
-    private Map<JTextField, Boolean> onceChanged = new HashMap<JTextField, Boolean>();
+    private final Map<JTextField, Boolean> onceChanged = new HashMap<JTextField, Boolean>();
 
     public DienstleistungsgesuchVerwaltungGUI() {
         JFrame frame = new JFrame("Dienstleistungsgesuch-Datenbank");

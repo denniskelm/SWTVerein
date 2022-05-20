@@ -8,7 +8,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class LoginGUI extends JFrame{
+public class LoginGUI extends JFrame {
     private JPanel Login;
     private JTextField eMailAdresseTextField;
     private JTextField passwortTextField;
@@ -22,9 +22,7 @@ public class LoginGUI extends JFrame{
     // pw textfield hinzufügen
 
 
-
-
-    public LoginGUI(String title)    {
+    public LoginGUI(String title) {
         super(title);
 
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -44,7 +42,7 @@ public class LoginGUI extends JFrame{
 
                 dispose();
 
-                }
+            }
         });
 
         // Login Button (succ)

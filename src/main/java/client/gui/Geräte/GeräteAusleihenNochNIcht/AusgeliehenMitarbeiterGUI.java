@@ -6,12 +6,12 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class AusgeliehenMitarbeiterGUI extends  JFrame{
+public class AusgeliehenMitarbeiterGUI extends JFrame {
     private JPanel panel1;
     private JButton jetztReservierenButton;
     private JButton abbrechenButton;
 
-    public AusgeliehenMitarbeiterGUI(String title)    {
+    public AusgeliehenMitarbeiterGUI(String title) {
         super(title);
 
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

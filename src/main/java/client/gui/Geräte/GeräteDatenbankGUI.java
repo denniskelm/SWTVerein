@@ -118,9 +118,9 @@ public class GeräteDatenbankGUI extends JFrame {
 
     }
 
-        public static void main (String[] args){
-            JFrame frame = new GeräteDatenbankGUI("Geräte Datenbank");
-            frame.setVisible(true);
+    public static void main(String[] args) {
+        JFrame frame = new GeräteDatenbankGUI("Geräte Datenbank");
+        frame.setVisible(true);
 
-        }
     }
+}

@@ -8,7 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.rmi.RemoteException;
 
-public class GeräteVerwaltenGUI extends JFrame{
+public class GeräteVerwaltenGUI extends JFrame {
     private JPanel GerätVerwalten;
     private JTextField gerätnameTextField;
     private JTextField spenderTextField;
@@ -31,9 +31,9 @@ public class GeräteVerwaltenGUI extends JFrame{
     private JTextField verbliebendeLeihdauerTextField;
     private JTextField ausgabeortTextField;
     private JButton AusgabeortaendernButton;
-    private String geraeteID;
+    private final String geraeteID;
 
-    public GeräteVerwaltenGUI(String title, String geraeteID)    {
+    public GeräteVerwaltenGUI(String title, String geraeteID) {
         super(title);
         this.geraeteID = geraeteID;
 
@@ -42,9 +42,6 @@ public class GeräteVerwaltenGUI extends JFrame{
         this.pack();
         setLocationRelativeTo(null);
         picture.add(new JLabel(new ImageIcon("Path/To/Your/Image.png")));
-
-
-
 
 
         GeraetaendernButton.addActionListener(new ActionListener() {
@@ -58,7 +55,7 @@ public class GeräteVerwaltenGUI extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    Vereinssoftware.geraeteverwaltung.geraeteDatenVerwalten("",Geraetedaten.SPENDERNAME, spenderTextField.getText());
+                    Vereinssoftware.geraeteverwaltung.geraeteDatenVerwalten("", Geraetedaten.SPENDERNAME, spenderTextField.getText());
                 } catch (RemoteException ex) {
                     throw new RuntimeException(ex);
                 }
@@ -69,7 +66,7 @@ public class GeräteVerwaltenGUI extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    Vereinssoftware.geraeteverwaltung.geraeteDatenVerwalten("",Geraetedaten.KATEGORIE, kategorieTextField.getText());
+                    Vereinssoftware.geraeteverwaltung.geraeteDatenVerwalten("", Geraetedaten.KATEGORIE, kategorieTextField.getText());
                 } catch (RemoteException ex) {
                     throw new RuntimeException(ex);
                 }
@@ -80,7 +77,7 @@ public class GeräteVerwaltenGUI extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    Vereinssoftware.geraeteverwaltung.geraeteDatenVerwalten("",Geraetedaten.BESCHREIBUNG, gerätbeschreibungTextField.getText());
+                    Vereinssoftware.geraeteverwaltung.geraeteDatenVerwalten("", Geraetedaten.BESCHREIBUNG, gerätbeschreibungTextField.getText());
                 } catch (RemoteException ex) {
                     throw new RuntimeException(ex);
                 }
@@ -91,7 +88,7 @@ public class GeräteVerwaltenGUI extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    Vereinssoftware.geraeteverwaltung.geraeteDatenVerwalten("",Geraetedaten.LEIHFRIST, leihfristTextField.getText());
+                    Vereinssoftware.geraeteverwaltung.geraeteDatenVerwalten("", Geraetedaten.LEIHFRIST, leihfristTextField.getText());
                 } catch (RemoteException ex) {
                     throw new RuntimeException(ex);
                 }
@@ -109,7 +106,7 @@ public class GeräteVerwaltenGUI extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    Vereinssoftware.geraeteverwaltung.geraeteDatenVerwalten(geraeteID,Geraetedaten.ABHOLORT, ausgabeortTextField.getText());
+                    Vereinssoftware.geraeteverwaltung.geraeteDatenVerwalten(geraeteID, Geraetedaten.ABHOLORT, ausgabeortTextField.getText());
                 } catch (RemoteException ex) {
                     throw new RuntimeException(ex);
                 }

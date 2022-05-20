@@ -1,21 +1,17 @@
 package client.gui.Rollenverwaltung;
 
-import client.gui.Login.LoginGUI;
-import client.gui.Registrieren.RegistrierenGUI;
-
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class RollenVerwaltungGastGUI extends JFrame{
+public class RollenVerwaltungGastGUI extends JFrame {
     private JPanel RollenverwaltungGast;
     private JButton mitgliederButton;
     private JTable table1;
     private JButton mitarbeiterButton;
     private JButton vereinsvorständeButton;
     private JButton gästeButton;
-
 
 
     public RollenVerwaltungGastGUI(String title) {
@@ -52,7 +48,6 @@ public class RollenVerwaltungGastGUI extends JFrame{
         });
 
 
-
         // geht auf Vereinsvorstand
         vereinsvorständeButton.addActionListener(new ActionListener() {
             @Override
@@ -64,9 +59,6 @@ public class RollenVerwaltungGastGUI extends JFrame{
         });
 
 
-
-
-
     }
 
 
@@ -74,7 +66,7 @@ public class RollenVerwaltungGastGUI extends JFrame{
         String[][] data = {
                 {"1", "2", "3", "4", "5", "6", "7"},
         };
-        String[] columns = {"ID", "Name", "E-Mail", "Wohnadresse", "Mitgliedsnummer", "telefonnummer",  "Rolle"};
+        String[] columns = {"ID", "Name", "E-Mail", "Wohnadresse", "Mitgliedsnummer", "telefonnummer", "Rolle"};
 
         table1.setModel(new DefaultTableModel(
                 data, columns)
@@ -82,9 +74,8 @@ public class RollenVerwaltungGastGUI extends JFrame{
 
         );
 
-        JTable table = new JTable(data,columns);
+        JTable table = new JTable(data, columns);
     }
-
 
 
     public static void main(String[] args) {

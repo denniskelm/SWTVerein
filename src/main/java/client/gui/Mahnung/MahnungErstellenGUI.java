@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class MahnungErstellenGUI extends JFrame{
+public class MahnungErstellenGUI extends JFrame {
     private JPanel Mahnungsverwaltung;
     private JButton jaButton;
     private JButton neinButton;
@@ -12,7 +12,7 @@ public class MahnungErstellenGUI extends JFrame{
     //TODO funktionalität
 
 
-    public MahnungErstellenGUI(String title)    {
+    public MahnungErstellenGUI(String title) {
         super(title);
 
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

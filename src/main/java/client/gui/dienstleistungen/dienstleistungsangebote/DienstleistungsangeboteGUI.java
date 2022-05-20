@@ -14,11 +14,9 @@ Dennis Kelm
 import client.ClientDefaults;
 import client.Vereinssoftware;
 import client.gui.dienstleistungen.dienstleistungsgesuche.DienstleistungsgesuchErstellenGUI;
-import shared.communication.IDienstleistungsverwaltung;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-import java.rmi.RemoteException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
@@ -33,7 +31,7 @@ public class DienstleistungsangeboteGUI {
     private JButton dienstleistungsangebotErstellenButton;
     private JTextField suchenTextField;
 
-    private Map<JTextField, Boolean> onceChanged = new HashMap<JTextField, Boolean>();
+    private final Map<JTextField, Boolean> onceChanged = new HashMap<JTextField, Boolean>();
 
     public DienstleistungsangeboteGUI() {
         JFrame frame = new JFrame("Alle Dienstleistungsangebote");
@@ -94,15 +92,11 @@ public class DienstleistungsangeboteGUI {
                 break;
             }
 
-            System.out.println("Kaka: " + angebot[0] + angebot[1] + angebot[2] + angebot[3] + angebot[4] + angebot[5]);
-
             LocalDateTime abTime = ((LocalDateTime) angebot[3]);
             String ab = abTime.format(DateTimeFormatter.ISO_LOCAL_DATE);
-            ;
 
             LocalDateTime bisTime = ((LocalDateTime) angebot[4]);
             String bis = bisTime.format(DateTimeFormatter.ISO_LOCAL_DATE);
-            ;
 
             model.addRow(new Object[]{
                     angebot[0],

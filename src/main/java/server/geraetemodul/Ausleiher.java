@@ -3,10 +3,10 @@ package server.geraetemodul;
 import java.time.LocalDateTime;
 
 public class Ausleiher {
-    private LocalDateTime reservierdatum;
+    private final LocalDateTime reservierdatum;
     private LocalDateTime fristBeginn;
-    private boolean abgegeben;
-    private String mitgliedsID;
+    private final boolean abgegeben;
+    private final String mitgliedsID;
 
     public Ausleiher(String mitgliedsID) {
         this.reservierdatum = LocalDateTime.now();

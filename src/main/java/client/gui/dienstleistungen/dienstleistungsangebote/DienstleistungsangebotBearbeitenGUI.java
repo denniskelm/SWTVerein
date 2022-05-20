@@ -14,9 +14,7 @@ Dennis Kelm
 import client.ClientDefaults;
 import client.Kategorie;
 import client.Vereinssoftware;
-import client.gui.DefaultSmallPopup;
 import server.dienstleistungsmodul.Dienstleistungsangebotdaten;
-import shared.communication.IDienstleistungsverwaltung;
 
 import javax.swing.*;
 import java.rmi.RemoteException;
@@ -46,7 +44,7 @@ public class DienstleistungsangebotBearbeitenGUI {
 
     private JFrame frame;
 
-    private Map<JTextField, Boolean> onceChanged = new HashMap<JTextField, Boolean>();
+    private final Map<JTextField, Boolean> onceChanged = new HashMap<JTextField, Boolean>();
 
     public DienstleistungsangebotBearbeitenGUI(String angebotsID, String titel, String pathToImage, String beschreibung, String kategorieText, LocalDateTime ab, LocalDateTime bis) {
         frame = new JFrame("Dienstleistungsangebot bearbeiten");
@@ -83,8 +81,6 @@ public class DienstleistungsangebotBearbeitenGUI {
                 ClientDefaults.getKategorien(Kategorie.class)) {
             kategorieComboBox.addItem(kategorie);
         }
-
-
 
 
         angebotBearbeitenButton.addActionListener(e -> {

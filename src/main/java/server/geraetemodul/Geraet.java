@@ -12,20 +12,20 @@ Mhd Esmail Kanaan
 */
 
 import java.time.LocalDateTime;
-import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Objects;
 
 public class Geraet {
 
-    private String geraeteID;
+    private final String geraeteID;
     private String name;
     private String spenderName;
     private int leihfrist; // muss in Tagen angegeben werden
     private String kategorie;
     private String beschreibung;
     private String abholort;
-    private ArrayList<Ausleiher> reservierungsliste, historie;
+    private final ArrayList<Ausleiher> reservierungsliste;
+    private ArrayList<Ausleiher> historie;
 
     public ArrayList<Ausleiher> getHistorie() {
         return historie;
