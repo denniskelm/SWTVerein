@@ -272,7 +272,7 @@
                 </constraints>
                 <properties>
                   <font size="18"/>
-                  <text value="&lt;html&gt;&lt;p style=&quot;width:300px&quot;&gt;Sie brauchen Unterstützung bei Ihren Arbeiten? Stellen Sie jetzt ein Dienstleistungsgesuch!&lt;/p&gt;"/>
+                  <text value="&lt;html&gt;&lt;p style=&quot;width:300px&quot;&gt;Alle Dienstleistungsangebote anzeigen&lt;/p&gt;"/>
                 </properties>
               </component>
               <component id="ce8a4" class="javax.swing.JButton" binding="dienstleistungsangeboteButton">
