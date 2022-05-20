@@ -3,7 +3,6 @@ package client.gui.Geräte;
 
 
 import client.Vereinssoftware;
-import client.gui.dienstleistungen.dienstleistungsangebote.DienstleistungsangebotAnzeigenGUI;
 import server.geraetemodul.Geraet;
 
 import javax.swing.*;
@@ -11,11 +10,7 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.rmi.RemoteException;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.List;
 
 //TODO Searchbar
 // Kategorie
@@ -85,6 +80,7 @@ public class GeräteListeGUI extends JFrame{
         gast.setVisible(true);
         GeräteListeGUI.this.setVisible(false);
 
+
     }
 
     private void createTable() throws RemoteException {
@@ -105,7 +101,6 @@ public class GeräteListeGUI extends JFrame{
 
         Geraeteliste.setModel(new DefaultTableModel(
                 data, columns));
-
 
     }
 

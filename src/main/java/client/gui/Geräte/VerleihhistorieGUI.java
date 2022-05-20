@@ -24,7 +24,11 @@ public class VerleihhistorieGUI extends JFrame{
         super(title);
         this.geraeteID = geraeteID;
 
-        creatTable();
+        try {
+            creatTable();
+        } catch (RemoteException e) {
+            throw new RuntimeException(e);
+        }
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setContentPane(Verleihhsitorie);
         this.pack();
