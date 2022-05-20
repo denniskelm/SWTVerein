@@ -54,9 +54,6 @@ public class StartseiteGUI {
         JFrame frame = new JFrame("Startseite");
         frame = ClientDefaults.standardizeFrame(frame, startseite);
 
-        int anfragen = 0; //TODO Anfragenanzahl
-        anfragenButton.setText(anfragen + " Anfragen");
-
         dienstleistungsangeboteButton.addActionListener(e -> {
             DienstleistungsangeboteGUI dienstleistungsangeboteGUI = new DienstleistungsangeboteGUI();
         });

@@ -18,6 +18,7 @@ import shared.communication.IDienstleistungsverwaltung;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import java.rmi.RemoteException;
 import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
@@ -58,9 +59,7 @@ public class DienstleistungsangeboteGUI {
         });
     }
 
-    private void generateTable() throws Exception /*throws RemoteException */ {
-
-        IDienstleistungsverwaltung dienstleistungsverwaltung = null;
+    private void generateTable() throws Exception {
 
         DefaultTableModel model = new DefaultTableModel() {
 
@@ -93,7 +92,7 @@ public class DienstleistungsangeboteGUI {
                 "Stefan"
         });
 
-        Object[][] angebote = (Object[][]) Vereinssoftware.dienstleistungsverwaltung.OmniAngebotDaten();
+        Object[][] angebote = Vereinssoftware.dienstleistungsverwaltung.OmniAngebotDaten();
 
 
         for (Object[] angebot :
