@@ -127,6 +127,9 @@ public class GeräteListeGUI extends JFrame{
             System.out.println("Fehler");
             throw new RuntimeException(e);
         }
+
+        ClientDefaults.addSearchFunctionality(Geraeteliste, sucheTextField);
+
     }
 
     public static void main(String[] args) {

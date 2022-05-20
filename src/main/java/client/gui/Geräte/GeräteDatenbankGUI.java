@@ -2,19 +2,12 @@ package client.gui.Geräte;
 
 import client.ClientDefaults;
 import client.Vereinssoftware;
-import server.geraetemodul.Geraet;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.rmi.NoSuchObjectException;
 import java.rmi.RemoteException;
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.List;
 
 public class GeräteDatenbankGUI extends JFrame {
     private JPanel Gerätedatenbank;
@@ -30,7 +23,7 @@ public class GeräteDatenbankGUI extends JFrame {
         super(title);
 
 
-        creatTable();
+        createTable();
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setContentPane(Gerätedatenbank);
         this.pack();
@@ -65,7 +58,6 @@ public class GeräteDatenbankGUI extends JFrame {
                 return; // nicht auf Verwalten gedrückt
 
             System.out.println(row + ", " + col);
-            //TODO Implementierung Klick auf Zelle
             iD = model.getValueAt(row, 0).toString(); //GeraeteID
             String gname = model.getValueAt(row, 1).toString(); //Gerät
             String spender = model.getValueAt(row, 2).toString(); //Spender
@@ -78,7 +70,7 @@ public class GeräteDatenbankGUI extends JFrame {
         GeräteDatenbankGUI.this.setVisible(false);
     }
 
-    private void creatTable() {
+    private void createTable() {
 
         try {
             Object[][] geraete = Vereinssoftware.geraeteverwaltung.OmniGeraeteDaten();
@@ -121,6 +113,9 @@ public class GeräteDatenbankGUI extends JFrame {
             System.out.println("Fehler");
             throw new RuntimeException(e);
         }
+
+        ClientDefaults.addSearchFunctionality(Datenbank, sucheTextField);
+
     }
 
         public static void main (String[] args){
