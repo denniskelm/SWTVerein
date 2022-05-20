@@ -11,7 +11,7 @@ TODO Bastian Reichert
 Dennis Kelm
 */
 
-import client.DefaultsClient;
+import client.ClientDefaults;
 import client.gui.DefaultSmallPopup;
 
 import javax.swing.*;
@@ -36,7 +36,7 @@ public class DienstleistungsgesuchErstellenGUI {
 
     public DienstleistungsgesuchErstellenGUI() {
         JFrame frame = new JFrame("Dienstleistungsgesuch erstellen");
-        frame = DefaultsClient.standardizeFrame(frame, this.dienstleistungsgesuchErstellenPanel);
+        frame = ClientDefaults.standardizeFrame(frame, this.dienstleistungsgesuchErstellenPanel);
         JTextField[] allTextFields = new JTextField[]{
                 titleTextField,
                 urlTextField
@@ -44,10 +44,10 @@ public class DienstleistungsgesuchErstellenGUI {
 
         for (JTextField textField :
                 allTextFields) {
-            DefaultsClient.enhanceTextField(textField, onceChangedFields);
+            ClientDefaults.enhanceTextField(textField, onceChangedFields);
         }
 
-        DefaultsClient.enhanceTextArea(beschreibungTextArea, onceChangedAreas);
+        ClientDefaults.enhanceTextArea(beschreibungTextArea, onceChangedAreas);
 
         gesuchErstellenButton.addActionListener(e -> {
             gesuchErstellenGUI();

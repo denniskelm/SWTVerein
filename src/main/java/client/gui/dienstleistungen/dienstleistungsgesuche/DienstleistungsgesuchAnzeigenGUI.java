@@ -1,4 +1,4 @@
-package client.gui.dienstleistungen.dienstleistungsangebote;
+package client.gui.dienstleistungen.dienstleistungsgesuche;
 /*
 @author
 TODO Raphael Kleebaum
@@ -11,13 +11,11 @@ TODO Bastian Reichert
 Dennis Kelm
 */
 
-import client.DefaultsClient;
+import client.ClientDefaults;
 import client.Vereinssoftware;
 import client.gui.DefaultTextWithButton;
 
 import javax.swing.*;
-import java.rmi.RemoteException;
-import java.time.LocalDateTime;
 
 //TODO Was macht diese Klasse?
 public class DienstleistungsgesuchAnzeigenGUI {
@@ -43,8 +41,8 @@ public class DienstleistungsgesuchAnzeigenGUI {
     //TODO Implementation Infos fetchen von IGeraeteverwaltung, vllt. die Infos per Parameter übergeben sondern hier fetchen
     public DienstleistungsgesuchAnzeigenGUI(String gesuch_ID, String pathToImage, String titel, String beschreibung, String kategorie, String suchenderID) {
         JFrame frame = new JFrame("Details des Dienstleistungsangebots");
-        DefaultsClient.insertImageToPanel(imageLabel, pathToImage); //URL zum Bild, z.B. "https://bilder.gartenpaul.de/item/images/456/full/456-R1-M1.jpg"
-        frame = DefaultsClient.standardizeFrame(frame, dienstleistungsangebotAnzeigenGUI);
+        ClientDefaults.insertImageToPanel(imageLabel, pathToImage); //URL zum Bild, z.B. "https://bilder.gartenpaul.de/item/images/456/full/456-R1-M1.jpg"
+        frame = ClientDefaults.standardizeFrame(frame, dienstleistungsangebotAnzeigenGUI);
 
         //Anpassen der Texte
         headlineLabel.setText("TODO TITEL"); //sowas wie Vereinssoftware.dienstleistungsverwaltung.getGeraetInformation(String geraeteID)[0]

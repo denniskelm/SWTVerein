@@ -11,15 +11,9 @@ TODO Bastian Reichert
 Dennis Kelm
 */
 
-import client.DefaultsClient;
-import client.Vereinssoftware;
+import client.ClientDefaults;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
-import java.awt.*;
-import java.awt.image.BufferedImage;
-import java.io.IOException;
-import java.net.URL;
 
 //TODO Was macht diese Klasse?
 public class GeraetAnzeigenGUI {
@@ -45,8 +39,8 @@ public class GeraetAnzeigenGUI {
     //TODO Implementation Infos fetchen von IGeraeteverwaltung, vllt. die Infos per Parameter übergeben sondern hier fetchen
     public GeraetAnzeigenGUI(String geraeteID, String pathToImage, String titel, String spender, String raum, int reservierungen, int leihfrist, String beschreibung) {
         JFrame frame = new JFrame("Gerätedetails");
-        DefaultsClient.insertImageToPanel(imageLabel, pathToImage); //URL zum Bild, z.B. "https://bilder.gartenpaul.de/item/images/456/full/456-R1-M1.jpg"
-        frame = DefaultsClient.standardizeFrame(frame, geraetAnzeigenGUI);
+        ClientDefaults.insertImageToPanel(imageLabel, pathToImage); //URL zum Bild, z.B. "https://bilder.gartenpaul.de/item/images/456/full/456-R1-M1.jpg"
+        frame = ClientDefaults.standardizeFrame(frame, geraetAnzeigenGUI);
 
         //Anpassen der Texte
         headlineLabel.setText("TODO TITEL"); //sowas wie Vereinssoftware.dienstleistungsverwaltung.getGeraetInformation(String geraeteID)[0]

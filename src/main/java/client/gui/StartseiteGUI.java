@@ -11,23 +11,12 @@ TODO Bastian Reichert
 Dennis Kelm
 */
 
-import client.DefaultsClient;
-import client.Vereinssoftware;
-import client.gui.Geräte.GeraetAnzeigenGUI;
-import client.gui.Profilseite.ProfilseiteEigene;
+import client.ClientDefaults;
 import client.gui.dienstleistungen.dienstleistungsangebote.DienstleistungsangeboteGUI;
 import client.gui.dienstleistungen.dienstleistungsangebote.DienstleistungsangebotsVerwaltungGUI;
 import client.gui.dienstleistungen.dienstleistungsgesuche.DienstleistungsgesucheGUI;
-import com.formdev.flatlaf.FlatLightLaf;
 
 import javax.swing.*;
-import javax.swing.plaf.FontUIResource;
-import java.awt.*;
-import java.io.File;
-import java.io.IOException;
-import java.time.LocalDateTime;
-import java.time.temporal.ChronoUnit;
-import java.util.Enumeration;
 
 /*Stellt die Startseite dar, und leitet somit auf die weiteren Fenster der Anwendung weiter (unterscheidet dabei
  * in angemeldet und unangemeldet)
@@ -63,7 +52,7 @@ public class StartseiteGUI {
     //Fügt Funktionalität der Startseite hinzu
     public StartseiteGUI() {
         JFrame frame = new JFrame("Startseite");
-        frame = DefaultsClient.standardizeFrame(frame, startseite);
+        frame = ClientDefaults.standardizeFrame(frame, startseite);
 
         int anfragen = 0; //TODO Anfragenanzahl
         anfragenButton.setText(anfragen + " Anfragen");
