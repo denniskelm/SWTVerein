@@ -7,15 +7,15 @@ Dennis Kelm
 //Alle möglichen Kategorien
 public enum Kategorie {
 
-    SONSTIGES,
-    WERKZEUG,
-    SPIELZEUG,
-    BUECHER,
+    Sonstiges,
+    Werkzeug,
+    Spielzeug,
+    Buecher,
     DVD,
-    MUSIK,
-    ELEKTRONIK,
-    KUECHE,
-    SPORT
+    Musik,
+    Elektronik,
+    Kueche,
+    Sport
 
 
 }

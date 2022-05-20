@@ -25,6 +25,8 @@ public class Session {
     public Session() {
         // legt Speicherort für die Preferences fest
         prefs = Preferences.userRoot().node(this.getClass().getName());
+
+        setID("1");
     }
 
     //Speichert den Wert value und macht ihn mit Schlüssel key erreichbar/auslesbar

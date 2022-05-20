@@ -12,11 +12,17 @@ Dennis Kelm
 */
 
 import client.ClientDefaults;
+import client.Kategorie;
+import client.Vereinssoftware;
 import client.gui.DefaultSmallPopup;
 
 import javax.swing.*;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 //GUI Funktionalität für das Erstellen von Dienstleistungsgesuchen
 public class DienstleistungsgesuchErstellenGUI {
@@ -51,20 +57,31 @@ public class DienstleistungsgesuchErstellenGUI {
 
         ClientDefaults.enhanceTextArea(beschreibungTextArea, onceChangedAreas);
 
+        for (String kategorie :
+                ClientDefaults.getKategorien(Kategorie.class)) {
+            kategorieComboBox.addItem(kategorie);
+        }
+
         gesuchErstellenButton.addActionListener(e -> {
-            gesuchErstellenGUI();
+            gesuchErstellenGUI(
+                    titleTextField.getText(),
+                    beschreibungTextArea.getText(),
+                    Objects.requireNonNull(kategorieComboBox.getSelectedItem()).toString(),
+                    urlTextField.getText());
         });
 
     }
 
-    public static void main(String[] args) {
-        DienstleistungsgesuchErstellenGUI thisgui = new DienstleistungsgesuchErstellenGUI();
-    }
+    private void gesuchErstellenGUI(String titel, String beschreibung, String kategorie, String urlToImage) {
+        try {
+            Vereinssoftware.dienstleistungsverwaltung.gesuchErstellen(titel, beschreibung, kategorie, urlToImage, Vereinssoftware.session.getID());
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
 
-    private void gesuchErstellenGUI() {
-        //TODO Implementierung gesuchErstellen
         DefaultSmallPopup smallPopup = new DefaultSmallPopup("Gesuch erfolgreich erstellt", "Ihr Dienstleistungsgesuch wurde erfolgreich erstellt!");
     }
-
-
 }
+
+
+

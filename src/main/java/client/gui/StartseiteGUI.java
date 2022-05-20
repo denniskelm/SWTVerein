@@ -18,6 +18,7 @@ import client.gui.Login.LoginGUI;
 import client.gui.Registrieren.RegistrierenGUI;
 import client.gui.dienstleistungen.dienstleistungsangebote.DienstleistungsangeboteGUI;
 import client.gui.dienstleistungen.dienstleistungsangebote.DienstleistungsangebotsVerwaltungGUI;
+import client.gui.dienstleistungen.dienstleistungsgesuche.DienstleistungsgesuchVerwaltungGUI;
 import client.gui.dienstleistungen.dienstleistungsgesuche.DienstleistungsgesucheGUI;
 
 import javax.swing.*;
@@ -55,19 +56,8 @@ public class StartseiteGUI {
 
     //Fügt Funktionalität der Startseite hinzu
     public StartseiteGUI() {
-
-        // Set System L&F
-        try {
-            UIManager.setLookAndFeel(
-                    UIManager.getSystemLookAndFeelClassName());
-        }
-        catch (Exception e) {
-         e.printStackTrace();
-        }
-
         JFrame frame = new JFrame("Startseite");
         frame = ClientDefaults.standardizeFrame(frame, startseite);
-        frame.setLocationRelativeTo(null);
 
         dienstleistungsangeboteButton.addActionListener(e -> {
             DienstleistungsangeboteGUI dienstleistungsangeboteGUI = new DienstleistungsangeboteGUI();
@@ -79,9 +69,13 @@ public class StartseiteGUI {
             DienstleistungsangebotsVerwaltungGUI dienstleistungsangebotsVerwaltungGUI = new DienstleistungsangebotsVerwaltungGUI();
         });
 
-        geraetHinzufuegen.addActionListener(e -> {
+        geraetHinzufuegen.addActionListener(e -> { //TODO Email Client öffnen?
             // hier vielleicht pop-up mit einer Beschreibung wie man Mitarbeiter kontaktieren kann um ein Gerät zu spenden.
             JOptionPane.showMessageDialog(startseite, "Sie können einen unserer Mitarbeiter über ... kontaktieren.", "Sie möchten ein Gerät spenden?", JOptionPane.PLAIN_MESSAGE);
+        });
+
+        dienstleistungsgesuchsverwaltungButton.addActionListener(e -> {
+            DienstleistungsgesuchVerwaltungGUI dienstleistungsangebotsVerwaltungGUI = new DienstleistungsgesuchVerwaltungGUI();
         });
 
         geraeteverwaltungButton.addActionListener(e -> {

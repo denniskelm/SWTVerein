@@ -13,11 +13,12 @@ Dennis Kelm
 
 import client.ClientDefaults;
 import client.Vereinssoftware;
-import com.formdev.flatlaf.FlatLightLaf;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -62,38 +63,38 @@ public class DienstleistungsangebotsVerwaltungGUI {
                 "Dienstleistung",
                 "Beschreibung",
                 "Kategorie",
-                "Datum",
-                "Anbieter"
+                "Ab",
+                "bis",
+                "Anbieter",
+                "Bild-URL"
         };
         ClientDefaults.createColumnsFromArray(columns, model);
 
-        model.addRow(new Object[]{
-                "D00001",
-                "Dienstleistung 1",
-                "Beschreibung 1",
-                "Kategorie 1",
-                "07.05.2022 - 14.05.2022",
-                "Stefan"
-        });
 
         Object[][] angebote = (Object[][]) Vereinssoftware.dienstleistungsverwaltung.OmniAngebotDaten();
 
 
         for (Object[] angebot :
                 angebote) {
+            if (angebot[0] == null) {
+                break;
+            }
+
             LocalDateTime abTime = ((LocalDateTime) angebot[3]);
-            String ab = abTime.getDayOfMonth() + "." + abTime.getMonthValue() + "." + abTime.getYear();
+            String ab = abTime.format(DateTimeFormatter.ISO_LOCAL_DATE);
 
             LocalDateTime bisTime = ((LocalDateTime) angebot[4]);
-            String bis = bisTime.getDayOfMonth() + "." + bisTime.getMonthValue() + "." + bisTime.getYear();
+            String bis = bisTime.format(DateTimeFormatter.ISO_LOCAL_DATE);
 
             model.addRow(new Object[]{
+                    angebot[6],
                     angebot[0],
                     angebot[1],
                     angebot[2],
                     ab,
                     bis,
-                    Vereinssoftware.rollenverwaltung.getMitgliedsNamen((String) angebot[5])
+                    Vereinssoftware.rollenverwaltung.getMitgliedsNamen((String) angebot[5]),
+                    angebot[7]
             });
         }
 
@@ -108,13 +109,13 @@ public class DienstleistungsangebotsVerwaltungGUI {
                     //TODO Implementierung Klick auf Zelle
                     try {
                         DienstleistungsangebotBearbeitenGUI dienstleistungsangebotBearbeitenGUI = new DienstleistungsangebotBearbeitenGUI(
-                                angebote[row][1].toString(), //ID
-                                angebote[row][1].toString(), //Titel
-                                angebote[row][1].toString(), //pathToImage
+                                angebote[row][6].toString(), //ID
+                                angebote[row][0].toString(), //Titel
+                                angebote[row][7].toString(), //pathToImage
                                 angebote[row][1].toString(), //beschreibung
-                                angebote[row][1].toString(), //Kategorie
-                                (LocalDateTime) angebote[row][1], //ab
-                                (LocalDateTime) angebote[row][1] //bis
+                                angebote[row][2].toString(), //Kategorie
+                                (LocalDateTime) angebote[row][3], //ab
+                                (LocalDateTime) angebote[row][4] //bis
                         );
                     } catch (Exception e) {
                         throw new RuntimeException(e);

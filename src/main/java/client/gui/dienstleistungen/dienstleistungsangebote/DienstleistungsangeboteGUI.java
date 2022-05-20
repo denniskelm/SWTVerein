@@ -85,26 +85,24 @@ public class DienstleistungsangeboteGUI {
         };
         ClientDefaults.createColumnsFromArray(columns, model);
 
-        model.addRow(new Object[]{
-                "Dienstleistung 1",
-                "Beschreibung 1",
-                "Kategorie 1",
-                "07.05.2022",
-                "14.05.2022",
-                "Stefan"
-        });
-
         Object[][] angebote = Vereinssoftware.dienstleistungsverwaltung.OmniAngebotDaten();
 
 
         for (Object[] angebot :
                 angebote) {
+            if (angebot[0] == null) {
+                break;
+            }
+
+            System.out.println("Kaka: " + angebot[0] + angebot[1] + angebot[2] + angebot[3] + angebot[4] + angebot[5]);
 
             LocalDateTime abTime = ((LocalDateTime) angebot[3]);
-            String ab = abTime.getDayOfMonth() + "." + abTime.getMonthValue() + "." + abTime.getYear();
+            String ab = abTime.format(DateTimeFormatter.ISO_LOCAL_DATE);
+            ;
 
             LocalDateTime bisTime = ((LocalDateTime) angebot[4]);
-            String bis = bisTime.getDayOfMonth() + "." + bisTime.getMonthValue() + "." + bisTime.getYear();
+            String bis = bisTime.format(DateTimeFormatter.ISO_LOCAL_DATE);
+            ;
 
             model.addRow(new Object[]{
                     angebot[0],
@@ -112,7 +110,7 @@ public class DienstleistungsangeboteGUI {
                     angebot[2],
                     ab,
                     bis,
-                    Vereinssoftware.rollenverwaltung.getMitgliedsNamen((String) angebot[5])
+                    Vereinssoftware.rollenverwaltung.getMitgliedsNamen(angebot[5].toString())
             });
         }
 
@@ -127,14 +125,14 @@ public class DienstleistungsangeboteGUI {
                     //TODO Implementierung Klick auf Zelle
                     try {
                         DienstleistungsangebotAnzeigenGUI dienstleistungsangebotAnzeigenGUI = new DienstleistungsangebotAnzeigenGUI(
-                                "kaka", //ID
-                                angebote[row][1].toString(), //Titel
-                                angebote[row][1].toString(), //pathToImage
+                                angebote[row][6].toString(), //ID
+                                angebote[row][0].toString(), //Titel
+                                angebote[row][7].toString(), //pathToImage
                                 angebote[row][1].toString(), //beschreibung
-                                angebote[row][1].toString(), //Kategorie
-                                (LocalDateTime) angebote[row][1], //ab
-                                (LocalDateTime) angebote[row][1], //bis
-                                Vereinssoftware.rollenverwaltung.getMitgliedsNamen((String) angebote[row][5]) //PersonenID
+                                angebote[row][2].toString(), //Kategorie
+                                (LocalDateTime) angebote[row][3], //ab
+                                (LocalDateTime) angebote[row][4], //bis
+                                (String) angebote[row][5] //PersonenID
 
                         );
                     } catch (Exception e) {

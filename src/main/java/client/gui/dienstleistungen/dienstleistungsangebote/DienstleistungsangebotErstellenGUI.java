@@ -18,6 +18,7 @@ import client.gui.DefaultSmallPopup;
 
 import javax.swing.*;
 import java.rmi.RemoteException;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
@@ -64,11 +65,6 @@ public class DienstleistungsangebotErstellenGUI {
 
         //TODO Kategorien in die ComboBox packen
 
-        try {
-            kategorieComboBox.addItem(Vereinssoftware.dienstleistungsverwaltung.getAngeboteInformationen("G00001")[4]);
-        } catch (RemoteException e) {
-            throw new RuntimeException(e);
-        }
 
         for (String kategorie :
                 ClientDefaults.getKategorien(Kategorie.class)) {
@@ -94,9 +90,9 @@ public class DienstleistungsangebotErstellenGUI {
     }
 
     private void angebotErstellenGUI(String titel, String urlToImage, String beschreibung, String kategorie, String ab, String bis) {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
-        LocalDateTime abTime = LocalDateTime.parse(ab, formatter);
-        LocalDateTime bisTime = LocalDateTime.parse(bis, formatter);
+        DateTimeFormatter formatter = DateTimeFormatter.ISO_LOCAL_DATE;
+        LocalDateTime abTime = LocalDate.parse(ab, formatter).atTime(12, 0, 0);
+        LocalDateTime bisTime = LocalDate.parse(bis, formatter).atTime(12, 0, 0);
 
         try {
             Vereinssoftware.dienstleistungsverwaltung.angebotErstellen(titel, beschreibung, kategorie, abTime, bisTime, urlToImage, Vereinssoftware.session.getID());

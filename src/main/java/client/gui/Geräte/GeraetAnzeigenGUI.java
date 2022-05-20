@@ -35,7 +35,7 @@ public class GeraetAnzeigenGUI {
     private JLabel imageLabel;
 
 
-    //Zeigt die Gerätedetailinformationen an
+    //Zeigt die Gerätedetailinformationen an - wird noch implementiert
     //TODO Implementation Infos fetchen von IGeraeteverwaltung, vllt. die Infos per Parameter übergeben sondern hier fetchen
     public GeraetAnzeigenGUI(String geraeteID, String pathToImage, String titel, String spender, String raum, int reservierungen, int leihfrist, String beschreibung) {
         JFrame frame = new JFrame("Gerätedetails");

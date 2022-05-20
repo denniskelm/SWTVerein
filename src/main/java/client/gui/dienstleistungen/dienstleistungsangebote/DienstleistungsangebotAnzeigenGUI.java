@@ -6,13 +6,15 @@ Dennis Kelm
 
 import client.ClientDefaults;
 import client.Vereinssoftware;
+import client.gui.DefaultTextWithButton;
 
 import javax.swing.*;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 //TODO Was macht diese Klasse?
 public class DienstleistungsangebotAnzeigenGUI {
-    private JPanel dienstleistungsgesuchAnzeigenGUI;
+    private JPanel dienstleistungsangebotAnzeigenGUI;
     private JLabel headlineLabel;
     private JPanel metaOuterPanel;
     private JPanel metaLeftPanel;
@@ -31,25 +33,40 @@ public class DienstleistungsangebotAnzeigenGUI {
 
 
     //Zeigt die Details des Dienstleistungsangebots an
-    //TODO Implementation Infos fetchen von IGeraeteverwaltung, vllt. die Infos per Parameter übergeben sondern hier fetchen
     public DienstleistungsangebotAnzeigenGUI(String angebots_ID, String titel, String pathToImage, String beschreibung, String kategorie, LocalDateTime ab, LocalDateTime bis, String personen_ID) {
         JFrame frame = new JFrame("Details des Dienstleistungsangebots");
         ClientDefaults.insertImageToPanel(imageLabel, pathToImage); //URL zum Bild, z.B. "https://bilder.gartenpaul.de/item/images/456/full/456-R1-M1.jpg"
-        frame = ClientDefaults.standardizeFrame(frame, dienstleistungsgesuchAnzeigenGUI);
+        frame = ClientDefaults.standardizeFrame(frame, dienstleistungsangebotAnzeigenGUI);
         frame.setLocationRelativeTo(null);
 
         //Anpassen der Texte
-        headlineLabel.setText("TODO TITEL"); //sowas wie Vereinssoftware.dienstleistungsverwaltung.getGeraetInformation(String geraeteID)[0]
+        headlineLabel.setText(titel); //sowas wie Vereinssoftware.dienstleistungsverwaltung.getGeraetInformation(String geraeteID)[0]
         metaInfoText1.setText("Kategorie: " + kategorie);
-        metaInfoText2.setText("Verfügbar ab: " + ab.getDayOfMonth() + "." + ab.getMonth() + "." + ab.getYear());
-        metaInfoText3.setText("Verfügbar bis: " + bis.getDayOfMonth() + "." + bis.getMonth() + "." + bis.getYear());
-        metaInfoText4.setText("Angeboten von:  " + personen_ID); //TODO sowas wie personenID.getName
+        metaInfoText2.setText("Verfügbar ab: " + ab.format(DateTimeFormatter.ISO_LOCAL_DATE));
+        metaInfoText3.setText("Verfügbar bis: " + bis.format(DateTimeFormatter.ISO_LOCAL_DATE));
+        try {
+            metaInfoText4.setText("Angeboten von:  " + Vereinssoftware.rollenverwaltung.getMitgliedsNamen(personen_ID));
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
 
         descriptionText.setText("<html><p style=\"width: 600px;\">" + beschreibung + "</p>");
 
         jetztReservierenButton.addActionListener(e -> {
             try {
-                Vereinssoftware.dienstleistungsverwaltung.angebotAnnehmen(angebots_ID, personen_ID, "P00002", 0);
+                Vereinssoftware.dienstleistungsverwaltung.angebotAnnehmen(angebots_ID, personen_ID, "1", 0);
+                DefaultTextWithButton defaultTextWithButton = new DefaultTextWithButton("Anfrage senden?",
+                        "Möchten Sie die Anfrage wirklich an " + Vereinssoftware.rollenverwaltung.getMitgliedsNamen(personen_ID) + " senden?", "Anfrage absenden");
+
+                defaultTextWithButton.getActionButton().addActionListener(e1 -> {
+                    try {
+                        Vereinssoftware.dienstleistungsverwaltung.angebotAnnehmen(angebots_ID, personen_ID, Vereinssoftware.session.getID(), 10 /* TODO STUNDEN */);
+                    } catch (Exception ex) {
+                        throw new RuntimeException(ex);
+                    }
+                });
+
+                //frame.dispose();
             } catch (Exception ex) {
                 throw new RuntimeException(ex);
             }

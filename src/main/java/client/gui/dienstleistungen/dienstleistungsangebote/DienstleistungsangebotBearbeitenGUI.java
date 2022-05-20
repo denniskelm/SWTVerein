@@ -15,10 +15,14 @@ import client.ClientDefaults;
 import client.Kategorie;
 import client.Vereinssoftware;
 import client.gui.DefaultSmallPopup;
+import server.dienstleistungsmodul.Dienstleistungsangebotdaten;
+import shared.communication.IDienstleistungsverwaltung;
 
 import javax.swing.*;
 import java.rmi.RemoteException;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -56,37 +60,56 @@ public class DienstleistungsangebotBearbeitenGUI {
 
         frame.setLocationRelativeTo(null);
 
-        //TODO ALLE FELDER MIT DEN AKTUELLEN WERTEN FÜLLEN
-        //titleTextField.setText(/*Vereinssoftware.dienstleistungsverwaltung.getAngeboteInformationen()*/); usw.
-
-        //Dropdown mit Werten füllen
-        //TODO, TODO Kopieren in die anderen Klassen
         try {
-            kategorieComboBox.addItem(Vereinssoftware.dienstleistungsverwaltung.getAngeboteInformationen("G00001")[4]);
+            Object[] info = Vereinssoftware.dienstleistungsverwaltung.getAngeboteInformationen(angebotsID);
+            String abString = ab.format(DateTimeFormatter.ISO_LOCAL_DATE);
+
+            LocalDateTime bisTime = ((LocalDateTime) info[4]);
+            String bisString = bis.format(DateTimeFormatter.ISO_LOCAL_DATE);
+
+            titleTextField.setText(titel);
+            verfuegbarAbTextField.setText(abString);
+            verfuegbarBisTextField.setText(bisString);
+            urlTextField.setText(pathToImage);
+            beschreibungTextArea.setText(beschreibung);
+            kategorieComboBox.addItem(kategorieText);
+
         } catch (RemoteException e) {
             throw new RuntimeException(e);
         }
 
+        //Dropdown mit Werten füllen
         for (String kategorie :
                 ClientDefaults.getKategorien(Kategorie.class)) {
             kategorieComboBox.addItem(kategorie);
         }
 
 
-        for (JTextField textField :
-                allTextFields) {
-            ClientDefaults.enhanceTextField(textField, onceChanged);
-        }
+
 
         angebotBearbeitenButton.addActionListener(e -> {
-            //angebotBearbeitenGUI(); Hier Texte getten
+            DateTimeFormatter formatter = DateTimeFormatter.ISO_LOCAL_DATE;
+            LocalDateTime abTime = LocalDate.parse(verfuegbarAbTextField.getText(), formatter).atTime(12, 0, 0);
+            LocalDateTime bisTime = LocalDate.parse(verfuegbarBisTextField.getText(), formatter).atTime(12, 0, 0);
+
+            angebotBearbeitenGUI(angebotsID, titleTextField.getText(), urlTextField.getText(), beschreibungTextArea.getText(), kategorieComboBox.getSelectedItem().toString(), abTime, bisTime);
             frame.dispose();
         });
 
     }
 
-    private void angebotBearbeitenGUI(String title, String url, String beschreibung, String kategorie, LocalDateTime ab, LocalDateTime bis) {
-        DefaultSmallPopup smallPopup = new DefaultSmallPopup("Angebot erfolgreich bearbeitet", "Ihr Dienstleistungsangebot wurde erfolgreich bearbeitet!");
+    private void angebotBearbeitenGUI(String angebotsID, String title, String url, String beschreibung, String kategorie, LocalDateTime ab, LocalDateTime bis) {
+        try {
+            Vereinssoftware.dienstleistungsverwaltung.angebotAendern(angebotsID, Dienstleistungsangebotdaten.TITEL, title);
+            Vereinssoftware.dienstleistungsverwaltung.angebotAendern(angebotsID, Dienstleistungsangebotdaten.URL, url);
+            Vereinssoftware.dienstleistungsverwaltung.angebotAendern(angebotsID, Dienstleistungsangebotdaten.BESCHREIBUNG, beschreibung);
+            Vereinssoftware.dienstleistungsverwaltung.angebotAendern(angebotsID, Dienstleistungsangebotdaten.KATEGORIE, kategorie);
+            Vereinssoftware.dienstleistungsverwaltung.angebotAendern(angebotsID, Dienstleistungsangebotdaten.AB, ab);
+            Vereinssoftware.dienstleistungsverwaltung.angebotAendern(angebotsID, Dienstleistungsangebotdaten.BIS, bis);
+        } catch (RemoteException e) {
+            throw new RuntimeException(e);
+        }
+
     }
 
 }

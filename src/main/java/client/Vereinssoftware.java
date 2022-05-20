@@ -58,8 +58,8 @@ public class Vereinssoftware {
     }
 
     public static void initializeRMI() throws RemoteException, NotBoundException {
-        //Registry registry = LocateRegistry.getRegistry("meta.informatik.uni-rostock.de", 1234);
-        Registry registry = LocateRegistry.getRegistry("127.0.0.1", 1234);
+        Registry registry = LocateRegistry.getRegistry("meta.informatik.uni-rostock.de", 1234);
+        //Registry registry = LocateRegistry.getRegistry("127.0.0.1", 1234);
 
         geraeteverwaltung = (IGeraeteverwaltung) registry.lookup("Geraeteverwaltung");
         dienstleistungsverwaltung = (IDienstleistungsverwaltung) registry.lookup("Dienstleistungsverwaltung");

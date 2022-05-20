@@ -6,55 +6,35 @@ Dennis Kelm
 
 import client.ClientDefaults;
 import client.Vereinssoftware;
-import client.gui.DefaultSmallPopup;
-import client.gui.dienstleistungen.dienstleistungsangebote.DienstleistungsangebotAnzeigenGUI;
-import client.gui.dienstleistungen.dienstleistungsangebote.DienstleistungsangebotErstellenGUI;
-import com.formdev.flatlaf.FlatLightLaf;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.Map;
 
-//Erstellt das GUI für die Dienstleistungsgesuche, wo Nutzer alle Gesuche einsehen können (Verwaltung ist extra)
-public class DienstleistungsgesucheGUI {
-    private JPanel dienstleistungsgesuchePanel;
+//Erstellt das GUI für die Verwaltung der Dienstleistungsgesuche
+public class DienstleistungsgesuchVerwaltungGUI {
+    private JPanel dienstleistungsgesuchverwaltungPanel;
     private JScrollPane bigTableScrollPanel;
     private JTable dienstleistungsgesucheTable;
-    private JButton dienstleistungsgesuchErstellenButton;
-    private JButton dienstleistungsangebotErstellenButton;
     private JTextField suchenTextField;
 
     private Map<JTextField, Boolean> onceChanged = new HashMap<JTextField, Boolean>();
 
-
-    public DienstleistungsgesucheGUI() {
-        JFrame frame = new JFrame("Alle Dienstleistungsgesuche");
-
+    public DienstleistungsgesuchVerwaltungGUI() {
+        JFrame frame = new JFrame("Dienstleistungsgesuch-Datenbank");
         try {
             this.generateTable();
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
 
-        frame = ClientDefaults.standardizeFrame(frame, this.dienstleistungsgesuchePanel);
-        frame.setLocationRelativeTo(null);
+        frame = ClientDefaults.standardizeFrame(frame, this.dienstleistungsgesuchverwaltungPanel);
 
         ClientDefaults.enhanceTextField(suchenTextField, onceChanged);
-
-        dienstleistungsangebotErstellenButton.addActionListener(e -> {
-            DienstleistungsangebotErstellenGUI dienstleistungsangebotErstellenGUI = new DienstleistungsangebotErstellenGUI();
-        });
-
-        dienstleistungsgesuchErstellenButton.addActionListener(e -> {
-            DienstleistungsgesuchErstellenGUI dienstleistungsgesuchErstellenGUI = new DienstleistungsgesuchErstellenGUI();
-        });
     }
 
     private void generateTable() throws Exception {
-
         DefaultTableModel model = new DefaultTableModel() {
 
             @Override
@@ -68,12 +48,15 @@ public class DienstleistungsgesucheGUI {
         //set TableCellRenderer into a specified JTable column class
 
         String[] columns = new String[]{
+                "ID",
                 "Dienstleistung",
                 "Beschreibung",
                 "Kategorie",
-                "Suchender"
+                "Suchender",
+                "Bild-URL"
         };
         ClientDefaults.createColumnsFromArray(columns, model);
+
 
         Object[][] gesuche = Vereinssoftware.dienstleistungsverwaltung.OmniGesuchDaten();
 
@@ -84,11 +67,14 @@ public class DienstleistungsgesucheGUI {
                 break;
             }
 
+
             model.addRow(new Object[]{
+                    gesuch[3],
                     gesuch[0],
                     gesuch[1],
                     gesuch[2],
-                    Vereinssoftware.rollenverwaltung.getMitgliedsNamen(gesuch[4].toString())
+                    Vereinssoftware.rollenverwaltung.getMitgliedsNamen((String) gesuch[4]),
+                    gesuch[5]
             });
         }
 
@@ -100,16 +86,13 @@ public class DienstleistungsgesucheGUI {
                 int col = dienstleistungsgesucheTable.columnAtPoint(evt.getPoint());
                 if (row >= 0 && col >= 0) {
                     System.out.println(row + ", " + col);
-                    //TODO Implementierung Klick auf Zelle
                     try {
-                        DienstleistungsgesuchAnzeigenGUI dienstleistungsgesuchAnzeigenGUI = new DienstleistungsgesuchAnzeigenGUI(
+                        DienstleistungsgesuchBearbeitenGUI dienstleistungsgesuchBearbeitenGUI = new DienstleistungsgesuchBearbeitenGUI(
                                 gesuche[row][3].toString(), //ID
-                                gesuche[row][5].toString(), //pathToImage
                                 gesuche[row][0].toString(), //Titel
+                                gesuche[row][5].toString(), //pathToImage
                                 gesuche[row][1].toString(), //beschreibung
-                                gesuche[row][2].toString(), //Kategorie
-                                (String) gesuche[row][4] //PersonenID
-
+                                gesuche[row][2].toString() //Kategorie
                         );
                     } catch (Exception e) {
                         throw new RuntimeException(e);
@@ -117,8 +100,5 @@ public class DienstleistungsgesucheGUI {
                 }
             }
         });
-
-        //////////// SUCHE //////////////////////
-        ClientDefaults.addSearchFunctionality(dienstleistungsgesucheTable, suchenTextField);
     }
 }
