@@ -44,7 +44,7 @@ public class DienstleistungsangebotBearbeitenGUI {
 
     private Map<JTextField, Boolean> onceChanged = new HashMap<JTextField, Boolean>();
 
-    public DienstleistungsangebotBearbeitenGUI() {
+    public DienstleistungsangebotBearbeitenGUI(String angebotsID, String titel, String pathToImage, String beschreibung, String kategorieText, LocalDateTime ab, LocalDateTime bis) {
         frame = new JFrame("Dienstleistungsangebot bearbeiten");
         frame = ClientDefaults.standardizeFrame(frame, this.dienstleistungsangebotBearbeitenPanel);
         JTextField[] allTextFields = new JTextField[]{
@@ -81,10 +81,6 @@ public class DienstleistungsangebotBearbeitenGUI {
             frame.dispose();
         });
 
-    }
-
-    public static void main(String[] args) {
-        DienstleistungsangebotBearbeitenGUI thisgui = new DienstleistungsangebotBearbeitenGUI();
     }
 
     private void angebotBearbeitenGUI(String title, String url, String beschreibung, String kategorie, LocalDateTime ab, LocalDateTime bis) {

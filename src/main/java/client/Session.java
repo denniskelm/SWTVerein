@@ -99,4 +99,17 @@ public class Session {
         setPreference("Passwort", passwort);
     }
 
+    public void setID(String id) {
+        setPreference("ID", id);
+    }
+
+    public String getID() throws NoSuchObjectException {
+        String id = getPreference("ID", ERROR);
+
+        if(id.equals(ERROR))
+            throw new NoSuchObjectException("Wert nicht gesetzt");
+
+        return id;
+    }
+
 }

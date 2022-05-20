@@ -12,9 +12,13 @@ Dennis Kelm
 */
 
 import client.ClientDefaults;
+import client.Kategorie;
+import client.Vereinssoftware;
 import client.gui.DefaultSmallPopup;
 
 import javax.swing.*;
+import java.rmi.RemoteException;
+import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
@@ -57,6 +61,17 @@ public class DienstleistungsangebotErstellenGUI {
         }
 
         //TODO Kategorien in die ComboBox packen
+
+        try {
+            kategorieComboBox.addItem(Vereinssoftware.dienstleistungsverwaltung.getAngeboteInformationen("G00001")[4]);
+        } catch (RemoteException e) {
+            throw new RuntimeException(e);
+        }
+
+        for (String kategorie :
+                ClientDefaults.getKategorien(Kategorie.class)) {
+            kategorieComboBox.addItem(kategorie);
+        }
 
         ClientDefaults.enhanceTextArea(beschreibungTextArea, onceChangedAreas);
 
