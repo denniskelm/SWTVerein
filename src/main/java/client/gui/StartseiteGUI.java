@@ -57,6 +57,7 @@ public class StartseiteGUI {
     public StartseiteGUI() {
         JFrame frame = new JFrame("Startseite");
         frame = ClientDefaults.standardizeFrame(frame, startseite);
+        frame.setLocationRelativeTo(null);
 
         dienstleistungsangeboteButton.addActionListener(e -> {
             DienstleistungsangeboteGUI dienstleistungsangeboteGUI = new DienstleistungsangeboteGUI();

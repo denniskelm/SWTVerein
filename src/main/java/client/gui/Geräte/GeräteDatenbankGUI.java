@@ -34,6 +34,7 @@ public class GeräteDatenbankGUI extends JFrame {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setContentPane(Gerätedatenbank);
         this.pack();
+        setLocationRelativeTo(null);
 
         //TODO Geräte Hinzufügen
         geraetHinzufügenButton.addActionListener(new ActionListener() {

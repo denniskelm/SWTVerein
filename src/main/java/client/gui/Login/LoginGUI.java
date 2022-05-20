@@ -30,6 +30,7 @@ public class LoginGUI extends JFrame{
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setContentPane(Login);
         this.pack();
+        setLocationRelativeTo(null);
 
         // Login Button (error)
         loginButton.addActionListener(new ActionListener() {

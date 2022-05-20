@@ -46,6 +46,7 @@ public class ProfilseiteEigene {
         JFrame frame = new JFrame("Profilseite");
         generateTable();
         frame = ClientDefaults.standardizeFrame(frame, eigeneprofilseitePanel);
+        frame.setLocationRelativeTo(null);
     }
 
     private void generateTable() {

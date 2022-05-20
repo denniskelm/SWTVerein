@@ -22,6 +22,7 @@ public class RollenverwaltungMitliedGUI extends JFrame {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setContentPane(RollenVerwaltungMitglied);
         this.pack();
+        setLocationRelativeTo(null);
 
         // geht auf Mitglied
 

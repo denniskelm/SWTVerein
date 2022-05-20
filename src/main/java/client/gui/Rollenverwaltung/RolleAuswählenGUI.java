@@ -21,6 +21,7 @@ public class RolleAuswählenGUI extends JFrame{
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setContentPane(RolleAuswählen);
         this.pack();
+        setLocationRelativeTo(null);
 
 
         // TODO ID anzeigen

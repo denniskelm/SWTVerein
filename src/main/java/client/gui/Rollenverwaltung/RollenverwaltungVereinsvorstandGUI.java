@@ -23,6 +23,7 @@ public class RollenverwaltungVereinsvorstandGUI extends  JFrame{
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setContentPane(RollenVerwaltungVereinsVorstand);
         this.pack();
+        setLocationRelativeTo(null);
 
 
 

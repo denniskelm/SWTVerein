@@ -41,6 +41,7 @@ public class GeraetAnzeigenGUI {
         JFrame frame = new JFrame("Gerätedetails");
         ClientDefaults.insertImageToPanel(imageLabel, pathToImage); //URL zum Bild, z.B. "https://bilder.gartenpaul.de/item/images/456/full/456-R1-M1.jpg"
         frame = ClientDefaults.standardizeFrame(frame, geraetAnzeigenGUI);
+        frame.setLocationRelativeTo(null);
 
         //Anpassen der Texte
         headlineLabel.setText("TODO TITEL"); //sowas wie Vereinssoftware.dienstleistungsverwaltung.getGeraetInformation(String geraeteID)[0]

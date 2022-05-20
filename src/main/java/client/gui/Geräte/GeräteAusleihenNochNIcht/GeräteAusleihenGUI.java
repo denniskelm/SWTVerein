@@ -19,6 +19,7 @@ public class GeräteAusleihenGUI extends JFrame{
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setContentPane(GerätAusleihen);
         this.pack();
+        setLocationRelativeTo(null);
         picture.add(new JLabel(new ImageIcon("Path/To/Your/Image.png")));
 
 

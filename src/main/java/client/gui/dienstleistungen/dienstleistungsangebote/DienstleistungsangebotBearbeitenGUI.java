@@ -54,6 +54,8 @@ public class DienstleistungsangebotBearbeitenGUI {
                 urlTextField
         };
 
+        frame.setLocationRelativeTo(null);
+
         //TODO ALLE FELDER MIT DEN AKTUELLEN WERTEN FÜLLEN
         //titleTextField.setText(/*Vereinssoftware.dienstleistungsverwaltung.getAngeboteInformationen()*/); usw.
 

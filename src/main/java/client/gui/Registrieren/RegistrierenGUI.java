@@ -36,6 +36,7 @@ public class RegistrierenGUI extends JFrame{
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setContentPane(Registrieren);
         this.pack();
+        setLocationRelativeTo(null);
 
 
         //reg (succ)

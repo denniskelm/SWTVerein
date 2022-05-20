@@ -32,6 +32,7 @@ public class VerleihhistorieGUI extends JFrame{
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setContentPane(Verleihhsitorie);
         this.pack();
+        setLocationRelativeTo(null);
     }
 
 

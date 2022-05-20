@@ -34,6 +34,8 @@ public class GeräteListeGUI extends JFrame{
         this.setContentPane(GeräteListe);
         this.pack();
 
+        setLocationRelativeTo(null);
+
         //TODO Geraet hinzufuegen
         geraetHinzufügenButton.addActionListener(new ActionListener() {
             @Override

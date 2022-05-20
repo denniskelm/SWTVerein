@@ -39,6 +39,7 @@ public class DienstleistungsangebotsVerwaltungGUI {
         }
         //DienstleistungsangeboteGUI thisgui = new DienstleistungsangeboteGUI();
         frame = ClientDefaults.standardizeFrame(frame, this.dienstleistungsangebotsverwaltungPanel);
+        frame.setLocationRelativeTo(null);
 
         ClientDefaults.enhanceTextField(suchenTextField, onceChanged);
     }

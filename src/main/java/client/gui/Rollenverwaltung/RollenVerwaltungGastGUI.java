@@ -26,6 +26,7 @@ public class RollenVerwaltungGastGUI extends JFrame{
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setContentPane(RollenverwaltungGast);
         this.pack();
+        setLocationRelativeTo(null);
 
 
         // geht auf Mitglied

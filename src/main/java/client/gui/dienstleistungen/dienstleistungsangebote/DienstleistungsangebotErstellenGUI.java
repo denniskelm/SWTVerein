@@ -55,6 +55,7 @@ public class DienstleistungsangebotErstellenGUI {
                 urlTextField
         };
 
+        frame.setLocationRelativeTo(null);
 
         for (JTextField textField :
                 allTextFields) {

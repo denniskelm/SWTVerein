@@ -48,6 +48,7 @@ public class DienstleistungsangeboteGUI {
         //}
 
         frame = ClientDefaults.standardizeFrame(frame, this.dienstleistungsangebotePanel);
+        frame.setLocationRelativeTo(null);
 
         ClientDefaults.enhanceTextField(suchenTextField, onceChanged);
 

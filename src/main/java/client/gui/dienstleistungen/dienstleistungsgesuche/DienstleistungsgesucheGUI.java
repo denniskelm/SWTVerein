@@ -37,6 +37,7 @@ public class DienstleistungsgesucheGUI {
         this.generateTable();
         //DienstleistungsangeboteGUI thisgui = new DienstleistungsangeboteGUI();
         frame = ClientDefaults.standardizeFrame(frame, this.dienstleistungsgesuchePanel);
+        frame.setLocationRelativeTo(null);
 
         ClientDefaults.enhanceTextField(suchenTextField, onceChanged);
 
