@@ -33,8 +33,18 @@ public class Session {
     }
 
     //Liest den Wert vom Schlüssel key aus; wenn kein Wert eingetragen, dann wird def zurückgegeben
-    public String getPreference(String key, String def) {
+    private String getPreference(String key, String def) {
         return prefs.get(key, def);
+    }
+
+    //Liest den Wert vom Schlüssel key aus; wenn kein Wert eingetragen, dann wird Exception geworfen
+    public String getPreference(String key) throws NoSuchObjectException {
+        String preference = getPreference(key, ERROR);
+
+        if(preference.equals(ERROR))
+            throw new NoSuchObjectException("Wert nicht gesetzt!");
+
+        return preference;
     }
 
     //Liest den Nutzernamen des Users aus; Wenn kein Username gesetzt, wird Exception geworfen
@@ -42,7 +52,7 @@ public class Session {
         String username = getPreference("Username", ERROR);
 
         if(username.equals(ERROR))
-            throw new NoSuchObjectException("");
+            throw new NoSuchObjectException("Wert nicht gesetzt!");
 
         return username;
     }
@@ -52,7 +62,7 @@ public class Session {
         String rolleStr = getPreference("Rolle", ERROR);
 
         if(rolleStr.equals(ERROR))
-            throw new NoSuchObjectException("");
+            throw new NoSuchObjectException("Wert nicht gesetzt!");
 
         Rolle rolle = Rolle.valueOf(rolleStr);
 
@@ -64,7 +74,7 @@ public class Session {
         String passwort = getPreference("Passwort", ERROR);
 
         if(passwort.equals(ERROR))
-            throw new NoSuchObjectException("");
+            throw new NoSuchObjectException("Wert nicht gesetzt!");
 
         return passwort;
     }
