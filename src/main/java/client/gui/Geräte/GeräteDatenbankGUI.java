@@ -21,7 +21,7 @@ public class GeräteDatenbankGUI extends JFrame {
     private JTextField sucheTextField;
     private JTable Datenbank;
     private JButton geraetHinzufügenButton;
-    private String[][] data;
+    private DefaultTableModel model;
 
     //TODO Suche
     // in geräteDB einfügen
@@ -61,16 +61,16 @@ public class GeräteDatenbankGUI extends JFrame {
         String iD = null;
         if (row >= 0 && col >= 0) {
 
-            if (row != 8)
+            if (col != 8)
                 return; // nicht auf Verwalten gedrückt
 
             System.out.println(row + ", " + col);
             //TODO Implementierung Klick auf Zelle
-            iD = data[row][0].toString(); //GeraeteID
-            String gname = data[row][1].toString(); //Gerät
-            String spender = data[row][2].toString(); //Spender
-            String ort = data[row][3].toString(); //Ausgabeort
-            String beschreibung = data[row][4].toString(); //Gerätebeschreibung
+            iD = model.getValueAt(row, 0).toString(); //GeraeteID
+            String gname = model.getValueAt(row, 1).toString(); //Gerät
+            String spender = model.getValueAt(row, 2).toString(); //Spender
+            String ort = model.getValueAt(row, 3).toString(); //Ausgabeort
+            String beschreibung = model.getValueAt(row, 4).toString(); //Gerätebeschreibung
         }
 
         GeräteVerwaltenGUI db = new GeräteVerwaltenGUI("Geraete Verwaltung", iD);
@@ -83,7 +83,7 @@ public class GeräteDatenbankGUI extends JFrame {
         try {
             Object[][] geraete = Vereinssoftware.geraeteverwaltung.OmniGeraeteDaten();
 
-            DefaultTableModel model = new DefaultTableModel() {
+            model = new DefaultTableModel() {
 
                 @Override
                 public boolean isCellEditable(int row, int column) {
@@ -115,7 +115,7 @@ public class GeräteDatenbankGUI extends JFrame {
 
             Datenbank.setModel(model);
 
-            JTable table = new JTable(data, columns);
+            JTable table = new JTable(model);
 
         } catch (RemoteException e) {
             System.out.println("Fehler");

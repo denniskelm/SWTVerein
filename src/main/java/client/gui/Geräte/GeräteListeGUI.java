@@ -24,7 +24,7 @@ public class GeräteListeGUI extends JFrame{
     private JTextField kategorieTextField;
     private JTextField sucheTextField;
     private JButton geraetHinzufügenButton;
-    String[][] data;
+    private DefaultTableModel model;
 
     public GeräteListeGUI(String title) {
         super(title);
@@ -60,18 +60,23 @@ public class GeräteListeGUI extends JFrame{
         String iD = null;
         if (row >= 0 && col >= 0) {
             System.out.println(row + ", " + col);
-            //TODO Implementierung Klick auf Zelle
-            iD = data[row][0].toString(); //GeraeteID
-            String gname = data[row][1].toString(); //Gerät
-            String spender = data[row][2].toString(); //Spender
-            String ort = data[row][3].toString(); //Ausgabeort
-            String beschreibung = data[row][4].toString(); //Gerätebeschreibung
+
+            if (col != 8)
+                return;
+
+            iD = model.getValueAt(row, 0).toString(); //GeraeteID
+            System.out.println("id: " + iD);
+            String gname = model.getValueAt(row, 1).toString(); //Gerät
+            String spender = model.getValueAt(row, 2).toString(); //Spender
+            String ort = model.getValueAt(row, 3).toString(); //Ausgabeort
+            String beschreibung = model.getValueAt(row, 4).toString(); //Gerätebeschreibung
         }
 
         try {
-            if (iD != null) return; // TODO Exception
+            if (iD == null) return; // TODO Exception
 
             GeraetReservierenGUI reservierenGUI = new GeraetReservierenGUI("Geraet Reservieren", iD, Vereinssoftware.session.getID());
+            System.out.println("t");
             reservierenGUI.setVisible(true);
             GeräteListeGUI.this.setVisible(false);
         } catch (NoSuchObjectException e) {
@@ -84,7 +89,7 @@ public class GeräteListeGUI extends JFrame{
         try {
             Object[][] geraete = Vereinssoftware.geraeteverwaltung.OmniGeraeteDaten();
 
-            DefaultTableModel model = new DefaultTableModel() {
+            model = new DefaultTableModel() {
 
                 @Override
                 public boolean isCellEditable(int row, int column) {
@@ -116,7 +121,7 @@ public class GeräteListeGUI extends JFrame{
 
             Geraeteliste.setModel(model);
 
-            JTable table = new JTable(data, columns);
+            JTable table = new JTable(model);
 
         } catch (RemoteException e) {
             System.out.println("Fehler");
