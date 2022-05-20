@@ -20,7 +20,7 @@ public class VerleihhistorieGUI extends JFrame{
     // Gerätnamen anzeigen
     // Stuff hinzufügen
 
-    public VerleihhistorieGUI(String title, String geraeteID) {
+    public VerleihhistorieGUI(String title, String geraeteID) throws RemoteException {
         super(title);
         this.geraeteID = geraeteID;
 
@@ -63,7 +63,12 @@ public class VerleihhistorieGUI extends JFrame{
 
 
     public static void main(String[] args) {
-        JFrame frame = new VerleihhistorieGUI("Verleihhistorie", "0");
+        JFrame frame = null;
+        try {
+            frame = new VerleihhistorieGUI("Verleihhistorie", "0");
+        } catch (RemoteException e) {
+            throw new RuntimeException(e);
+        }
         frame.setVisible(true);
 
     }
