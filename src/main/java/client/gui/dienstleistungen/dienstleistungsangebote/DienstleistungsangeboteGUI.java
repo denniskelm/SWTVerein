@@ -20,6 +20,7 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.rmi.RemoteException;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -97,6 +98,7 @@ public class DienstleistungsangeboteGUI {
 
         for (Object[] angebot :
                 angebote) {
+
             LocalDateTime abTime = ((LocalDateTime) angebot[3]);
             String ab = abTime.getDayOfMonth() + "." + abTime.getMonthValue() + "." + abTime.getYear();
 
