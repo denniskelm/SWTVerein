@@ -12,10 +12,15 @@ TODO Dennis Kelm
 */
 
 import client.DefaultsClient;
+import client.Session;
+import client.Vereinssoftware;
 import client.gui.DefaultSmallPopup;
+import client.gui.dienstleistungen.dienstleistungsangebote.DienstleistungsangebotAnzeigenGUI;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import java.rmi.NoSuchObjectException;
+import java.util.Objects;
 
 //TODO Was macht diese Klasse?
 public class ProfilseiteEigene {
@@ -32,8 +37,16 @@ public class ProfilseiteEigene {
     private JTable profilseiteEintraegeTable;
     private JScrollPane profilseiteEintraegeScrollPanel;
 
-    public ProfilseiteEigene() {
-        JFrame frame = new JFrame("Ihre Profilseite");
+    private boolean ownProfilseite = false;
+
+    public ProfilseiteEigene(String personenID) {
+        try {
+            this.ownProfilseite = Objects.equals(personenID, Vereinssoftware.session.getUsername());
+        } catch (NoSuchObjectException e) {
+            throw new RuntimeException(e);
+        }
+
+        JFrame frame = new JFrame("Profilseite");
         generateTable();
         frame = DefaultsClient.standardizeFrame(frame, eigeneprofilseitePanel);
     }
@@ -60,10 +73,12 @@ public class ProfilseiteEigene {
         };
         DefaultsClient.createColumnsFromArray(columns, model);
 
+        //TODO Alle Geräte, Dienstleistungsgesuche und Dienstleistungsangebote abfragen und jeweils Längen feststellen / in ein Array zusammenfassen & Typ abfragen
+
         model.addRow(new Object[]{
                 "Dienstleistungsgesuch",
                 "Gartenzaun reparieren",
-                "Ich brauche unbedingt Hilfe bei meinem Gartenzaun, und bin leider nicht ausreichend qualifiziert den Zaun selber zu streichen",
+                "Ich brauche unbedingt Hilfe bei meinem Gartenzaun, und bin leider nicht ausreichend qualifiziert, den Zaun selber zu streichen",
                 "07.05.2022",
                 "14.05.2022"
         });
@@ -75,8 +90,8 @@ public class ProfilseiteEigene {
                 int col = profilseiteEintraegeTable.columnAtPoint(evt.getPoint());
                 if (row >= 0 && col >= 0) {
                     System.out.println(row + ", " + col);
-                    //TODO Implementierung Klick auf Zelle
-                    DefaultSmallPopup smallPopup = new DefaultSmallPopup("Test test", "TODO");
+                    //TODO Implementierung Klick auf Zelle ++ Erkennen ob Geraet oder nicht
+                    //DienstleistungsangebotAnzeigenGUI dienstleistungsangebotAnzeigenGUI = new DienstleistungsangebotAnzeigenGUI(/* getAngebotsID usw */)
                 }
             }
         });

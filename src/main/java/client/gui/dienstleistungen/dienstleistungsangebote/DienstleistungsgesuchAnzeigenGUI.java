@@ -13,6 +13,7 @@ Dennis Kelm
 
 import client.DefaultsClient;
 import client.Vereinssoftware;
+import client.gui.DefaultTextWithButton;
 
 import javax.swing.*;
 import java.rmi.RemoteException;
@@ -55,11 +56,20 @@ public class DienstleistungsgesuchAnzeigenGUI {
         descriptionText.setText("<html><p style=\"width: 600px;\">" + beschreibung + "</p>");
 
         jetztReservierenButton.addActionListener(e -> {
-            try { //TODO Ist das Gesuch annehmen?
-                Vereinssoftware.dienstleistungsverwaltung.gesuchAnnehmen(gesuch_ID, suchenderID, "P00002" /* TODO SESSION */, 10 /* TODO STUNDEN */);
-            } catch (Exception ex) {
-                throw new RuntimeException(ex);
-            }
+            //TODO Ist das Gesuch annehmen?
+            DefaultTextWithButton defaultTextWithButton = new DefaultTextWithButton(
+                    "Dienstleistungsgesuch annehmen?",
+                    "Möchtest du den Gesuch mit dem Titel " + titel + " wirklich annehmen?",
+                    "Jetzt annehmen!");
+            //TODO Kommen hier die Stunden rein? Vielleicht TextField über Button dieses Fenster
+            defaultTextWithButton.getActionButton().addActionListener(e1 -> {
+                try {
+                    Vereinssoftware.dienstleistungsverwaltung.gesuchAnnehmen(gesuch_ID, suchenderID, "P00002" /* TODO SESSION */, 10 /* TODO STUNDEN */);
+                } catch (Exception ex) {
+                    throw new RuntimeException(ex);
+                }
+            });
+
         });
     }
 

@@ -57,6 +57,7 @@ public class StartseiteGUI {
     private JButton dienstleistungsgesuchsverwaltungButton;
     private JButton dienstleistungsangebotsverwaltungButton;
     private JButton geraeteverwaltungButton;
+    private JButton anfragenButton;
 
 
     //Fügt Funktionalität der Startseite hinzu
@@ -64,6 +65,8 @@ public class StartseiteGUI {
         JFrame frame = new JFrame("Startseite");
         frame = DefaultsClient.standardizeFrame(frame, startseite);
 
+        int anfragen = 0; //TODO Anfragenanzahl
+        anfragenButton.setText(anfragen + " Anfragen");
 
         dienstleistungsangeboteButton.addActionListener(e -> {
             DienstleistungsangeboteGUI dienstleistungsangeboteGUI = new DienstleistungsangeboteGUI();
@@ -79,6 +82,10 @@ public class StartseiteGUI {
             DefaultTextWithButton defaultTextWithButton = new DefaultTextWithButton("String titel", "String popupText", "String buttonText");
             defaultTextWithButton.getActionButton().addActionListener(ev -> System.out.println("Funktioniert"));
 
+        });
+
+        anfragenButton.addActionListener(e -> {
+            //TODO Anfrageliste
         });
 
     }

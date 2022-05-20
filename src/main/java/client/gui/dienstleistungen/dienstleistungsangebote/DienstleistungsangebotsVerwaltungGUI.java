@@ -76,6 +76,7 @@ public class DienstleistungsangebotsVerwaltungGUI {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 int row = dienstleistungsangeboteTable.rowAtPoint(evt.getPoint());
                 int col = dienstleistungsangeboteTable.columnAtPoint(evt.getPoint());
+                //TODO row ist ID in der Tabelle
                 if (row >= 0 && col >= 0) {
                     System.out.println(row + ", " + col);
                     //TODO Implementierung Klick auf Zelle

@@ -12,11 +12,15 @@ Dennis Kelm
 */
 
 import client.DefaultsClient;
+import client.KATEGORIE;
+import client.Vereinssoftware;
 import client.gui.DefaultSmallPopup;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.WindowEvent;
+import java.rmi.RemoteException;
+import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -40,6 +44,7 @@ public class DienstleistungsangebotBearbeitenGUI {
 
     private JFrame frame;
 
+    private Map<JTextField, Boolean> onceChanged = new HashMap<JTextField, Boolean>();
 
     public DienstleistungsangebotBearbeitenGUI() {
         frame = new JFrame("Dienstleistungsangebot bearbeiten");
@@ -52,9 +57,29 @@ public class DienstleistungsangebotBearbeitenGUI {
         };
 
         //TODO ALLE FELDER MIT DEN AKTUELLEN WERTEN FÜLLEN
+        //titleTextField.setText(/*Vereinssoftware.dienstleistungsverwaltung.getAngeboteInformationen()*/); usw.
+
+        //Dropdown mit Werten füllen
+        //TODO, TODO Kopieren in die anderen Klassen
+        try {
+            kategorieComboBox.addItem(Vereinssoftware.dienstleistungsverwaltung.getAngeboteInformationen("G00001")[4]);
+        } catch (RemoteException e) {
+            throw new RuntimeException(e);
+        }
+
+        for (String kategorie :
+                DefaultsClient.getKategorien(KATEGORIE.class)) {
+            kategorieComboBox.addItem(kategorie);
+        }
+
+
+        for (JTextField textField :
+                allTextFields) {
+            DefaultsClient.enhanceTextField(textField, onceChanged);
+        }
 
         angebotBearbeitenButton.addActionListener(e -> {
-            angebotBearbeitenGUI();
+            //angebotBearbeitenGUI(); Hier Texte getten
             frame.dispose();
         });
 
@@ -64,7 +89,7 @@ public class DienstleistungsangebotBearbeitenGUI {
         DienstleistungsangebotBearbeitenGUI thisgui = new DienstleistungsangebotBearbeitenGUI();
     }
 
-    private void angebotBearbeitenGUI() {
+    private void angebotBearbeitenGUI(String title, String url, String beschreibung, String kategorie, LocalDateTime ab, LocalDateTime bis) {
         DefaultSmallPopup smallPopup = new DefaultSmallPopup("Angebot erfolgreich bearbeitet", "Ihr Dienstleistungsangebot wurde erfolgreich bearbeitet!");
     }
 
