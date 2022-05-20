@@ -12,15 +12,16 @@ Dennis Kelm
 */
 
 import client.DefaultsClient;
-import client.Vereinssoftware;
 import client.gui.DefaultSmallPopup;
 import client.gui.dienstleistungen.dienstleistungsgesuche.DienstleistungsgesuchErstellenGUI;
-import com.formdev.flatlaf.FlatLightLaf;
 import shared.communication.IDienstleistungsverwaltung;
 
 import javax.swing.*;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;
-import java.rmi.RemoteException;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -105,12 +106,10 @@ public class DienstleistungsangeboteGUI {
                 }
             }
         });
+
+        //////////// SUCHE //////////////////////
+        DefaultsClient.addSearchFunctionality(dienstleistungsangeboteTable, suchenTextField);
     }
 
 
-    public static void main(String[] args) {
-        //TODO Am Ende entfernen
-        FlatLightLaf.setup();
-
-    }
 }
