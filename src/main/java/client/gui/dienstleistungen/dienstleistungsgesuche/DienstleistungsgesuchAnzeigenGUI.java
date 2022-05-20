@@ -1,4 +1,4 @@
-package client.gui.dienstleistungen.dienstleistungsangebote;
+package client.gui.dienstleistungen.dienstleistungsgesuche;
 /*
 @author
 TODO Raphael Kleebaum

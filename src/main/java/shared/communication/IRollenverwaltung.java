@@ -37,4 +37,6 @@ public interface IRollenverwaltung extends Remote {
     Object getMahnungen() throws RemoteException;   //ArrayList<Mahnung>
     int getIdCounter() throws RemoteException;
 
+    public String getMitgliedsNamen(String MitgliedsID) throws Exception;
+
 }
