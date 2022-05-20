@@ -42,10 +42,6 @@ public class Vereinssoftware {
         //Initialisiert die verschiedenen UI-Einstellungen (Font etc.)
         initializeUISettings();
 
-        //Starte die Startseite
-        StartseiteGUI startseiteGUI = new StartseiteGUI();
-        System.out.println("Startseite startet");
-
         session = new Session();
 
         //RMI ermöglichen
@@ -54,6 +50,10 @@ public class Vereinssoftware {
         } catch (RemoteException | NotBoundException e) {
             throw new RuntimeException(e);
         }
+
+        //Starte die Startseite
+        StartseiteGUI startseiteGUI = new StartseiteGUI();
+        System.out.println("Startseite startet");
 
     }
 
