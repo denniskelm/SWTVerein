@@ -62,7 +62,7 @@ public class GeräteListeGUI extends JFrame{
 
 
     }
-    //Maximale Anzahl an Reservierungen erreicht
+
     private void table1MouseClicked(java.awt.event.MouseEvent evt) {
 
         int row = Geraeteliste.rowAtPoint(evt.getPoint());
@@ -91,11 +91,11 @@ public class GeräteListeGUI extends JFrame{
 
         data = new String[gl.size()][5];
 
-        for (int i = 0; i < Vereinssoftware.geraeteverwaltung.getGeraete().size(); i++) {
-            data[i][0] = ((Geraet) (Vereinssoftware.geraeteverwaltung.getGeraete().get(i))).getGeraetName();
-            data[i][1] = ((Geraet) (Vereinssoftware.geraeteverwaltung.getGeraete().get(i))).getSpenderName();
-            data[i][2] = ((Geraet) (Vereinssoftware.geraeteverwaltung.getGeraete().get(i))).getGeraetAbholort();
-            data[i][3] = ((Geraet) (Vereinssoftware.geraeteverwaltung.getGeraete().get(i))).getGeraetBeschreibung();
+        for (int i = 0; i < gl.size(); i++) {
+            data[i][0] = gl.get(i).getGeraetName();
+            data[i][1] = gl.get(i).getSpenderName();
+            data[i][2] = gl.get(i).getGeraetAbholort();
+            data[i][3] = gl.get(i).getGeraetBeschreibung();
             data[i][4] = "Jetzt reservieren";
         }
 
