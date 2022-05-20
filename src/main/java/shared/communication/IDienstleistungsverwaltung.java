@@ -12,9 +12,7 @@ TODO Bastian Reichert
 TODO Dennis Kelm
 */
 
-import server.dienstleistungsmodul.Dienstleistungsangebot;
 import server.dienstleistungsmodul.Dienstleistungsangebotdaten;
-import server.dienstleistungsmodul.Dienstleistungsgesuch;
 import server.dienstleistungsmodul.Dienstleistungsgesuchdaten;
 
 import java.rmi.Remote;

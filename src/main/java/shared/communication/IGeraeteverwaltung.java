@@ -1,6 +1,5 @@
 package shared.communication;
 
-import server.geraetemodul.Geraet;
 import server.geraetemodul.Geraetedaten;
 
 import java.rmi.Remote;
