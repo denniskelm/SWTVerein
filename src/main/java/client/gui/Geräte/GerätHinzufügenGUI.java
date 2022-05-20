@@ -1,8 +1,11 @@
 package client.gui.Geräte;
 
+import client.Vereinssoftware;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.rmi.RemoteException;
 
 public class GerätHinzufügenGUI extends JFrame{
     private JPanel Geräthinzufügen;
@@ -27,7 +30,16 @@ public class GerätHinzufügenGUI extends JFrame{
         geraetErstellenButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                try {
+                    Vereinssoftware.geraeteverwaltung.geraetHinzufuegen(gerätenameTextField.getText(),
+                                                                        spenderTextField.getText(),
+                                                                        Integer.parseInt(leihfristTextField.getText()),
+                                                                        kategorieTextField.getText(),
+                                                                        gerätebeschreibungTextField.getText(),
+                                                                        abholortTextField.getText());
+                } catch (RemoteException ex) {
+                    throw new RuntimeException(ex);
+                }
                 System.exit(0);
             }
         });
