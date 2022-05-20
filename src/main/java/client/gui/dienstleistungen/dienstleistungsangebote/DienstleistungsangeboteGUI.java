@@ -37,7 +37,11 @@ public class DienstleistungsangeboteGUI {
     public DienstleistungsangeboteGUI() {
         JFrame frame = new JFrame("Alle Dienstleistungsangebote");
         //try {
-        this.generateTable();
+        try {
+            this.generateTable();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
         //} catch (RemoteException e) {
         //    throw new RuntimeException(e);
         //}
@@ -55,7 +59,7 @@ public class DienstleistungsangeboteGUI {
         });
     }
 
-    private void generateTable() /*throws RemoteException */ {
+    private void generateTable() throws Exception /*throws RemoteException */ {
 
         IDienstleistungsverwaltung dienstleistungsverwaltung = null;
 
@@ -90,11 +94,11 @@ public class DienstleistungsangeboteGUI {
                 "Stefan"
         });
 
-        Object[][] ar = (Object[][]) Vereinssoftware.dienstleistungsverwaltung.OmniAngebotDaten();
+        Object[][] angebote = (Object[][]) Vereinssoftware.dienstleistungsverwaltung.OmniAngebotDaten();
 
 
         for (Object[] angebot :
-                ar) {
+                angebote) {
             LocalDateTime abTime = ((LocalDateTime) angebot[3]);
             String ab = abTime.getDayOfMonth() + "." + abTime.getMonthValue() + "." + abTime.getYear();
 
@@ -107,7 +111,7 @@ public class DienstleistungsangeboteGUI {
                     angebot[2],
                     ab,
                     bis,
-                    Vereinssoftware.rollenverwaltung.fetch((String) angebot[5])
+                    Vereinssoftware.rollenverwaltung.getMitgliedsNamen((String) angebot[5])
             });
         }
 
@@ -120,7 +124,17 @@ public class DienstleistungsangeboteGUI {
                 if (row >= 0 && col >= 0) {
                     System.out.println(row + ", " + col);
                     //TODO Implementierung Klick auf Zelle
-                    //DienstleistungsangebotAnzeigenGUI dienstleistungsangebotAnzeigenGUI = new DienstleistungsangebotAnzeigenGUI(...);
+                    DienstleistungsangebotAnzeigenGUI dienstleistungsangebotAnzeigenGUI = new DienstleistungsangebotAnzeigenGUI(
+                            , //ID
+                            angebote[row][1], //Titel
+                            angebote[row][1], //pathToImage
+                            angebote[row][1], //beschreibung
+                            angebote[row][1], //Kategorie
+                            angebote[row][1], //ab
+                            angebote[row][1], //bis
+                            angebote[row][1] //PersonenID
+
+                    );
                 }
             }
         });
