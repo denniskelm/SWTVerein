@@ -55,6 +55,16 @@ public class StartseiteGUI {
 
     //Fügt Funktionalität der Startseite hinzu
     public StartseiteGUI() {
+
+        // Set System L&F
+        try {
+            UIManager.setLookAndFeel(
+                    UIManager.getSystemLookAndFeelClassName());
+        }
+        catch (Exception e) {
+         e.printStackTrace();
+        }
+
         JFrame frame = new JFrame("Startseite");
         frame = ClientDefaults.standardizeFrame(frame, startseite);
         frame.setLocationRelativeTo(null);
