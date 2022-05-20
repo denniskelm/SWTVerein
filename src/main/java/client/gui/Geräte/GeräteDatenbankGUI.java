@@ -125,7 +125,7 @@ public class GeräteDatenbankGUI extends JFrame {
                 data[i][7] = "Verwalten";
             }
 
-            String[] columns = {"GeräteID", "Gerät", "Beschreibung", "Kategorie", "Spender", "Leihfrist", "Status", "Verwalten"};
+            String[] columns = {"GeräteID", "Gerät", "Beschreibung", "Kategorie", "Spender", "Leihfrist", "Status", "Verwalten"}; */
 
             Datenbank.setModel(model);
 

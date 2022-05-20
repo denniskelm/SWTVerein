@@ -24,6 +24,7 @@ public class RegistrierenGUI extends JFrame{
     // funktionalität hinzufügen
     // optimieren
     // Hinweise möglicherweise anpassen
+    // checkbox für Spender
 
 
 
