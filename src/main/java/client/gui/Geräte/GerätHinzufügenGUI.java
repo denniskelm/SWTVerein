@@ -32,12 +32,16 @@ public class GerätHinzufügenGUI extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    Vereinssoftware.geraeteverwaltung.geraetHinzufuegen(gerätenameTextField.getText(),
-                                                                        spenderTextField.getText(),
-                                                                        Integer.parseInt(leihfristTextField.getText()),
-                                                                        kategorieTextField.getText(),
-                                                                        gerätebeschreibungTextField.getText(),
-                                                                        abholortTextField.getText());
+                    Vereinssoftware.geraeteverwaltung.geraetHinzufuegen(
+                            gerätenameTextField.getText(),
+                            spenderTextField.getText(),
+                            Integer.parseInt(leihfristTextField.getText()),
+                            kategorieTextField.getText(),
+                            gerätebeschreibungTextField.getText(),
+                            abholortTextField.getText());
+
+                    JOptionPane.showMessageDialog(GerätHinzufügenGUI.super.rootPane, "Gerät erfolgreich hinzuge", "",JOptionPane.PLAIN_MESSAGE);
+
                 } catch (RemoteException ex) {
                     DefaultSmallPopup popup = new DefaultSmallPopup("Hinweis", ex.getMessage());
                 }

@@ -89,13 +89,11 @@ public class GeräteDatenbankGUI extends JFrame {
 
             String[] columns = {"GeräteID", "Gerät", "Beschreibung", "Kategorie", "Spender", "Leihfrist", "Status", "Verwalten"};
 
-        Datenbank.setModel(new DefaultTableModel(
+            Datenbank.setModel(new DefaultTableModel(
                 data, columns)
+            );
 
-
-        );
-
-        JTable table = new JTable(data, columns);
+            JTable table = new JTable(data, columns);
 
         } catch (RemoteException e) {
             throw new RuntimeException(e);

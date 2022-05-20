@@ -71,6 +71,11 @@ public class StartseiteGUI {
             ghg.setVisible(true);
         });
 
+        geraeteverwaltungButton.addActionListener(e -> {
+            GeräteDatenbankGUI ghg = new GeräteDatenbankGUI("Gerätedatenbank");
+            ghg.setVisible(true);
+        });
+
         anfragenButton.addActionListener(e -> {
             //TODO Anfrageliste
         });
