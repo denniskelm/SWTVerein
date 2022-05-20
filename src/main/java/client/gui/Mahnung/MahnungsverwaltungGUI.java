@@ -28,7 +28,6 @@ public class MahnungsverwaltungGUI extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                System.exit(0);
             }
         });
 

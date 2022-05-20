@@ -29,7 +29,6 @@ public class AusgeliehenMitarbeiterGUI extends  JFrame{
                 } catch (Exception ex) {
                     throw new RuntimeException(ex);
                 }
-                System.exit(0);
             }
         });
 
@@ -37,7 +36,6 @@ public class AusgeliehenMitarbeiterGUI extends  JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                System.exit(0);
             }
         });
     }

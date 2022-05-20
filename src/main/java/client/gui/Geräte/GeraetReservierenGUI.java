@@ -54,7 +54,6 @@ public class GeraetReservierenGUI extends JFrame{
 
 
                 }
-                System.exit(0);
             }
         });
         //Exit(nein)
@@ -62,7 +61,6 @@ public class GeraetReservierenGUI extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                System.exit(0);
             }
         });
 /*

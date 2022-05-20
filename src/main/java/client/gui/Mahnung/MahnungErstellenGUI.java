@@ -24,7 +24,6 @@ public class MahnungErstellenGUI extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                System.exit(0);
             }
         });
 
@@ -32,7 +31,6 @@ public class MahnungErstellenGUI extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                System.exit(0);
             }
         });
     }

@@ -51,7 +51,6 @@ public class GeräteVerwaltenGUI extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                System.exit(0);
             }
         });
 
@@ -63,7 +62,6 @@ public class GeräteVerwaltenGUI extends JFrame{
                 } catch (RemoteException ex) {
                     throw new RuntimeException(ex);
                 }
-                System.exit(0);
             }
         });
 
@@ -75,7 +73,6 @@ public class GeräteVerwaltenGUI extends JFrame{
                 } catch (RemoteException ex) {
                     throw new RuntimeException(ex);
                 }
-                System.exit(0);
             }
         });
 
@@ -87,7 +84,6 @@ public class GeräteVerwaltenGUI extends JFrame{
                 } catch (RemoteException ex) {
                     throw new RuntimeException(ex);
                 }
-                System.exit(0);
             }
         });
 
@@ -99,7 +95,6 @@ public class GeräteVerwaltenGUI extends JFrame{
                 } catch (RemoteException ex) {
                     throw new RuntimeException(ex);
                 }
-                System.exit(0);
             }
         });
 
@@ -107,7 +102,6 @@ public class GeräteVerwaltenGUI extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                System.exit(0);
             }
         });
 
@@ -119,7 +113,6 @@ public class GeräteVerwaltenGUI extends JFrame{
                 } catch (RemoteException ex) {
                     throw new RuntimeException(ex);
                 }
-                System.exit(0);
             }
         });
 
@@ -127,7 +120,6 @@ public class GeräteVerwaltenGUI extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                System.exit(0);
             }
         });
 
@@ -135,7 +127,6 @@ public class GeräteVerwaltenGUI extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                System.exit(0);
             }
         });
 
@@ -147,7 +138,6 @@ public class GeräteVerwaltenGUI extends JFrame{
                 } catch (Exception ex) {
                     throw new RuntimeException(ex);
                 }
-                System.exit(0);
             }
         });
 
@@ -159,7 +149,6 @@ public class GeräteVerwaltenGUI extends JFrame{
                 } catch (RemoteException ex) {
                     throw new RuntimeException(ex);
                 }
-                System.exit(0);
             }
         });
 
@@ -171,7 +160,6 @@ public class GeräteVerwaltenGUI extends JFrame{
                 } catch (RemoteException ex) {
                     throw new RuntimeException(ex);
                 }
-                System.exit(0);
             }
         });
     }
