@@ -3,7 +3,7 @@
   <grid id="27dc6" binding="GerätVerwalten" layout-manager="GridLayoutManager" row-count="7" column-count="4" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="0" left="0" bottom="0" right="0"/>
     <constraints>
-      <xy x="20" y="20" width="564" height="400"/>
+      <xy x="20" y="20" width="570" height="400"/>
     </constraints>
     <properties/>
     <border type="none"/>
@@ -79,7 +79,7 @@
           <text value="Speichern"/>
         </properties>
       </component>
-      <component id="7c3f8" class="javax.swing.JButton" binding="gerätAusgebenButton" default-binding="true">
+      <component id="7c3f8" class="javax.swing.JButton" binding="geraetAusgebenButton">
         <constraints>
           <grid row="6" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -95,7 +95,7 @@
           <text value="Verleihhistorie"/>
         </properties>
       </component>
-      <component id="c45eb" class="javax.swing.JButton" binding="geräteLöschenButton" default-binding="true">
+      <component id="c45eb" class="javax.swing.JButton" binding="geraeteLöschenButton">
         <constraints>
           <grid row="6" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -103,7 +103,7 @@
           <text value="Geräte Löschen"/>
         </properties>
       </component>
-      <component id="3c692" class="javax.swing.JButton" binding="ändernButton" default-binding="true">
+      <component id="3c692" class="javax.swing.JButton" binding="GeraetaendernButton">
         <constraints>
           <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -111,7 +111,7 @@
           <text value="ändern"/>
         </properties>
       </component>
-      <component id="fa1f4" class="javax.swing.JButton" binding="ändernButton1" default-binding="true">
+      <component id="fa1f4" class="javax.swing.JButton" binding="SpenderaendernButton">
         <constraints>
           <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -119,7 +119,7 @@
           <text value="ändern"/>
         </properties>
       </component>
-      <component id="79abf" class="javax.swing.JButton" binding="ändernButton2" default-binding="true">
+      <component id="79abf" class="javax.swing.JButton" binding="KategorieaendernButton">
         <constraints>
           <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -127,7 +127,7 @@
           <text value="ändern"/>
         </properties>
       </component>
-      <component id="56c30" class="javax.swing.JButton" binding="ändernButton3" default-binding="true">
+      <component id="56c30" class="javax.swing.JButton" binding="GeraetBeschreibungaendernButton">
         <constraints>
           <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -135,7 +135,7 @@
           <text value="ändern"/>
         </properties>
       </component>
-      <component id="430e2" class="javax.swing.JButton" binding="ändernButton4" default-binding="true">
+      <component id="430e2" class="javax.swing.JButton" binding="LeihfristaendernButton">
         <constraints>
           <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -151,7 +151,7 @@
           <text value="Label"/>
         </properties>
       </component>
-      <component id="18b23" class="javax.swing.JButton" binding="ändernButton5" default-binding="true">
+      <component id="18b23" class="javax.swing.JButton" binding="BildaendernButton">
         <constraints>
           <grid row="1" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -189,7 +189,7 @@
           <text value="Ausgabeort"/>
         </properties>
       </component>
-      <component id="55f3f" class="javax.swing.JButton" binding="ändernButton6" default-binding="true">
+      <component id="55f3f" class="javax.swing.JButton" binding="AusgabeortaendernButton">
         <constraints>
           <grid row="4" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>

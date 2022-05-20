@@ -1,15 +1,17 @@
 package client.gui.Rollenverwaltung;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class RolleAuswählenGUI extends JFrame{
     private JPanel RolleAuswählen;
-    private JTextField textField1;
+    private JTextField IDhiereinfügen;
     private JButton OKButton;
     private JButton abbrechenButton;
-    private JRadioButton radioButton1;
-    private JRadioButton radioButton2;
-    private JRadioButton radioButton3;
+    private JRadioButton MitgliedButton;
+    private JRadioButton MitarbeiterButton;
+    private JRadioButton VereinsvorstandButton;
 
 
 
@@ -19,7 +21,31 @@ public class RolleAuswählenGUI extends JFrame{
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setContentPane(RolleAuswählen);
         this.pack();
+
+
+        // TODO ID anzeigen
+        // TODO JRadioButton
+
+
+
+        OKButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                System.exit(0);
+            }
+        });
+
+        abbrechenButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                System.exit(0);
+            }
+        });
     }
+
+
 
 
     public static void main(String[] args) {
