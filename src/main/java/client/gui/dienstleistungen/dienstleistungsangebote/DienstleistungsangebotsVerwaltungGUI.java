@@ -123,11 +123,5 @@ public class DienstleistungsangebotsVerwaltungGUI {
                 }
             }
         });
-
-
-    public static void main(String[] args) {
-        //TODO Am Ende entfernen
-        FlatLightLaf.setup();
-
     }
 }
