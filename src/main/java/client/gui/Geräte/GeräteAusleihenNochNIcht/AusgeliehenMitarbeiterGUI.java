@@ -1,5 +1,7 @@
 package client.gui.Geräte.GeräteAusleihenNochNIcht;
 
+import client.Vereinssoftware;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -21,7 +23,11 @@ public class AusgeliehenMitarbeiterGUI extends  JFrame{
         jetztReservierenButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                try {
+                    Vereinssoftware.geraeteverwaltung.geraetReservieren("", ""); // TODO
+                } catch (Exception ex) {
+                    throw new RuntimeException(ex);
+                }
                 System.exit(0);
             }
         });

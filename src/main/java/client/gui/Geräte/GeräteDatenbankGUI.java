@@ -42,7 +42,7 @@ public class GeräteDatenbankGUI extends JFrame {
 
     private void table1MouseClicked(java.awt.event.MouseEvent evt) {
 
-        GeräteVerwaltenGUI db = new GeräteVerwaltenGUI("Geraete Verwaltung");
+        GeräteVerwaltenGUI db = new GeräteVerwaltenGUI("Geraete Verwaltung", "0");
         db.setVisible(true);
         GeräteDatenbankGUI.this.setVisible(false);
     }

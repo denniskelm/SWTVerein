@@ -2,10 +2,14 @@ package client.gui.Geräte;
 
 
 
+import client.Vereinssoftware;
+import server.geraetemodul.Geraet;
+
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 //TODO Searchbar
 // Kategorie
@@ -32,9 +36,12 @@ public class GeräteListeGUI extends JFrame{
         geraetHinzufügenButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
-                System.exit(0);
+                GerätHinzufügenGUI GeraetHinz = new GerätHinzufügenGUI("Geräte Hinzufügen");
+                GeraetHinz.setVisible(true);
+                GeräteListeGUI.this.setVisible(false);
             }
+
+
         });
 
 
@@ -46,28 +53,31 @@ public class GeräteListeGUI extends JFrame{
 
             }
         });
+
+
     }
     //Maximale Anzahl an Reservierungen erreicht
     private void table1MouseClicked(java.awt.event.MouseEvent evt) {
 
-        GastReservierenGUI gast = new GastReservierenGUI("Gast Reservieren");
+        GeraetReservierenGUI gast = new GeraetReservierenGUI("Geraet Reservieren", "", "");
         gast.setVisible(true);
         GeräteListeGUI.this.setVisible(false);
 
 
     }
 
-
-
-
-
-
-
     private void creatTable() {
         String[] columns = {"Gerät", "Spender", "Ausgabeort", "Gerätebeschreibung", "Reservieren"};
-        String[][] data = {
-                {"1", "2", "3", "4","5"},
-        };
+        String[][] data = new String[Vereinssoftware.geraeteverwaltung.getGeraete().size()][5];
+
+        for (int i = 0; i < Vereinssoftware.geraeteverwaltung.getGeraete().size(); i++) {
+            data[i][0] = ((Geraet) (Vereinssoftware.geraeteverwaltung.getGeraete().get(i))).getGeraetName();
+            data[i][1] = ((Geraet) (Vereinssoftware.geraeteverwaltung.getGeraete().get(i))).getSpenderName();
+            data[i][2] = ((Geraet) (Vereinssoftware.geraeteverwaltung.getGeraete().get(i))).getGeraetAbholort();
+            data[i][3] = ((Geraet) (Vereinssoftware.geraeteverwaltung.getGeraete().get(i))).getGeraetBeschreibung();
+            data[i][4] = "Jetzt reservieren";
+        }
+
         Geraeteliste.setModel(new DefaultTableModel(
                 data, columns));
 
@@ -79,3 +89,4 @@ public class GeräteListeGUI extends JFrame{
 
     }
 }
+

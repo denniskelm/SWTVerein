@@ -81,6 +81,7 @@ public class Vereinssoftware {
         dienstleistungsverwaltung = (IDienstleistungsverwaltung) registry.lookup("Dienstleistungsverwaltung");
         mahnungsverwaltung = (IMahnungsverwaltung) registry.lookup("Mahnungsverwaltung");
         rollenverwaltung = (IRollenverwaltung) registry.lookup("Rollenverwaltung");
+
     }
 
     private static void initializeUISettings() {
