@@ -19,6 +19,7 @@ import client.gui.DefaultSmallPopup;
 import javax.swing.*;
 import java.rmi.RemoteException;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
@@ -92,7 +93,15 @@ public class DienstleistungsangebotErstellenGUI {
     }
 
     private void angebotErstellenGUI(String titel, String urlToImage, String beschreibung, String kategorie, String ab, String bis) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
+        LocalDateTime abTime = LocalDateTime.parse(ab, formatter);
+        LocalDateTime bisTime = LocalDateTime.parse(bis, formatter);
 
+        try {
+            Vereinssoftware.dienstleistungsverwaltung.angebotErstellen(titel, beschreibung, kategorie, abTime, bisTime, urlToImage, Vereinssoftware.session.getID());
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
 
         DefaultSmallPopup smallPopup = new DefaultSmallPopup("Angebot erfolgreich erstellt", "Ihr Dienstleistungsangebot wurde erfolgreich erstellt!");
     }
