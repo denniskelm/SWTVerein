@@ -8,10 +8,11 @@ TODO Mhd Esmail Kanaan
 TODO Gia Huy Hans Tran
 TODO Ole Björn Adelmann
 TODO Bastian Reichert
-TODO Dennis Kelm
+Dennis Kelm
 */
 
 import client.DefaultsClient;
+import client.Vereinssoftware;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -40,23 +41,26 @@ public class GeraetAnzeigenGUI {
     private JLabel imageLabel;
 
 
-    public GeraetAnzeigenGUI() {
+    //Zeigt die Gerätedetailinformationen an
+    //TODO Implementation Infos fetchen von IGeraeteverwaltung, vllt. die Infos per Parameter übergeben sondern hier fetchen
+    public GeraetAnzeigenGUI(String geraeteID, String pathToImage, String titel, String spender, String raum, int reservierungen, int leihfrist, String beschreibung) {
         JFrame frame = new JFrame("Gerätedetails");
-        String pathToImage = "https://bilder.gartenpaul.de/item/images/456/full/456-R1-M1.jpg";
-        insertImageToPanel(imageLabel, pathToImage);
+        DefaultsClient.insertImageToPanel(imageLabel, pathToImage); //URL zum Bild, z.B. "https://bilder.gartenpaul.de/item/images/456/full/456-R1-M1.jpg"
         frame = DefaultsClient.standardizeFrame(frame, geraetAnzeigenGUI);
+
+        //Anpassen der Texte
+        headlineLabel.setText("TODO TITEL"); //sowas wie Vereinssoftware.dienstleistungsverwaltung.getGeraetInformation(String geraeteID)[0]
+        metaInfoText1.setText("Spender: " + spender);
+        metaInfoText2.setText("Raum: " + raum);
+        metaInfoText3.setText("Aktuell " + reservierungen + " Reservierungen");
+        metaInfoText4.setText("Leihfrist:  " + leihfrist + " Tage");
+
+        descriptionText.setText("<html><p style=\"width: 600px;\">" + beschreibung + "</p>");
+
+        jetztReservierenButton.addActionListener(e -> {
+            //TODO Implemtierung Reservierung hinzufügen
+        });
     }
 
-    public void insertImageToPanel(JLabel imageLabel, String pathToImageURL) {
-        try {
-            URL url = new URL(pathToImageURL);
-            BufferedImage image = ImageIO.read(url);
-            Image resizedIMG = image.getScaledInstance(800, 450, Image.SCALE_SMOOTH);
-            imageLabel.setIcon(new ImageIcon(resizedIMG));
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
 
-
-    }
 }

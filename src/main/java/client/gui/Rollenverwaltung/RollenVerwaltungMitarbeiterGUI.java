@@ -2,14 +2,16 @@ package client.gui.Rollenverwaltung;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class RollenVerwaltungMitarbeiterGUI extends JFrame{
     private JPanel RollenVerwaltungMitarbeiter;
     private JTable table1;
-    private JButton button1;
-    private JButton button2;
-    private JButton button3;
-    private JButton button4;
+    private JButton mitgliederButton;
+    private JButton mitarbeiterButton;
+    private JButton VereinsvorständeButton;
+    private JButton gästeButton;
 
     public RollenVerwaltungMitarbeiterGUI(String title) {
         super(title);
@@ -19,6 +21,46 @@ public class RollenVerwaltungMitarbeiterGUI extends JFrame{
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setContentPane(RollenVerwaltungMitarbeiter);
         this.pack();
+
+
+
+        // geht auf Mitglied
+
+        mitgliederButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                RollenverwaltungMitliedGUI Mitglied = new RollenverwaltungMitliedGUI("Rollen Verwaltung Mitglied");
+                Mitglied.setVisible(true);
+                RollenVerwaltungMitarbeiterGUI.this.setVisible(false);
+            }
+
+
+        });
+
+        // geht auf Vereinsvorstand
+        VereinsvorständeButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                RollenverwaltungVereinsvorstandGUI Vorstand = new RollenverwaltungVereinsvorstandGUI("Rollen Verwaltung Vereinsvorstände");
+                Vorstand.setVisible(true);
+                RollenVerwaltungMitarbeiterGUI.this.setVisible(false);
+            }
+
+
+        });
+        // geht auf Gäste
+        gästeButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                RollenVerwaltungGastGUI Gast = new RollenVerwaltungGastGUI("Rollen Verwaltung Gäste");
+                Gast.setVisible(true);
+                RollenVerwaltungMitarbeiterGUI.this.setVisible(false);
+            }
+
+
+        });
+
+
     }
 
 
@@ -40,7 +82,7 @@ public class RollenVerwaltungMitarbeiterGUI extends JFrame{
 
 
     public static void main(String[] args) {
-        JFrame frame = new RollenverwaltungMitliedGUI("Rollenverwaltung Mitglied");
+        JFrame frame = new RollenverwaltungMitliedGUI("Rollenverwaltung Gäste");
         frame.setVisible(true);
 
     }

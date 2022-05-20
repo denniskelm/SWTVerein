@@ -30,13 +30,13 @@
         <properties/>
         <border type="none"/>
         <children>
-          <component id="7211c" class="javax.swing.JTable" binding="table1" default-binding="true">
+          <component id="7211c" class="javax.swing.JTable" binding="Datenbank">
             <constraints/>
             <properties/>
           </component>
         </children>
       </scrollpane>
-      <component id="cfe69" class="javax.swing.JButton" binding="gerätHinzufügenButton" default-binding="true">
+      <component id="cfe69" class="javax.swing.JButton" binding="geraetHinzufügenButton">
         <constraints>
           <grid row="2" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>

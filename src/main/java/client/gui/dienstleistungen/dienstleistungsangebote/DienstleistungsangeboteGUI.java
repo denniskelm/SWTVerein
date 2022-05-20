@@ -14,10 +14,14 @@ Dennis Kelm
 import client.DefaultsClient;
 import client.gui.DefaultSmallPopup;
 import client.gui.dienstleistungen.dienstleistungsgesuche.DienstleistungsgesuchErstellenGUI;
-import com.formdev.flatlaf.FlatLightLaf;
+import shared.communication.IDienstleistungsverwaltung;
 
 import javax.swing.*;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -34,8 +38,12 @@ public class DienstleistungsangeboteGUI {
 
     public DienstleistungsangeboteGUI() {
         JFrame frame = new JFrame("Alle Dienstleistungsangebote");
+        //try {
         this.generateTable();
-        //DienstleistungsangeboteGUI thisgui = new DienstleistungsangeboteGUI();
+        //} catch (RemoteException e) {
+        //    throw new RuntimeException(e);
+        //}
+
         frame = DefaultsClient.standardizeFrame(frame, this.dienstleistungsangebotePanel);
 
         DefaultsClient.enhanceTextField(suchenTextField, onceChanged);
@@ -49,7 +57,10 @@ public class DienstleistungsangeboteGUI {
         });
     }
 
-    private void generateTable() {
+    private void generateTable() /*throws RemoteException */ {
+
+        IDienstleistungsverwaltung dienstleistungsverwaltung = null;
+
         DefaultTableModel model = new DefaultTableModel() {
 
             @Override
@@ -81,6 +92,8 @@ public class DienstleistungsangeboteGUI {
                 "Stefan"
         });
 
+        //model.addRow(Vereinssoftware.dienstleistungsverwaltung.getAngeboteInformationen("DA00001"));
+
         dienstleistungsangeboteTable.addMouseListener(new java.awt.event.MouseAdapter() {
             @Override
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -93,12 +106,10 @@ public class DienstleistungsangeboteGUI {
                 }
             }
         });
+
+        //////////// SUCHE //////////////////////
+        DefaultsClient.addSearchFunctionality(dienstleistungsangeboteTable, suchenTextField);
     }
 
 
-    public static void main(String[] args) {
-        //TODO Am Ende entfernen
-        FlatLightLaf.setup();
-
-    }
 }

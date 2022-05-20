@@ -1,41 +1,41 @@
 package client.gui.Mahnung;
 
 import javax.swing.*;
-import javax.swing.table.DefaultTableModel;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 
 public class MahnungsverwaltungGUI extends JFrame{
     private JPanel MahnungVerwaltung;
-    private JTable table1;
+
     private JButton erstellenButton;
-    private JScrollPane Scrollpane;
-    private JTextField grundFürMahnungTextField;
     private JTextField verfallsdatumTextField;
+    private JTextField GrundfuerMahnung;
+
+    //TODO funktionalität
 
     public MahnungsverwaltungGUI(String title)    {
         super(title);
 
 
-        creatTable();
+
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setContentPane(MahnungVerwaltung);
         this.pack();
-    }
 
+        erstellenButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
 
-    private void creatTable()   {
-        String[][] data = {
-                {"1","2","3"},
-                {"4","5","6"},
-                {"7","8","9"}
-        };
-
-        table1.setModel(new DefaultTableModel(
-                data,
-                new String[] {"Mahnungen", "Verfallsdatum", "Grund für Mahnung"}
-
-        ));
+                System.exit(0);
+            }
+        });
 
     }
+
+
+
+
 
     public static void main(String[] args) {
         JFrame frame = new MahnungsverwaltungGUI("Mahnung Verwalten");

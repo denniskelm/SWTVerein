@@ -11,12 +11,20 @@ TODO Bastian Reichert
 Dennis Kelm
 */
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
+import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.net.URL;
+import java.util.Arrays;
 import java.util.Map;
 
 //TODO Was macht diese Klasse?
@@ -34,11 +42,28 @@ public class DefaultsClient {
         return frame;
     }
 
+    public static String[] getKategorien(Class<? extends Enum<?>> e) {
+        return Arrays.stream(e.getEnumConstants()).map(Enum::name).toArray(String[]::new);
+    }
+
     public static void createColumnsFromArray(String[] columns, DefaultTableModel model) {
         for (String c :
                 columns) {
             model.addColumn(c);
         }
+    }
+
+    public static void insertImageToPanel(JLabel imageLabel, String pathToImageURL) {
+        try {
+            URL url = new URL(pathToImageURL);
+            BufferedImage image = ImageIO.read(url);
+            Image resizedIMG = image.getScaledInstance(800, 450, Image.SCALE_SMOOTH);
+            imageLabel.setIcon(new ImageIcon(resizedIMG));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+
     }
 
     //Bei Klick: Entferne den Text "Eingeben", aber nur wenn noch nicht eingegeben wurde
@@ -92,6 +117,38 @@ public class DefaultsClient {
 
             public void insertUpdate(DocumentEvent e) {
                 onceChanged.put(textArea, true);
+            }
+        });
+    }
+
+    public static void addSearchFunctionality(JTable table, JTextField suchenTextField) {
+        TableRowSorter<TableModel> sort = new TableRowSorter<>(table.getModel());
+        table.setRowSorter(sort);
+
+        suchenTextField.getDocument().addDocumentListener(new DocumentListener() {
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                String str = suchenTextField.getText();
+                if (str.trim().length() == 0) {
+                    sort.setRowFilter(null);
+                } else {
+                    //(?i) means case insensitive search
+                    sort.setRowFilter(RowFilter.regexFilter("(?i)" + str));
+                }
+            }
+
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                String str = suchenTextField.getText();
+                if (str.trim().length() == 0) {
+                    sort.setRowFilter(null);
+                } else {
+                    sort.setRowFilter(RowFilter.regexFilter("(?i)" + str));
+                }
+            }
+
+            @Override
+            public void changedUpdate(DocumentEvent e) {
             }
         });
     }
