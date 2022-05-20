@@ -13,6 +13,9 @@ Dennis Kelm
 
 import client.ClientDefaults;
 import client.gui.Geräte.GeräteDatenbankGUI;
+import client.gui.Geräte.GeräteListeGUI;
+import client.gui.Login.LoginGUI;
+import client.gui.Registrieren.RegistrierenGUI;
 import client.gui.dienstleistungen.dienstleistungsangebote.DienstleistungsangeboteGUI;
 import client.gui.dienstleistungen.dienstleistungsangebote.DienstleistungsangebotsVerwaltungGUI;
 import client.gui.dienstleistungen.dienstleistungsgesuche.DienstleistungsgesucheGUI;
@@ -72,6 +75,11 @@ public class StartseiteGUI {
 
         geraeteverwaltungButton.addActionListener(e -> {
             GeräteDatenbankGUI ghg = new GeräteDatenbankGUI("Gerätedatenbank");
+            ghg.setVisible(true);
+        });
+
+        geraeteAnzeigen.addActionListener(e -> {
+            GeräteListeGUI ghg = new GeräteListeGUI("Geräteliste");
             ghg.setVisible(true);
         });
 

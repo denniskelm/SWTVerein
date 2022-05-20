@@ -43,7 +43,10 @@ public class GerätHinzufügenGUI extends JFrame{
                             gerätebeschreibungTextField.getText(),
                             abholortTextField.getText());
 
-                    JOptionPane.showMessageDialog(GerätHinzufügenGUI.super.rootPane, "Gerät erfolgreich hinzuge", "",JOptionPane.PLAIN_MESSAGE);
+                    JOptionPane.showMessageDialog(GerätHinzufügenGUI.super.rootPane, "Gerät erfolgreich hinzugefügt", "",JOptionPane.PLAIN_MESSAGE);
+
+                    dispose();
+
 
                 } catch (RemoteException ex) {
                     DefaultSmallPopup popup = new DefaultSmallPopup("Hinweis", ex.getMessage());
