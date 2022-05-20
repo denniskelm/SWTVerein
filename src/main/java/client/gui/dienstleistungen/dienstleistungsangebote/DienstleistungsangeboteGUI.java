@@ -124,17 +124,21 @@ public class DienstleistungsangeboteGUI {
                 if (row >= 0 && col >= 0) {
                     System.out.println(row + ", " + col);
                     //TODO Implementierung Klick auf Zelle
-                    DienstleistungsangebotAnzeigenGUI dienstleistungsangebotAnzeigenGUI = new DienstleistungsangebotAnzeigenGUI(
-                            , //ID
-                            angebote[row][1], //Titel
-                            angebote[row][1], //pathToImage
-                            angebote[row][1], //beschreibung
-                            angebote[row][1], //Kategorie
-                            angebote[row][1], //ab
-                            angebote[row][1], //bis
-                            angebote[row][1] //PersonenID
+                    try {
+                        DienstleistungsangebotAnzeigenGUI dienstleistungsangebotAnzeigenGUI = new DienstleistungsangebotAnzeigenGUI(
+                                "kaka", //ID
+                                angebote[row][1].toString(), //Titel
+                                angebote[row][1].toString(), //pathToImage
+                                angebote[row][1].toString(), //beschreibung
+                                angebote[row][1].toString(), //Kategorie
+                                (LocalDateTime) angebote[row][1], //ab
+                                (LocalDateTime) angebote[row][1], //bis
+                                Vereinssoftware.rollenverwaltung.getMitgliedsNamen((String) angebote[row][5]) //PersonenID
 
-                    );
+                        );
+                    } catch (Exception e) {
+                        throw new RuntimeException(e);
+                    }
                 }
             }
         });
