@@ -113,21 +113,6 @@ public class GeräteDatenbankGUI extends JFrame {
                 });
             }
 
-           /* data = new String[geraete.length][8];
-            for (int i = 0; i < gl.size(); i++) {
-
-                data[i][0] = ((Geraet) gl.get(i)).getGeraeteID();
-                data[i][1] = ((Geraet) gl.get(i)).getGeraetName();
-                data[i][2] = ((Geraet) gl.get(i)).getGeraetBeschreibung();
-                data[i][3] = ((Geraet) gl.get(i)).getKategorie();
-                data[i][4] = ((Geraet) gl.get(i)).getSpenderName();
-                data[i][5] = String.valueOf(((Geraet) gl.get(i)).getLeihfrist());
-                data[i][6] = ((Geraet) gl.get(i)).getLeihstatus().getName();
-                data[i][7] = "Verwalten";
-            }
-
-            String[] columns = {"GeräteID", "Gerät", "Beschreibung", "Kategorie", "Spender", "Leihfrist", "Status", "Verwalten"}; */
-
             Datenbank.setModel(model);
 
             JTable table = new JTable(data, columns);
