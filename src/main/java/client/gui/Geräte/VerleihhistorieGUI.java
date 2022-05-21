@@ -40,7 +40,7 @@ public class VerleihhistorieGUI extends JFrame {
 
         String[] columns = {"Nutzername", "NutzerID", "von", "bis"};
 
-        for (Geraet g : (ArrayList<Geraet>) Vereinssoftware.geraeteverwaltung.getGeraete())
+        for (Geraet g : Vereinssoftware.geraeteverwaltung.getGeraete())
             if (g.getGeraeteID().equals(geraeteID)) {
                 data = new String[g.getHistorie().size()][4];
                 for (int i = 0; i < g.getHistorie().size(); i++) {

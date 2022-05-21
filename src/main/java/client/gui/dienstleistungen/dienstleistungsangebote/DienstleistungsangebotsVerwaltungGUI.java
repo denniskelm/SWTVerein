@@ -70,7 +70,7 @@ public class DienstleistungsangebotsVerwaltungGUI {
         ClientDefaults.createColumnsFromArray(columns, model);
 
 
-        Object[][] angebote = Vereinssoftware.dienstleistungsverwaltung.OmniAngebotDaten();
+        Object[][] angebote = Vereinssoftware.dienstleistungsverwaltung.omniAngebotDaten();
 
 
         for (Object[] angebot :

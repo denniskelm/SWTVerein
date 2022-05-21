@@ -84,7 +84,7 @@ public class GeräteListeGUI extends JFrame {
     private void createTable() {
 
         try {
-            Object[][] geraete = Vereinssoftware.geraeteverwaltung.OmniGeraeteDaten();
+            Object[][] geraete = Vereinssoftware.geraeteverwaltung.omniGeraeteDaten();
 
             model = new DefaultTableModel() {
 

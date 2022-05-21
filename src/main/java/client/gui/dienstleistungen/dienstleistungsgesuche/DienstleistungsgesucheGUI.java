@@ -70,7 +70,7 @@ public class DienstleistungsgesucheGUI {
         };
         ClientDefaults.createColumnsFromArray(columns, model);
 
-        Object[][] gesuche = Vereinssoftware.dienstleistungsverwaltung.OmniGesuchDaten();
+        Object[][] gesuche = Vereinssoftware.dienstleistungsverwaltung.omniGesuchDaten();
 
 
         for (Object[] gesuch :
