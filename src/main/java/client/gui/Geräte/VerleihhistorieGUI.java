@@ -1,13 +1,12 @@
 package client.gui.Geräte;
 
 import client.Vereinssoftware;
-import server.geraetemodul.Ausleiher;
-import server.geraetemodul.Geraet;
+import shared.communication.IAusleiher;
+import shared.communication.IGeraet;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.rmi.RemoteException;
-import java.util.ArrayList;
 
 public class VerleihhistorieGUI extends JFrame {
     private JPanel Verleihhsitorie;
@@ -40,13 +39,13 @@ public class VerleihhistorieGUI extends JFrame {
 
         String[] columns = {"Nutzername", "NutzerID", "von", "bis"};
 
-        for (Geraet g : Vereinssoftware.geraeteverwaltung.getGeraete())
+        for (IGeraet g : Vereinssoftware.geraeteverwaltung.getGeraete())
             if (g.getGeraeteID().equals(geraeteID)) {
                 data = new String[g.getHistorie().size()][4];
                 for (int i = 0; i < g.getHistorie().size(); i++) {
-                    Ausleiher a = g.getHistorie().get(i);
+                    IAusleiher a = g.getHistorie().get(i);
                     data[i][0] = ""; // TODO
-                    data[i][1] = a.getMitlgiedsID();
+                    data[i][1] = a.getMitgliedsID();
                     data[i][2] = a.getFristBeginn().toString();
                     data[i][3] = a.getFristBeginn().plusDays(g.getLeihfrist()).toString();
 
