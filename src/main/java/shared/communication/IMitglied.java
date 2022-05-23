@@ -3,7 +3,7 @@ package shared.communication;
 
 import server.users.Personendaten;
 
-public interface IMitglied {
+public interface IMitglied extends IGast {
 
     void reservierungenErhöhen();
     void reservierungenVerringern();

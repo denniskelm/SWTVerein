@@ -25,7 +25,7 @@ public class LoginGUI extends JFrame {
     public LoginGUI(String title) {
         super(title);
 
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.setContentPane(Login);
         this.pack();
         setLocationRelativeTo(null);

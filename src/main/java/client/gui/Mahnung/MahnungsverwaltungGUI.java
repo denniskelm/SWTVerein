@@ -18,7 +18,7 @@ public class MahnungsverwaltungGUI extends JFrame {
         super(title);
 
 
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.setContentPane(MahnungVerwaltung);
         this.pack();
         setLocationRelativeTo(null);

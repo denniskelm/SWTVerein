@@ -15,7 +15,7 @@ public class GeräteAusleihenGUI extends JFrame {
     public GeräteAusleihenGUI(String title) {
         super(title);
 
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.setContentPane(GerätAusleihen);
         this.pack();
         setLocationRelativeTo(null);

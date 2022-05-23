@@ -1,4 +1,4 @@
 package shared.communication;
 
-public interface IVorsitz {
+public interface IVorsitz extends IMitarbeiter {
 }

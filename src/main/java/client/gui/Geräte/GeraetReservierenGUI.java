@@ -20,7 +20,7 @@ public class GeraetReservierenGUI extends JFrame {
         this.geraeteID = geraeteID;
         this.ausleiherID = ausleiherID;
 
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.setContentPane(GastReservieren);
         this.pack();
         setLocationRelativeTo(null);

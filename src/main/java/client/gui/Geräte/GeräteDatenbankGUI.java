@@ -24,7 +24,7 @@ public class GeräteDatenbankGUI extends JFrame {
 
 
         createTable();
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.setContentPane(Gerätedatenbank);
         this.pack();
         setLocationRelativeTo(null);

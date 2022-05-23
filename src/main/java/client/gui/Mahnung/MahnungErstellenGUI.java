@@ -15,7 +15,7 @@ public class MahnungErstellenGUI extends JFrame {
     public MahnungErstellenGUI(String title) {
         super(title);
 
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.setContentPane(Mahnungsverwaltung);
         this.pack();
         setLocationRelativeTo(null);

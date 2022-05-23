@@ -27,7 +27,7 @@ public class GeräteListeGUI extends JFrame {
         super(title);
 
         createTable();
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.setContentPane(GeräteListe);
         this.pack();
 

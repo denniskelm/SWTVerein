@@ -17,7 +17,7 @@ public class RolleAuswählenGUI extends JFrame {
     public RolleAuswählenGUI(String title) {
         super(title);
 
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.setContentPane(RolleAuswählen);
         this.pack();
         setLocationRelativeTo(null);

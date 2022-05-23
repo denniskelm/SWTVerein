@@ -37,7 +37,7 @@ public class GeräteVerwaltenGUI extends JFrame {
         super(title);
         this.geraeteID = geraeteID;
 
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.setContentPane(GerätVerwalten);
         this.pack();
         setLocationRelativeTo(null);

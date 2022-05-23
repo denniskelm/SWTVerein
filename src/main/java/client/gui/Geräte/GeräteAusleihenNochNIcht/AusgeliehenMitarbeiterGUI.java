@@ -14,7 +14,7 @@ public class AusgeliehenMitarbeiterGUI extends JFrame {
     public AusgeliehenMitarbeiterGUI(String title) {
         super(title);
 
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.setContentPane(panel1);
         this.pack();
         setLocationRelativeTo(null);

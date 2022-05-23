@@ -18,7 +18,7 @@ public class RollenVerwaltungMitarbeiterGUI extends JFrame {
 
 
         creatTable();
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.setContentPane(RollenVerwaltungMitarbeiter);
         this.pack();
         setLocationRelativeTo(null);

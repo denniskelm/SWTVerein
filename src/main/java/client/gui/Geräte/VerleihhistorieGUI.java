@@ -6,7 +6,9 @@ import shared.communication.IGeraet;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import java.rmi.NoSuchObjectException;
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 
 public class VerleihhistorieGUI extends JFrame {
     private JPanel Verleihhsitorie;
@@ -27,10 +29,11 @@ public class VerleihhistorieGUI extends JFrame {
         } catch (RemoteException e) {
             throw new RuntimeException(e);
         }
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.setContentPane(Verleihhsitorie);
         this.pack();
         setLocationRelativeTo(null);
+        this.setVisible(true);  //TODO entfernen?
     }
 
 
@@ -39,18 +42,31 @@ public class VerleihhistorieGUI extends JFrame {
 
         String[] columns = {"Nutzername", "NutzerID", "von", "bis"};
 
-        for (IGeraet g : Vereinssoftware.geraeteverwaltung.getGeraete())
-            if (g.getGeraeteID().equals(geraeteID)) {
-                data = new String[g.getHistorie().size()][4];
-                for (int i = 0; i < g.getHistorie().size(); i++) {
-                    IAusleiher a = g.getHistorie().get(i);
+        //Daten des Gerätes abrufen
+        Object[][] alleGeraeteDaten = Vereinssoftware.geraeteverwaltung.omniGeraeteDaten();
+
+        for (Object[] geraeteDaten : alleGeraeteDaten) {
+            if (geraeteID.equals(geraeteDaten[0].toString())) {
+                ArrayList<IAusleiher> historie = (ArrayList<IAusleiher>) geraeteDaten[8];
+
+                if (historie.size() == 0) {
+                    data = new String[][]{{"Historie ist leer", "", "", ""}};
+                    break;
+                }
+
+                data = new String[historie.size()][4];
+
+                for (int i = 0; i < historie.size(); i++) {
+                    IAusleiher a = historie.get(i);
                     data[i][0] = ""; // TODO
                     data[i][1] = a.getMitgliedsID();
                     data[i][2] = a.getFristBeginn().toString();
-                    data[i][3] = a.getFristBeginn().plusDays(g.getLeihfrist()).toString();
-
+                    data[i][3] = a.getFristBeginn().plusDays((long) geraeteDaten[5]).toString();
                 }
+
+                break;
             }
+        }
 
         table1.setModel(new DefaultTableModel(
                 data, columns)
