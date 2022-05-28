@@ -13,10 +13,7 @@ Dennis Kelm
 
 import client.gui.StartseiteGUI;
 import com.formdev.flatlaf.FlatLightLaf;
-import shared.communication.IDienstleistungsverwaltung;
-import shared.communication.IGeraeteverwaltung;
-import shared.communication.IMahnungsverwaltung;
-import shared.communication.IRollenverwaltung;
+import shared.communication.*;
 
 import javax.swing.*;
 import javax.swing.plaf.FontUIResource;
@@ -35,6 +32,7 @@ public class Vereinssoftware {
     public static IDienstleistungsverwaltung dienstleistungsverwaltung;
     public static IMahnungsverwaltung mahnungsverwaltung;
     public static IRollenverwaltung rollenverwaltung;
+    public static IAnfragenliste anfragenliste;
     public static Session session;
 
     public static void main(String[] args) {
@@ -45,11 +43,11 @@ public class Vereinssoftware {
         session = new Session();
 
         //RMI ermöglichen
-        try {
+        /*try {
             initializeRMI();
         } catch (RemoteException | NotBoundException e) {
             throw new RuntimeException(e);
-        }
+        } */
 
         //Starte die Startseite
         StartseiteGUI startseiteGUI = new StartseiteGUI();
@@ -65,7 +63,7 @@ public class Vereinssoftware {
         dienstleistungsverwaltung = (IDienstleistungsverwaltung) registry.lookup("Dienstleistungsverwaltung");
         mahnungsverwaltung = (IMahnungsverwaltung) registry.lookup("Mahnungsverwaltung");
         rollenverwaltung = (IRollenverwaltung) registry.lookup("Rollenverwaltung");
-
+        anfragenliste = (IAnfragenliste) registry.lookup("Anfrageliste");
     }
 
     private static void initializeUISettings() {

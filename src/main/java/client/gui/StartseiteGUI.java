@@ -12,9 +12,12 @@ Dennis Kelm
 */
 
 import client.ClientDefaults;
+import client.Einstellungen;
+import client.Vereinssoftware;
 import client.gui.Geräte.GeräteDatenbankGUI;
 import client.gui.Geräte.GeräteListeGUI;
 import client.gui.Login.LoginGUI;
+import client.gui.Profilseite.Profilseite;
 import client.gui.Registrieren.RegistrierenGUI;
 import client.gui.dienstleistungen.dienstleistungsangebote.DienstleistungsangeboteGUI;
 import client.gui.dienstleistungen.dienstleistungsangebote.DienstleistungsangebotsVerwaltungGUI;
@@ -22,6 +25,11 @@ import client.gui.dienstleistungen.dienstleistungsgesuche.DienstleistungsgesuchV
 import client.gui.dienstleistungen.dienstleistungsgesuche.DienstleistungsgesucheGUI;
 
 import javax.swing.*;
+import java.awt.*;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.rmi.NoSuchObjectException;
 
 /*Stellt die Startseite dar, und leitet somit auf die weiteren Fenster der Anwendung weiter (unterscheidet dabei
  * in angemeldet und unangemeldet)
@@ -51,13 +59,26 @@ public class StartseiteGUI {
     private JButton dienstleistungsgesuchsverwaltungButton;
     private JButton dienstleistungsangebotsverwaltungButton;
     private JButton geraeteverwaltungButton;
-    private JButton anfragenButton;
+    private JButton profilButton;
+    private JLabel vereinsnameText;
+    private JLabel subtitleHeaderText;
 
 
     //Fügt Funktionalität der Startseite hinzu
     public StartseiteGUI() {
         JFrame frame = new JFrame("Startseite");
         frame = ClientDefaults.standardizeFrame(frame, startseite);
+
+        vereinsnameText.setText(Einstellungen.getVereinsname());
+
+        //Untertitel setzen mit Namen, falls angemeldet
+        try {
+            if (Vereinssoftware.session.getID() != null && Vereinssoftware.rollenverwaltung != null) {
+                subtitleHeaderText.setText("Hallo " + Vereinssoftware.rollenverwaltung.getMitgliedsNamen(Vereinssoftware.session.getID()) + "!");
+            }
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
 
         dienstleistungsangeboteButton.addActionListener(e -> {
             DienstleistungsangeboteGUI dienstleistungsangeboteGUI = new DienstleistungsangeboteGUI();
@@ -69,9 +90,24 @@ public class StartseiteGUI {
             DienstleistungsangebotsVerwaltungGUI dienstleistungsangebotsVerwaltungGUI = new DienstleistungsangebotsVerwaltungGUI();
         });
 
-        geraetHinzufuegen.addActionListener(e -> { //TODO Email Client öffnen?
-            // hier vielleicht pop-up mit einer Beschreibung wie man Mitarbeiter kontaktieren kann um ein Gerät zu spenden.
-            JOptionPane.showMessageDialog(startseite, "Sie können einen unserer Mitarbeiter über ... kontaktieren.", "Sie möchten ein Gerät spenden?", JOptionPane.PLAIN_MESSAGE);
+        geraetHinzufuegen.addActionListener(e -> {
+            Desktop desktop;
+            if (Desktop.isDesktopSupported()
+                    && (desktop = Desktop.getDesktop()).isSupported(Desktop.Action.MAIL)) {
+                try {
+                    String link = "mailto:" + Einstellungen.getKontaktmailadresse() + "?subject=Ich%20m%C3%B6chte" +
+                            "%20ein%20Ger%C3%A4t%20spenden!&body=Liebe%20Vereinsmitarbeiter%2C%0D%0A%0D%0Aich%20m%C3%" +
+                            "B6chte%20unserem%20Verein%20ein%20Ger%C3%A4t%20spenden!%0D%0A%0D%0AGer%C3%A4tename%3A%20" +
+                            "HIER%20GER%C3%84TENAME%20EINGEBEN%0D%0A%0D%0AHIER%20WEITERE%20INFOS%20EINGEBEN" +
+                            "%0D%0A%0D%0ALiebe%20Gr%C3%BC%C3%9Fe%0D%0A";// + Vereinssoftware.rollenverwaltung.getMitgliedsNamen(Vereinssoftware.session.getID()))
+                    URI mailto = new URI(link);
+                    desktop.mail(mailto);
+                } catch (URISyntaxException | IOException ex) {
+                    throw new RuntimeException(ex);
+                }
+            } else {
+                throw new RuntimeException("Dieses Gerät hat keine Mail-Funktion!");
+            }
         });
 
         dienstleistungsgesuchsverwaltungButton.addActionListener(e -> {
@@ -88,8 +124,12 @@ public class StartseiteGUI {
             ghg.setVisible(true);
         });
 
-        anfragenButton.addActionListener(e -> {
-            //TODO Anfrageliste
+        profilButton.addActionListener(e -> {
+            try {
+                Profilseite profilseite = new Profilseite(Vereinssoftware.session.getID());
+            } catch (NoSuchObjectException ex) {
+                throw new RuntimeException(ex);
+            }
         });
 
         loginButton.addActionListener(e -> {
