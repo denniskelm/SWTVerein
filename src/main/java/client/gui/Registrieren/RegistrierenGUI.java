@@ -48,7 +48,7 @@ public class RegistrierenGUI extends JFrame {
                             passwortTextField.getText(),
                             anschriftTextField.getText(),
                             mitgliedsnummerTextField.getText(),
-                            Integer.parseInt(telefonnummerTextField.getText()),
+                            telefonnummerTextField.getText(),
                             false);
                 } catch (RemoteException ex) {
                     throw new RuntimeException(ex);
