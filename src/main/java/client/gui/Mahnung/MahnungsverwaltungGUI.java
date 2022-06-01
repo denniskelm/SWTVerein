@@ -12,7 +12,7 @@ public class MahnungsverwaltungGUI extends JFrame {
     private JTextField verfallsdatumTextField;
     private JTextField GrundfuerMahnung;
 
-    //TODO funktionalität
+    //TODO funktionalitaet
 
     public MahnungsverwaltungGUI(String title) {
         super(title);

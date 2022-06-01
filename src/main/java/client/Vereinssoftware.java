@@ -6,7 +6,7 @@ TODO Jonny Schlutter
 Gabriel Kleebaum
 TODO Mhd Esmail Kanaan
 TODO Gia Huy Hans Tran
-TODO Ole Björn Adelmann
+TODO Ole Bjoern Adelmann
 TODO Bastian Reichert
 Dennis Kelm
 */
@@ -42,7 +42,7 @@ public class Vereinssoftware {
 
         session = new Session();
 
-        //RMI ermöglichen
+        //RMI ermoeglichen
         /*try {
             initializeRMI();
         } catch (RemoteException | NotBoundException e) {

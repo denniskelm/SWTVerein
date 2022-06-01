@@ -14,12 +14,12 @@ TODO Jonny Schlutter
 Gabriel Kleebaum
 TODO Mhd Esmail Kanaan
 TODO Gia Huy Hans Tran
-TODO Ole Björn Adelmann
+TODO Ole Bjoern Adelmann
 TODO Bastian Reichert
 TODO Dennis Kelm
 */
 
-// Interface, um RMI für Klasse Geraeteverwaltung zu ermöglichen
+// Interface, um RMI fuer Klasse Geraeteverwaltung zu ermoeglichen
 public interface IGeraeteverwaltung extends Remote {
 
     String geraetHinzufuegen(String name, String spender, int leihfrist, String kategorie, String beschreibung, String abholort) throws RemoteException;

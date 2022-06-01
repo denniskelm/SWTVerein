@@ -1,4 +1,4 @@
-package client.gui.Geräte;
+package client.gui.Geraete;
 
 import client.Vereinssoftware;
 import shared.communication.IAusleiher;
@@ -12,13 +12,13 @@ import java.util.ArrayList;
 
 public class VerleihhistorieGUI extends JFrame {
     private JPanel Verleihhsitorie;
-    private JTextField gerätTextField;
+    private JTextField geraetTextField;
     private JTable table1;
     private final String geraeteID;
 
     //TODO
-    // Gerätnamen anzeigen
-    // Stuff hinzufügen
+    // Geraetnamen anzeigen
+    // Stuff hinzufuegen
 
     public VerleihhistorieGUI(String title, String geraeteID) throws RemoteException {
         super(title);
@@ -42,7 +42,7 @@ public class VerleihhistorieGUI extends JFrame {
 
         String[] columns = {"Nutzername", "NutzerID", "von", "bis"};
 
-        //Daten des Gerätes abrufen
+        //Daten des Geraetes abrufen
         Object[][] alleGeraeteDaten = Vereinssoftware.geraeteverwaltung.omniGeraeteDaten();
 
         for (Object[] geraeteDaten : alleGeraeteDaten) {

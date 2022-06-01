@@ -1,4 +1,4 @@
-package client.gui.Geräte;
+package client.gui.Geraete;
 
 import client.Vereinssoftware;
 import client.gui.DefaultSmallPopup;
@@ -8,41 +8,41 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.rmi.RemoteException;
 
-public class GerätHinzufügenGUI extends JFrame {
-    private JPanel Geräthinzufügen;
-    private JTextField gerätenameTextField;
+public class GeraetHinzufuegenGUI extends JFrame {
+    private JPanel Geraethinzufuegen;
+    private JTextField geraetenameTextField;
     private JTextField spenderTextField;
     private JTextField kategorieTextField;
-    private JTextField gerätebeschreibungTextField;
+    private JTextField geraetebeschreibungTextField;
     private JTextField leihfristTextField;
     private JTextField abholortTextField;
     private JLabel Picture;
     private JButton geraetErstellenButton;
 
-    public GerätHinzufügenGUI(String title) {
+    public GeraetHinzufuegenGUI(String title) {
         super(title);
 
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        this.setContentPane(Geräthinzufügen);
+        this.setContentPane(Geraethinzufuegen);
 
         this.pack();
 
         this.setLocationRelativeTo(null);
 
-        //TODO Gerät erstellen
+        //TODO Geraet erstellen
         geraetErstellenButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
                     Vereinssoftware.geraeteverwaltung.geraetHinzufuegen(
-                            gerätenameTextField.getText(),
+                            geraetenameTextField.getText(),
                             spenderTextField.getText(),
                             Integer.parseInt(leihfristTextField.getText()),
                             kategorieTextField.getText(),
-                            gerätebeschreibungTextField.getText(),
+                            geraetebeschreibungTextField.getText(),
                             abholortTextField.getText());
 
-                    JOptionPane.showMessageDialog(GerätHinzufügenGUI.super.rootPane, "Gerät erfolgreich hinzugefügt", "", JOptionPane.PLAIN_MESSAGE);
+                    JOptionPane.showMessageDialog(GeraetHinzufuegenGUI.super.rootPane, "Geraet erfolgreich hinzugefuegt", "", JOptionPane.PLAIN_MESSAGE);
 
                     dispose();
 
@@ -55,7 +55,7 @@ public class GerätHinzufügenGUI extends JFrame {
     }
 
     public static void main(String[] args) {
-        JFrame frame = new GerätHinzufügenGUI("Gerät Hinzufügen");
+        JFrame frame = new GeraetHinzufuegenGUI("Geraet Hinzufuegen");
         frame.setVisible(true);
     }
 }

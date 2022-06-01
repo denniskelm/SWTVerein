@@ -19,7 +19,7 @@ import java.rmi.RemoteException;
 import java.time.LocalDateTime;
 //TODO Objekte durch Idetifikator ersetzen
 
-// Interface, um RMI für Klasse Dienstleistungsverwaltung zu ermöglichen
+// Interface, um RMI fuer Klasse Dienstleistungsverwaltung zu ermoeglichen
 public interface IAnfragenliste {
     Object[][] omniAAnfrageDaten() throws NoSuchObjectException;
 

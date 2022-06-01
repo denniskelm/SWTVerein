@@ -12,7 +12,7 @@ public class RollenverwaltungMitliedGUI extends JFrame {
     private JButton mitgliedButton;
     private JButton mitarbeiterButton;
     private JButton vereinsvorstandButton;
-    private JButton gästeButton;
+    private JButton gaesteButton;
 
     public RollenverwaltungMitliedGUI(String title) {
         super(title);
@@ -41,18 +41,18 @@ public class RollenverwaltungMitliedGUI extends JFrame {
         vereinsvorstandButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                RollenverwaltungVereinsvorstandGUI Vorstand = new RollenverwaltungVereinsvorstandGUI("Rollen Verwaltung Vereinsvorstände");
+                RollenverwaltungVereinsvorstandGUI Vorstand = new RollenverwaltungVereinsvorstandGUI("Rollen Verwaltung Vereinsvorstaende");
                 Vorstand.setVisible(true);
                 RollenverwaltungMitliedGUI.this.setVisible(false);
             }
 
 
         });
-        // geht auf Gäste
-        gästeButton.addActionListener(new ActionListener() {
+        // geht auf Gaeste
+        gaesteButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                RollenVerwaltungGastGUI Gast = new RollenVerwaltungGastGUI("Rollen Verwaltung Gäste");
+                RollenVerwaltungGastGUI Gast = new RollenVerwaltungGastGUI("Rollen Verwaltung Gaeste");
                 Gast.setVisible(true);
                 RollenverwaltungMitliedGUI.this.setVisible(false);
             }

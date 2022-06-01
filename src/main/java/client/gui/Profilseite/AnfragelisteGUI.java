@@ -6,7 +6,7 @@ TODO Jonny Schlutter
 TODO Gabriel Kleebaum
 TODO Mhd Esmail Kanaan
 TODO Gia Huy Hans Tran
-TODO Ole Björn Adelmann
+TODO Ole Bjoern Adelmann
 TODO Bastian Reichert
 Dennis Kelm
 */
@@ -24,7 +24,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.Map;
 
-//Erstellt das GUI für die Dienstleistungsangebote, wo Nutzer alle Angebote einsehen können (Verwaltung ist extra)
+//Erstellt das GUI fuer die Dienstleistungsangebote, wo Nutzer alle Angebote einsehen koennen (Verwaltung ist extra)
 public class AnfragelisteGUI {
     private JPanel anfragelistePanel;
     private JScrollPane bigTableScrollPanel;
@@ -64,7 +64,7 @@ public class AnfragelisteGUI {
 
             @Override
             public boolean isCellEditable(int row, int column) {
-                //macht Tabelle für den Nutzer unbearbeitbar
+                //macht Tabelle fuer den Nutzer unbearbeitbar
                 return false;
             }
         };

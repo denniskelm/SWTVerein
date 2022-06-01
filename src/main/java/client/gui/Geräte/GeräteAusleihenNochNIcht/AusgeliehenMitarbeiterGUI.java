@@ -1,4 +1,4 @@
-package client.gui.Geräte.GeräteAusleihenNochNIcht;
+package client.gui.Geraete.GeraeteAusleihenNochNIcht;
 
 import client.Vereinssoftware;
 

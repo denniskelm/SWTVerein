@@ -10,8 +10,8 @@ public class RollenVerwaltungMitarbeiterGUI extends JFrame {
     private JTable table1;
     private JButton mitgliederButton;
     private JButton mitarbeiterButton;
-    private JButton VereinsvorständeButton;
-    private JButton gästeButton;
+    private JButton VereinsvorstaendeButton;
+    private JButton gaesteButton;
 
     public RollenVerwaltungMitarbeiterGUI(String title) {
         super(title);
@@ -38,21 +38,21 @@ public class RollenVerwaltungMitarbeiterGUI extends JFrame {
         });
 
         // geht auf Vereinsvorstand
-        VereinsvorständeButton.addActionListener(new ActionListener() {
+        VereinsvorstaendeButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                RollenverwaltungVereinsvorstandGUI Vorstand = new RollenverwaltungVereinsvorstandGUI("Rollen Verwaltung Vereinsvorstände");
+                RollenverwaltungVereinsvorstandGUI Vorstand = new RollenverwaltungVereinsvorstandGUI("Rollen Verwaltung Vereinsvorstaende");
                 Vorstand.setVisible(true);
                 RollenVerwaltungMitarbeiterGUI.this.setVisible(false);
             }
 
 
         });
-        // geht auf Gäste
-        gästeButton.addActionListener(new ActionListener() {
+        // geht auf Gaeste
+        gaesteButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                RollenVerwaltungGastGUI Gast = new RollenVerwaltungGastGUI("Rollen Verwaltung Gäste");
+                RollenVerwaltungGastGUI Gast = new RollenVerwaltungGastGUI("Rollen Verwaltung Gaeste");
                 Gast.setVisible(true);
                 RollenVerwaltungMitarbeiterGUI.this.setVisible(false);
             }
@@ -81,7 +81,7 @@ public class RollenVerwaltungMitarbeiterGUI extends JFrame {
 
 
     public static void main(String[] args) {
-        JFrame frame = new RollenverwaltungMitliedGUI("Rollenverwaltung Gäste");
+        JFrame frame = new RollenverwaltungMitliedGUI("Rollenverwaltung Gaeste");
         frame.setVisible(true);
 
     }

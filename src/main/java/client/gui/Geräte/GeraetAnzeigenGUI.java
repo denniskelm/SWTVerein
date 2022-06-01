@@ -1,4 +1,4 @@
-package client.gui.Geräte;
+package client.gui.Geraete;
 /*
 @author
 TODO Raphael Kleebaum
@@ -6,7 +6,7 @@ TODO Jonny Schlutter
 TODO Gabriel Kleebaum
 TODO Mhd Esmail Kanaan
 TODO Gia Huy Hans Tran
-TODO Ole Björn Adelmann
+TODO Ole Bjoern Adelmann
 TODO Bastian Reichert
 Dennis Kelm
 */
@@ -35,10 +35,10 @@ public class GeraetAnzeigenGUI {
     private JLabel imageLabel;
 
 
-    //Zeigt die Gerätedetailinformationen an - wird noch implementiert
-    //TODO Implementation Infos fetchen von IGeraeteverwaltung, vllt. die Infos per Parameter übergeben sondern hier fetchen
+    //Zeigt die Geraetedetailinformationen an - wird noch implementiert
+    //TODO Implementation Infos fetchen von IGeraeteverwaltung, vllt. die Infos per Parameter uebergeben sondern hier fetchen
     public GeraetAnzeigenGUI(String geraeteID, String pathToImage, String titel, String spender, String raum, int reservierungen, int leihfrist, String beschreibung) {
-        JFrame frame = new JFrame("Gerätedetails");
+        JFrame frame = new JFrame("Geraetedetails");
         ClientDefaults.insertImageToPanel(imageLabel, pathToImage); //URL zum Bild, z.B. "https://bilder.gartenpaul.de/item/images/456/full/456-R1-M1.jpg"
         frame = ClientDefaults.standardizeFrame(frame, geraetAnzeigenGUI);
         frame.setLocationRelativeTo(null);
@@ -53,7 +53,7 @@ public class GeraetAnzeigenGUI {
         descriptionText.setText("<html><p style=\"width: 600px;\">" + beschreibung + "</p>");
 
         jetztReservierenButton.addActionListener(e -> {
-            //TODO Implemtierung Reservierung hinzufügen
+            //TODO Implemtierung Reservierung hinzufuegen
         });
     }
 

@@ -16,12 +16,12 @@ TODO Jonny Schlutter
 Gabriel Kleebaum
 TODO Mhd Esmail Kanaan
 TODO Gia Huy Hans Tran
-TODO Ole Björn Adelmann
+TODO Ole Bjoern Adelmann
 TODO Bastian Reichert
 TODO Dennis Kelm
 */
 
-// Interface, um RMI für Klasse Rollenverwaltung zu ermöglichen
+// Interface, um RMI fuer Klasse Rollenverwaltung zu ermoeglichen
 public interface IRollenverwaltung extends Remote {
 
     Object[] gastListeAnzeigen() throws RemoteException;    //Object[]

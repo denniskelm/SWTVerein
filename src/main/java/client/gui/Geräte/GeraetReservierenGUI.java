@@ -1,4 +1,4 @@
-package client.gui.Geräte;
+package client.gui.Geraete;
 
 import client.Vereinssoftware;
 import client.gui.DefaultSmallPopup;
@@ -34,7 +34,7 @@ public class GeraetReservierenGUI extends JFrame {
                     Vereinssoftware.geraeteverwaltung.geraetReservieren("", ""); // TODO
 
                     DefaultSmallPopup smallPopup = new DefaultSmallPopup("Hinweis",
-                            "Sie haben dieses Gerät erfolgreich reserviert");
+                            "Sie haben dieses Geraet erfolgreich reserviert");
 
                 } catch (Exception ex) {
                     //throw new RuntimeException(ex);
@@ -47,7 +47,7 @@ public class GeraetReservierenGUI extends JFrame {
                                 "Sie haben bereits die maximale Anzahl an Reservierungen erreicht\n");
                     } else if (ex.getMessage().equals("Mitglied hat das Geraet bereits reserviert.")) {
                         DefaultSmallPopup smallPopup = new DefaultSmallPopup("Hinweis",
-                                "Sie haben das Gerät bereits reserviert\n");
+                                "Sie haben das Geraet bereits reserviert\n");
                     } else {
                         DefaultSmallPopup smallPopup = new DefaultSmallPopup("Hinweis",
                                 "Ein Fehler ist aufgetreten\n");
@@ -80,7 +80,7 @@ public class GeraetReservierenGUI extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 DefaultSmallPopup smallPopup = new DefaultSmallPopup("Hinweis",
-                        "Sie haben dieses Gerät erfolgreich reserviert");
+                        "Sie haben dieses Geraet erfolgreich reserviert");
             }
         });
         //exisitiert net meht
@@ -89,7 +89,7 @@ public class GeraetReservierenGUI extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 DefaultSmallPopup smallPopup = new DefaultSmallPopup("Hinweis",
-                        "Dieses Gerät existiert nicht mehr");
+                        "Dieses Geraet existiert nicht mehr");
             }
         });
 */

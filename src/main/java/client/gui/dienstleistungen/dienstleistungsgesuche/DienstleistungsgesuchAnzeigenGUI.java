@@ -35,7 +35,7 @@ public class DienstleistungsgesuchAnzeigenGUI {
 
 
     //Zeigt die Details eines Dienstleistungsgesuchs an
-    //TODO Implementation Infos fetchen von IGeraeteverwaltung, vllt. die Infos per Parameter übergeben sondern hier fetchen
+    //TODO Implementation Infos fetchen von IGeraeteverwaltung, vllt. die Infos per Parameter uebergeben sondern hier fetchen
     public DienstleistungsgesuchAnzeigenGUI(String gesuch_ID, String pathToImage, String titel, String beschreibung, String kategorie, String suchenderID) {
         JFrame frame = new JFrame("Details des Dienstleistungsgesuchs");
         ClientDefaults.insertImageToPanel(imageLabel, pathToImage); //URL zum Bild, z.B. "https://bilder.gartenpaul.de/item/images/456/full/456-R1-M1.jpg"
@@ -58,7 +58,7 @@ public class DienstleistungsgesuchAnzeigenGUI {
         jetztReservierenButton.addActionListener(e -> {
             DefaultTextWithButton defaultTextWithButton = new DefaultTextWithButton(
                     "Dienstleistungsgesuch annehmen?",
-                    "Möchtest du den Gesuch mit dem Titel " + titel + " wirklich annehmen?",
+                    "Moechtest du den Gesuch mit dem Titel " + titel + " wirklich annehmen?",
                     "Jetzt annehmen!");
             defaultTextWithButton.getActionButton().addActionListener(e1 -> {
                 try {

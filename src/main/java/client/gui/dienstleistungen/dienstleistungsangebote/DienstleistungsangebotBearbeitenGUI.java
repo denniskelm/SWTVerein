@@ -6,7 +6,7 @@ TODO Jonny Schlutter
 TODO Gabriel Kleebaum
 TODO Mhd Esmail Kanaan
 TODO Gia Huy Hans Tran
-TODO Ole Björn Adelmann
+TODO Ole Bjoern Adelmann
 TODO Bastian Reichert
 Dennis Kelm
 */
@@ -24,7 +24,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.Map;
 
-//GUI Funktionalität für das Erstellen von Dienstleistungsangeboten
+//GUI Funktionalitaet fuer das Erstellen von Dienstleistungsangeboten
 public class DienstleistungsangebotBearbeitenGUI {
     private JPanel dienstleistungsangebotBearbeitenPanel;
     private JFormattedTextField titleTextField;
@@ -76,7 +76,7 @@ public class DienstleistungsangebotBearbeitenGUI {
             throw new RuntimeException(e);
         }
 
-        //Dropdown mit Werten füllen
+        //Dropdown mit Werten fuellen
         for (String kategorie :
                 ClientDefaults.getKategorien(Kategorie.class)) {
             kategorieComboBox.addItem(kategorie);

@@ -42,8 +42,8 @@ public class DienstleistungsangebotAnzeigenGUI {
         //Anpassen der Texte
         headlineLabel.setText(titel); //sowas wie Vereinssoftware.dienstleistungsverwaltung.getGeraetInformation(String geraeteID)[0]
         metaInfoText1.setText("Kategorie: " + kategorie);
-        metaInfoText2.setText("Verfügbar ab: " + ab.format(DateTimeFormatter.ISO_LOCAL_DATE));
-        metaInfoText3.setText("Verfügbar bis: " + bis.format(DateTimeFormatter.ISO_LOCAL_DATE));
+        metaInfoText2.setText("Verfuegbar ab: " + ab.format(DateTimeFormatter.ISO_LOCAL_DATE));
+        metaInfoText3.setText("Verfuegbar bis: " + bis.format(DateTimeFormatter.ISO_LOCAL_DATE));
         try {
             metaInfoText4.setText("Angeboten von:  " + Vereinssoftware.rollenverwaltung.getMitgliedsNamen(personen_ID));
         } catch (Exception e) {
@@ -56,7 +56,7 @@ public class DienstleistungsangebotAnzeigenGUI {
             try {
                 Vereinssoftware.dienstleistungsverwaltung.angebotAnnehmen(angebots_ID, personen_ID, "1", 0);
                 DefaultTextWithButton defaultTextWithButton = new DefaultTextWithButton("Anfrage senden?",
-                        "Möchten Sie die Anfrage wirklich an " + Vereinssoftware.rollenverwaltung.getMitgliedsNamen(personen_ID) + " senden?", "Anfrage absenden");
+                        "Moechten Sie die Anfrage wirklich an " + Vereinssoftware.rollenverwaltung.getMitgliedsNamen(personen_ID) + " senden?", "Anfrage absenden");
 
                 defaultTextWithButton.getActionButton().addActionListener(e1 -> {
                     try {

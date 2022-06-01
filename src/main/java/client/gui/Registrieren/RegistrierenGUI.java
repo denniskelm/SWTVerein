@@ -20,11 +20,11 @@ public class RegistrierenGUI extends JFrame {
     private JTextField passwortWiederholungTextField;
     private JButton registrierenButton;
 
-    //TODO Hinweise hinzufügen
-    // funktionalität hinzufügen
+    //TODO Hinweise hinzufuegen
+    // funktionalitaet hinzufuegen
     // optimieren
-    // Hinweise möglicherweise anpassen
-    // checkbox für Spender
+    // Hinweise moeglicherweise anpassen
+    // checkbox fuer Spender
 
 
     public RegistrierenGUI(String title) {
@@ -66,21 +66,21 @@ public class RegistrierenGUI extends JFrame {
 
         /*
 
-        //reg pw nicht überein
+        //reg pw nicht ueberein
 
         registrierenButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                DefaultSmallPopup smallPopup = new DefaultSmallPopup("Hinweis", "Eingegebene Passwörter sind nicht identisch");
+                DefaultSmallPopup smallPopup = new DefaultSmallPopup("Hinweis", "Eingegebene Passwoerter sind nicht identisch");
             }
         });
 
-        //reg * markierung nicht ausgeflüllt
+        //reg * markierung nicht ausgefluellt
 
         registrierenButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                DefaultSmallPopup smallPopup = new DefaultSmallPopup("Hinweis", "Bitte füllen Sie alle mit einem '*' markierten Felder aus.");
+                DefaultSmallPopup smallPopup = new DefaultSmallPopup("Hinweis", "Bitte fuellen Sie alle mit einem '*' markierten Felder aus.");
             }
         });
 
@@ -98,7 +98,7 @@ public class RegistrierenGUI extends JFrame {
         registrierenButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                DefaultSmallPopup smallPopup = new DefaultSmallPopup("Hinweis", "Diese E-Mail-Adresse ist ungültig");
+                DefaultSmallPopup smallPopup = new DefaultSmallPopup("Hinweis", "Diese E-Mail-Adresse ist ungueltig");
             }
         });
 
@@ -107,7 +107,7 @@ public class RegistrierenGUI extends JFrame {
         registrierenButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                DefaultSmallPopup smallPopup = new DefaultSmallPopup("Hinweis", "Telfennummer ist ungültig");
+                DefaultSmallPopup smallPopup = new DefaultSmallPopup("Hinweis", "Telfennummer ist ungueltig");
             }
         });
 
@@ -116,7 +116,7 @@ public class RegistrierenGUI extends JFrame {
         registrierenButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                DefaultSmallPopup smallPopup = new DefaultSmallPopup("Hinweis", "Mitgliedsnummer ist ungültig");
+                DefaultSmallPopup smallPopup = new DefaultSmallPopup("Hinweis", "Mitgliedsnummer ist ungueltig");
             }
         });
 

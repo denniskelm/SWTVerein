@@ -1,4 +1,4 @@
-package client.gui.Geräte.GeräteAusleihenNochNIcht;
+package client.gui.Geraete.GeraeteAusleihenNochNIcht;
 
 import client.gui.DefaultSmallPopup;
 import client.gui.DefaultTextWithButton;
@@ -7,16 +7,16 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class GeräteAusleihenGUI extends JFrame {
+public class GeraeteAusleihenGUI extends JFrame {
     private JButton jetztReservierenButton;
-    private JPanel GerätAusleihen;
+    private JPanel GeraetAusleihen;
     private JLabel picture;
 
-    public GeräteAusleihenGUI(String title) {
+    public GeraeteAusleihenGUI(String title) {
         super(title);
 
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        this.setContentPane(GerätAusleihen);
+        this.setContentPane(GeraetAusleihen);
         this.pack();
         setLocationRelativeTo(null);
         picture.add(new JLabel(new ImageIcon("Path/To/Your/Image.png")));
@@ -24,25 +24,25 @@ public class GeräteAusleihenGUI extends JFrame {
 
         // Ausgeliehen (Mitglied)
 
-        //TODO Funktionalität
+        //TODO Funktionalitaet
         // (bis wann ists ausgliehen)
         // (wie viele ppl in queue)
         jetztReservierenButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 DefaultTextWithButton textWithButton = new DefaultTextWithButton("Hinweis",
-                        "Dieses Gerät ist schon ausgeliehen bis maximal <Date>. Vor Ihnen sind noch <LaengeVonQueue> Personen.",
+                        "Dieses Geraet ist schon ausgeliehen bis maximal <Date>. Vor Ihnen sind noch <LaengeVonQueue> Personen.",
                         "Bestaetigen");
             }
         });
 
         // Erfolgreich Ausgeliehen
-        //TODO Leihfrist starten und Gerät ausleihen
+        //TODO Leihfrist starten und Geraet ausleihen
         jetztReservierenButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 DefaultTextWithButton textWithButton = new DefaultTextWithButton("Hinweis",
-                        "Dieses Gerät ist erfolgreich von Ihnen ausgeliehen. Die Leihfrist ist nun gestartet.",
+                        "Dieses Geraet ist erfolgreich von Ihnen ausgeliehen. Die Leihfrist ist nun gestartet.",
                         "Bestaetigen");
 
             }
@@ -50,7 +50,7 @@ public class GeräteAusleihenGUI extends JFrame {
 
         // Ausgeliehen ( Mitarbeiter)
 
-        //TODO funktionalität
+        //TODO funktionalitaet
         // (PersonenName)
         // (Mitgl.Nr. anzeigen)
         // (reservieren)
@@ -61,22 +61,22 @@ public class GeräteAusleihenGUI extends JFrame {
             }
         });
 
-        //TODO funktionalität
-        // (AnzahlDerReserviertenGeräte von der Person)
+        //TODO funktionalitaet
+        // (AnzahlDerReserviertenGeraete von der Person)
         jetztReservierenButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                DefaultSmallPopup smallPopup = new DefaultSmallPopup("Hinweis", "Sie haben bereits <Anzahl> Geräte ausgeliehen bzw. reserviert.");
+                DefaultSmallPopup smallPopup = new DefaultSmallPopup("Hinweis", "Sie haben bereits <Anzahl> Geraete ausgeliehen bzw. reserviert.");
             }
         });
 
-        //TODO funktionalität
-        // (Mit Mahnung verknüpfen)
+        //TODO funktionalitaet
+        // (Mit Mahnung verknuepfen)
         jetztReservierenButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 DefaultSmallPopup smallPopup = new DefaultSmallPopup("Hinweis",
-                        "Sie sind aufgrund mehrerer Mahnungen für das Reservieren von Geräten gesperrt. " +
+                        "Sie sind aufgrund mehrerer Mahnungen fuer das Reservieren von Geraeten gesperrt. " +
                                 "Melden Sie sich gegebenfalls bei einem Vereinsmitarbeiter.");
             }
         });
@@ -96,7 +96,7 @@ public class GeräteAusleihenGUI extends JFrame {
     }
 
     public static void main(String[] args) {
-        JFrame frame = new GeräteAusleihenGUI("Gerät Ausleihen");
+        JFrame frame = new GeraeteAusleihenGUI("Geraet Ausleihen");
         frame.setVisible(true);
     }
 }

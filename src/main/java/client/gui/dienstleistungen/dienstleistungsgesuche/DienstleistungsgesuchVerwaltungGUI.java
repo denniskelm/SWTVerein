@@ -12,7 +12,7 @@ import javax.swing.table.DefaultTableModel;
 import java.util.HashMap;
 import java.util.Map;
 
-//Erstellt das GUI für die Verwaltung der Dienstleistungsgesuche
+//Erstellt das GUI fuer die Verwaltung der Dienstleistungsgesuche
 public class DienstleistungsgesuchVerwaltungGUI {
     private JPanel dienstleistungsgesuchverwaltungPanel;
     private JScrollPane bigTableScrollPanel;
@@ -39,7 +39,7 @@ public class DienstleistungsgesuchVerwaltungGUI {
 
             @Override
             public boolean isCellEditable(int row, int column) {
-                //macht Tabelle für den Nutzer unbearbeitbar
+                //macht Tabelle fuer den Nutzer unbearbeitbar
                 return false;
             }
         };

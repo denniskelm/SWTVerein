@@ -6,7 +6,7 @@ TODO Jonny Schlutter
 TODO Gabriel Kleebaum
 TODO Mhd Esmail Kanaan
 TODO Gia Huy Hans Tran
-TODO Ole Björn Adelmann
+TODO Ole Bjoern Adelmann
 TODO Bastian Reichert
 Dennis Kelm
 */
@@ -24,7 +24,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
-//GUI Funktionalität für das Erstellen von Dienstleistungsangeboten
+//GUI Funktionalitaet fuer das Erstellen von Dienstleistungsangeboten
 public class DienstleistungsangebotErstellenGUI {
     private JPanel dienstleistungsangebotErstellenPanel;
     private JFormattedTextField titleTextField;

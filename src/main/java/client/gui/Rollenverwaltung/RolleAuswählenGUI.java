@@ -4,9 +4,9 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class RolleAuswählenGUI extends JFrame {
-    private JPanel RolleAuswählen;
-    private JTextField IDhiereinfügen;
+public class RolleAuswaehlenGUI extends JFrame {
+    private JPanel RolleAuswaehlen;
+    private JTextField IDhiereinfuegen;
     private JButton OKButton;
     private JButton abbrechenButton;
     private JRadioButton MitgliedButton;
@@ -14,11 +14,11 @@ public class RolleAuswählenGUI extends JFrame {
     private JRadioButton VereinsvorstandButton;
 
 
-    public RolleAuswählenGUI(String title) {
+    public RolleAuswaehlenGUI(String title) {
         super(title);
 
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        this.setContentPane(RolleAuswählen);
+        this.setContentPane(RolleAuswaehlen);
         this.pack();
         setLocationRelativeTo(null);
 
@@ -44,7 +44,7 @@ public class RolleAuswählenGUI extends JFrame {
 
 
     public static void main(String[] args) {
-        JFrame frame = new RolleAuswählenGUI("Wert Ändern");
+        JFrame frame = new RolleAuswaehlenGUI("Wert aendern");
 
         frame.setVisible(true);
     }

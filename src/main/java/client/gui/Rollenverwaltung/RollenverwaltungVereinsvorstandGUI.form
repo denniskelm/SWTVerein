@@ -29,20 +29,20 @@
           <text value="Mitarbeiter"/>
         </properties>
       </component>
-      <component id="c6d47" class="javax.swing.JButton" binding="vereinsvorständeButton" default-binding="true">
+      <component id="c6d47" class="javax.swing.JButton" binding="vereinsvorstaendeButton" default-binding="true">
         <constraints>
           <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <text value="Vereinsvorstände"/>
+          <text value="Vereinsvorstaende"/>
         </properties>
       </component>
-      <component id="d9f6e" class="javax.swing.JButton" binding="gästeButton" default-binding="true">
+      <component id="d9f6e" class="javax.swing.JButton" binding="gaesteButton" default-binding="true">
         <constraints>
           <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <text value="Gäste"/>
+          <text value="Gaeste"/>
         </properties>
       </component>
       <scrollpane id="ab3ad">

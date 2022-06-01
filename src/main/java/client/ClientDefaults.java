@@ -23,8 +23,7 @@ import java.util.Map;
 //TODO Was macht diese Klasse?
 public class ClientDefaults {
 
-
-    //Nimmt einen frame und das dazugehörige Panel der Klasse und nimmt grundlegende Einstellungen vor
+    //Nimmt einen frame und das dazugehoerige Panel der Klasse und nimmt grundlegende Einstellungen vor
     public static JFrame standardizeFrame(JFrame frame, JPanel panel) {
         frame.setContentPane(panel);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

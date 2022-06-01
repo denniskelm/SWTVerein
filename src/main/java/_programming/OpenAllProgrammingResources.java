@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 
-//Diese Klasse öffnet für uns die benötigten Projektdokumente für die Programmierung (bei Startup)
+//Diese Klasse oeffnet fuer uns die benoetigten Projektdokumente fuer die Programmierung (bei Startup)
 public class OpenAllProgrammingResources {
     public static final boolean RUNSTARTUPRESOURCES = true;
 

@@ -6,7 +6,7 @@ TODO Jonny Schlutter
 TODO Gabriel Kleebaum
 TODO Mhd Esmail Kanaan
 TODO Gia Huy Hans Tran
-TODO Ole Björn Adelmann
+TODO Ole Bjoern Adelmann
 TODO Bastian Reichert
 Dennis Kelm
 */
@@ -14,8 +14,8 @@ Dennis Kelm
 import client.ClientDefaults;
 import client.Einstellungen;
 import client.Vereinssoftware;
-import client.gui.Geräte.GeräteDatenbankGUI;
-import client.gui.Geräte.GeräteListeGUI;
+import client.gui.Geraete.GeraeteDatenbankGUI;
+import client.gui.Geraete.GeraeteListeGUI;
 import client.gui.Login.LoginGUI;
 import client.gui.Profilseite.Profilseite;
 import client.gui.Registrieren.RegistrierenGUI;
@@ -64,7 +64,7 @@ public class StartseiteGUI {
     private JLabel subtitleHeaderText;
 
 
-    //Fügt Funktionalität der Startseite hinzu
+    //Fuegt Funktionalitaet der Startseite hinzu
     public StartseiteGUI() {
         JFrame frame = new JFrame("Startseite");
         frame = ClientDefaults.standardizeFrame(frame, startseite);
@@ -106,7 +106,7 @@ public class StartseiteGUI {
                     throw new RuntimeException(ex);
                 }
             } else {
-                throw new RuntimeException("Dieses Gerät hat keine Mail-Funktion!");
+                throw new RuntimeException("Dieses Geraet hat keine Mail-Funktion!");
             }
         });
 
@@ -115,12 +115,12 @@ public class StartseiteGUI {
         });
 
         geraeteverwaltungButton.addActionListener(e -> {
-            GeräteDatenbankGUI ghg = new GeräteDatenbankGUI("Gerätedatenbank");
+            GeraeteDatenbankGUI ghg = new GeraeteDatenbankGUI("Geraetedatenbank");
             ghg.setVisible(true);
         });
 
         geraeteAnzeigen.addActionListener(e -> {
-            GeräteListeGUI ghg = new GeräteListeGUI("Geräteliste");
+            GeraeteListeGUI ghg = new GeraeteListeGUI("Geraeteliste");
             ghg.setVisible(true);
         });
 

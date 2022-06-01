@@ -12,7 +12,7 @@ TODO Jonny Schlutter
 Gabriel Kleebaum
 Mhd Esmail Kanaan
 TODO Gia Huy Hans Tran
-TODO Ole Björn Adelmann
+TODO Ole Bjoern Adelmann
 TODO Bastian Reichert
 TODO Dennis Kelm
 */
@@ -23,23 +23,23 @@ public class Session {
     private final String ERROR = "FEHLER";
 
     public Session() {
-        // legt Speicherort für die Preferences fest
+        // legt Speicherort fuer die Preferences fest
         prefs = Preferences.userRoot().node(this.getClass().getName());
 
         setID("1");
     }
 
-    //Speichert den Wert value und macht ihn mit Schlüssel key erreichbar/auslesbar
+    //Speichert den Wert value und macht ihn mit Schluessel key erreichbar/auslesbar
     public void setPreference(String key, String value) {
         prefs.put(key, value);
     }
 
-    //Liest den Wert vom Schlüssel key aus; wenn kein Wert eingetragen, dann wird def zurückgegeben
+    //Liest den Wert vom Schluessel key aus; wenn kein Wert eingetragen, dann wird def zurueckgegeben
     private String getPreference(String key, String def) {
         return prefs.get(key, def);
     }
 
-    //Liest den Wert vom Schlüssel key aus; wenn kein Wert eingetragen, dann wird Exception geworfen
+    //Liest den Wert vom Schluessel key aus; wenn kein Wert eingetragen, dann wird Exception geworfen
     public String getPreference(String key) throws NoSuchObjectException {
         String preference = getPreference(key, ERROR);
 

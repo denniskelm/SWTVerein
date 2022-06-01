@@ -1,4 +1,4 @@
-package client.gui.Geräte;
+package client.gui.Geraete;
 
 
 import client.ClientDefaults;
@@ -13,33 +13,33 @@ import java.rmi.RemoteException;
 
 //TODO Searchbar
 // Kategorie
-public class GeräteListeGUI extends JFrame {
-    private JPanel GeräteListe;
+public class GeraeteListeGUI extends JFrame {
+    private JPanel GeraeteListe;
     private JTable Geraeteliste;
 
     private JScrollPane scrollPane;
     private JTextField kategorieTextField;
     private JTextField sucheTextField;
-    private JButton geraetHinzufügenButton;
+    private JButton geraetHinzufuegenButton;
     private DefaultTableModel model;
 
-    public GeräteListeGUI(String title) {
+    public GeraeteListeGUI(String title) {
         super(title);
 
         createTable();
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        this.setContentPane(GeräteListe);
+        this.setContentPane(GeraeteListe);
         this.pack();
 
         setLocationRelativeTo(null);
 
         //TODO Geraet hinzufuegen
-        geraetHinzufügenButton.addActionListener(new ActionListener() {
+        geraetHinzufuegenButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                GerätHinzufügenGUI GeraetHinz = new GerätHinzufügenGUI("Geräte Hinzufügen");
+                GeraetHinzufuegenGUI GeraetHinz = new GeraetHinzufuegenGUI("Geraete Hinzufuegen");
                 GeraetHinz.setVisible(true);
-                GeräteListeGUI.this.setVisible(false);
+                GeraeteListeGUI.this.setVisible(false);
             }
         });
 
@@ -63,10 +63,10 @@ public class GeräteListeGUI extends JFrame {
 
             iD = model.getValueAt(row, 0).toString(); //GeraeteID
             System.out.println("id: " + iD);
-            String gname = model.getValueAt(row, 1).toString(); //Gerät
+            String gname = model.getValueAt(row, 1).toString(); //Geraet
             String spender = model.getValueAt(row, 2).toString(); //Spender
             String ort = model.getValueAt(row, 3).toString(); //Ausgabeort
-            String beschreibung = model.getValueAt(row, 4).toString(); //Gerätebeschreibung
+            String beschreibung = model.getValueAt(row, 4).toString(); //Geraetebeschreibung
         }
 
         try {
@@ -75,7 +75,7 @@ public class GeräteListeGUI extends JFrame {
             GeraetReservierenGUI reservierenGUI = new GeraetReservierenGUI("Geraet Reservieren", iD, Vereinssoftware.session.getID());
             System.out.println("t");
             reservierenGUI.setVisible(true);
-            GeräteListeGUI.this.setVisible(false);
+            GeraeteListeGUI.this.setVisible(false);
         } catch (NoSuchObjectException e) {
             throw new RuntimeException(e);
         }
@@ -90,12 +90,12 @@ public class GeräteListeGUI extends JFrame {
 
                 @Override
                 public boolean isCellEditable(int row, int column) {
-                    //macht Tabelle für den Nutzer unbearbeitbar
+                    //macht Tabelle fuer den Nutzer unbearbeitbar
                     return false;
                 }
             };
 
-            String[] columns = {"GeräteID", "Gerät", "Beschreibung", "Kategorie", "Spender", "Leihfrist", "Status", "Abholort", "Aktion"};
+            String[] columns = {"GeraeteID", "Geraet", "Beschreibung", "Kategorie", "Spender", "Leihfrist", "Status", "Abholort", "Aktion"};
             ClientDefaults.createColumnsFromArray(columns, model);
 
             for (Object[] geraet : geraete) {
@@ -130,7 +130,7 @@ public class GeräteListeGUI extends JFrame {
     }
 
     public static void main(String[] args) {
-        JFrame frame = new GeräteListeGUI("Geräteliste");
+        JFrame frame = new GeraeteListeGUI("Geraeteliste");
         frame.setVisible(true);
     }
 }

@@ -9,7 +9,7 @@ public class MahnungErstellenGUI extends JFrame {
     private JButton jaButton;
     private JButton neinButton;
 
-    //TODO funktionalität
+    //TODO funktionalitaet
 
 
     public MahnungErstellenGUI(String title) {

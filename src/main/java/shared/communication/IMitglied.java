@@ -5,7 +5,8 @@ import server.users.Personendaten;
 
 public interface IMitglied extends IGast {
 
-    void reservierungenErhöhen();
+    void reservierungenErhoehen();
+
     void reservierungenVerringern();
     int getReservierungen();
     void veraendereStundenkonto(int change);

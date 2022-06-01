@@ -1,4 +1,4 @@
-package client.gui.Geräte;
+package client.gui.Geraete;
 
 import client.ClientDefaults;
 import client.Vereinssoftware;
@@ -9,31 +9,31 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.rmi.RemoteException;
 
-public class GeräteDatenbankGUI extends JFrame {
-    private JPanel Gerätedatenbank;
+public class GeraeteDatenbankGUI extends JFrame {
+    private JPanel Geraetedatenbank;
     private JTextField sucheTextField;
     private JTable Datenbank;
-    private JButton geraetHinzufügenButton;
+    private JButton geraetHinzufuegenButton;
     private DefaultTableModel model;
 
     //TODO Suche
-    // in geräteDB einfügen
+    // in geraeteDB einfuegen
 
-    public GeräteDatenbankGUI(String title) {
+    public GeraeteDatenbankGUI(String title) {
         super(title);
 
 
         createTable();
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        this.setContentPane(Gerätedatenbank);
+        this.setContentPane(Geraetedatenbank);
         this.pack();
         setLocationRelativeTo(null);
 
-        //TODO Geräte Hinzufügen
-        geraetHinzufügenButton.addActionListener(new ActionListener() {
+        //TODO Geraete Hinzufuegen
+        geraetHinzufuegenButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                GerätHinzufügenGUI ghg = new GerätHinzufügenGUI("Neues Gerät hinzufügen");
+                GeraetHinzufuegenGUI ghg = new GeraetHinzufuegenGUI("Neues Geraet hinzufuegen");
                 ghg.setVisible(true);
                 dispose();
             }
@@ -55,19 +55,19 @@ public class GeräteDatenbankGUI extends JFrame {
         if (row >= 0 && col >= 0) {
 
             if (col != 8)
-                return; // nicht auf Verwalten gedrückt
+                return; // nicht auf Verwalten gedrueckt
 
             System.out.println(row + ", " + col);
             iD = model.getValueAt(row, 0).toString(); //GeraeteID
-            String gname = model.getValueAt(row, 1).toString(); //Gerät
+            String gname = model.getValueAt(row, 1).toString(); //Geraet
             String spender = model.getValueAt(row, 2).toString(); //Spender
             String ort = model.getValueAt(row, 3).toString(); //Ausgabeort
-            String beschreibung = model.getValueAt(row, 4).toString(); //Gerätebeschreibung
+            String beschreibung = model.getValueAt(row, 4).toString(); //Geraetebeschreibung
         }
 
-        GeräteVerwaltenGUI db = new GeräteVerwaltenGUI("Geraete Verwaltung", iD);
+        GeraeteVerwaltenGUI db = new GeraeteVerwaltenGUI("Geraete Verwaltung", iD);
         db.setVisible(true);
-        GeräteDatenbankGUI.this.setVisible(false);
+        GeraeteDatenbankGUI.this.setVisible(false);
     }
 
     private void createTable() {
@@ -79,12 +79,12 @@ public class GeräteDatenbankGUI extends JFrame {
 
                 @Override
                 public boolean isCellEditable(int row, int column) {
-                    //macht Tabelle für den Nutzer unbearbeitbar
+                    //macht Tabelle fuer den Nutzer unbearbeitbar
                     return false;
                 }
             };
 
-            String[] columns = {"GeräteID", "Gerät", "Beschreibung", "Kategorie", "Spender", "Leihfrist", "Status", "Abholort", "Aktion"};
+            String[] columns = {"GeraeteID", "Geraet", "Beschreibung", "Kategorie", "Spender", "Leihfrist", "Status", "Abholort", "Aktion"};
             ClientDefaults.createColumnsFromArray(columns, model);
 
             for (Object[] geraet : geraete) {
@@ -119,7 +119,7 @@ public class GeräteDatenbankGUI extends JFrame {
     }
 
     public static void main(String[] args) {
-        JFrame frame = new GeräteDatenbankGUI("Geräte Datenbank");
+        JFrame frame = new GeraeteDatenbankGUI("Geraete Datenbank");
         frame.setVisible(true);
 
     }

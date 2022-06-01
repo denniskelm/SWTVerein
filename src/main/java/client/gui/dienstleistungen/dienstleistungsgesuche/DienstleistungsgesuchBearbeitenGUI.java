@@ -6,7 +6,7 @@ TODO Jonny Schlutter
 TODO Gabriel Kleebaum
 TODO Mhd Esmail Kanaan
 TODO Gia Huy Hans Tran
-TODO Ole Björn Adelmann
+TODO Ole Bjoern Adelmann
 TODO Bastian Reichert
 Dennis Kelm
 */
@@ -22,7 +22,7 @@ import java.rmi.RemoteException;
 import java.util.HashMap;
 import java.util.Map;
 
-//GUI Funktionalität für das Erstellen von Dienstleistungsgesuchen
+//GUI Funktionalitaet fuer das Erstellen von Dienstleistungsgesuchen
 public class DienstleistungsgesuchBearbeitenGUI {
     private JPanel dienstleistungsgesuchBearbeitenPanel;
     private JFormattedTextField titleTextField;
@@ -48,7 +48,7 @@ public class DienstleistungsgesuchBearbeitenGUI {
         beschreibungTextArea.setText(beschreibung);
         kategorieComboBox.addItem(kategorieText);
 
-        //Dropdown mit Werten füllen
+        //Dropdown mit Werten fuellen
         for (String kategorie :
                 ClientDefaults.getKategorien(Kategorie.class)) {
             kategorieComboBox.addItem(kategorie);
@@ -70,7 +70,7 @@ public class DienstleistungsgesuchBearbeitenGUI {
             Vereinssoftware.dienstleistungsverwaltung.gesuchAendern(gesuchID, Dienstleistungsgesuchdaten.BESCHREIBUNG, beschreibung);
             Vereinssoftware.dienstleistungsverwaltung.gesuchAendern(gesuchID, Dienstleistungsgesuchdaten.KATEGORIE, kategorie);
 
-            DefaultSmallPopup defaultSmallPopup = new DefaultSmallPopup("Änderung erfolgreich", "Das Dienstleistungsgesuch für \"" + title + "\" wurde erfolgreich geändert!");
+            DefaultSmallPopup defaultSmallPopup = new DefaultSmallPopup("aenderung erfolgreich", "Das Dienstleistungsgesuch fuer \"" + title + "\" wurde erfolgreich geaendert!");
         } catch (RemoteException e) {
             throw new RuntimeException(e);
         }

@@ -17,9 +17,9 @@ public class LoginGUI extends JFrame {
 
 
     //TODO error msg hinzufuegen falls login falsch (via DefaultSmallPopup)
-    // funktionalität hinzufügen
+    // funktionalitaet hinzufuegen
     // optimieren
-    // pw textfield hinzufügen
+    // pw textfield hinzufuegen
 
 
     public LoginGUI(String title) {

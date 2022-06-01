@@ -1,4 +1,4 @@
-package client.gui.Geräte;
+package client.gui.Geraete;
 
 import client.Vereinssoftware;
 import server.geraetemodul.Geraetedaten;
@@ -8,12 +8,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.rmi.RemoteException;
 
-public class GeräteVerwaltenGUI extends JFrame {
-    private JPanel GerätVerwalten;
-    private JTextField gerätnameTextField;
+public class GeraeteVerwaltenGUI extends JFrame {
+    private JPanel GeraetVerwalten;
+    private JTextField geraetnameTextField;
     private JTextField spenderTextField;
     private JTextField kategorieTextField;
-    private JTextField gerätbeschreibungTextField;
+    private JTextField geraetbeschreibungTextField;
     private JTextField leihfristTextField;
     private JButton GeraetaendernButton;
     private JButton SpenderaendernButton;
@@ -24,7 +24,7 @@ public class GeräteVerwaltenGUI extends JFrame {
     private JButton speichernButton;
     private JButton geraetAusgebenButton;
     private JButton verleihhistorieButton;
-    private JButton geraeteLöschenButton;
+    private JButton geraeteLoeschenButton;
     private JLabel picture;
     private JButton BildaendernButton;
     private JTextField akutellerEntleiherTextField;
@@ -33,12 +33,12 @@ public class GeräteVerwaltenGUI extends JFrame {
     private JButton AusgabeortaendernButton;
     private final String geraeteID;
 
-    public GeräteVerwaltenGUI(String title, String geraeteID) {
+    public GeraeteVerwaltenGUI(String title, String geraeteID) {
         super(title);
         this.geraeteID = geraeteID;
 
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        this.setContentPane(GerätVerwalten);
+        this.setContentPane(GeraetVerwalten);
         this.pack();
         setLocationRelativeTo(null);
         picture.add(new JLabel(new ImageIcon("Path/To/Your/Image.png")));
@@ -77,7 +77,7 @@ public class GeräteVerwaltenGUI extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    Vereinssoftware.geraeteverwaltung.geraeteDatenVerwalten("", Geraetedaten.BESCHREIBUNG, gerätbeschreibungTextField.getText());
+                    Vereinssoftware.geraeteverwaltung.geraeteDatenVerwalten("", Geraetedaten.BESCHREIBUNG, geraetbeschreibungTextField.getText());
                 } catch (RemoteException ex) {
                     throw new RuntimeException(ex);
                 }
@@ -142,14 +142,14 @@ public class GeräteVerwaltenGUI extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    new VerleihhistorieGUI("Verleihhistorie von " + gerätnameTextField.getText(), geraeteID);
+                    new VerleihhistorieGUI("Verleihhistorie von " + geraetnameTextField.getText(), geraeteID);
                 } catch (RemoteException ex) {
                     throw new RuntimeException(ex);
                 }
             }
         });
 
-        geraeteLöschenButton.addActionListener(new ActionListener() {
+        geraeteLoeschenButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
@@ -162,7 +162,7 @@ public class GeräteVerwaltenGUI extends JFrame {
     }
 
     public static void main(String[] args) {
-        JFrame frame = new GeräteVerwaltenGUI("Gerät Verwalten", "0");
+        JFrame frame = new GeraeteVerwaltenGUI("Geraet Verwalten", "0");
         frame.setVisible(true);
     }
 }

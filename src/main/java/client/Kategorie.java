@@ -4,7 +4,7 @@ package client;
 Dennis Kelm
 */
 
-//Alle möglichen Kategorien
+//Alle moeglichen Kategorien
 public enum Kategorie {
 
     Sonstiges,

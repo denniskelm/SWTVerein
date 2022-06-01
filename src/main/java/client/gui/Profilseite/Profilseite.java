@@ -6,9 +6,9 @@ TODO Jonny Schlutter
 TODO Gabriel Kleebaum
 TODO Mhd Esmail Kanaan
 TODO Gia Huy Hans Tran
-TODO Ole Björn Adelmann
+TODO Ole Bjoern Adelmann
 TODO Bastian Reichert
-TODO Dennis Kelm
+Dennis Kelm
 */
 
 import client.ClientDefaults;
@@ -72,7 +72,7 @@ public class Profilseite {
                         throw new RuntimeException(ex);
                     }
                 } else {
-                    throw new RuntimeException("Dieses Gerät hat keine Mail-Funktion!");
+                    throw new RuntimeException("Dieses Geraet hat keine Mail-Funktion!");
                 }
             });
         }
@@ -88,7 +88,7 @@ public class Profilseite {
 
             @Override
             public boolean isCellEditable(int row, int column) {
-                //macht Tabelle für den Nutzer unbearbeitbar
+                //macht Tabelle fuer den Nutzer unbearbeitbar
                 return false;
             }
         };
@@ -100,12 +100,12 @@ public class Profilseite {
                 "Typ",
                 "Titel",
                 "Beschreibung",
-                "Verfügbar ab",
-                "Verfügbar bis"
+                "Verfuegbar ab",
+                "Verfuegbar bis"
         };
         ClientDefaults.createColumnsFromArray(columns, model);
 
-        //TODO Alle Geräte, Dienstleistungsgesuche und Dienstleistungsangebote abfragen und jeweils Längen feststellen / in ein Array zusammenfassen & Typ abfragen
+        //TODO Alle Geraete, Dienstleistungsgesuche und Dienstleistungsangebote abfragen und jeweils Laengen feststellen / in ein Array zusammenfassen & Typ abfragen
 
         model.addRow(new Object[]{
                 "Dienstleistungsgesuch",

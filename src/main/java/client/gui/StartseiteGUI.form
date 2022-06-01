@@ -35,7 +35,7 @@
             </constraints>
             <properties>
               <font/>
-              <text value="Hallo Gast! Registrieren Sie sich jetzt, oder melden Sie sich an, um alle Funktionen nutzen zu können"/>
+              <text value="Hallo Gast! Registrieren Sie sich jetzt, oder melden Sie sich an, um alle Funktionen nutzen zu koennen"/>
             </properties>
           </component>
         </children>
@@ -101,7 +101,7 @@
             <properties>
               <font size="26" style="3"/>
               <foreground color="-2490269"/>
-              <text value="Willkommen! Was möchten Sie tun?"/>
+              <text value="Willkommen! Was moechten Sie tun?"/>
             </properties>
           </component>
           <grid id="55966" binding="leftMainMenu" layout-manager="GridLayoutManager" row-count="14" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
@@ -118,7 +118,7 @@
                 </constraints>
                 <properties>
                   <font size="26"/>
-                  <text value="&lt;html&gt;Möchten Sie ein &lt;b&gt;Gerät ausleihen&lt;/b&gt;?"/>
+                  <text value="&lt;html&gt;Moechten Sie ein &lt;b&gt;Geraet ausleihen&lt;/b&gt;?"/>
                 </properties>
               </component>
               <hspacer id="2f38">
@@ -137,7 +137,7 @@
                 </constraints>
                 <properties>
                   <font size="18"/>
-                  <text value="&lt;html&gt;&lt;p style=&quot;width:300px&quot;&gt;Sehen Sie sich einfach alle Geräte an, die wir Ihnen zum Verleih zur Verfügung stellen!&lt;/p&gt;"/>
+                  <text value="&lt;html&gt;&lt;p style=&quot;width:300px&quot;&gt;Sehen Sie sich einfach alle Geraete an, die wir Ihnen zum Verleih zur Verfuegung stellen!&lt;/p&gt;"/>
                 </properties>
               </component>
               <component id="b12d9" class="javax.swing.JButton" binding="geraeteAnzeigen">
@@ -153,7 +153,7 @@
                   <hideActionText value="false"/>
                   <horizontalAlignment value="0"/>
                   <horizontalTextPosition value="11"/>
-                  <text value="Jetzt alle Geräte anzeigen"/>
+                  <text value="Jetzt alle Geraete anzeigen"/>
                 </properties>
               </component>
               <component id="66529" class="javax.swing.JLabel" binding="secondLeftHeadline">
@@ -162,7 +162,7 @@
                 </constraints>
                 <properties>
                   <font size="26"/>
-                  <text value="&lt;html&gt;... oder &lt;b&gt;lieber ein Gerät spenden&lt;/b&gt;?"/>
+                  <text value="&lt;html&gt;... oder &lt;b&gt;lieber ein Geraet spenden&lt;/b&gt;?"/>
                 </properties>
               </component>
               <component id="e7297" class="javax.swing.JButton" binding="geraetHinzufuegen">
@@ -176,7 +176,7 @@
                   <enabled value="true"/>
                   <font size="18" style="1"/>
                   <foreground color="-2490269"/>
-                  <text value="Jetzt Gerät spenden!"/>
+                  <text value="Jetzt Geraet spenden!"/>
                 </properties>
               </component>
               <vspacer id="9ff01">
@@ -200,7 +200,7 @@
                 <properties>
                   <background color="-12828863"/>
                   <font size="18"/>
-                  <text value="&lt;html&gt;&lt;p style=&quot;width:300px&quot;&gt;Sie haben Geräte übrig? Dann spenden Sie sie uns! Wir werden Sie für Ihr Engagement auf Ihrer Profilseite würdigen!&lt;/p&gt;"/>
+                  <text value="&lt;html&gt;&lt;p style=&quot;width:300px&quot;&gt;Sie haben Geraete uebrig? Dann spenden Sie sie uns! Wir werden Sie fuer Ihr Engagement auf Ihrer Profilseite wuerdigen!&lt;/p&gt;"/>
                 </properties>
               </component>
               <vspacer id="83a6c">
@@ -253,7 +253,7 @@
                 </constraints>
                 <properties>
                   <font size="26"/>
-                  <text value="&lt;html&gt;Wir &lt;b&gt;helfen&lt;/b&gt; uns natürlich &lt;b&gt;gegenseitig&lt;/b&gt;!"/>
+                  <text value="&lt;html&gt;Wir &lt;b&gt;helfen&lt;/b&gt; uns natuerlich &lt;b&gt;gegenseitig&lt;/b&gt;!"/>
                 </properties>
               </component>
               <hspacer id="90f71">
@@ -272,7 +272,7 @@
                 </constraints>
                 <properties>
                   <font size="18"/>
-                  <text value="&lt;html&gt;&lt;p style=&quot;width:300px&quot;&gt;Hier finden Sie alle Angebote von Mitgliedern, die Ihnen bei Ihrer Arbeit unter die Arme greifen möchten!&lt;/p&gt;"/>
+                  <text value="&lt;html&gt;&lt;p style=&quot;width:300px&quot;&gt;Hier finden Sie alle Angebote von Mitgliedern, die Ihnen bei Ihrer Arbeit unter die Arme greifen moechten!&lt;/p&gt;"/>
                 </properties>
               </component>
               <component id="ce8a4" class="javax.swing.JButton" binding="dienstleistungsangeboteButton">
@@ -464,7 +464,7 @@
                   <background color="-1"/>
                   <font size="16" style="1"/>
                   <foreground color="-12497998"/>
-                  <text value="Gerätedatenbank"/>
+                  <text value="Geraetedatenbank"/>
                 </properties>
               </component>
               <vspacer id="30964">
@@ -532,7 +532,7 @@
         </constraints>
         <properties>
           <font size="18" style="2"/>
-          <text value="Nachrichten und Ankündigungen" noi18n="true"/>
+          <text value="Nachrichten und Ankuendigungen" noi18n="true"/>
         </properties>
       </component>
       <component id="4a1df" class="javax.swing.JSeparator">

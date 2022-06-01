@@ -10,8 +10,8 @@ public class RollenVerwaltungGastGUI extends JFrame {
     private JButton mitgliederButton;
     private JTable table1;
     private JButton mitarbeiterButton;
-    private JButton vereinsvorständeButton;
-    private JButton gästeButton;
+    private JButton vereinsvorstaendeButton;
+    private JButton gaesteButton;
 
 
     public RollenVerwaltungGastGUI(String title) {
@@ -49,7 +49,7 @@ public class RollenVerwaltungGastGUI extends JFrame {
 
 
         // geht auf Vereinsvorstand
-        vereinsvorständeButton.addActionListener(new ActionListener() {
+        vereinsvorstaendeButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 RollenverwaltungVereinsvorstandGUI Vorstand = new RollenverwaltungVereinsvorstandGUI("Rollen Verwaltung Vorstand");
