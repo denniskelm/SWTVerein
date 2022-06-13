@@ -65,7 +65,7 @@ public class GeraeteDatenbankGUI extends JFrame {
             String beschreibung = model.getValueAt(row, 4).toString(); //Geraetebeschreibung
         }
 
-        GeraeteVerwaltenGUI db = new GeraeteVerwaltenGUI("Geraete Verwaltung", iD);
+        GeraeteVerwaltenGUI db = new GeraeteVerwaltenGUI("Geräteverwaltung", iD);
         db.setVisible(true);
         GeraeteDatenbankGUI.this.setVisible(false);
     }

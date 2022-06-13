@@ -43,7 +43,7 @@ public class RegistrierenGUI extends JFrame {
 
                 try {
                     Vereinssoftware.rollenverwaltung.gastHinzufuegen(nachnameTextField.getText(),
-                            vornameTextField.getName(),
+                            vornameTextField.getText(),
                             eMailTextField.getText(),
                             passwortTextField.getText(),
                             anschriftTextField.getText(),

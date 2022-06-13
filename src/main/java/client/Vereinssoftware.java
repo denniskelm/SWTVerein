@@ -43,11 +43,11 @@ public class Vereinssoftware {
         session = new Session();
 
         //RMI ermoeglichen
-        /*try {
+        try {
             initializeRMI();
         } catch (RemoteException | NotBoundException e) {
             throw new RuntimeException(e);
-        } */
+        }
 
         //Starte die Startseite
         StartseiteGUI startseiteGUI = new StartseiteGUI();
@@ -63,7 +63,6 @@ public class Vereinssoftware {
         dienstleistungsverwaltung = (IDienstleistungsverwaltung) registry.lookup("Dienstleistungsverwaltung");
         mahnungsverwaltung = (IMahnungsverwaltung) registry.lookup("Mahnungsverwaltung");
         rollenverwaltung = (IRollenverwaltung) registry.lookup("Rollenverwaltung");
-        anfragenliste = (IAnfragenliste) registry.lookup("Anfrageliste");
     }
 
     private static void initializeUISettings() {

@@ -72,13 +72,13 @@ public class StartseiteGUI {
         vereinsnameText.setText(Einstellungen.getVereinsname());
 
         //Untertitel setzen mit Namen, falls angemeldet
-        try {
+        /*try {
             if (Vereinssoftware.session.getID() != null && Vereinssoftware.rollenverwaltung != null) {
                 subtitleHeaderText.setText("Hallo " + Vereinssoftware.rollenverwaltung.getMitgliedsNamen(Vereinssoftware.session.getID()) + "!");
             }
         } catch (Exception e) {
             throw new RuntimeException(e);
-        }
+        } */
 
         dienstleistungsangeboteButton.addActionListener(e -> {
             DienstleistungsangeboteGUI dienstleistungsangeboteGUI = new DienstleistungsangeboteGUI();

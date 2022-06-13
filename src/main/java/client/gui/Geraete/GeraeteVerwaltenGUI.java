@@ -2,11 +2,15 @@ package client.gui.Geraete;
 
 import client.Vereinssoftware;
 import server.geraetemodul.Geraetedaten;
+import shared.communication.IAusleiher;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.rmi.RemoteException;
+import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
 
 public class GeraeteVerwaltenGUI extends JFrame {
     private JPanel GeraetVerwalten;
@@ -15,105 +19,76 @@ public class GeraeteVerwaltenGUI extends JFrame {
     private JTextField kategorieTextField;
     private JTextField geraetbeschreibungTextField;
     private JTextField leihfristTextField;
-    private JButton GeraetaendernButton;
-    private JButton SpenderaendernButton;
-    private JButton KategorieaendernButton;
-    private JButton GeraetBeschreibungaendernButton;
-    private JButton LeihfristaendernButton;
-    private JButton reserveierungslisteAnzeigenButton;
-    private JButton speichernButton;
-    private JButton geraetAusgebenButton;
-    private JButton verleihhistorieButton;
-    private JButton geraeteLoeschenButton;
-    private JLabel picture;
-    private JButton BildaendernButton;
-    private JTextField akutellerEntleiherTextField;
+    private JTextField aktuellerEntleiherTextField;
     private JTextField verbliebendeLeihdauerTextField;
     private JTextField ausgabeortTextField;
-    private JButton AusgabeortaendernButton;
+    private JTextField bildTextField;
+    private JLabel kategorieLabel;
+    private JLabel spenderLabel;
+    private JLabel nameLabel;
+    private JLabel beschreibungLabel;
+    private JLabel leihfristLabel;
+    private JLabel entleiherLabel;
+    private JLabel leihdauerLabel;
+    private JLabel ausgabeortLabel;
+    private JLabel bildLabel;
+    private JButton reservierungslisteAnzeigenButton;
+    private JButton verleihhistorieButton;
+    private JButton speichernButton;
+    private JButton geraetAusgebenButton;
+    private JButton geraetLoeschenButton;
     private final String geraeteID;
+    private Object[] geraeteInfos;
 
     public GeraeteVerwaltenGUI(String title, String geraeteID) {
         super(title);
         this.geraeteID = geraeteID;
 
+        try {
+            System.out.println("a");
+            Object[][] geraeteDaten = Vereinssoftware.geraeteverwaltung.omniGeraeteDaten();
+            System.out.println("b");
+            for (Object[] g : geraeteDaten)
+                if (g[0].equals(geraeteID)) {
+                    geraeteInfos = g;
+                    break;
+                }
+        } catch (RemoteException e) {
+            throw new RuntimeException(e);
+        }
+
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.setContentPane(GeraetVerwalten);
         this.pack();
         setLocationRelativeTo(null);
-        picture.add(new JLabel(new ImageIcon("Path/To/Your/Image.png")));
 
+        String ausleiherName = null, ausleihDauer = null;
 
-        GeraetaendernButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
+        try {
+            Object[][] resListe = (Object[][]) geraeteInfos[9];
+            System.out.println("a" + resListe.length);
 
+            if (resListe.length > 0) {
+                ausleiherName = Vereinssoftware.rollenverwaltung.getMitgliedsNamen((String) resListe[0][0]);
+                LocalDateTime ausgeliehenBis = ((LocalDateTime) resListe[0][2]).plusDays(Long.valueOf(String.valueOf(geraeteInfos[5])));
+                ausleihDauer = LocalDateTime.now().until(ausgeliehenBis, ChronoUnit.DAYS) + " Tage";
             }
-        });
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
 
-        SpenderaendernButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                try {
-                    Vereinssoftware.geraeteverwaltung.geraeteDatenVerwalten("", Geraetedaten.SPENDERNAME, spenderTextField.getText());
-                } catch (RemoteException ex) {
-                    throw new RuntimeException(ex);
-                }
-            }
-        });
+        bildTextField.setText("Path/To/Your/Image.png");
+        geraetnameTextField.setText(String.valueOf(geraeteInfos[1]));
+        spenderTextField.setText(String.valueOf(geraeteInfos[4]));
+        kategorieTextField.setText(String.valueOf(geraeteInfos[3]));
+        geraetbeschreibungTextField.setText(String.valueOf(geraeteInfos[2]));
+        leihfristTextField.setText(geraeteInfos[5] + " Tage");
+        ausgabeortTextField.setText(String.valueOf(geraeteInfos[7]));
+        aktuellerEntleiherTextField.setText(ausleiherName);
+        verbliebendeLeihdauerTextField.setText(ausleihDauer);
 
-        KategorieaendernButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                try {
-                    Vereinssoftware.geraeteverwaltung.geraeteDatenVerwalten("", Geraetedaten.KATEGORIE, kategorieTextField.getText());
-                } catch (RemoteException ex) {
-                    throw new RuntimeException(ex);
-                }
-            }
-        });
-
-        GeraetBeschreibungaendernButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                try {
-                    Vereinssoftware.geraeteverwaltung.geraeteDatenVerwalten("", Geraetedaten.BESCHREIBUNG, geraetbeschreibungTextField.getText());
-                } catch (RemoteException ex) {
-                    throw new RuntimeException(ex);
-                }
-            }
-        });
-
-        LeihfristaendernButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                try {
-                    Vereinssoftware.geraeteverwaltung.geraeteDatenVerwalten("", Geraetedaten.LEIHFRIST, leihfristTextField.getText());
-                } catch (RemoteException ex) {
-                    throw new RuntimeException(ex);
-                }
-            }
-        });
-
-        BildaendernButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
-            }
-        });
-
-        AusgabeortaendernButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                try {
-                    Vereinssoftware.geraeteverwaltung.geraeteDatenVerwalten(geraeteID, Geraetedaten.ABHOLORT, ausgabeortTextField.getText());
-                } catch (RemoteException ex) {
-                    throw new RuntimeException(ex);
-                }
-            }
-        });
-
-        reserveierungslisteAnzeigenButton.addActionListener(new ActionListener() {
+        // TODO noch keine GUI
+        reservierungslisteAnzeigenButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
@@ -123,6 +98,27 @@ public class GeraeteVerwaltenGUI extends JFrame {
         speichernButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
+                try {
+
+                    if (!geraetnameTextField.getText().equals(geraeteInfos[1]))
+                        Vereinssoftware.geraeteverwaltung.geraeteDatenVerwalten(geraeteID, Geraetedaten.NAME, geraetnameTextField.getText());
+                    if (!spenderTextField.getText().equals(geraeteInfos[4]))
+                        Vereinssoftware.geraeteverwaltung.geraeteDatenVerwalten(geraeteID, Geraetedaten.SPENDERNAME, spenderTextField.getText());
+                    if (!kategorieTextField.getText().equals(geraeteInfos[3]))
+                        Vereinssoftware.geraeteverwaltung.geraeteDatenVerwalten(geraeteID, Geraetedaten.KATEGORIE, kategorieTextField.getText());
+                    if (!geraetbeschreibungTextField.getText().equals(geraeteInfos[2]))
+                        Vereinssoftware.geraeteverwaltung.geraeteDatenVerwalten(geraeteID, Geraetedaten.BESCHREIBUNG, geraetbeschreibungTextField.getText());
+                    if (!leihfristTextField.getText().equals(geraeteInfos[5] + " Tage"))
+                        Vereinssoftware.geraeteverwaltung.geraeteDatenVerwalten(geraeteID, Geraetedaten.LEIHFRIST, Integer.parseInt(leihfristTextField.getText()));
+                    if (!ausgabeortTextField.getText().equals(geraeteInfos[7]))
+                        Vereinssoftware.geraeteverwaltung.geraeteDatenVerwalten(geraeteID, Geraetedaten.ABHOLORT, ausgabeortTextField.getText());
+                    if (!bildTextField.getText().equals(geraeteInfos[10]))
+                        Vereinssoftware.geraeteverwaltung.geraeteDatenVerwalten(geraeteID, Geraetedaten.BILD, bildTextField.getText());
+
+                } catch (RemoteException ex) {
+                    throw new RuntimeException(ex);
+                }
 
             }
         });
@@ -149,7 +145,7 @@ public class GeraeteVerwaltenGUI extends JFrame {
             }
         });
 
-        geraeteLoeschenButton.addActionListener(new ActionListener() {
+        geraetLoeschenButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
@@ -162,7 +158,8 @@ public class GeraeteVerwaltenGUI extends JFrame {
     }
 
     public static void main(String[] args) {
-        JFrame frame = new GeraeteVerwaltenGUI("Geraet Verwalten", "0");
+        JFrame frame = new GeraeteVerwaltenGUI("Gerät verwalten", "0");
         frame.setVisible(true);
     }
+
 }

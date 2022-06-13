@@ -3,14 +3,14 @@
   <grid id="27dc6" binding="GeraetVerwalten" layout-manager="GridLayoutManager" row-count="7" column-count="4" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="0" left="0" bottom="0" right="0"/>
     <constraints>
-      <xy x="20" y="20" width="570" height="400"/>
+      <xy x="20" y="20" width="813" height="400"/>
     </constraints>
     <properties/>
     <border type="none"/>
     <children>
       <component id="dd271" class="javax.swing.JTextField" binding="geraetnameTextField" default-binding="true">
         <constraints>
-          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+          <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
           </grid>
         </constraints>
@@ -25,7 +25,7 @@
       </hspacer>
       <component id="42a99" class="javax.swing.JTextField" binding="spenderTextField" default-binding="true">
         <constraints>
-          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+          <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
           </grid>
         </constraints>
@@ -35,7 +35,7 @@
       </component>
       <component id="4d7d1" class="javax.swing.JTextField" binding="kategorieTextField" default-binding="true">
         <constraints>
-          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+          <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
           </grid>
         </constraints>
@@ -43,19 +43,9 @@
           <text value="Kategorie"/>
         </properties>
       </component>
-      <component id="e5b0e" class="javax.swing.JTextField" binding="geraetbeschreibungTextField" default-binding="true">
-        <constraints>
-          <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-            <preferred-size width="150" height="-1"/>
-          </grid>
-        </constraints>
-        <properties>
-          <text value="Geraetbeschreibung"/>
-        </properties>
-      </component>
       <component id="3cce2" class="javax.swing.JTextField" binding="leihfristTextField" default-binding="true">
         <constraints>
-          <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+          <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
           </grid>
         </constraints>
@@ -63,7 +53,7 @@
           <text value="Leihfrist"/>
         </properties>
       </component>
-      <component id="bda3" class="javax.swing.JButton" binding="reserveierungslisteAnzeigenButton" default-binding="true">
+      <component id="bda3" class="javax.swing.JButton" binding="reservierungslisteAnzeigenButton" default-binding="true">
         <constraints>
           <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -79,109 +69,84 @@
           <text value="Speichern"/>
         </properties>
       </component>
+      <component id="db966" class="javax.swing.JLabel" binding="nameLabel">
+        <constraints>
+          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Name:"/>
+        </properties>
+      </component>
+      <component id="44eb7" class="javax.swing.JLabel" binding="spenderLabel">
+        <constraints>
+          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Spender:"/>
+        </properties>
+      </component>
+      <component id="6a0d1" class="javax.swing.JLabel" binding="beschreibungLabel">
+        <constraints>
+          <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Beschreibung:"/>
+        </properties>
+      </component>
+      <component id="b7649" class="javax.swing.JLabel" binding="leihfristLabel">
+        <constraints>
+          <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Leihfrist:"/>
+        </properties>
+      </component>
       <component id="7c3f8" class="javax.swing.JButton" binding="geraetAusgebenButton">
         <constraints>
           <grid row="6" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <text value="Geraet Ausgeben"/>
+          <text value="Gerät Ausgeben"/>
+        </properties>
+      </component>
+      <component id="c45eb" class="javax.swing.JButton" binding="geraetLoeschenButton">
+        <constraints>
+          <grid row="6" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Gerät Löschen"/>
         </properties>
       </component>
       <component id="5f791" class="javax.swing.JButton" binding="verleihhistorieButton" default-binding="true">
         <constraints>
-          <grid row="5" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="5" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <text value="Verleihhistorie"/>
         </properties>
       </component>
-      <component id="c45eb" class="javax.swing.JButton" binding="geraeteLoeschenButton">
+      <component id="c610f" class="javax.swing.JLabel" binding="entleiherLabel">
         <constraints>
-          <grid row="6" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <text value="Geraete Loeschen"/>
+          <text value="Ausleiher:"/>
         </properties>
       </component>
-      <component id="3c692" class="javax.swing.JButton" binding="GeraetaendernButton">
+      <component id="6e34f" class="javax.swing.JTextField" binding="aktuellerEntleiherTextField" default-binding="true">
         <constraints>
-          <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <text value="aendern"/>
-        </properties>
-      </component>
-      <component id="fa1f4" class="javax.swing.JButton" binding="SpenderaendernButton">
-        <constraints>
-          <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <text value="aendern"/>
-        </properties>
-      </component>
-      <component id="79abf" class="javax.swing.JButton" binding="KategorieaendernButton">
-        <constraints>
-          <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <text value="aendern"/>
-        </properties>
-      </component>
-      <component id="56c30" class="javax.swing.JButton" binding="GeraetBeschreibungaendernButton">
-        <constraints>
-          <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <text value="aendern"/>
-        </properties>
-      </component>
-      <component id="430e2" class="javax.swing.JButton" binding="LeihfristaendernButton">
-        <constraints>
-          <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <text value="aendern"/>
-        </properties>
-      </component>
-      <component id="1de82" class="javax.swing.JLabel" binding="picture">
-        <constraints>
-          <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <text value="Label"/>
-        </properties>
-      </component>
-      <component id="18b23" class="javax.swing.JButton" binding="BildaendernButton">
-        <constraints>
-          <grid row="1" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <text value="aendern"/>
-        </properties>
-      </component>
-      <component id="6e34f" class="javax.swing.JTextField" binding="akutellerEntleiherTextField" default-binding="true">
-        <constraints>
-          <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+          <grid row="2" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
           </grid>
         </constraints>
         <properties>
-          <text value="akuteller Entleiher"/>
-        </properties>
-      </component>
-      <component id="3925b" class="javax.swing.JTextField" binding="verbliebendeLeihdauerTextField" default-binding="true">
-        <constraints>
-          <grid row="3" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-            <preferred-size width="150" height="-1"/>
-          </grid>
-        </constraints>
-        <properties>
-          <text value="verbliebende Leihdauer"/>
+          <editable value="false"/>
+          <text value=""/>
         </properties>
       </component>
       <component id="2c1dd" class="javax.swing.JTextField" binding="ausgabeortTextField" default-binding="true">
         <constraints>
-          <grid row="4" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+          <grid row="4" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
           </grid>
         </constraints>
@@ -189,12 +154,67 @@
           <text value="Ausgabeort"/>
         </properties>
       </component>
-      <component id="55f3f" class="javax.swing.JButton" binding="AusgabeortaendernButton">
+      <component id="5bf3f" class="javax.swing.JLabel" binding="ausgabeortLabel">
         <constraints>
-          <grid row="4" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="4" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <text value="aendern"/>
+          <text value="Ausgabeort:"/>
+        </properties>
+      </component>
+      <component id="502ce" class="javax.swing.JLabel" binding="leihdauerLabel">
+        <constraints>
+          <grid row="3" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="verbleidende Leihdauer:"/>
+        </properties>
+      </component>
+      <component id="3925b" class="javax.swing.JTextField" binding="verbliebendeLeihdauerTextField" default-binding="true">
+        <constraints>
+          <grid row="3" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+        </constraints>
+        <properties>
+          <editable value="false"/>
+          <text value=""/>
+        </properties>
+      </component>
+      <component id="ccf08" class="javax.swing.JTextField" binding="bildTextField">
+        <constraints>
+          <grid row="1" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+        </constraints>
+        <properties>
+          <text value="URL"/>
+        </properties>
+      </component>
+      <component id="e5b0e" class="javax.swing.JTextField" binding="geraetbeschreibungTextField" default-binding="true">
+        <constraints>
+          <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+        </constraints>
+        <properties>
+          <text value="Geraetbeschreibung"/>
+        </properties>
+      </component>
+      <component id="dc9df" class="javax.swing.JLabel" binding="bildLabel">
+        <constraints>
+          <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Bild-URL:"/>
+        </properties>
+      </component>
+      <component id="eea79" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Kategorie:"/>
         </properties>
       </component>
     </children>

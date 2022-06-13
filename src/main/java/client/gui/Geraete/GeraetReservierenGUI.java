@@ -31,7 +31,7 @@ public class GeraetReservierenGUI extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    Vereinssoftware.geraeteverwaltung.geraetReservieren("", ""); // TODO
+                    Vereinssoftware.geraeteverwaltung.geraetReservieren(geraeteID, ausleiherID);
 
                     DefaultSmallPopup smallPopup = new DefaultSmallPopup("Hinweis",
                             "Sie haben dieses Geraet erfolgreich reserviert");
