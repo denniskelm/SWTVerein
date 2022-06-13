@@ -33,7 +33,7 @@ public class Vereinssoftware {
     public static IDienstleistungsverwaltung dienstleistungsverwaltung;
     public static IMahnungsverwaltung mahnungsverwaltung;
     public static IRollenverwaltung rollenverwaltung;
-    public static IAnfragenliste anfragenliste;
+    //public static IAnfragenliste anfragenliste;
     public static Session session;
     private static boolean connectionSuccessful = false;
 
@@ -65,14 +65,14 @@ public class Vereinssoftware {
     }
 
     public static void initializeRMI() throws RemoteException, NotBoundException {
-        //Registry registry = LocateRegistry.getRegistry("meta.informatik.uni-rostock.de", 1234);
-        Registry registry = LocateRegistry.getRegistry("127.0.0.1", 1234);
+        Registry registry = LocateRegistry.getRegistry("meta.informatik.uni-rostock.de", 1234);
+        //Registry registry = LocateRegistry.getRegistry("127.0.0.1", 1234);
 
         geraeteverwaltung = (IGeraeteverwaltung) registry.lookup("Geraeteverwaltung");
         dienstleistungsverwaltung = (IDienstleistungsverwaltung) registry.lookup("Dienstleistungsverwaltung");
         mahnungsverwaltung = (IMahnungsverwaltung) registry.lookup("Mahnungsverwaltung");
         rollenverwaltung = (IRollenverwaltung) registry.lookup("Rollenverwaltung");
-        anfragenliste = (IAnfragenliste) registry.lookup("Anfrageliste");
+        //anfragenliste = (IAnfragenliste) registry.lookup("Anfrageliste");
     }
 
     private static void initializeUISettings() {

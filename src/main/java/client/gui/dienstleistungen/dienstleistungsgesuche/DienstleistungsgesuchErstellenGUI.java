@@ -55,7 +55,7 @@ public class DienstleistungsgesuchErstellenGUI {
         ClientDefaults.enhanceTextArea(beschreibungTextArea, onceChangedAreas);
 
         for (String kategorie :
-                ClientDefaults.getKategorien(Kategorie.class)) {
+                ClientDefaults.getKategorien()) {
             kategorieComboBox.addItem(kategorie);
         }
 
@@ -70,13 +70,29 @@ public class DienstleistungsgesuchErstellenGUI {
     }
 
     private void gesuchErstellenGUI(String titel, String beschreibung, String kategorie, String urlToImage) {
-        try {
-            Vereinssoftware.dienstleistungsverwaltung.gesuchErstellen(titel, beschreibung, kategorie, urlToImage, Vereinssoftware.session.getID());
-        } catch (Exception e) {
-            throw new RuntimeException(e);
+        boolean allFieldsValid = true;
+
+        //Prueft hier, ob 1. was eingegeben wurde und 2. ob noch was leer ist
+        for (String eingabe :
+                new String[]{titel, beschreibung, kategorie, urlToImage}) {
+            if (Objects.equals(eingabe, "Eingeben...") || Objects.equals(eingabe, "")) {
+                allFieldsValid = false;
+                DefaultSmallPopup defaultSmallPopup = new DefaultSmallPopup("Falsche Eingaben", "Du hast einen Fehler bei der Eingabe gemacht!");
+            }
         }
 
-        DefaultSmallPopup smallPopup = new DefaultSmallPopup("Gesuch erfolgreich erstellt", "Ihr Dienstleistungsgesuch wurde erfolgreich erstellt!");
+        //Prueft gleich noch, ob die URL wirklich eine URL ist
+        if (allFieldsValid && ClientDefaults.checkIfValidURL(urlToImage)) {
+            try {
+                Vereinssoftware.dienstleistungsverwaltung.gesuchErstellen(titel, beschreibung, kategorie, urlToImage, Vereinssoftware.session.getID());
+                DefaultSmallPopup smallPopup = new DefaultSmallPopup("Gesuch erfolgreich erstellt", "Ihr Dienstleistungsgesuch wurde erfolgreich erstellt!");
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+        } else {
+            DefaultSmallPopup defaultSmallPopup = new DefaultSmallPopup("Falsche URL", "Die Bild-URL, die du eingegeben hast, ist falsch!");
+        }
+
     }
 }
 

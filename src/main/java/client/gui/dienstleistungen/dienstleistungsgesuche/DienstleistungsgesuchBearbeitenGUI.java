@@ -50,7 +50,7 @@ public class DienstleistungsgesuchBearbeitenGUI {
 
         //Dropdown mit Werten fuellen
         for (String kategorie :
-                ClientDefaults.getKategorien(Kategorie.class)) {
+                ClientDefaults.getKategorien()) {
             kategorieComboBox.addItem(kategorie);
         }
 

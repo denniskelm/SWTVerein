@@ -5,12 +5,16 @@ Dennis Kelm
 */
 
 import client.ClientDefaults;
+import client.Kategorie;
 import client.Vereinssoftware;
+import client.gui.DefaultSmallPopup;
 import client.gui.DefaultTextWithButton;
 
 import javax.swing.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.HashMap;
+import java.util.Map;
 
 //TODO Was macht diese Klasse?
 public class DienstleistungsangebotAnzeigenGUI {
@@ -30,10 +34,13 @@ public class DienstleistungsangebotAnzeigenGUI {
     private JLabel descriptionText;
     private JButton jetztReservierenButton;
     private JLabel imageLabel;
+    private JPanel stundenzahlPanel;
+    private JTextField stundenzahlTextField;
 
+    private static Map<JTextField, Boolean> onceChanged = new HashMap<JTextField, Boolean>();
 
     //Zeigt die Details des Dienstleistungsangebots an
-    public DienstleistungsangebotAnzeigenGUI(String angebots_ID, String titel, String pathToImage, String beschreibung, String kategorie, LocalDateTime ab, LocalDateTime bis, String personen_ID) {
+    public DienstleistungsangebotAnzeigenGUI(String angebots_ID, String titel, String pathToImage, String beschreibung, Kategorie kategorie, LocalDateTime ab, LocalDateTime bis, String personen_ID) {
         JFrame frame = new JFrame("Details des Dienstleistungsangebots");
         ClientDefaults.insertImageToPanel(imageLabel, pathToImage); //URL zum Bild, z.B. "https://bilder.gartenpaul.de/item/images/456/full/456-R1-M1.jpg"
         frame = ClientDefaults.standardizeFrame(frame, dienstleistungsangebotAnzeigenGUI);
@@ -50,18 +57,25 @@ public class DienstleistungsangebotAnzeigenGUI {
             throw new RuntimeException(e);
         }
 
+
+        ClientDefaults.enhanceTextField(stundenzahlTextField, onceChanged);
+
         descriptionText.setText("<html><p style=\"width: 600px;\">" + beschreibung + "</p>");
 
         jetztReservierenButton.addActionListener(e -> {
             try {
                 Vereinssoftware.dienstleistungsverwaltung.angebotAnnehmen(angebots_ID, personen_ID, "1", 0);
                 DefaultTextWithButton defaultTextWithButton = new DefaultTextWithButton("Anfrage senden?",
-                        "Moechten Sie die Anfrage wirklich an " + Vereinssoftware.rollenverwaltung.getMitgliedsNamen(personen_ID) + " senden?", "Anfrage absenden");
+                        "Moechten Sie die Anfrage wirklich an " +
+                                Vereinssoftware.rollenverwaltung.getMitgliedsNamen(personen_ID) + " senden?",
+                        "Anfrage absenden");
 
                 defaultTextWithButton.getActionButton().addActionListener(e1 -> {
                     try {
-                        Vereinssoftware.dienstleistungsverwaltung.angebotAnnehmen(angebots_ID, personen_ID, Vereinssoftware.session.getID(), 10 /* TODO STUNDEN */);
+                        Vereinssoftware.dienstleistungsverwaltung.angebotAnnehmen(angebots_ID, personen_ID,
+                                Vereinssoftware.session.getID(), Integer.parseInt(stundenzahlTextField.getText()));
                     } catch (Exception ex) {
+                        DefaultSmallPopup errorPopup = new DefaultSmallPopup("Fehler bei der Anfrage!", "Es ist ein Fehler aufgetreten: " + ex);
                         throw new RuntimeException(ex);
                     }
                 });

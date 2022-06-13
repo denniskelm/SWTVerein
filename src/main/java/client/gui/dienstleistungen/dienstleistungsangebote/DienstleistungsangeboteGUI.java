@@ -12,6 +12,7 @@ Dennis Kelm
 */
 
 import client.ClientDefaults;
+import client.Kategorie;
 import client.Vereinssoftware;
 import client.gui.dienstleistungen.dienstleistungsgesuche.DienstleistungsgesuchErstellenGUI;
 
@@ -41,9 +42,6 @@ public class DienstleistungsangeboteGUI {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-        //} catch (RemoteException e) {
-        //    throw new RuntimeException(e);
-        //}
 
         frame = ClientDefaults.standardizeFrame(frame, this.dienstleistungsangebotePanel);
         frame.setLocationRelativeTo(null);
@@ -123,7 +121,7 @@ public class DienstleistungsangeboteGUI {
                                 angebote[row][0].toString(), //Titel
                                 angebote[row][7].toString(), //pathToImage
                                 angebote[row][1].toString(), //beschreibung
-                                angebote[row][2].toString(), //Kategorie
+                                Kategorie.valueOf(angebote[row][2].toString()), //Kategorie
                                 (LocalDateTime) angebote[row][3], //ab
                                 (LocalDateTime) angebote[row][4], //bis
                                 (String) angebote[row][5] //PersonenID

@@ -13,6 +13,8 @@ import client.gui.DefaultSmallPopup;
 import client.gui.DefaultTextWithButton;
 
 import javax.swing.*;
+import java.util.HashMap;
+import java.util.Map;
 
 //TODO Was macht diese Klasse?
 public class DienstleistungsgesuchAnzeigenGUI {
@@ -32,7 +34,10 @@ public class DienstleistungsgesuchAnzeigenGUI {
     private JLabel descriptionText;
     private JButton jetztReservierenButton;
     private JLabel imageLabel;
+    private JPanel stundenzahlPanel;
+    private JTextField stundenzahlTextField;
 
+    private static Map<JTextField, Boolean> onceChanged = new HashMap<JTextField, Boolean>();
 
     //Zeigt die Details eines Dienstleistungsgesuchs an
     //TODO Implementation Infos fetchen von IGeraeteverwaltung, vllt. die Infos per Parameter uebergeben sondern hier fetchen
@@ -41,6 +46,9 @@ public class DienstleistungsgesuchAnzeigenGUI {
         ClientDefaults.insertImageToPanel(imageLabel, pathToImage); //URL zum Bild, z.B. "https://bilder.gartenpaul.de/item/images/456/full/456-R1-M1.jpg"
         frame = ClientDefaults.standardizeFrame(frame, dienstleistungsgesuchAnzeigenGUI);
         frame.setLocationRelativeTo(null);
+
+        ClientDefaults.enhanceTextField(stundenzahlTextField, onceChanged);
+
 
         //Anpassen der Texte
         headlineLabel.setText(titel); //sowas wie Vereinssoftware.dienstleistungsverwaltung.getGeraetInformation(String geraeteID)[0]
@@ -62,9 +70,10 @@ public class DienstleistungsgesuchAnzeigenGUI {
                     "Jetzt annehmen!");
             defaultTextWithButton.getActionButton().addActionListener(e1 -> {
                 try {
-                    Vereinssoftware.dienstleistungsverwaltung.gesuchAnnehmen(gesuch_ID, suchenderID, Vereinssoftware.session.getID(), 10);
+                    Vereinssoftware.dienstleistungsverwaltung.gesuchAnnehmen(gesuch_ID, suchenderID, Vereinssoftware.session.getID(), Integer.parseInt(stundenzahlTextField.getText()));
                     DefaultSmallPopup defaultSmallPopup = new DefaultSmallPopup("Anfrage gesendet", "Sie haben die Anfrage erfolgreich gesendet!");
                 } catch (Exception ex) {
+                    DefaultSmallPopup errorPopup = new DefaultSmallPopup("Fehler bei der Anfrage!", "Es ist ein Fehler aufgetreten: " + ex);
                     throw new RuntimeException(ex);
                 }
             });

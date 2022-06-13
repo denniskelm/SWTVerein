@@ -17,6 +17,8 @@ import client.Vereinssoftware;
 import client.gui.DefaultSmallPopup;
 
 import javax.swing.*;
+import java.lang.ref.Cleaner;
+import java.net.URL;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -62,11 +64,9 @@ public class DienstleistungsangebotErstellenGUI {
             ClientDefaults.enhanceTextField(textField, onceChangedFields);
         }
 
-        //TODO Kategorien in die ComboBox packen
-
 
         for (String kategorie :
-                ClientDefaults.getKategorien(Kategorie.class)) {
+                ClientDefaults.getKategorien()) {
             kategorieComboBox.addItem(kategorie);
         }
 
@@ -84,22 +84,35 @@ public class DienstleistungsangebotErstellenGUI {
 
     }
 
-    public static void main(String[] args) {
-        DienstleistungsangebotErstellenGUI thisgui = new DienstleistungsangebotErstellenGUI();
-    }
-
     private void angebotErstellenGUI(String titel, String urlToImage, String beschreibung, String kategorie, String ab, String bis) {
         DateTimeFormatter formatter = DateTimeFormatter.ISO_LOCAL_DATE;
         LocalDateTime abTime = LocalDate.parse(ab, formatter).atTime(12, 0, 0);
         LocalDateTime bisTime = LocalDate.parse(bis, formatter).atTime(12, 0, 0);
 
-        try {
-            Vereinssoftware.dienstleistungsverwaltung.angebotErstellen(titel, beschreibung, kategorie, abTime, bisTime, urlToImage, Vereinssoftware.session.getID());
-        } catch (Exception e) {
-            throw new RuntimeException(e);
+        boolean allFieldsValid = true;
+
+        //Prueft hier, ob 1. was eingegeben wurde und 2. ob noch was leer ist
+        for (String eingabe :
+                new String[]{titel, beschreibung, kategorie, urlToImage}) {
+            if (Objects.equals(eingabe, "Eingeben...") || Objects.equals(eingabe, "")) {
+                allFieldsValid = false;
+                DefaultSmallPopup defaultSmallPopup = new DefaultSmallPopup("Falsche Eingaben", "Du hast einen Fehler bei der Eingabe gemacht!");
+            }
         }
 
-        DefaultSmallPopup smallPopup = new DefaultSmallPopup("Angebot erfolgreich erstellt", "Ihr Dienstleistungsangebot wurde erfolgreich erstellt!");
+        //Prueft gleich noch, ob die URL wirklich eine URL ist
+        if (allFieldsValid && ClientDefaults.checkIfValidURL(urlToImage)) {
+            try {
+                Vereinssoftware.dienstleistungsverwaltung.angebotErstellen(titel, beschreibung, kategorie, abTime, bisTime, urlToImage, Vereinssoftware.session.getID());
+                DefaultSmallPopup smallPopup = new DefaultSmallPopup("Angebot erfolgreich erstellt", "Ihr Dienstleistungsangebot wurde erfolgreich erstellt!");
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+        } else {
+            DefaultSmallPopup defaultSmallPopup = new DefaultSmallPopup("Falsche URL", "Die Bild-URL, die du eingegeben hast, ist falsch!");
+        }
+
+
     }
 
 }

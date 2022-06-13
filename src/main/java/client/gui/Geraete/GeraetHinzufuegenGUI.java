@@ -33,23 +33,19 @@ public class GeraetHinzufuegenGUI extends JFrame {
         geraetErstellenButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                try {
-                    Vereinssoftware.geraeteverwaltung.geraetHinzufuegen(
-                            geraetenameTextField.getText(),
-                            spenderTextField.getText(),
-                            Integer.parseInt(leihfristTextField.getText()),
-                            kategorieTextField.getText(),
-                            geraetebeschreibungTextField.getText(),
-                            abholortTextField.getText());
+                /*Vereinssoftware.geraeteverwaltung.geraetHinzufuegen(
+                        geraetenameTextField.getText(),
+                        spenderTextField.getText(),
+                        Integer.parseInt(leihfristTextField.getText()),
+                        kategorieTextField.getText(),
+                        geraetebeschreibungTextField.getText(),
+                        abholortTextField.getText()); */ //TODO URL Textfeld
 
-                    JOptionPane.showMessageDialog(GeraetHinzufuegenGUI.super.rootPane, "Geraet erfolgreich hinzugefuegt", "", JOptionPane.PLAIN_MESSAGE);
+                JOptionPane.showMessageDialog(GeraetHinzufuegenGUI.super.rootPane, "Geraet erfolgreich hinzugefuegt", "", JOptionPane.PLAIN_MESSAGE);
 
-                    dispose();
+                dispose();
 
 
-                } catch (RemoteException ex) {
-                    DefaultSmallPopup popup = new DefaultSmallPopup("Hinweis", ex.getMessage());
-                }
             }
         });
     }

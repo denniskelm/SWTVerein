@@ -34,7 +34,8 @@ public class ClientDefaults {
         return frame;
     }
 
-    public static String[] getKategorien(Class<? extends Enum<?>> e) {
+    public static String[] getKategorien() {
+        Class<? extends Enum<?>> e = Kategorie.class;
         return Arrays.stream(e.getEnumConstants()).map(Enum::name).toArray(String[]::new);
     }
 
@@ -56,6 +57,15 @@ public class ClientDefaults {
         }
 
 
+    }
+
+    public static boolean checkIfValidURL(String url) {
+        try {
+            new URL(url).toURI();
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
     }
 
     //Bei Klick: Entferne den Text "Eingeben", aber nur wenn noch nicht eingegeben wurde
