@@ -1,18 +1,8 @@
 package client.gui;
-/*
-@author
-TODO Raphael Kleebaum
-TODO Jonny Schlutter
-TODO Gabriel Kleebaum
-TODO Mhd Esmail Kanaan
-TODO Gia Huy Hans Tran
-TODO Ole Bjoern Adelmann
-TODO Bastian Reichert
-Dennis Kelm
-*/
 
 import client.ClientDefaults;
 import client.Einstellungen;
+import client.Umlaut;
 import client.Vereinssoftware;
 import client.gui.Geraete.GeraeteDatenbankGUI;
 import client.gui.Geraete.GeraeteListeGUI;
@@ -31,9 +21,10 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.rmi.NoSuchObjectException;
 
-/*Stellt die Startseite dar, und leitet somit auf die weiteren Fenster der Anwendung weiter (unterscheidet dabei
- * in angemeldet und unangemeldet)
- * */
+/**
+ * @author Dennis Kelm
+ * Stellt die Startseite dar, und leitet somit auf die weiteren Fenster der Anwendung weiter (unterscheidet dabeiin angemeldet und unangemeldet)
+ */
 public class StartseiteGUI {
     private JPanel startseite;
     private JPanel buttonsTopRight;
@@ -62,6 +53,7 @@ public class StartseiteGUI {
     private JButton profilButton;
     private JLabel vereinsnameText;
     private JLabel subtitleHeaderText;
+    private JLabel firstRightText;
 
 
     //Fuegt Funktionalitaet der Startseite hinzu
@@ -69,12 +61,23 @@ public class StartseiteGUI {
         JFrame frame = new JFrame("Startseite");
         frame = ClientDefaults.standardizeFrame(frame, startseite);
 
+        //Stoppe das Programm, wenn die Startseite geschlossen wird
+        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+
+        //UE AE und OE richtig setzen
+        headlineRightMainMenu.setText("<html>Wir <b>helfen</b> uns nat" + Umlaut.ue() + "rlich <b>gegenseitig</b>!</html>");
+        headlineLeftMainMenu.setText("<html>M" + Umlaut.oe() + "chten Sie ein <b>Ger" + Umlaut.ae() + "t ausleihen</b>?");
+        firstLeftDescriptionText.setText("<html><p style=\"width:300px\">Sehen Sie sich einfach alle Ger" + Umlaut.ae() + "te an, die wir Ihnen zum Verleih zur Verf" + Umlaut.ue() + "gung stellen!</p>");
+        secondLeftHeadline.setText("<html>... oder lieber ein <b>Ger" + Umlaut.ae() + "t spenden</b>?</html>");
+        firstRightText.setText("<html><p style=\"width:300px\">Hier finden Sie alle Angebote von Mitgliedern, die Ihnen bei Ihrer Arbeit unter die Arme greifen m" + Umlaut.oe() + "chten!</p>");
+        newsHeadline.setText("Neuigkeiten und Ank" + Umlaut.ae() + "ndigungen");
+
         vereinsnameText.setText(Einstellungen.getVereinsname());
 
         //Untertitel setzen mit Namen, falls angemeldet
         /*try {
             if (Vereinssoftware.session.getID() != null && Vereinssoftware.rollenverwaltung != null) {
-                subtitleHeaderText.setText("Hallo " + Vereinssoftware.rollenverwaltung.getMitgliedsNamen(Vereinssoftware.session.getID()) + "!");
+                //subtitleHeaderText.setText("Hallo " + Vereinssoftware.rollenverwaltung.getMitgliedsNamen(Vereinssoftware.session.getID()) + "!");
             }
         } catch (Exception e) {
             throw new RuntimeException(e);

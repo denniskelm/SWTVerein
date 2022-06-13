@@ -16,7 +16,7 @@ import client.ClientDefaults;
 import javax.swing.*;
 
 //TODO Was macht diese Klasse?
-public class DefaultSmallPopup {
+public class DefaultSmallPopup extends JFrame {
     private JPanel defaultPanel;
     private JScrollPane textScrollbar;
     private JLabel textLabel;

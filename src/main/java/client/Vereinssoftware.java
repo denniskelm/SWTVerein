@@ -11,6 +11,7 @@ TODO Bastian Reichert
 Dennis Kelm
 */
 
+import client.gui.DefaultSmallPopup;
 import client.gui.StartseiteGUI;
 import com.formdev.flatlaf.FlatLightLaf;
 import shared.communication.*;
@@ -34,6 +35,7 @@ public class Vereinssoftware {
     public static IRollenverwaltung rollenverwaltung;
     public static IAnfragenliste anfragenliste;
     public static Session session;
+    private static boolean connectionSuccessful = false;
 
     public static void main(String[] args) {
 
@@ -45,7 +47,10 @@ public class Vereinssoftware {
         //RMI ermoeglichen
         try {
             initializeRMI();
+            connectionSuccessful = true;
         } catch (RemoteException | NotBoundException e) {
+            DefaultSmallPopup connectionErrorFrame = new DefaultSmallPopup("Fehler bei der Serververbindung",
+                    "Die Verbindung zum Server schlug mit diesem Fehler fehl: " + e);
             throw new RuntimeException(e);
         }
 
@@ -53,6 +58,10 @@ public class Vereinssoftware {
         StartseiteGUI startseiteGUI = new StartseiteGUI();
         System.out.println("Startseite startet");
 
+        if (connectionSuccessful) {
+            DefaultSmallPopup connectionSuccessfulFrame = new DefaultSmallPopup("Erfolgreiche Serververbindung",
+                    "Die Verbindung zum Server wurde erfolgreich hergestellt!");
+        }
     }
 
     public static void initializeRMI() throws RemoteException, NotBoundException {
@@ -63,6 +72,7 @@ public class Vereinssoftware {
         dienstleistungsverwaltung = (IDienstleistungsverwaltung) registry.lookup("Dienstleistungsverwaltung");
         mahnungsverwaltung = (IMahnungsverwaltung) registry.lookup("Mahnungsverwaltung");
         rollenverwaltung = (IRollenverwaltung) registry.lookup("Rollenverwaltung");
+        anfragenliste = (IAnfragenliste) registry.lookup("Anfrageliste");
     }
 
     private static void initializeUISettings() {

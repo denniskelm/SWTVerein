@@ -84,14 +84,14 @@ public class AnfragelisteGUI {
 
         ClientDefaults.createColumnsFromArray(columns, model);
 
-        Object[][] angebots_anfragen = Vereinssoftware.anfragenliste.omniAAnfrageDaten();
-        Object[][] geraete_anfragen = Vereinssoftware.anfragenliste.omniGAnfrageDaten();
+        //Object[][] angebots_anfragen = Vereinssoftware.anfragenliste.omniAAnfrageDaten();
+        // Object[][] geraete_anfragen = Vereinssoftware.anfragenliste.omniGAnfrageDaten();
 
-        Object[][] anfragen = new Object[angebots_anfragen.length + geraete_anfragen.length][];
+        //Object[][] anfragen = new Object[angebots_anfragen.length + geraete_anfragen.length][];
 
-        System.arraycopy(angebots_anfragen, 0, anfragen, 0, angebots_anfragen.length);
-        System.arraycopy(geraete_anfragen, 0, anfragen, angebots_anfragen.length, geraete_anfragen.length);
-
+        //System.arraycopy(angebots_anfragen, 0, anfragen, 0, angebots_anfragen.length);
+        //System.arraycopy(geraete_anfragen, 0, anfragen, angebots_anfragen.length, geraete_anfragen.length);
+/*
         for (Object[] anfrage :
                 anfragen) {
             if (anfrage[0] == null) {
@@ -113,7 +113,7 @@ public class AnfragelisteGUI {
             });
         }
 
-
+*/
         anfragelisteTable.addMouseListener(new java.awt.event.MouseAdapter() {
             @Override
             public void mouseClicked(java.awt.event.MouseEvent evt) {
