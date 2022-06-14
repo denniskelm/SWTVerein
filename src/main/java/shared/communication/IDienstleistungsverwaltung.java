@@ -16,7 +16,7 @@ import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.time.LocalDateTime;
 
-// Interface, um RMI fuer Klasse Dienstleistungsverwaltung zu ermoeglichen
+// Interface, um RMI für Klasse Dienstleistungsverwaltung zu ermöglichen
 public interface IDienstleistungsverwaltung extends Remote {
 
 
@@ -34,5 +34,7 @@ public interface IDienstleistungsverwaltung extends Remote {
     Object[] getGesucheInformationen(String geraeteID) throws RemoteException;
     Object[][] omniAngebotDaten() throws NoSuchObjectException, RemoteException;
     Object[][] omniGesuchDaten() throws NoSuchObjectException, RemoteException;
+    public int anzahlAngebote() throws RemoteException;
+    public int anzahlGesuche() throws RemoteException;
 
 }
