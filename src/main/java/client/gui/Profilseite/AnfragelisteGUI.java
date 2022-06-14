@@ -6,7 +6,7 @@ TODO Jonny Schlutter
 TODO Gabriel Kleebaum
 TODO Mhd Esmail Kanaan
 TODO Gia Huy Hans Tran
-TODO Ole Bjoern Adelmann
+TODO Ole Björn Adelmann
 TODO Bastian Reichert
 Dennis Kelm
 */
@@ -24,7 +24,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.Map;
 
-//Erstellt das GUI fuer die Dienstleistungsangebote, wo Nutzer alle Angebote einsehen koennen (Verwaltung ist extra)
+//Erstellt das GUI für die Dienstleistungsangebote, wo Nutzer alle Angebote einsehen können (Verwaltung ist extra)
 public class AnfragelisteGUI {
     private JPanel anfragelistePanel;
     private JScrollPane bigTableScrollPanel;
@@ -64,7 +64,7 @@ public class AnfragelisteGUI {
 
             @Override
             public boolean isCellEditable(int row, int column) {
-                //macht Tabelle fuer den Nutzer unbearbeitbar
+                //macht Tabelle für den Nutzer unbearbeitbar
                 return false;
             }
         };
@@ -84,14 +84,14 @@ public class AnfragelisteGUI {
 
         ClientDefaults.createColumnsFromArray(columns, model);
 
-        //Object[][] angebots_anfragen = Vereinssoftware.anfragenliste.omniAAnfrageDaten();
-        // Object[][] geraete_anfragen = Vereinssoftware.anfragenliste.omniGAnfrageDaten();
+        Object[][] angebots_anfragen = Vereinssoftware.anfragenliste.omniAngebotsAnfrageDaten();
+        Object[][] gesuchs_anfragen = Vereinssoftware.anfragenliste.omniGesuchsAnfrageDaten();
 
-        //Object[][] anfragen = new Object[angebots_anfragen.length + geraete_anfragen.length][];
+        Object[][] anfragen = new Object[angebots_anfragen.length + gesuchs_anfragen.length][];
 
-        //System.arraycopy(angebots_anfragen, 0, anfragen, 0, angebots_anfragen.length);
-        //System.arraycopy(geraete_anfragen, 0, anfragen, angebots_anfragen.length, geraete_anfragen.length);
-/*
+        System.arraycopy(angebots_anfragen, 0, anfragen, 0, angebots_anfragen.length);
+        System.arraycopy(gesuchs_anfragen, 0, anfragen, angebots_anfragen.length, gesuchs_anfragen.length);
+
         for (Object[] anfrage :
                 anfragen) {
             if (anfrage[0] == null) {
@@ -113,7 +113,7 @@ public class AnfragelisteGUI {
             });
         }
 
-*/
+
         anfragelisteTable.addMouseListener(new java.awt.event.MouseAdapter() {
             @Override
             public void mouseClicked(java.awt.event.MouseEvent evt) {

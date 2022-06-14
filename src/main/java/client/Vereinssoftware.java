@@ -33,7 +33,7 @@ public class Vereinssoftware {
     public static IDienstleistungsverwaltung dienstleistungsverwaltung;
     public static IMahnungsverwaltung mahnungsverwaltung;
     public static IRollenverwaltung rollenverwaltung;
-    //public static IAnfragenliste anfragenliste;
+    public static IAnfragenliste anfragenliste;
     public static Session session;
     private static boolean connectionSuccessful = false;
 
