@@ -23,7 +23,7 @@ import java.rmi.NoSuchObjectException;
 
 /**
  * @author Dennis Kelm
- * Stellt die Startseite dar, und leitet somit auf die weiteren Fenster der Anwendung weiter (unterscheidet dabeiin angemeldet und unangemeldet)
+ * Stellt die Startseite dar, und leitet somit auf die weiteren Fenster der Anwendung weiter (unterscheidet dabei in angemeldet und unangemeldet)
  */
 public class StartseiteGUI {
     private JPanel startseite;
@@ -70,7 +70,8 @@ public class StartseiteGUI {
         firstLeftDescriptionText.setText("<html><p style=\"width:300px\">Sehen Sie sich einfach alle Ger" + Umlaut.ae() + "te an, die wir Ihnen zum Verleih zur Verf" + Umlaut.ue() + "gung stellen!</p>");
         secondLeftHeadline.setText("<html>... oder lieber ein <b>Ger" + Umlaut.ae() + "t spenden</b>?</html>");
         firstRightText.setText("<html><p style=\"width:300px\">Hier finden Sie alle Angebote von Mitgliedern, die Ihnen bei Ihrer Arbeit unter die Arme greifen m" + Umlaut.oe() + "chten!</p>");
-        newsHeadline.setText("Neuigkeiten und Ank" + Umlaut.ae() + "ndigungen");
+        newsHeadline.setText("Neuigkeiten und Ank" + Umlaut.ue() + "ndigungen");
+        welcomeBigHeadline.setText("Willkommen! Was m" + Umlaut.oe() + "chten Sie tun?");
 
         vereinsnameText.setText(Einstellungen.getVereinsname());
 
@@ -119,7 +120,6 @@ public class StartseiteGUI {
 
         geraeteverwaltungButton.addActionListener(e -> {
             GeraeteDatenbankGUI ghg = new GeraeteDatenbankGUI("Geraetedatenbank");
-            ghg.setVisible(true);
         });
 
         geraeteAnzeigen.addActionListener(e -> {

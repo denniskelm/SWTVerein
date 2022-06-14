@@ -1,5 +1,7 @@
 package client.gui.Geraete;
 
+import client.ClientDefaults;
+import client.Umlaut;
 import client.Vereinssoftware;
 import server.geraetemodul.Geraetedaten;
 import shared.communication.IAusleiher;
@@ -12,7 +14,7 @@ import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 
-public class GeraeteVerwaltenGUI extends JFrame {
+public class GeraeteVerwaltenGUI {
     private JPanel GeraetVerwalten;
     private JTextField geraetnameTextField;
     private JTextField spenderTextField;
@@ -40,8 +42,13 @@ public class GeraeteVerwaltenGUI extends JFrame {
     private final String geraeteID;
     private Object[] geraeteInfos;
 
+    public static JFrame frame;
+
     public GeraeteVerwaltenGUI(String title, String geraeteID) {
-        super(title);
+
+        frame = new JFrame("Ger" + Umlaut.ae() + "te verwalten");
+        frame = ClientDefaults.standardizeFrame(frame, GeraetVerwalten);
+
         this.geraeteID = geraeteID;
 
         try {
@@ -56,11 +63,6 @@ public class GeraeteVerwaltenGUI extends JFrame {
         } catch (RemoteException e) {
             throw new RuntimeException(e);
         }
-
-        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        this.setContentPane(GeraetVerwalten);
-        this.pack();
-        setLocationRelativeTo(null);
 
         String ausleiherName = null, ausleihDauer = null;
 
@@ -156,10 +158,5 @@ public class GeraeteVerwaltenGUI extends JFrame {
             }
         });
     }
-
-    public static void main(String[] args) {
-        JFrame frame = new GeraeteVerwaltenGUI("Gerät verwalten", "0");
-        frame.setVisible(true);
-    }
-
 }
+

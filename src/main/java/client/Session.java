@@ -66,9 +66,7 @@ public class Session {
         if (rolleStr.equals(ERROR))
             throw new NoSuchObjectException("Wert nicht gesetzt!");
 
-        Rolle rolle = Rolle.valueOf(rolleStr);
-
-        return rolle;
+        return Rolle.valueOf(rolleStr);
     }
 
     //Liest das Passwort aus; Wenn kein Passwort gesetzt, wird Exception geworfen

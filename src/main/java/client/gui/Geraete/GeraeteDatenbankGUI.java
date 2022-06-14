@@ -1,6 +1,7 @@
 package client.gui.Geraete;
 
 import client.ClientDefaults;
+import client.Umlaut;
 import client.Vereinssoftware;
 
 import javax.swing.*;
@@ -9,7 +10,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.rmi.RemoteException;
 
-public class GeraeteDatenbankGUI extends JFrame {
+public class GeraeteDatenbankGUI {
     private JPanel Geraetedatenbank;
     private JTextField sucheTextField;
     private JTable Datenbank;
@@ -19,23 +20,20 @@ public class GeraeteDatenbankGUI extends JFrame {
     //TODO Suche
     // in geraeteDB einfuegen
 
+    public static JFrame frame;
+
     public GeraeteDatenbankGUI(String title) {
-        super(title);
+        frame = new JFrame("Ger" + Umlaut.ae() + "tedatenbank");
+        frame = ClientDefaults.standardizeFrame(frame, Geraetedatenbank);
 
 
         createTable();
-        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        this.setContentPane(Geraetedatenbank);
-        this.pack();
-        setLocationRelativeTo(null);
 
         //TODO Geraete Hinzufuegen
         geraetHinzufuegenButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 GeraetHinzufuegenGUI ghg = new GeraetHinzufuegenGUI("Neues Geraet hinzufuegen");
-                ghg.setVisible(true);
-                dispose();
             }
         });
 
@@ -66,8 +64,7 @@ public class GeraeteDatenbankGUI extends JFrame {
         }
 
         GeraeteVerwaltenGUI db = new GeraeteVerwaltenGUI("Geräteverwaltung", iD);
-        db.setVisible(true);
-        GeraeteDatenbankGUI.this.setVisible(false);
+        GeraeteDatenbankGUI.frame.dispose();
     }
 
     private void createTable() {
@@ -118,9 +115,4 @@ public class GeraeteDatenbankGUI extends JFrame {
 
     }
 
-    public static void main(String[] args) {
-        JFrame frame = new GeraeteDatenbankGUI("Geraete Datenbank");
-        frame.setVisible(true);
-
-    }
 }

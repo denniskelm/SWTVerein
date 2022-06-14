@@ -1,5 +1,7 @@
 package client.gui.Geraete;
 
+import client.ClientDefaults;
+import client.Umlaut;
 import client.Vereinssoftware;
 import client.gui.DefaultSmallPopup;
 
@@ -8,7 +10,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.rmi.RemoteException;
 
-public class GeraetHinzufuegenGUI extends JFrame {
+public class GeraetHinzufuegenGUI {
     private JPanel Geraethinzufuegen;
     private JTextField geraetenameTextField;
     private JTextField spenderTextField;
@@ -19,15 +21,13 @@ public class GeraetHinzufuegenGUI extends JFrame {
     private JLabel Picture;
     private JButton geraetErstellenButton;
 
+
+    public static JFrame frame;
+
     public GeraetHinzufuegenGUI(String title) {
-        super(title);
 
-        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        this.setContentPane(Geraethinzufuegen);
-
-        this.pack();
-
-        this.setLocationRelativeTo(null);
+        frame = new JFrame("Ger" + Umlaut.ae() + "t hinzuf" + Umlaut.ue() + "gen");
+        frame = ClientDefaults.standardizeFrame(frame, Geraethinzufuegen);
 
         //TODO Geraet erstellen
         geraetErstellenButton.addActionListener(new ActionListener() {
@@ -41,17 +41,12 @@ public class GeraetHinzufuegenGUI extends JFrame {
                         geraetebeschreibungTextField.getText(),
                         abholortTextField.getText()); */ //TODO URL Textfeld
 
-                JOptionPane.showMessageDialog(GeraetHinzufuegenGUI.super.rootPane, "Geraet erfolgreich hinzugefuegt", "", JOptionPane.PLAIN_MESSAGE);
+                DefaultSmallPopup defaultSmallPopup = new DefaultSmallPopup("Geraet erfolgreich hinzugefuegt", "Das Geraet wurde erfolgreich der Datenbank hinzugefuegt!");
 
-                dispose();
+                frame.dispose();
 
 
             }
         });
-    }
-
-    public static void main(String[] args) {
-        JFrame frame = new GeraetHinzufuegenGUI("Geraet Hinzufuegen");
-        frame.setVisible(true);
     }
 }

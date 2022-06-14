@@ -2,7 +2,9 @@ package client.gui.Geraete;
 
 
 import client.ClientDefaults;
+import client.Umlaut;
 import client.Vereinssoftware;
+import com.mysql.cj.xdevapi.Client;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -13,7 +15,7 @@ import java.rmi.RemoteException;
 
 //TODO Searchbar
 // Kategorie
-public class GeraeteListeGUI extends JFrame {
+public class GeraeteListeGUI {
     private JPanel GeraeteListe;
     private JTable Geraeteliste;
 
@@ -23,23 +25,20 @@ public class GeraeteListeGUI extends JFrame {
     private JButton geraetHinzufuegenButton;
     private DefaultTableModel model;
 
+    public static JFrame frame;
+
     public GeraeteListeGUI(String title) {
-        super(title);
+        frame = new JFrame("Ger" + Umlaut.ae() + "teliste");
+        frame = ClientDefaults.standardizeFrame(frame, GeraeteListe);
 
         createTable();
-        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        this.setContentPane(GeraeteListe);
-        this.pack();
-
-        setLocationRelativeTo(null);
 
         //TODO Geraet hinzufuegen
         geraetHinzufuegenButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 GeraetHinzufuegenGUI GeraetHinz = new GeraetHinzufuegenGUI("Geraete Hinzufuegen");
-                GeraetHinz.setVisible(true);
-                GeraeteListeGUI.this.setVisible(false);
+                frame.setVisible(false);
             }
         });
 
@@ -75,7 +74,7 @@ public class GeraeteListeGUI extends JFrame {
             GeraetReservierenGUI reservierenGUI = new GeraetReservierenGUI("Geraet Reservieren", iD, Vereinssoftware.session.getID());
             System.out.println("t");
             reservierenGUI.setVisible(true);
-            GeraeteListeGUI.this.setVisible(false);
+            GeraeteListeGUI.frame.setVisible(false);
         } catch (NoSuchObjectException e) {
             throw new RuntimeException(e);
         }
@@ -129,9 +128,5 @@ public class GeraeteListeGUI extends JFrame {
 
     }
 
-    public static void main(String[] args) {
-        JFrame frame = new GeraeteListeGUI("Geraeteliste");
-        frame.setVisible(true);
-    }
 }
 
