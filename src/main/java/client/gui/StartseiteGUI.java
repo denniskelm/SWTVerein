@@ -9,6 +9,7 @@ import client.gui.Geraete.GeraeteListeGUI;
 import client.gui.Login.LoginGUI;
 import client.gui.Profilseite.Profilseite;
 import client.gui.Registrieren.RegistrierenGUI;
+import client.gui.Rollenverwaltung.RollenVerwaltungGastGUI;
 import client.gui.dienstleistungen.dienstleistungsangebote.DienstleistungsangeboteGUI;
 import client.gui.dienstleistungen.dienstleistungsangebote.DienstleistungsangebotsVerwaltungGUI;
 import client.gui.dienstleistungen.dienstleistungsgesuche.DienstleistungsgesuchVerwaltungGUI;
@@ -142,6 +143,11 @@ public class StartseiteGUI {
         registrierenButton.addActionListener(e -> {
             RegistrierenGUI registrierenGUI = new RegistrierenGUI("Registrierung");
             registrierenGUI.setVisible(true);
+        });
+        
+        rollenverwaltungButton.addActionListener(e -> {
+            RollenVerwaltungGastGUI rollenVerwaltungGastGUI = new RollenVerwaltungGastGUI("kaka");
+            rollenVerwaltungGastGUI.setVisible(true);
         });
 
     }
