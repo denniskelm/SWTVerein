@@ -1,8 +1,5 @@
 package shared.communication;
 
-//import server.Mahnung;
-//import server.Mahnungsverwaltung;
-
 import server.users.*;
 
 import java.rmi.Remote;
@@ -16,12 +13,12 @@ TODO Jonny Schlutter
 Gabriel Kleebaum
 TODO Mhd Esmail Kanaan
 TODO Gia Huy Hans Tran
-TODO Ole Bjoern Adelmann
+TODO Ole Björn Adelmann
 TODO Bastian Reichert
 TODO Dennis Kelm
 */
 
-// Interface, um RMI fuer Klasse Rollenverwaltung zu ermoeglichen
+// Interface, um RMI für Klasse Rollenverwaltung zu ermöglichen
 public interface IRollenverwaltung extends Remote {
 
     Object[] gastListeAnzeigen() throws RemoteException;    //Object[]
@@ -38,9 +35,9 @@ public interface IRollenverwaltung extends Remote {
 
     Object[] mahnungsverwaltungAnzeigen() throws RemoteException;   //Object[]
 
-    void gastHinzufuegen(String nachname, String vorname, String email, String password, String anschrift, String mitgliedsnr, String telefonnummer, boolean spender) throws RemoteException;
+    Object[] gastHinzufuegen(String nachname, String vorname, String email, String password, String anschrift, String mitgliedsnr, String telefonnummer, boolean spender) throws RemoteException;
 
-    boolean login(String email, String password) throws Exception;
+    Object[] login(String email, String password) throws Exception;
 
     //ArrayList<Gast> getGaeste() throws RemoteException;  //ArrayList<Gast>
     //ArrayList<Mitglied> getMitglieder() throws RemoteException;  //ArrayList<Mitglied>

@@ -83,9 +83,9 @@ public class DienstleistungsangeboteGUI {
 
         Object[][] angebote = Vereinssoftware.dienstleistungsverwaltung.omniAngebotDaten();
 
+        System.out.println("a");
 
-        for (Object[] angebot :
-                angebote) {
+        for (Object[] angebot : angebote) {
             if (angebot[0] == null) {
                 break;
             }
@@ -95,6 +95,16 @@ public class DienstleistungsangeboteGUI {
 
             LocalDateTime bisTime = ((LocalDateTime) angebot[4]);
             String bis = bisTime.format(DateTimeFormatter.ISO_LOCAL_DATE);
+
+            System.out.println("b");
+
+            System.out.println(angebot[0]);
+            System.out.println(angebot[1]);
+            System.out.println(angebot[2]);
+            System.out.println(angebot[3]);
+            System.out.println(angebot[4]);
+            System.out.println(angebot[5]);
+
 
             model.addRow(new Object[]{
                     angebot[0],
@@ -106,6 +116,8 @@ public class DienstleistungsangeboteGUI {
             });
         }
 
+        System.out.println("c");
+
 
         dienstleistungsangeboteTable.addMouseListener(new java.awt.event.MouseAdapter() {
             @Override
@@ -116,6 +128,7 @@ public class DienstleistungsangeboteGUI {
                     System.out.println(row + ", " + col);
                     //TODO Implementierung Klick auf Zelle
                     try {
+                        System.out.println("d");
                         DienstleistungsangebotAnzeigenGUI dienstleistungsangebotAnzeigenGUI = new DienstleistungsangebotAnzeigenGUI(
                                 angebote[row][6].toString(), //ID
                                 angebote[row][0].toString(), //Titel
@@ -128,6 +141,7 @@ public class DienstleistungsangeboteGUI {
 
                         );
                     } catch (Exception e) {
+                        System.out.println("e");
                         throw new RuntimeException(e);
                     }
                 }

@@ -124,7 +124,6 @@ public class StartseiteGUI {
 
         geraeteAnzeigen.addActionListener(e -> {
             GeraeteListeGUI ghg = new GeraeteListeGUI("Geraeteliste");
-            ghg.setVisible(true);
         });
 
         profilButton.addActionListener(e -> {
