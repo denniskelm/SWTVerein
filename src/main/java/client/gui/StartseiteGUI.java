@@ -76,6 +76,10 @@ public class StartseiteGUI {
 
         vereinsnameText.setText(Einstellungen.getVereinsname());
 
+        updateProfilButtons();
+
+        newsText.setText("<html><p style=\"width: 200px\"><small><br/></small>" + Einstellungen.getNeuigkeiten() + " </p>");
+
         //Untertitel setzen mit Namen, falls angemeldet
         /*try {
             if (Vereinssoftware.session.getID() != null && Vereinssoftware.rollenverwaltung != null) {
@@ -144,11 +148,38 @@ public class StartseiteGUI {
             RegistrierenGUI registrierenGUI = new RegistrierenGUI("Registrierung");
             registrierenGUI.setVisible(true);
         });
-        
+
         rollenverwaltungButton.addActionListener(e -> {
             RollenVerwaltungGastGUI rollenVerwaltungGastGUI = new RollenVerwaltungGastGUI("kaka");
             rollenVerwaltungGastGUI.setVisible(true);
         });
 
+    }
+
+    /**
+     * Zeigt an, ob der Nutzer bereits in der Software eingeloggt ist oder nicht
+     */
+    public boolean isLoggedIn() {
+        try {
+            return Vereinssoftware.session.getID() != null && Vereinssoftware.rollenverwaltung != null;
+        } catch (NoSuchObjectException e) {
+            return false;
+        }
+    }
+
+    /**
+     * Ändert die Sichtbarkeit der Buttons "Profilseite", "Login", "Registrieren"
+     */
+    public void updateProfilButtons() {
+        System.out.println("Eingeloggt: " + isLoggedIn());
+
+        subtitleHeaderText.setVisible(isLoggedIn());
+
+        profilButton.setVisible(isLoggedIn());
+        loginButton.setVisible(!isLoggedIn());
+        registrierenButton.setVisible(!isLoggedIn());
+
+        startseite.revalidate();
+        startseite.repaint();
     }
 }

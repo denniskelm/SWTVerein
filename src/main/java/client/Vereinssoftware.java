@@ -36,8 +36,10 @@ public class Vereinssoftware {
     public static IAnfragenliste anfragenliste;
     public static Session session;
     private static boolean connectionSuccessful = false;
+    public static StartseiteGUI startseite;
 
     public static void main(String[] args) {
+
 
         //Initialisiert die verschiedenen UI-Einstellungen (Font etc.)
         initializeUISettings();
@@ -55,7 +57,7 @@ public class Vereinssoftware {
         }
 
         //Starte die Startseite
-        StartseiteGUI startseiteGUI = new StartseiteGUI();
+        startseite = new StartseiteGUI();
         System.out.println("Startseite startet");
 
         if (connectionSuccessful) {
@@ -97,5 +99,9 @@ public class Vereinssoftware {
             if (value instanceof javax.swing.plaf.FontUIResource)
                 UIManager.put(key, f);
         }
+    }
+
+    public static StartseiteGUI getStartseite() {
+        return startseite;
     }
 }

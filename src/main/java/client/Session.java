@@ -3,6 +3,7 @@ package client;
 import server.users.Rolle;
 
 import java.rmi.NoSuchObjectException;
+import java.util.prefs.BackingStoreException;
 import java.util.prefs.Preferences;
 
 /*
@@ -25,8 +26,6 @@ public class Session {
     public Session() {
         // legt Speicherort fuer die Preferences fest
         prefs = Preferences.userRoot().node(this.getClass().getName());
-
-        setID("1");
     }
 
     //Speichert den Wert value und macht ihn mit Schluessel key erreichbar/auslesbar
@@ -51,7 +50,7 @@ public class Session {
 
     //Liest den Nutzernamen des Users aus; Wenn kein Username gesetzt, wird Exception geworfen
     public String getUsername() throws NoSuchObjectException {
-        String username = getPreference("Username", ERROR);
+        String username = getPreference("Mitgliedsname", ERROR);
 
         if (username.equals(ERROR))
             throw new NoSuchObjectException("Wert nicht gesetzt!");
@@ -80,8 +79,8 @@ public class Session {
     }
 
     //speichert den Nutzernamen in den Preferences
-    public void setUsername(String username) {
-        setPreference("Username", username);
+    public void setMitgliedsName(String mitgliedsName) {
+        setPreference("Mitgliedsname", mitgliedsName);
     }
 
     //Speichert die Rolle in den Preferences

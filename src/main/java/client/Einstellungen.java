@@ -25,4 +25,11 @@ public class Einstellungen {
     public static String getKontaktmailadresse() {
         return Kontaktmailadresse;
     }
+
+    public static String getNeuigkeiten() {
+
+        return "14.06.2022 - Das sind doch tolle Neuigkeiten, oder? <br/>" +
+                "neue Zeile";
+
+    }
 }

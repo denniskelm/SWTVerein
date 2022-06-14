@@ -44,7 +44,7 @@ public class Profilseite {
 
     public Profilseite(String personenID) {
         try {
-            this.ownProfilseite = Objects.equals(personenID, Vereinssoftware.session.getUsername());
+            this.ownProfilseite = Objects.equals(personenID, Vereinssoftware.session.getID());
         } catch (NoSuchObjectException e) {
             throw new RuntimeException(e);
         }
