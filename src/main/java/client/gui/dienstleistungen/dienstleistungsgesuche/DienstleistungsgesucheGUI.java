@@ -5,6 +5,7 @@ Dennis Kelm
 */
 
 import client.ClientDefaults;
+import client.Kategorie;
 import client.Vereinssoftware;
 import client.gui.dienstleistungen.dienstleistungsangebote.DienstleistungsangebotErstellenGUI;
 
@@ -102,7 +103,7 @@ public class DienstleistungsgesucheGUI {
                                 gesuche[row][5].toString(), //pathToImage
                                 gesuche[row][0].toString(), //Titel
                                 gesuche[row][1].toString(), //beschreibung
-                                gesuche[row][2].toString(), //Kategorie
+                                Kategorie.valueOf(gesuche[row][2].toString()), //Kategorie
                                 (String) gesuche[row][4] //PersonenID
 
                         );

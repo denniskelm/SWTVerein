@@ -11,6 +11,7 @@ import client.gui.dienstleistungen.dienstleistungsangebote.Dienstleistungsangebo
 import client.gui.dienstleistungen.dienstleistungsangebote.DienstleistungsangebotsVerwaltungGUI;
 import client.gui.dienstleistungen.dienstleistungsgesuche.DienstleistungsgesuchVerwaltungGUI;
 import client.gui.dienstleistungen.dienstleistungsgesuche.DienstleistungsgesucheGUI;
+import server.users.Rolle;
 
 import javax.swing.*;
 import java.awt.*;
@@ -78,14 +79,10 @@ public class StartseiteGUI {
 
         newsText.setText("<html><p style=\"width: 200px\"><small><br/></small>" + Einstellungen.getNeuigkeiten() + " </p>");
 
-        //Untertitel setzen mit Namen, falls angemeldet
-        /*try {
-            if (Vereinssoftware.session.getID() != null && Vereinssoftware.rollenverwaltung != null) {
-                //subtitleHeaderText.setText("Hallo " + Vereinssoftware.rollenverwaltung.getMitgliedsNamen(Vereinssoftware.session.getID()) + "!");
-            }
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        } */
+
+        //Untertitel setzen mit Namen, falls angemeldet (Gast-Text kommt bei Abmeldung bei repaint wieder)
+        //Ausserdem werden die sensiblen Buttons fuer die Verwaltung aus- bzw eingeblendet
+
 
         dienstleistungsangeboteButton.addActionListener(e -> {
             DienstleistungsangeboteGUI dienstleistungsangeboteGUI = new DienstleistungsangeboteGUI();
@@ -106,10 +103,10 @@ public class StartseiteGUI {
                             "%20ein%20Ger%C3%A4t%20spenden!&body=Liebe%20Vereinsmitarbeiter%2C%0D%0A%0D%0Aich%20m%C3%" +
                             "B6chte%20unserem%20Verein%20ein%20Ger%C3%A4t%20spenden!%0D%0A%0D%0AGer%C3%A4tename%3A%20" +
                             "HIER%20GER%C3%84TENAME%20EINGEBEN%0D%0A%0D%0AHIER%20WEITERE%20INFOS%20EINGEBEN" +
-                            "%0D%0A%0D%0ALiebe%20Gr%C3%BC%C3%9Fe%0D%0A";// + Vereinssoftware.rollenverwaltung.getMitgliedsNamen(Vereinssoftware.session.getID()))
+                            "%0D%0A%0D%0ALiebe%20Gr%C3%BC%C3%9Fe%0D%0A" + Vereinssoftware.rollenverwaltung.getMitgliedsNamen(Vereinssoftware.session.getID());
                     URI mailto = new URI(link);
                     desktop.mail(mailto);
-                } catch (URISyntaxException | IOException ex) {
+                } catch (Exception ex) {
                     throw new RuntimeException(ex);
                 }
             } else {
@@ -151,6 +148,7 @@ public class StartseiteGUI {
 
         logoutButton.addActionListener(e -> {
             Vereinssoftware.session.logout();
+            updateProfilButtons();
         });
 
     }
@@ -172,12 +170,24 @@ public class StartseiteGUI {
     public void updateProfilButtons() {
         System.out.println("Eingeloggt: " + isLoggedIn());
 
-        subtitleHeaderText.setVisible(isLoggedIn());
-
         profilButton.setVisible(isLoggedIn());
         loginButton.setVisible(!isLoggedIn());
+        logoutButton.setVisible(isLoggedIn());
         registrierenButton.setVisible(!isLoggedIn());
+        managePanel.setVisible(false);
 
+        try {
+            if (isLoggedIn()) {
+                subtitleHeaderText.setText("Hallo " + Vereinssoftware.rollenverwaltung.getMitgliedsNamen(Vereinssoftware.session.getID()) + "! Sie sind jetzt erfolgreich angemeldet.");
+                if (Vereinssoftware.session.getRolle() == Rolle.MITARBEITER || Vereinssoftware.session.getRolle() == Rolle.VORSITZ) {
+                    managePanel.setVisible(true);
+                }
+            } else {
+                subtitleHeaderText.setText("Hallo Gast! Registrieren Sie sich jetzt, oder melden Sie sich an, um alle Funktionen nutzen zu k" + Umlaut.oe() + "nnen!");
+            }
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
         startseite.revalidate();
         startseite.repaint();
     }

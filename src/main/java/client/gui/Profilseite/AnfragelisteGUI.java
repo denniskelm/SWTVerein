@@ -1,20 +1,16 @@
 package client.gui.Profilseite;
 /*
 @author
-TODO Raphael Kleebaum
-TODO Jonny Schlutter
-TODO Gabriel Kleebaum
-TODO Mhd Esmail Kanaan
-TODO Gia Huy Hans Tran
-TODO Ole Björn Adelmann
-TODO Bastian Reichert
 Dennis Kelm
 */
 
 import client.ClientDefaults;
+import client.Kategorie;
 import client.Vereinssoftware;
+import client.gui.DefaultSmallPopup;
 import client.gui.dienstleistungen.dienstleistungsangebote.DienstleistungsangebotAnzeigenGUI;
 import client.gui.dienstleistungen.dienstleistungsangebote.DienstleistungsangebotErstellenGUI;
+import client.gui.dienstleistungen.dienstleistungsgesuche.DienstleistungsgesuchAnzeigenGUI;
 import client.gui.dienstleistungen.dienstleistungsgesuche.DienstleistungsgesuchErstellenGUI;
 
 import javax.swing.*;
@@ -29,8 +25,6 @@ public class AnfragelisteGUI {
     private JPanel anfragelistePanel;
     private JScrollPane bigTableScrollPanel;
     private JTable anfragelisteTable;
-    private JButton dienstleistungsgesuchErstellenButton;
-    private JButton dienstleistungsangebotErstellenButton;
     private JTextField suchenTextField;
     private JLabel infoText;
 
@@ -49,14 +43,6 @@ public class AnfragelisteGUI {
         frame.setLocationRelativeTo(null);
 
         ClientDefaults.enhanceTextField(suchenTextField, onceChanged);
-
-        dienstleistungsangebotErstellenButton.addActionListener(e -> {
-            DienstleistungsangebotErstellenGUI dienstleistungsangebotErstellenGUI = new DienstleistungsangebotErstellenGUI();
-        });
-
-        dienstleistungsgesuchErstellenButton.addActionListener(e -> {
-            DienstleistungsgesuchErstellenGUI dienstleistungsgesuchErstellenGUI = new DienstleistungsgesuchErstellenGUI();
-        });
     }
 
     private void generateTable() throws Exception {
@@ -75,6 +61,7 @@ public class AnfragelisteGUI {
 
         String[] columns = new String[]{
                 "Anfragetyp",
+                "Titel",
                 "Beschreibung",
                 "Kategorie",
                 "Stunden",
@@ -87,35 +74,62 @@ public class AnfragelisteGUI {
 
         ClientDefaults.createColumnsFromArray(columns, model);
 
-        Object[][] angebots_anfragen = Vereinssoftware.anfragenliste.omniAngebotsAnfrageDaten();
-        Object[][] gesuchs_anfragen = Vereinssoftware.anfragenliste.omniGesuchsAnfrageDaten();
+        Object[][] angebots_anfragen = Vereinssoftware.anfragenVerwaltung.omniAngebotsAnfrageDaten(Vereinssoftware.session.getID());
+        Object[][] gesuchs_anfragen = Vereinssoftware.anfragenVerwaltung.omniGesuchsAnfrageDaten(Vereinssoftware.session.getID());
 
         Object[][] anfragen = new Object[angebots_anfragen.length + gesuchs_anfragen.length][];
 
         System.arraycopy(angebots_anfragen, 0, anfragen, 0, angebots_anfragen.length);
         System.arraycopy(gesuchs_anfragen, 0, anfragen, angebots_anfragen.length, gesuchs_anfragen.length);
 
+        int i = 0;
         for (Object[] anfrage :
                 anfragen) {
+
+            System.out.println("i " + i);
+
             if (anfrage[0] == null) {
                 break;
             }
-            LocalDateTime abTime = ((LocalDateTime) anfrage[3]);
-            String ab = abTime.format(DateTimeFormatter.ISO_LOCAL_DATE);
 
-            LocalDateTime bisTime = ((LocalDateTime) anfrage[4]);
-            String bis = bisTime.format(DateTimeFormatter.ISO_LOCAL_DATE);
 
-            model.addRow(new Object[]{
-                    anfrage[0],
-                    anfrage[1],
-                    anfrage[2],
-                    ab,
-                    bis,
-                    Vereinssoftware.rollenverwaltung.getMitgliedsNamen(anfrage[5].toString()),
-                    "Annehmen",
-                    "Ablehnen"
-            });
+            if (i < angebots_anfragen.length) {
+
+                LocalDateTime abTime = ((LocalDateTime) anfrage[6]);
+                String ab = abTime.format(DateTimeFormatter.ISO_LOCAL_DATE);
+
+                LocalDateTime bisTime = ((LocalDateTime) anfrage[7]);
+                String bis = bisTime.format(DateTimeFormatter.ISO_LOCAL_DATE);
+
+                model.addRow(new Object[]{
+                        "Dienstleistungsangebot",
+                        anfrage[3],
+                        anfrage[4],
+                        anfrage[5],
+                        anfrage[2],
+                        ab,
+                        bis,
+                        Vereinssoftware.rollenverwaltung.getMitgliedsNamen(anfrage[0].toString()),
+                        "Annehmen",
+                        "Ablehnen"
+                });
+            } else {
+                model.addRow(new Object[]{
+                        "Dienstleistungsgesuch",
+                        anfrage[3],
+                        anfrage[4],
+                        anfrage[5],
+                        anfrage[2],
+                        "-",
+                        "-",
+                        Vereinssoftware.rollenverwaltung.getMitgliedsNamen(anfrage[0].toString()),
+                        "Annehmen",
+                        "Ablehnen"
+                });
+            }
+
+
+            i++;
         }
 
 
@@ -128,10 +142,56 @@ public class AnfragelisteGUI {
                     System.out.println(row + ", " + col);
                     //TODO Implementierung Klick auf Zelle
                     try {
-                        /*DienstleistungsangebotAnzeigenGUI dienstleistungsangebotAnzeigenGUI = new DienstleistungsangebotAnzeigenGUI(
-                                //TODO
+                        if (row < angebots_anfragen.length) {
+                            if (col < 7) {
+                                LocalDateTime abTime = ((LocalDateTime) anfragen[row][6]);
 
-                        ); */
+                                LocalDateTime bisTime = ((LocalDateTime) anfragen[row][7]);
+                                DienstleistungsangebotAnzeigenGUI dienstleistungsangebotAnzeigenGUI =
+                                        new DienstleistungsangebotAnzeigenGUI(
+                                                anfragen[row][1].toString(),
+                                                anfragen[row][3].toString(),
+                                                anfragen[row][8].toString(),
+                                                anfragen[row][4].toString(),
+                                                Kategorie.valueOf(anfragen[row][5].toString()),
+                                                abTime,
+                                                bisTime,
+                                                anfragen[row][0].toString());
+                            } else if (col == 7) {
+                                //Profilseite
+                                Profilseite profilseite = new Profilseite(anfragen[row][0].toString());
+                            } else if (col == 8) {
+                                //Annehmen mit DefaultSmallPopup
+                                Vereinssoftware.anfragenVerwaltung.aAnfrageAnnehmen(Vereinssoftware.session.getID(), anfragen[row][9].toString());
+                                DefaultSmallPopup defaultSmallPopup = new DefaultSmallPopup("Anfrage erfolgreich angenommen!", "Ihre Anfrage wurde nun angenommen!");
+                            } else if (col == 9) {
+                                //Ablehnen mit DefaultSmallPopup
+                                Vereinssoftware.anfragenVerwaltung.removeAAnfrage(Vereinssoftware.session.getID(), anfragen[row][9].toString());
+                                DefaultSmallPopup defaultSmallPopup = new DefaultSmallPopup("Anfrage erfolgreich abgelehnt!", "Ihre Anfrage wurde leider abgelehnt!");
+                            }
+                        } else {
+                            if (col < 7) {
+                                DienstleistungsgesuchAnzeigenGUI dienstleistungsangebotAnzeigenGUI =
+                                        new DienstleistungsgesuchAnzeigenGUI(
+                                                anfragen[row][1].toString(),
+                                                anfragen[row][3].toString(),
+                                                anfragen[row][8].toString(),
+                                                anfragen[row][4].toString(),
+                                                Kategorie.valueOf(anfragen[row][5].toString()),
+                                                anfragen[row][0].toString());
+                            } else if (col == 7) {
+                                //Profilseite
+                                Profilseite profilseite = new Profilseite(anfragen[row][0].toString());
+                            } else if (col == 8) {
+                                //Annehmen mit DefaultSmallPopup
+                                Vereinssoftware.anfragenVerwaltung.gAnfrageAnnehmen(Vereinssoftware.session.getID(), anfragen[row][9].toString());
+                                DefaultSmallPopup defaultSmallPopup = new DefaultSmallPopup("Gesuch erfolgreich angenommen!", "Ihre Gesuch wurde nun angenommen!");
+                            } else if (col == 9) {
+                                //Ablehnen mit DefaultSmallPopup
+                                Vereinssoftware.anfragenVerwaltung.removeGAnfrage(Vereinssoftware.session.getID(), anfragen[row][9].toString());
+                                DefaultSmallPopup defaultSmallPopup = new DefaultSmallPopup("Gesuch erfolgreich abgelehnt!", "Ihre Gesuch wurde leider abgelehnt!");
+                            }
+                        }
                     } catch (Exception e) {
                         throw new RuntimeException(e);
                     }

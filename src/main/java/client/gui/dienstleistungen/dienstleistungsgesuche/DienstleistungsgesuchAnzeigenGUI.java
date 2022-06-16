@@ -8,6 +8,7 @@ Gabriel Kleebaum
 */
 
 import client.ClientDefaults;
+import client.Kategorie;
 import client.Vereinssoftware;
 import client.gui.DefaultSmallPopup;
 import client.gui.DefaultTextWithButton;
@@ -41,7 +42,7 @@ public class DienstleistungsgesuchAnzeigenGUI {
 
     //Zeigt die Details eines Dienstleistungsgesuchs an
     //TODO Implementation Infos fetchen von IGeraeteverwaltung, vllt. die Infos per Parameter uebergeben sondern hier fetchen
-    public DienstleistungsgesuchAnzeigenGUI(String gesuch_ID, String pathToImage, String titel, String beschreibung, String kategorie, String suchenderID) {
+    public DienstleistungsgesuchAnzeigenGUI(String gesuch_ID, String pathToImage, String titel, String beschreibung, Kategorie kategorie, String suchenderID) {
         JFrame frame = new JFrame("Details des Dienstleistungsgesuchs");
         ClientDefaults.insertImageToPanel(imageLabel, pathToImage); //URL zum Bild, z.B. "https://bilder.gartenpaul.de/item/images/456/full/456-R1-M1.jpg"
         frame = ClientDefaults.standardizeFrame(frame, dienstleistungsgesuchAnzeigenGUI);
@@ -52,7 +53,7 @@ public class DienstleistungsgesuchAnzeigenGUI {
 
         //Anpassen der Texte
         headlineLabel.setText(titel); //sowas wie Vereinssoftware.dienstleistungsverwaltung.getGeraetInformation(String geraeteID)[0]
-        metaInfoText1.setText("Kategorie: " + kategorie);
+        metaInfoText1.setText("Kategorie: " + kategorie.toString());
         metaInfoText2.setVisible(false);
         try {
             metaInfoText3.setText("Wird gesucht von: " + Vereinssoftware.rollenverwaltung.getMitgliedsNamen(suchenderID));
