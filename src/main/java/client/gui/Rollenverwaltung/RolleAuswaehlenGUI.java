@@ -1,10 +1,23 @@
 package client.gui.Rollenverwaltung;
 
+import client.ClientDefaults;
+import client.Umlaut;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class RolleAuswaehlenGUI extends JFrame {
+/**
+ * GUI das Aendern der Rolle eines Nutzers
+ * <p>
+ * Hauptautor
+ *
+ * @author Gia Huy Hans Tran
+ * <p>
+ * Kleine Verbesserungen
+ * @author Dennis Kelm
+ */
+public class RolleAuswaehlenGUI {
     private JPanel RolleAuswaehlen;
     private JTextField IDhiereinfuegen;
     private JButton OKButton;
@@ -13,14 +26,12 @@ public class RolleAuswaehlenGUI extends JFrame {
     private JRadioButton MitarbeiterButton;
     private JRadioButton VereinsvorstandButton;
 
+    public static JFrame frame;
 
-    public RolleAuswaehlenGUI(String title) {
-        super(title);
+    public RolleAuswaehlenGUI() {
 
-        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        this.setContentPane(RolleAuswaehlen);
-        this.pack();
-        setLocationRelativeTo(null);
+        frame = new JFrame("Rolle " + Umlaut.ae() + "ndern");
+        frame = ClientDefaults.standardizeFrame(frame, RolleAuswaehlen);
 
 
         // TODO ID anzeigen
@@ -44,8 +55,6 @@ public class RolleAuswaehlenGUI extends JFrame {
 
 
     public static void main(String[] args) {
-        JFrame frame = new RolleAuswaehlenGUI("Wert aendern");
-
         frame.setVisible(true);
     }
 }

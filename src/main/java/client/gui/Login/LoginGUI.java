@@ -1,5 +1,7 @@
 package client.gui.Login;
 
+import client.ClientDefaults;
+import client.Umlaut;
 import client.Vereinssoftware;
 import client.gui.DefaultSmallPopup;
 import client.gui.Registrieren.RegistrierenGUI;
@@ -9,7 +11,18 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class LoginGUI extends JFrame {
+/**
+ * GUI fuer Login
+ * <p>
+ * Hauptautor
+ *
+ * @author Gia Huy Hans Tran
+ * <p>
+ * Kleine Verbesserungen
+ * @author Dennis Kelm
+ */
+
+public class LoginGUI {
     private JPanel Login;
     private JTextField eMailAdresseTextField;
     private JTextField passwortTextField;
@@ -22,14 +35,11 @@ public class LoginGUI extends JFrame {
     // optimieren
     // pw textfield hinzufuegen
 
+    private static JFrame frame;
 
-    public LoginGUI(String title) {
-        super(title);
-
-        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        this.setContentPane(Login);
-        this.pack();
-        setLocationRelativeTo(null);
+    public LoginGUI() {
+        frame = new JFrame("Login");
+        frame = ClientDefaults.standardizeFrame(frame, Login);
 
         // Login Button (error)
         loginButton.addActionListener(new ActionListener() {
@@ -53,7 +63,7 @@ public class LoginGUI extends JFrame {
                     DefaultSmallPopup smallPopup = new DefaultSmallPopup("Hinweis", "E-Mail-Adresse und/oder Passwort sind falsch, Fehler " + ex);
                 }
 
-                dispose();
+                frame.dispose();
 
             }
         });
@@ -74,9 +84,8 @@ public class LoginGUI extends JFrame {
         registrierenButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                RegistrierenGUI registrierenGUI = new RegistrierenGUI("Registrieren");
-                registrierenGUI.setVisible(true);
-                LoginGUI.this.setVisible(false);
+                RegistrierenGUI registrierenGUI = new RegistrierenGUI();
+                frame.setVisible(false);
             }
 
 

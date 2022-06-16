@@ -1,5 +1,6 @@
 package client.gui.Registrieren;
 
+import client.ClientDefaults;
 import client.Vereinssoftware;
 import client.gui.DefaultSmallPopup;
 
@@ -8,7 +9,17 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.rmi.RemoteException;
 
-public class RegistrierenGUI extends JFrame {
+/**
+ * GUI fuer das Registrieren von Gaesten
+ * <p>
+ * Hauptautor
+ *
+ * @author Gia Huy Hans Tran
+ * <p>
+ * Kleine Verbesserungen
+ * @author Dennis Kelm
+ */
+public class RegistrierenGUI {
     private JPanel Registrieren;
     private JTextField vornameTextField;
     private JTextField nachnameTextField;
@@ -26,14 +37,11 @@ public class RegistrierenGUI extends JFrame {
     // Hinweise moeglicherweise anpassen
     // checkbox fuer Spender
 
+    private static JFrame frame;
 
-    public RegistrierenGUI(String title) {
-        super(title);
-
-        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        this.setContentPane(Registrieren);
-        this.pack();
-        setLocationRelativeTo(null);
+    public RegistrierenGUI() {
+        frame = new JFrame("Login");
+        frame = ClientDefaults.standardizeFrame(frame, Registrieren);
 
 
         //reg (succ)
@@ -58,7 +66,7 @@ public class RegistrierenGUI extends JFrame {
                         "erfolgreich registriert.\n" +
                         "Schicken Sie noch Ihre Registrierungsdaten und Ihre Mitgliedsbescheinigung an mitarbeiter@vereinev.de");
 
-                dispose();
+                frame.dispose();
 
             }
         });
@@ -122,10 +130,5 @@ public class RegistrierenGUI extends JFrame {
 
 
          */
-    }
-
-    public static void main(String[] args) {
-        JFrame frame = new RegistrierenGUI("Registrieren");
-        frame.setVisible(true);
     }
 }

@@ -1,5 +1,7 @@
 package client.gui.Geraete;
 
+import client.ClientDefaults;
+import client.Umlaut;
 import client.Vereinssoftware;
 import client.gui.DefaultSmallPopup;
 
@@ -8,22 +10,29 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class GeraetReservierenGUI extends JFrame {
-    private JPanel GastReservieren;
+/**
+ * GUI fuer die Reservierung eines Geraets
+ * <p>
+ * Hauptautor
+ *
+ * @author Gia Huy Hans Tran
+ * <p>
+ * Kleine Verbesserungen
+ * @author Dennis Kelm
+ */
+public class GeraetReservierenGUI {
+    private JPanel GeraetReservieren;
     private JButton jaButton;
     private JButton neinButton;
     private final String geraeteID;
     private final String ausleiherID;
 
-    public GeraetReservierenGUI(String title, String geraeteID, String ausleiherID) {
-        super(title);
+    public GeraetReservierenGUI(String geraeteID, String ausleiherID) {
         this.geraeteID = geraeteID;
         this.ausleiherID = ausleiherID;
 
-        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        this.setContentPane(GastReservieren);
-        this.pack();
-        setLocationRelativeTo(null);
+        JFrame frame = new JFrame("Ger" + Umlaut.ae() + "t reservieren");
+        frame = ClientDefaults.standardizeFrame(frame, GeraetReservieren);
 
 
         //Exit(ja)
@@ -94,10 +103,5 @@ public class GeraetReservierenGUI extends JFrame {
         });
 */
 
-    }
-
-    public static void main(String[] args) {
-        JFrame frame = new GeraetReservierenGUI("Geraet Reservieren", "", "");
-        frame.setVisible(true);
     }
 }

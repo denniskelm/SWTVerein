@@ -1,7 +1,6 @@
 package client.gui.Rollenverwaltung;
 
 import client.ClientDefaults;
-import client.Umlaut;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -9,7 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
- * GUI fuer die Rollenverwaltung der Gaeste
+ * GUI fuer die Rollenverwaltung der Mitglieder
  * <p>
  * Hauptautor
  *
@@ -18,50 +17,45 @@ import java.awt.event.ActionListener;
  * Kleine Verbesserungen
  * @author Dennis Kelm
  */
-
-public class RollenVerwaltungGastGUI {
-    private JPanel RollenverwaltungGast;
-    private JButton mitgliederButton;
+public class RollenverwaltungMitgliedGUI {
+    private JPanel RollenVerwaltungMitglied;
     private JTable table1;
+    private JButton mitgliedButton;
     private JButton mitarbeiterButton;
-    private JButton vereinsvorstaendeButton;
+    private JButton vereinsvorstandButton;
     private JButton gaesteButton;
+    private static JFrame frame;
 
-    public static JFrame frame;
+    public RollenverwaltungMitgliedGUI() {
 
-    public RollenVerwaltungGastGUI() {
-        frame = new JFrame("Rollenverwaltung - G" + Umlaut.ae() + "ste");
-        frame = ClientDefaults.standardizeFrame(frame, RollenverwaltungGast);
-
+        frame = new JFrame("Rollenverwaltung - Mitglied");
+        frame = ClientDefaults.standardizeFrame(frame, RollenVerwaltungMitglied);
 
         // geht auf Mitglied
-        mitgliederButton.addActionListener(e -> {
-            RollenverwaltungMitgliedGUI Mitglied = new RollenverwaltungMitgliedGUI();
-            frame.dispose();
-        });
 
-        // geht auf Mitarbeiter
         mitarbeiterButton.addActionListener(e -> {
             RollenVerwaltungMitarbeiterGUI Mitarbeiter = new RollenVerwaltungMitarbeiterGUI();
             frame.dispose();
         });
 
-
         // geht auf Vereinsvorstand
-        vereinsvorstaendeButton.addActionListener(e -> {
+        vereinsvorstandButton.addActionListener(e -> {
             RollenverwaltungVereinsvorstandGUI Vorstand = new RollenverwaltungVereinsvorstandGUI();
             frame.dispose();
         });
-
-
+        // geht auf Gaeste
+        gaesteButton.addActionListener(e -> {
+            RollenVerwaltungGastGUI Gast = new RollenVerwaltungGastGUI();
+            frame.dispose();
+        });
     }
 
 
     private void creatTable() {
         String[][] data = {
-                {"1", "2", "3", "4", "5", "6", "7"},
+                {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"},
         };
-        String[] columns = {"ID", "Name", "E-Mail", "Wohnadresse", "Mitgliedsnummer", "telefonnummer", "Rolle"};
+        String[] columns = {"ID", "Name", "E-Mail", "Wohnadresse", "Mitgliedsnummer", "telefonnummer", "istSpender", "StundenKonto", "Rolle", "Mahnung"};
 
         table1.setModel(new DefaultTableModel(
                 data, columns)
@@ -72,3 +66,8 @@ public class RollenVerwaltungGastGUI {
         JTable table = new JTable(data, columns);
     }
 }
+
+
+
+
+

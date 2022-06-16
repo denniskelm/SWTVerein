@@ -56,7 +56,16 @@ public class Profilseite {
             XXButton.addActionListener(e -> {
                 AnfragelisteGUI anfragelisteGUI = new AnfragelisteGUI();
             });
+            nameText.setText("Ihre Profilseite");
         } else {
+            //Namen des Mitglieds der Profilseite anzeigen
+            try {
+                nameText.setText(Vereinssoftware.rollenverwaltung.getMitgliedsNamen(personenID));
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+
+            //Kontaktfunktion -> siehe Annahmen im Pflichtenheft
             XXButton.setText("Kontaktieren");
             XXButton.addActionListener(e -> {
                 Desktop desktop;
@@ -80,7 +89,6 @@ public class Profilseite {
         JFrame frame = new JFrame("Profilseite");
         generateTable();
         frame = ClientDefaults.standardizeFrame(frame, eigeneprofilseitePanel);
-        frame.setLocationRelativeTo(null);
     }
 
     private void generateTable() {

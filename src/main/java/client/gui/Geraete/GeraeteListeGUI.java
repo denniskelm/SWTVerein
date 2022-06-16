@@ -4,7 +4,6 @@ package client.gui.Geraete;
 import client.ClientDefaults;
 import client.Umlaut;
 import client.Vereinssoftware;
-import com.mysql.cj.xdevapi.Client;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -25,7 +24,7 @@ public class GeraeteListeGUI {
     private JButton geraetHinzufuegenButton;
     private DefaultTableModel model;
 
-    public static JFrame frame;
+    private static JFrame frame;
 
     public GeraeteListeGUI(String title) {
         frame = new JFrame("Ger" + Umlaut.ae() + "teliste");
@@ -37,7 +36,7 @@ public class GeraeteListeGUI {
         geraetHinzufuegenButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                GeraetHinzufuegenGUI GeraetHinz = new GeraetHinzufuegenGUI("Geraete Hinzufuegen");
+                GeraetHinzufuegenGUI GeraetHinz = new GeraetHinzufuegenGUI();
                 frame.setVisible(false);
             }
         });
@@ -71,9 +70,8 @@ public class GeraeteListeGUI {
         try {
             if (iD == null) return; // TODO Exception
 
-            GeraetReservierenGUI reservierenGUI = new GeraetReservierenGUI("Geraet Reservieren", iD, Vereinssoftware.session.getID());
+            GeraetReservierenGUI reservierenGUI = new GeraetReservierenGUI(iD, Vereinssoftware.session.getID());
             System.out.println("t");
-            reservierenGUI.setVisible(true);
             GeraeteListeGUI.frame.setVisible(false);
         } catch (NoSuchObjectException e) {
             throw new RuntimeException(e);

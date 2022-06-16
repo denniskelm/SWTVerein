@@ -20,7 +20,7 @@ public class GeraeteDatenbankGUI {
     //TODO Suche
     // in geraeteDB einfuegen
 
-    public static JFrame frame;
+    private static JFrame frame;
 
     public GeraeteDatenbankGUI(String title) {
         frame = new JFrame("Ger" + Umlaut.ae() + "tedatenbank");
@@ -33,7 +33,7 @@ public class GeraeteDatenbankGUI {
         geraetHinzufuegenButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                GeraetHinzufuegenGUI ghg = new GeraetHinzufuegenGUI("Neues Geraet hinzufuegen");
+                GeraetHinzufuegenGUI ghg = new GeraetHinzufuegenGUI();
             }
         });
 
@@ -63,7 +63,7 @@ public class GeraeteDatenbankGUI {
             String beschreibung = model.getValueAt(row, 4).toString(); //Geraetebeschreibung
         }
 
-        GeraeteVerwaltenGUI db = new GeraeteVerwaltenGUI("Geräteverwaltung", iD);
+        GeraeteVerwaltenGUI db = new GeraeteVerwaltenGUI(iD);
         GeraeteDatenbankGUI.frame.dispose();
     }
 

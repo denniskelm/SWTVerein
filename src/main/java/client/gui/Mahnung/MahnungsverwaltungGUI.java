@@ -1,11 +1,22 @@
 package client.gui.Mahnung;
 
+import client.ClientDefaults;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-
-public class MahnungsverwaltungGUI extends JFrame {
+/**
+ * GUI fuer das Verwalten von Mahnungen
+ * <p>
+ * Hauptautor
+ *
+ * @author Gia Huy Hans Tran
+ * <p>
+ * Kleine Verbesserungen
+ * @author Dennis Kelm
+ */
+public class MahnungsverwaltungGUI {
     private JPanel MahnungVerwaltung;
 
     private JButton erstellenButton;
@@ -13,15 +24,11 @@ public class MahnungsverwaltungGUI extends JFrame {
     private JTextField GrundfuerMahnung;
 
     //TODO funktionalitaet
+    private static JFrame frame;
 
-    public MahnungsverwaltungGUI(String title) {
-        super(title);
-
-
-        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        this.setContentPane(MahnungVerwaltung);
-        this.pack();
-        setLocationRelativeTo(null);
+    public MahnungsverwaltungGUI() {
+        frame = new JFrame("Mahnung erstellen");
+        frame = ClientDefaults.standardizeFrame(frame, MahnungVerwaltung);
 
         erstellenButton.addActionListener(new ActionListener() {
             @Override
@@ -30,11 +37,5 @@ public class MahnungsverwaltungGUI extends JFrame {
             }
         });
 
-    }
-
-
-    public static void main(String[] args) {
-        JFrame frame = new MahnungsverwaltungGUI("Mahnung Verwalten");
-        frame.setVisible(true);
     }
 }

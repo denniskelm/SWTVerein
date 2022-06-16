@@ -28,6 +28,19 @@ public class Session {
         prefs = Preferences.userRoot().node(this.getClass().getName());
     }
 
+    /**
+     * @author Dennis Kelm
+     * Cleart alle Preferences
+     */
+    public void logout() {
+        try {
+            prefs.clear();
+        } catch (BackingStoreException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+
     //Speichert den Wert value und macht ihn mit Schluessel key erreichbar/auslesbar
     public void setPreference(String key, String value) {
         prefs.put(key, value);

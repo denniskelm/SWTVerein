@@ -32,6 +32,7 @@ public class AnfragelisteGUI {
     private JButton dienstleistungsgesuchErstellenButton;
     private JButton dienstleistungsangebotErstellenButton;
     private JTextField suchenTextField;
+    private JLabel infoText;
 
     private final Map<JTextField, Boolean> onceChanged = new HashMap<JTextField, Boolean>();
 
@@ -79,7 +80,9 @@ public class AnfragelisteGUI {
                 "Stunden",
                 "ab",
                 "bis",
-                "Anfragesteller"
+                "Anfragesteller",
+                "",
+                ""
         };
 
         ClientDefaults.createColumnsFromArray(columns, model);
@@ -109,7 +112,9 @@ public class AnfragelisteGUI {
                     anfrage[2],
                     ab,
                     bis,
-                    Vereinssoftware.rollenverwaltung.getMitgliedsNamen(anfrage[5].toString())
+                    Vereinssoftware.rollenverwaltung.getMitgliedsNamen(anfrage[5].toString()),
+                    "Annehmen",
+                    "Ablehnen"
             });
         }
 

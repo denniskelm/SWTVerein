@@ -1,9 +1,6 @@
 package client.gui;
 
-import client.ClientDefaults;
-import client.Einstellungen;
-import client.Umlaut;
-import client.Vereinssoftware;
+import client.*;
 import client.gui.Geraete.GeraeteDatenbankGUI;
 import client.gui.Geraete.GeraeteListeGUI;
 import client.gui.Login.LoginGUI;
@@ -55,6 +52,7 @@ public class StartseiteGUI {
     private JLabel vereinsnameText;
     private JLabel subtitleHeaderText;
     private JLabel firstRightText;
+    private JButton logoutButton;
 
 
     //Fuegt Funktionalitaet der Startseite hinzu
@@ -140,18 +138,19 @@ public class StartseiteGUI {
         });
 
         loginButton.addActionListener(e -> {
-            LoginGUI loginGUI = new LoginGUI("Login");
-            loginGUI.setVisible(true);
+            LoginGUI loginGUI = new LoginGUI();
         });
 
         registrierenButton.addActionListener(e -> {
-            RegistrierenGUI registrierenGUI = new RegistrierenGUI("Registrierung");
-            registrierenGUI.setVisible(true);
+            RegistrierenGUI registrierenGUI = new RegistrierenGUI();
         });
 
         rollenverwaltungButton.addActionListener(e -> {
-            RollenVerwaltungGastGUI rollenVerwaltungGastGUI = new RollenVerwaltungGastGUI("kaka");
-            rollenVerwaltungGastGUI.setVisible(true);
+            RollenVerwaltungGastGUI rollenVerwaltungGastGUI = new RollenVerwaltungGastGUI();
+        });
+
+        logoutButton.addActionListener(e -> {
+            Vereinssoftware.session.logout();
         });
 
     }

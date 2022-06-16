@@ -1,41 +1,49 @@
 package client.gui.Geraete;
 
+import client.ClientDefaults;
+import client.Umlaut;
 import client.Vereinssoftware;
 import shared.communication.IAusleiher;
-import shared.communication.IGeraet;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-import java.rmi.NoSuchObjectException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
-public class VerleihhistorieGUI extends JFrame {
-    private JPanel Verleihhsitorie;
+/**
+ * GUI fuer die Verleihhistorie eines Geraets
+ * <p>
+ * Hauptautor
+ *
+ * @author Gia Huy Hans Tran
+ * <p>
+ * Kleine Verbesserungen
+ * @author Dennis Kelm
+ */
+public class VerleihhistorieGUI {
+    private JPanel Verleihhistorie;
     private JTextField geraetTextField;
     private JTable table1;
     private final String geraeteID;
 
+    private static JFrame frame;
     //TODO
     // Geraetnamen anzeigen
     // Stuff hinzufuegen
 
-    public VerleihhistorieGUI(String title, String geraeteID) throws RemoteException {
-        super(title);
+    public VerleihhistorieGUI(String geraeteID) throws RemoteException {
         this.geraeteID = geraeteID;
+
+        frame = new JFrame("Verleihhistorie");
+        frame = ClientDefaults.standardizeFrame(frame, Verleihhistorie);
 
         try {
             creatTable();
         } catch (RemoteException e) {
             throw new RuntimeException(e);
         }
-        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        this.setContentPane(Verleihhsitorie);
-        this.pack();
-        setLocationRelativeTo(null);
-        this.setVisible(true);  //TODO entfernen?
-    }
 
+    }
 
     private void creatTable() throws RemoteException {
         String[][] data = null;
@@ -73,17 +81,5 @@ public class VerleihhistorieGUI extends JFrame {
         );
 
         JTable table = new JTable(data, columns);
-    }
-
-
-    public static void main(String[] args) {
-        JFrame frame = null;
-        try {
-            frame = new VerleihhistorieGUI("Verleihhistorie", "0");
-        } catch (RemoteException e) {
-            throw new RuntimeException(e);
-        }
-        frame.setVisible(true);
-
     }
 }

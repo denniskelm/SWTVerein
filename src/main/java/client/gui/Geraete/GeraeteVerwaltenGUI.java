@@ -42,9 +42,9 @@ public class GeraeteVerwaltenGUI {
     private final String geraeteID;
     private Object[] geraeteInfos;
 
-    public static JFrame frame;
+    private static JFrame frame;
 
-    public GeraeteVerwaltenGUI(String title, String geraeteID) {
+    public GeraeteVerwaltenGUI(String geraeteID) {
 
         frame = new JFrame("Ger" + Umlaut.ae() + "te verwalten");
         frame = ClientDefaults.standardizeFrame(frame, GeraetVerwalten);
@@ -140,7 +140,7 @@ public class GeraeteVerwaltenGUI {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    new VerleihhistorieGUI("Verleihhistorie von " + geraetnameTextField.getText(), geraeteID);
+                    new VerleihhistorieGUI(geraeteID);
                 } catch (RemoteException ex) {
                     throw new RuntimeException(ex);
                 }

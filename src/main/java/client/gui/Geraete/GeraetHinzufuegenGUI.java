@@ -22,9 +22,9 @@ public class GeraetHinzufuegenGUI {
     private JButton geraetErstellenButton;
 
 
-    public static JFrame frame;
+    private static JFrame frame;
 
-    public GeraetHinzufuegenGUI(String title) {
+    public GeraetHinzufuegenGUI() {
 
         frame = new JFrame("Ger" + Umlaut.ae() + "t hinzuf" + Umlaut.ue() + "gen");
         frame = ClientDefaults.standardizeFrame(frame, Geraethinzufuegen);
