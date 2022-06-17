@@ -14,6 +14,7 @@ import client.gui.DefaultSmallPopup;
 import client.gui.DefaultTextWithButton;
 
 import javax.swing.*;
+import java.rmi.NoSuchObjectException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -61,6 +62,12 @@ public class DienstleistungsgesuchAnzeigenGUI {
             throw new RuntimeException(e);
         }
         metaInfoText4.setVisible(false);
+
+        try {
+            Vereinssoftware.session.getID();
+        } catch (NoSuchObjectException e) {
+            jetztReservierenButton.setEnabled(false);
+        }
 
         descriptionText.setText("<html><p style=\"width: 600px;\">" + beschreibung + "</p>");
 

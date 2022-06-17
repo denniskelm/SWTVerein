@@ -57,16 +57,10 @@ public class DienstleistungsangebotErstellenGUI {
                 urlTextField
         };
 
-        frame.setLocationRelativeTo(null);
-
         for (JTextField textField :
                 allTextFields) {
             ClientDefaults.enhanceTextField(textField, onceChangedFields);
         }
-
-        beschreibungTextArea.setLineWrap(true);
-        beschreibungTextArea.setWrapStyleWord(true);
-
 
         for (String kategorie :
                 ClientDefaults.getKategorien()) {

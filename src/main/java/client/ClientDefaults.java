@@ -98,6 +98,8 @@ public class ClientDefaults {
 
     public static void enhanceTextArea(JTextArea textArea, Map<JTextArea, Boolean> onceChanged) {
         onceChanged.put(textArea, false);
+        textArea.setLineWrap(true);
+        textArea.setWrapStyleWord(true);
 
         textArea.addMouseListener(new MouseAdapter() {
             @Override

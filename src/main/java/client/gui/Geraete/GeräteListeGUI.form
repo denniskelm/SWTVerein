@@ -15,7 +15,7 @@
         <properties/>
         <border type="none"/>
         <children>
-          <component id="6b7df" class="javax.swing.JTable" binding="Geraeteliste">
+          <component id="6b7df" class="javax.swing.JTable" binding="GeraeteTable">
             <constraints/>
             <properties>
               <preferredScrollableViewportSize width="850" height="400"/>

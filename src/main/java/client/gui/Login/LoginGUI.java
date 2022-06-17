@@ -52,6 +52,8 @@ public class LoginGUI {
                     String userId = loginData[0].toString();
                     Rolle rolle = Rolle.valueOf(loginData[1].toString());
 
+                    System.out.println("Rolle " + rolle);
+
                     Vereinssoftware.session.setID(userId);
                     Vereinssoftware.session.setRolle(rolle);
 

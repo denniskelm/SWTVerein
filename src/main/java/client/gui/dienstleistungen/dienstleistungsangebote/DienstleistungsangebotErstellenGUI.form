@@ -96,7 +96,7 @@
           <component id="230bd" class="javax.swing.JTextArea" binding="beschreibungTextArea">
             <constraints>
               <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
-                <preferred-size width="250" height="100"/>
+                <preferred-size width="500" height="100"/>
               </grid>
             </constraints>
             <properties>
@@ -135,7 +135,9 @@
         <children>
           <component id="6ee6a" class="javax.swing.JFormattedTextField" binding="urlTextField">
             <constraints>
-              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                <maximum-size width="500" height="-1"/>
+              </grid>
             </constraints>
             <properties>
               <text value="Eingeben..."/>

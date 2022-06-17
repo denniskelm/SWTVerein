@@ -11,6 +11,7 @@ import client.gui.DefaultSmallPopup;
 import client.gui.DefaultTextWithButton;
 
 import javax.swing.*;
+import java.rmi.NoSuchObjectException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
@@ -55,6 +56,12 @@ public class DienstleistungsangebotAnzeigenGUI {
             metaInfoText4.setText("Angeboten von:  " + Vereinssoftware.rollenverwaltung.getMitgliedsNamen(personen_ID));
         } catch (Exception e) {
             throw new RuntimeException(e);
+        }
+
+        try {
+            Vereinssoftware.session.getID();
+        } catch (NoSuchObjectException e) {
+            jetztReservierenButton.setEnabled(false);
         }
 
 

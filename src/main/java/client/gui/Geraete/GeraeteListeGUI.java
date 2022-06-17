@@ -21,7 +21,7 @@ import java.util.Map;
 // Kategorie
 public class GeraeteListeGUI {
     private JPanel GeraeteListe;
-    private JTable Geraeteliste;
+    private JTable GeraeteTable;
 
     private JScrollPane scrollPane;
     private JTextField sucheTextField;
@@ -42,6 +42,7 @@ public class GeraeteListeGUI {
     }
 
     private void createTable() {
+
 
         try {
             Object[][] geraete = Vereinssoftware.geraeteverwaltung.omniGeraeteDaten();
@@ -76,13 +77,15 @@ public class GeraeteListeGUI {
                 });
             }
 
-            Geraeteliste.setModel(model);
+            GeraeteTable.setModel(model);
 
-            GeraeteListe.addMouseListener(new java.awt.event.MouseAdapter() {
+            GeraeteTable.addMouseListener(new java.awt.event.MouseAdapter() {
                 @Override
                 public void mouseClicked(java.awt.event.MouseEvent evt) {
-                    int row = Geraeteliste.rowAtPoint(evt.getPoint());
-                    int col = Geraeteliste.columnAtPoint(evt.getPoint());
+                    System.out.println("mouselistener");
+                    int row = GeraeteTable.rowAtPoint(evt.getPoint());
+                    int col = GeraeteTable.columnAtPoint(evt.getPoint());
+                    System.out.println(row + ", " + col + " Geräteliste");
                     String iD = null;
                     if (row >= 0 && col >= 0) {
                         if (col == 4) {
@@ -115,12 +118,17 @@ public class GeraeteListeGUI {
             });
 
 
+            GeraeteListe.addMouseListener(new java.awt.event.MouseAdapter() {
+
+            });
+
+
         } catch (RemoteException e) {
             System.out.println("Fehler");
             throw new RuntimeException(e);
         }
 
-        ClientDefaults.addSearchFunctionality(Geraeteliste, sucheTextField);
+        ClientDefaults.addSearchFunctionality(GeraeteTable, sucheTextField);
 
     }
 

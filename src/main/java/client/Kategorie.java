@@ -15,7 +15,14 @@ public enum Kategorie {
     Musik,
     Elektronik,
     Kueche,
-    Sport
+    Sport,
+    Garten,
+    Hausarbeit,
+    Hilfsarbeiten,
+    Gemeinschaft,
+    Kleidung,
+    Essen,
+    Freunde
 
 
 }
