@@ -1,11 +1,13 @@
 package client.gui.Rollenverwaltung;
 
 import client.ClientDefaults;
+import client.Vereinssoftware;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.rmi.RemoteException;
 
 /**
  * GUI fuer die Rollenverwaltung der Mitglieder
@@ -27,6 +29,12 @@ public class RollenverwaltungMitgliedGUI {
     private static JFrame frame;
 
     public RollenverwaltungMitgliedGUI() {
+
+        try {
+            createTable();
+        } catch (RemoteException e) {
+            throw new RuntimeException(e);
+        }
 
         frame = new JFrame("Rollenverwaltung - Mitglied");
         frame = ClientDefaults.standardizeFrame(frame, RollenVerwaltungMitglied);
@@ -51,11 +59,11 @@ public class RollenverwaltungMitgliedGUI {
     }
 
 
-    private void creatTable() {
-        String[][] data = {
-                {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"},
-        };
-        String[] columns = {"ID", "Name", "E-Mail", "Wohnadresse", "Mitgliedsnummer", "telefonnummer", "istSpender", "StundenKonto", "Rolle", "Mahnung"};
+   private void createTable() throws RemoteException {
+        Object[][] data = Vereinssoftware.rollenverwaltung.mitgliederDaten();
+
+
+        String[] columns = {"ID", "Vorname", "Nachname", "E-Mail", "Anschrift", "MitgliedsNr", "TelefonNr", "Spenderstatus", "Stundenkonto", "Gesperrt?", "Mitglied seit"};
 
         table1.setModel(new DefaultTableModel(
                 data, columns)

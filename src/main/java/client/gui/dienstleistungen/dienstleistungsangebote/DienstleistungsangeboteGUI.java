@@ -83,7 +83,6 @@ public class DienstleistungsangeboteGUI {
         ClientDefaults.createColumnsFromArray(columns, model);
 
         Object[][] angebote = Vereinssoftware.dienstleistungsverwaltung.omniAngebotDaten();
-
         System.out.println("a");
 
         for (Object[] angebot : angebote) {
