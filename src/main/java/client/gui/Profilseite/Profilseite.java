@@ -217,11 +217,11 @@ public class Profilseite {
         Object[][] geraeteOfUser = new Object[geraete.length][geraete[0].length];
         j = 0;
         for (Object[] geraet : geraete) {
-            if (geraet[5] == null) {
+            if (geraet[4] == null) {
                 break;
             }
 
-            if (Objects.equals(geraet[5].toString(), personenID)) {
+            if (Objects.equals(geraet[4].toString(), personenID)) {
                 geraeteOfUser[j] = geraet;
                 j++;
             }

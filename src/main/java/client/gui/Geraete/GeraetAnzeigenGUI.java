@@ -45,10 +45,14 @@ public class GeraetAnzeigenGUI {
 
         //Anpassen der Texte
         headlineLabel.setText(titel);
-        metaInfoText1.setText("Spender: " + spender);
+        try {
+            metaInfoText1.setText("Spender: " + Vereinssoftware.rollenverwaltung.getMitgliedsNamen(spender));
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
         metaInfoText2.setText("Raum: " + raum);
         metaInfoText3.setText("Aktuell " + reservierungen + " Reservierung(en)");
-        metaInfoText4.setText("Leihfrist:  " + leihfrist + " Tage");
+        metaInfoText4.setText("Leihfrist: " + leihfrist + " Tage");
 
         descriptionText.setText("<html><p style=\"width: 600px;\"> <b>Kategorie: " + kategorie + "</b><br/>" + beschreibung + "</p>");
 

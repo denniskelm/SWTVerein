@@ -72,6 +72,7 @@ public class StartseiteGUI {
         firstRightText.setText("<html><p style=\"width:300px\">Hier finden Sie alle Angebote von Mitgliedern, die Ihnen bei Ihrer Arbeit unter die Arme greifen m" + Umlaut.oe() + "chten!</p>");
         newsHeadline.setText("Neuigkeiten und Ank" + Umlaut.ue() + "ndigungen");
         welcomeBigHeadline.setText("Willkommen! Was m" + Umlaut.oe() + "chten Sie tun?");
+        geraeteAnzeigen.setText("Jetzt alle Ger" + Umlaut.ae() + "te anzeigen");
 
         vereinsnameText.setText(Einstellungen.getVereinsname());
 

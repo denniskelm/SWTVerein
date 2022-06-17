@@ -1,6 +1,5 @@
 package client.gui.Geraete;
 
-
 import client.ClientDefaults;
 import client.Kategorie;
 import client.Umlaut;
@@ -17,8 +16,6 @@ import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
 
-//TODO Searchbar
-// Kategorie
 public class GeraeteListeGUI {
     private JPanel GeraeteListe;
     private JTable GeraeteTable;
@@ -32,18 +29,19 @@ public class GeraeteListeGUI {
     Map<JTextField, Boolean> onceChanged = new HashMap<>();
 
     public GeraeteListeGUI() {
-
         frame = new JFrame("Ger" + Umlaut.ae() + "teliste");
         frame = ClientDefaults.standardizeFrame(frame, GeraeteListe);
 
-        createTable();
+        try {
+            createTable();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
 
         ClientDefaults.enhanceTextField(sucheTextField, onceChanged);
     }
 
-    private void createTable() {
-
-
+    private void createTable() throws Exception {
         try {
             Object[][] geraete = Vereinssoftware.geraeteverwaltung.omniGeraeteDaten();
 
@@ -56,7 +54,7 @@ public class GeraeteListeGUI {
                 }
             };
 
-            String[] columns = {"GeraeteID", "Geraet", "Beschreibung", "Kategorie", "Spender", "Leihfrist", "Status", "Abholort", "Aktion"};
+            String[] columns = {"Geraet", "Beschreibung", "Kategorie", "Spender", "Leihfrist", "Status", "Abholort", "Aktion"};
             ClientDefaults.createColumnsFromArray(columns, model);
 
             for (Object[] geraet : geraete) {
@@ -65,11 +63,10 @@ public class GeraeteListeGUI {
                     break;
 
                 model.addRow(new Object[]{
-                        geraet[0],
                         geraet[1],
                         geraet[2],
                         geraet[3],
-                        geraet[4],
+                        Vereinssoftware.rollenverwaltung.getMitgliedsNamen(geraet[4].toString()),
                         geraet[5],
                         geraet[6],
                         geraet[7],
@@ -88,15 +85,11 @@ public class GeraeteListeGUI {
                     System.out.println(row + ", " + col + " Geräteliste");
                     String iD = null;
                     if (row >= 0 && col >= 0) {
-                        if (col == 4) {
+                        if (col == 3) {
                             Profilseite profilseite = new Profilseite(geraete[row][4].toString());
                         } else {
                             iD = model.getValueAt(row, 0).toString(); //GeraeteID
                             System.out.println("id: " + iD);
-                            String gname = model.getValueAt(row, 1).toString(); //Geraet
-                            String spender = model.getValueAt(row, 2).toString(); //Spender
-                            String ort = model.getValueAt(row, 3).toString(); //Ausgabeort
-                            String beschreibung = model.getValueAt(row, 4).toString(); //Geraetebeschreibung
 
                             if (iD == null) return; // TODO Exception
 
@@ -116,12 +109,6 @@ public class GeraeteListeGUI {
 
                 }
             });
-
-
-            GeraeteListe.addMouseListener(new java.awt.event.MouseAdapter() {
-
-            });
-
 
         } catch (RemoteException e) {
             System.out.println("Fehler");
