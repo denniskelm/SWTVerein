@@ -13,8 +13,10 @@ Dennis Kelm
 
 import client.ClientDefaults;
 import client.Kategorie;
+import client.Umlaut;
 import client.Vereinssoftware;
 import client.gui.DefaultSmallPopup;
+import client.gui.dienstleistungen.dienstleistungsangebote.DienstleistungsangebotsVerwaltungGUI;
 import server.dienstleistungsmodul.Dienstleistungsgesuchdaten;
 
 import javax.swing.*;
@@ -58,7 +60,7 @@ public class DienstleistungsgesuchBearbeitenGUI {
         gesuchBearbeitenButton.addActionListener(e -> {
 
             gesuchBearbeiten(gesuchsID, titleTextField.getText(), urlTextField.getText(), beschreibungTextArea.getText(), kategorieComboBox.getSelectedItem().toString());
-            frame.dispose();
+
         });
 
     }
@@ -70,7 +72,9 @@ public class DienstleistungsgesuchBearbeitenGUI {
             Vereinssoftware.dienstleistungsverwaltung.gesuchAendern(gesuchID, Dienstleistungsgesuchdaten.BESCHREIBUNG, beschreibung);
             Vereinssoftware.dienstleistungsverwaltung.gesuchAendern(gesuchID, Dienstleistungsgesuchdaten.KATEGORIE, kategorie);
 
-            DefaultSmallPopup defaultSmallPopup = new DefaultSmallPopup("aenderung erfolgreich", "Das Dienstleistungsgesuch fuer \"" + title + "\" wurde erfolgreich geaendert!");
+            frame.dispose();
+            new DienstleistungsgesuchVerwaltungGUI();
+            new DefaultSmallPopup("Erfolgreiche " + Umlaut.Ae() + "nderung", "Die Daten wurden erfolgreich in der Datenbank ge" + Umlaut.ae() + "ndert!");
         } catch (RemoteException e) {
             throw new RuntimeException(e);
         }

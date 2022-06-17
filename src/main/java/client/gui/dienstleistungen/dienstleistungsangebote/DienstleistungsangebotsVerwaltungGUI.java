@@ -31,8 +31,10 @@ public class DienstleistungsangebotsVerwaltungGUI {
 
     private final Map<JTextField, Boolean> onceChanged = new HashMap<JTextField, Boolean>();
 
+    private static JFrame frame;
+
     public DienstleistungsangebotsVerwaltungGUI() {
-        JFrame frame = new JFrame("Dienstleistungsangebots-Datenbank");
+        frame = new JFrame("Dienstleistungsangebots-Datenbank");
         try {
             this.generateTable();
         } catch (Exception e) {
@@ -40,7 +42,6 @@ public class DienstleistungsangebotsVerwaltungGUI {
         }
         //DienstleistungsangeboteGUI thisgui = new DienstleistungsangeboteGUI();
         frame = ClientDefaults.standardizeFrame(frame, this.dienstleistungsangebotsverwaltungPanel);
-        frame.setLocationRelativeTo(null);
 
         ClientDefaults.enhanceTextField(suchenTextField, onceChanged);
     }
@@ -118,6 +119,7 @@ public class DienstleistungsangebotsVerwaltungGUI {
                                     (LocalDateTime) angebote[row][3], //ab
                                     (LocalDateTime) angebote[row][4] //bis
                             );
+                            frame.dispose();
                         } catch (Exception e) {
                             throw new RuntimeException(e);
                         }

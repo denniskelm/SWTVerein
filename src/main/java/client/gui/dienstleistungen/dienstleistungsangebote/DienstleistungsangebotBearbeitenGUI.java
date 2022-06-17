@@ -13,7 +13,9 @@ Dennis Kelm
 
 import client.ClientDefaults;
 import client.Kategorie;
+import client.Umlaut;
 import client.Vereinssoftware;
+import client.gui.DefaultSmallPopup;
 import server.dienstleistungsmodul.Dienstleistungsangebotdaten;
 
 import javax.swing.*;
@@ -89,7 +91,8 @@ public class DienstleistungsangebotBearbeitenGUI {
             LocalDateTime bisTime = LocalDate.parse(verfuegbarBisTextField.getText(), formatter).atTime(12, 0, 0);
 
             angebotBearbeitenGUI(angebotsID, titleTextField.getText(), urlTextField.getText(), beschreibungTextArea.getText(), kategorieComboBox.getSelectedItem().toString(), abTime, bisTime);
-            frame.dispose();
+
+
         });
 
     }
@@ -102,6 +105,11 @@ public class DienstleistungsangebotBearbeitenGUI {
             Vereinssoftware.dienstleistungsverwaltung.angebotAendern(angebotsID, Dienstleistungsangebotdaten.KATEGORIE, kategorie);
             Vereinssoftware.dienstleistungsverwaltung.angebotAendern(angebotsID, Dienstleistungsangebotdaten.AB, ab);
             Vereinssoftware.dienstleistungsverwaltung.angebotAendern(angebotsID, Dienstleistungsangebotdaten.BIS, bis);
+
+            frame.dispose();
+            new DienstleistungsangebotsVerwaltungGUI();
+            new DefaultSmallPopup("Erfolgreiche " + Umlaut.Ae() + "nderung", "Die Daten wurden erfolgreich in der Datenbank ge" + Umlaut.ae() + "ndert!");
+
         } catch (RemoteException e) {
             throw new RuntimeException(e);
         }

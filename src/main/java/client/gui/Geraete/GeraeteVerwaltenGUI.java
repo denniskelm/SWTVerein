@@ -79,7 +79,7 @@ public class GeraeteVerwaltenGUI {
             throw new RuntimeException(e);
         }
 
-        bildTextField.setText("Path/To/Your/Image.png");
+        bildTextField.setText(String.valueOf(geraeteInfos[10]));
         geraetnameTextField.setText(String.valueOf(geraeteInfos[1]));
         spenderTextField.setText(String.valueOf(geraeteInfos[4]));
         kategorieTextField.setText(String.valueOf(geraeteInfos[3]));

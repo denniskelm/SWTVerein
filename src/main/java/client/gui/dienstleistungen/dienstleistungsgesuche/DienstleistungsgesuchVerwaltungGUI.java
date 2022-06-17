@@ -20,10 +20,12 @@ public class DienstleistungsgesuchVerwaltungGUI {
     private JTable dienstleistungsgesucheTable;
     private JTextField suchenTextField;
 
+    private static JFrame frame;
+
     private final Map<JTextField, Boolean> onceChanged = new HashMap<JTextField, Boolean>();
 
     public DienstleistungsgesuchVerwaltungGUI() {
-        JFrame frame = new JFrame("Dienstleistungsgesuch-Datenbank");
+        frame = new JFrame("Dienstleistungsgesuch-Datenbank");
         try {
             this.generateTable();
         } catch (Exception e) {
@@ -97,6 +99,7 @@ public class DienstleistungsgesuchVerwaltungGUI {
                                     gesuche[row][1].toString(), //beschreibung
                                     gesuche[row][2].toString() //Kategorie
                             );
+                            frame.dispose();
                         } catch (Exception e) {
                             throw new RuntimeException(e);
                         }

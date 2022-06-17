@@ -103,7 +103,6 @@ public class GeraeteListeGUI {
                                     Integer.parseInt(geraete[row][5].toString()),
                                     geraete[row][2].toString(),
                                     geraete[row][3].toString());
-                            GeraeteListeGUI.frame.dispose();
                         }
                     }
 

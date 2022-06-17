@@ -1,7 +1,6 @@
 package client.gui.Login;
 
 import client.ClientDefaults;
-import client.Umlaut;
 import client.Vereinssoftware;
 import client.gui.DefaultSmallPopup;
 import client.gui.Registrieren.RegistrierenGUI;
@@ -10,6 +9,8 @@ import server.users.Rolle;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * GUI fuer Login
@@ -25,10 +26,11 @@ import java.awt.event.ActionListener;
 public class LoginGUI {
     private JPanel Login;
     private JTextField eMailAdresseTextField;
-    private JTextField passwortTextField;
     private JButton loginButton;
     private JButton registrierenButton;
+    private JPasswordField passwortTextField;
 
+    private Map<JTextField, Boolean> onceChanged = new HashMap<>();
 
     //TODO error msg hinzufuegen falls login falsch (via DefaultSmallPopup)
     // funktionalitaet hinzufuegen
@@ -41,12 +43,16 @@ public class LoginGUI {
         frame = new JFrame("Login");
         frame = ClientDefaults.standardizeFrame(frame, Login);
 
+
+        ClientDefaults.enhanceTextField(eMailAdresseTextField, onceChanged);
+        ClientDefaults.enhanceTextField(passwortTextField, onceChanged);
+
         // Login Button (error)
         loginButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    Object[] loginData = Vereinssoftware.rollenverwaltung.login(eMailAdresseTextField.getText(), passwortTextField.getText());
+                    Object[] loginData = Vereinssoftware.rollenverwaltung.login(eMailAdresseTextField.getText(), String.valueOf(passwortTextField.getPassword()));
 
                     //Daten auslesen und in Session speichern
                     String userId = loginData[0].toString();

@@ -27,6 +27,7 @@ public class GeraeteDatenbankGUI {
         frame = new JFrame("Ger" + Umlaut.ae() + "tedatenbank");
         frame = ClientDefaults.standardizeFrame(frame, Geraetedatenbank);
 
+        geraetHinzufuegenButton.setText("Ger" + Umlaut.ae() + "t hinzuf" + Umlaut.ue() + "gen");
 
         createTable();
 
@@ -62,11 +63,13 @@ public class GeraeteDatenbankGUI {
 
                 System.out.println(row + ", " + col);
                 iD = model.getValueAt(row, 0).toString(); //GeraeteID
+
+                GeraeteVerwaltenGUI db = new GeraeteVerwaltenGUI(iD);
+                GeraeteDatenbankGUI.frame.dispose();
             }
         }
 
-        GeraeteVerwaltenGUI db = new GeraeteVerwaltenGUI(iD);
-        GeraeteDatenbankGUI.frame.dispose();
+
     }
 
     private void createTable() {
@@ -83,7 +86,7 @@ public class GeraeteDatenbankGUI {
                 }
             };
 
-            String[] columns = {"GeraeteID", "Geraet", "Beschreibung", "Kategorie", "Spender", "Leihfrist", "Status", "Abholort", "Aktion"};
+            String[] columns = {"GeraeteID", "Geraet", "Beschreibung", "Kategorie", "SpenderID", "Leihfrist", "Status", "Abholort", "Aktion"};
             ClientDefaults.createColumnsFromArray(columns, model);
 
             for (Object[] geraet : geraete) {
