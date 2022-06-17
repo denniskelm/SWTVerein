@@ -57,10 +57,6 @@ public class GeraeteDatenbankGUI {
             if (col == 4) {
                 Profilseite profilseite = new Profilseite(model.getValueAt(row, 4).toString());
             } else {
-
-                if (col != 8)
-                    return; // nicht auf Verwalten gedrueckt
-
                 System.out.println(row + ", " + col);
                 iD = model.getValueAt(row, 0).toString(); //GeraeteID
 
@@ -86,7 +82,7 @@ public class GeraeteDatenbankGUI {
                 }
             };
 
-            String[] columns = {"GeraeteID", "Geraet", "Beschreibung", "Kategorie", "SpenderID", "Leihfrist", "Status", "Abholort", "Aktion"};
+            String[] columns = {"GeraeteID", "Geraet", "Beschreibung", "Kategorie", "SpenderID", "Leihfrist", "Status", "Abholort"};
             ClientDefaults.createColumnsFromArray(columns, model);
 
             for (Object[] geraet : geraete) {
@@ -103,7 +99,6 @@ public class GeraeteDatenbankGUI {
                         geraet[5],
                         geraet[6],
                         geraet[7],
-                        "Verwalten"
                 });
             }
 

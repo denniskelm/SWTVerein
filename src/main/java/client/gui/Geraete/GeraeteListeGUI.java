@@ -54,7 +54,7 @@ public class GeraeteListeGUI {
                 }
             };
 
-            String[] columns = {"Geraet", "Beschreibung", "Kategorie", "Spender", "Leihfrist", "Status", "Abholort", "Aktion"};
+            String[] columns = {"Geraet", "Beschreibung", "Kategorie", "Spender", "Leihfrist", "Status", "Abholort"};
             ClientDefaults.createColumnsFromArray(columns, model);
 
             for (Object[] geraet : geraete) {
@@ -70,7 +70,6 @@ public class GeraeteListeGUI {
                         geraet[5],
                         geraet[6],
                         geraet[7],
-                        "Reservieren"
                 });
             }
 
