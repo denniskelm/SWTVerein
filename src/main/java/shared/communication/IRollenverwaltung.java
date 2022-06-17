@@ -11,13 +11,7 @@ import java.time.LocalDateTime;
 /*
 @author
 Raphael Kleebaum
-TODO Jonny Schlutter
 Gabriel Kleebaum
-TODO Mhd Esmail Kanaan
-TODO Gia Huy Hans Tran
-TODO Ole Björn Adelmann
-TODO Bastian Reichert
-TODO Dennis Kelm
 */
 
 // Interface, um RMI für Klasse Rollenverwaltung zu ermöglichen
@@ -42,7 +36,6 @@ public interface IRollenverwaltung extends Remote {
     //ArrayList<Mitglied> getMitglieder() throws RemoteException;  //ArrayList<Mitglied>
     //ArrayList<Mitarbeiter> getMitarbeiter() throws RemoteException; //ArrayList<Mitarbeiter>
     //ArrayList<Vorsitz> getVorsitze() throws RemoteException;    //ArrayList<Vorsitz>
-    //ArrayList<IMahnung> getMahnungen() throws RemoteException;   //ArrayList<Mahnung>
     long getIdCounter() throws RemoteException;
 
     String getMitgliedsNamen(String MitgliedsID) throws RemoteException, Exception;

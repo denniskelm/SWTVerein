@@ -31,7 +31,6 @@ import java.util.Enumeration;
 public class Vereinssoftware {
     public static IGeraeteverwaltung geraeteverwaltung;
     public static IDienstleistungsverwaltung dienstleistungsverwaltung;
-    public static IMahnungsverwaltung mahnungsverwaltung;
     public static IRollenverwaltung rollenverwaltung;
     public static IAnfragenVerwaltung anfragenVerwaltung;
     public static Session session;
