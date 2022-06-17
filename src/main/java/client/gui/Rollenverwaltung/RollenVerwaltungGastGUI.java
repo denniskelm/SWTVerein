@@ -2,11 +2,13 @@ package client.gui.Rollenverwaltung;
 
 import client.ClientDefaults;
 import client.Umlaut;
+import client.Vereinssoftware;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.rmi.RemoteException;
 
 /**
  * GUI fuer die Rollenverwaltung der Gaeste
@@ -53,17 +55,21 @@ public class RollenVerwaltungGastGUI {
             frame.dispose();
         });
 
-        createTable();
+        try {
+            createTable();
+        } catch (RemoteException e) {
+            throw new RuntimeException(e);
+        }
 
 
     }
 
 
-    private void createTable() {
-        String[][] data = {
-                {"1", "2", "3", "4", "5", "6", "7"},
-        };
-        String[] columns = {"ID", "Name", "E-Mail", "Wohnadresse", "Mitgliedsnummer", "telefonnummer", "Rolle"};
+    private void createTable() throws RemoteException {
+        Object[][] data = Vereinssoftware.rollenverwaltung.gaesteDaten();
+
+
+        String[] columns = {"ID", "Vorname", "Nachname", "E-Mail", "Anschrift", "MitgliedsNr", "TelefonNr"};
 
         table1.setModel(new DefaultTableModel(
                 data, columns)
