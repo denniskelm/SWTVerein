@@ -3,6 +3,7 @@ package client.gui.Geraete;
 import client.ClientDefaults;
 import client.Umlaut;
 import client.Vereinssoftware;
+import client.gui.DefaultSmallPopup;
 import server.geraetemodul.Geraetedaten;
 import shared.communication.IAusleiher;
 
@@ -84,7 +85,7 @@ public class GeraeteVerwaltenGUI {
         spenderTextField.setText(String.valueOf(geraeteInfos[4]));
         kategorieTextField.setText(String.valueOf(geraeteInfos[3]));
         geraetbeschreibungTextField.setText(String.valueOf(geraeteInfos[2]));
-        leihfristTextField.setText(geraeteInfos[5] + " Tage");
+        leihfristTextField.setText(geraeteInfos[5].toString());
         ausgabeortTextField.setText(String.valueOf(geraeteInfos[7]));
         aktuellerEntleiherTextField.setText(ausleiherName);
         verbliebendeLeihdauerTextField.setText(ausleihDauer);
@@ -93,7 +94,8 @@ public class GeraeteVerwaltenGUI {
         reservierungslisteAnzeigenButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                frame.dispose();
+                new ReservierungslisteGUI(geraeteID);
             }
         });
 
@@ -118,7 +120,13 @@ public class GeraeteVerwaltenGUI {
                     if (!bildTextField.getText().equals(geraeteInfos[10]))
                         Vereinssoftware.geraeteverwaltung.geraeteDatenVerwalten(geraeteID, Geraetedaten.BILD, bildTextField.getText());
 
+                    frame.dispose();
+                    new DefaultSmallPopup("Daten erfolgreich ge" + Umlaut.ae() + "ndert!",
+                            "Ihre Daten des Ger" + Umlaut.ae() + "ts \"" + geraetnameTextField.getText() + "\" wurden erfolgreich ge" + Umlaut.ae() + "ndert!");
+
                 } catch (RemoteException ex) {
+                    new DefaultSmallPopup("Fehler",
+                            "Ihre Daten des Ger" + Umlaut.ae() + "ts \"" + geraetnameTextField.getText() + "\" wurden nicht ge" + Umlaut.ae() + "ndert, wegen des Fehlers: " + ex);
                     throw new RuntimeException(ex);
                 }
 

@@ -64,7 +64,6 @@ public class RollenVerwaltungGastGUI {
 
     }
 
-
     private void createTable() throws RemoteException {
         Object[][] data = Vereinssoftware.rollenverwaltung.gaesteDaten();
 

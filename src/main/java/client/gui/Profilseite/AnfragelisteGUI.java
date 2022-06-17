@@ -33,7 +33,7 @@ public class AnfragelisteGUI {
     private final Map<JTextField, Boolean> onceChanged = new HashMap<JTextField, Boolean>();
 
     public AnfragelisteGUI() {
-        frame = new JFrame("Alle Dienstleistungsangebote");
+        frame = new JFrame("Alle Anfragen");
         try {
             this.generateTable();
         } catch (Exception e) {
@@ -58,7 +58,6 @@ public class AnfragelisteGUI {
         anfragelisteTable.setModel(model);
 
         //set TableCellRenderer into a specified JTable column class
-
         String[] columns = new String[]{
                 "Anfragetyp",
                 "Titel",
@@ -139,7 +138,6 @@ public class AnfragelisteGUI {
                 int col = anfragelisteTable.columnAtPoint(evt.getPoint());
                 if (row >= 0 && col >= 0) {
                     System.out.println(row + ", " + col);
-                    //TODO Implementierung Klick auf Zelle
                     try {
                         if (row < angebots_anfragen.length) {
                             if (col < 7) {

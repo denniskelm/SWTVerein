@@ -80,7 +80,7 @@ public class DienstleistungsgesuchAnzeigenGUI {
                     "Jetzt annehmen!");
             defaultTextWithButton.getActionButton().addActionListener(e1 -> {
                 try {
-                    Vereinssoftware.dienstleistungsverwaltung.gesuchAnnehmen(gesuch_ID, suchenderID, Vereinssoftware.session.getID(), Integer.parseInt(stundenzahlTextField.getText()));
+                    Vereinssoftware.dienstleistungsverwaltung.gesuchAnnehmen(gesuch_ID, Vereinssoftware.session.getID(), suchenderID, Integer.parseInt(stundenzahlTextField.getText()));
                     defaultTextWithButton.closeFrame();
                     DefaultSmallPopup defaultSmallPopup = new DefaultSmallPopup("Anfrage gesendet", "Sie haben die Anfrage erfolgreich gesendet!");
                 } catch (Exception ex) {
