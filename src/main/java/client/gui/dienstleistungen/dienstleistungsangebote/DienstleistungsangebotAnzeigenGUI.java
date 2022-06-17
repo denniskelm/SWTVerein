@@ -74,7 +74,7 @@ public class DienstleistungsangebotAnzeigenGUI {
         jetztReservierenButton.addActionListener(e -> {
             frame.dispose();
             try {
-                Vereinssoftware.dienstleistungsverwaltung.angebotAnnehmen(angebots_ID, personen_ID, "1", 0);
+                //Vereinssoftware.dienstleistungsverwaltung.angebotAnnehmen(angebots_ID, personen_ID, "1", 0);  //TODO war nen Fehler hab das mal geändert, Grüße Bastian und Gabriel
                 DefaultTextWithButton defaultTextWithButton = new DefaultTextWithButton("Anfrage senden?",
                         "Moechten Sie die Anfrage wirklich an " +
                                 Vereinssoftware.rollenverwaltung.getMitgliedsNamen(personen_ID) + " senden?",
