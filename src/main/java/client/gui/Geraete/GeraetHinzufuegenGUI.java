@@ -83,8 +83,9 @@ public class GeraetHinzufuegenGUI {
                                 geraetebeschreibungTextArea.getText(),
                                 abholortTextField.getText(),
                                 imageTextField.getText());
-                        new DefaultSmallPopup("Geraet erfolgreich hinzugefuegt", "Das Geraet wurde erfolgreich der Datenbank hinzugefuegt!");
                         frame.dispose();
+                        new GeraeteDatenbankGUI();
+                        new DefaultSmallPopup("Geraet erfolgreich hinzugefuegt", "Das Geraet wurde erfolgreich der Datenbank hinzugefuegt!");
                     } catch (Exception ex) {
                         new DefaultSmallPopup("Geraet nicht hinzugef" + Umlaut.ue() + "gt",
                                 "Es ist beim Erstellen des Ge" + Umlaut.ae() + "ts ein Fehler aufgetreten: " + ex);

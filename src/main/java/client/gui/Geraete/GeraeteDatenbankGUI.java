@@ -35,6 +35,7 @@ public class GeraeteDatenbankGUI {
         geraetHinzufuegenButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                frame.dispose();
                 GeraetHinzufuegenGUI ghg = new GeraetHinzufuegenGUI();
             }
         });

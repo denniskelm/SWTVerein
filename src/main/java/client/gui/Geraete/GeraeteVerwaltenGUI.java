@@ -111,7 +111,7 @@ public class GeraeteVerwaltenGUI {
                         Vereinssoftware.geraeteverwaltung.geraeteDatenVerwalten(geraeteID, Geraetedaten.KATEGORIE, kategorieTextField.getText());
                     if (!geraetbeschreibungTextField.getText().equals(geraeteInfos[2]))
                         Vereinssoftware.geraeteverwaltung.geraeteDatenVerwalten(geraeteID, Geraetedaten.BESCHREIBUNG, geraetbeschreibungTextField.getText());
-                    if (!leihfristTextField.getText().equals(geraeteInfos[5] + " Tage"))
+                    if (!leihfristTextField.getText().equals(geraeteInfos[5]))
                         Vereinssoftware.geraeteverwaltung.geraeteDatenVerwalten(geraeteID, Geraetedaten.LEIHFRIST, Integer.parseInt(leihfristTextField.getText()));
                     if (!ausgabeortTextField.getText().equals(geraeteInfos[7]))
                         Vereinssoftware.geraeteverwaltung.geraeteDatenVerwalten(geraeteID, Geraetedaten.ABHOLORT, ausgabeortTextField.getText());

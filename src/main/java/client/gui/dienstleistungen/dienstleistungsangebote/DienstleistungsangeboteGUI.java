@@ -33,10 +33,12 @@ public class DienstleistungsangeboteGUI {
     private JButton dienstleistungsangebotErstellenButton;
     private JTextField suchenTextField;
 
+    private static JFrame frame;
+
     private final Map<JTextField, Boolean> onceChanged = new HashMap<JTextField, Boolean>();
 
     public DienstleistungsangeboteGUI() {
-        JFrame frame = new JFrame("Alle Dienstleistungsangebote");
+        frame = new JFrame("Alle Dienstleistungsangebote");
         //try {
         try {
             this.generateTable();
@@ -141,6 +143,8 @@ public class DienstleistungsangeboteGUI {
                                     (String) angebote[row][5] //PersonenID
 
                             );
+
+                            frame.dispose();
                         } catch (Exception e) {
                             System.out.println("e");
                             throw new RuntimeException(e);

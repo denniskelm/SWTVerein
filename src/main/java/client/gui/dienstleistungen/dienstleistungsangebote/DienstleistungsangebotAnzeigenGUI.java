@@ -38,11 +38,13 @@ public class DienstleistungsangebotAnzeigenGUI {
     private JPanel stundenzahlPanel;
     private JTextField stundenzahlTextField;
 
+    private static JFrame frame;
+
     private static Map<JTextField, Boolean> onceChanged = new HashMap<JTextField, Boolean>();
 
     //Zeigt die Details des Dienstleistungsangebots an
     public DienstleistungsangebotAnzeigenGUI(String angebots_ID, String titel, String pathToImage, String beschreibung, Kategorie kategorie, LocalDateTime ab, LocalDateTime bis, String personen_ID) {
-        JFrame frame = new JFrame("Details des Dienstleistungsangebots");
+        frame = new JFrame("Details des Dienstleistungsangebots");
         ClientDefaults.insertImageToPanel(imageLabel, pathToImage); //URL zum Bild, z.B. "https://bilder.gartenpaul.de/item/images/456/full/456-R1-M1.jpg"
         frame = ClientDefaults.standardizeFrame(frame, dienstleistungsangebotAnzeigenGUI);
         frame.setLocationRelativeTo(null);
@@ -70,6 +72,7 @@ public class DienstleistungsangebotAnzeigenGUI {
         descriptionText.setText("<html><p style=\"width: 600px;\">" + beschreibung + "</p>");
 
         jetztReservierenButton.addActionListener(e -> {
+            frame.dispose();
             try {
                 Vereinssoftware.dienstleistungsverwaltung.angebotAnnehmen(angebots_ID, personen_ID, "1", 0);
                 DefaultTextWithButton defaultTextWithButton = new DefaultTextWithButton("Anfrage senden?",
@@ -81,13 +84,14 @@ public class DienstleistungsangebotAnzeigenGUI {
                     try {
                         Vereinssoftware.dienstleistungsverwaltung.angebotAnnehmen(angebots_ID, personen_ID,
                                 Vereinssoftware.session.getID(), Integer.parseInt(stundenzahlTextField.getText()));
+                        defaultTextWithButton.closeFrame();
                     } catch (Exception ex) {
+                        defaultTextWithButton.closeFrame();
                         DefaultSmallPopup errorPopup = new DefaultSmallPopup("Fehler bei der Anfrage!", "Es ist ein Fehler aufgetreten: " + ex);
                         throw new RuntimeException(ex);
                     }
                 });
 
-                //frame.dispose();
             } catch (Exception ex) {
                 throw new RuntimeException(ex);
             }

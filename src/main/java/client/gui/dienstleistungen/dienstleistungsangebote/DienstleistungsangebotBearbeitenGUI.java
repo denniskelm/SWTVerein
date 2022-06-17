@@ -44,22 +44,13 @@ public class DienstleistungsangebotBearbeitenGUI {
     private JFormattedTextField urlTextField;
     private JPanel urlPanel;
     private JButton angebotLoeschenButton;
-
     private JFrame frame;
 
-    private final Map<JTextField, Boolean> onceChanged = new HashMap<JTextField, Boolean>();
+    private final Map<JTextField, Boolean> onceChangedFields = new HashMap<JTextField, Boolean>();
 
     public DienstleistungsangebotBearbeitenGUI(String angebotsID, String titel, String pathToImage, String beschreibung, String kategorieText, LocalDateTime ab, LocalDateTime bis) {
         frame = new JFrame("Dienstleistungsangebot bearbeiten");
         frame = ClientDefaults.standardizeFrame(frame, this.dienstleistungsangebotBearbeitenPanel);
-        JTextField[] allTextFields = new JTextField[]{
-                titleTextField,
-                verfuegbarAbTextField,
-                verfuegbarBisTextField,
-                urlTextField
-        };
-
-        frame.setLocationRelativeTo(null);
 
         try {
             Object[] info = Vereinssoftware.dienstleistungsverwaltung.getAngeboteInformationen(angebotsID);

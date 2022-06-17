@@ -24,11 +24,13 @@ public class DienstleistungsgesucheGUI {
     private JButton dienstleistungsangebotErstellenButton;
     private JTextField suchenTextField;
 
+    private static JFrame frame;
+
     private final Map<JTextField, Boolean> onceChanged = new HashMap<JTextField, Boolean>();
 
 
     public DienstleistungsgesucheGUI() {
-        JFrame frame = new JFrame("Alle Dienstleistungsgesuche");
+        frame = new JFrame("Alle Dienstleistungsgesuche");
 
         try {
             this.generateTable();
@@ -37,7 +39,6 @@ public class DienstleistungsgesucheGUI {
         }
 
         frame = ClientDefaults.standardizeFrame(frame, this.dienstleistungsgesuchePanel);
-        frame.setLocationRelativeTo(null);
 
         ClientDefaults.enhanceTextField(suchenTextField, onceChanged);
 
@@ -107,8 +108,9 @@ public class DienstleistungsgesucheGUI {
                                     gesuche[row][1].toString(), //beschreibung
                                     Kategorie.valueOf(gesuche[row][2].toString()), //Kategorie
                                     (String) gesuche[row][4] //PersonenID
-
                             );
+
+                            frame.dispose();
                         } catch (Exception e) {
                             throw new RuntimeException(e);
                         }

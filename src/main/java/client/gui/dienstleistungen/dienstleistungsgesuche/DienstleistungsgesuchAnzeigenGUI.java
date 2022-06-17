@@ -39,15 +39,16 @@ public class DienstleistungsgesuchAnzeigenGUI {
     private JPanel stundenzahlPanel;
     private JTextField stundenzahlTextField;
 
+    private static JFrame frame;
+
     private static Map<JTextField, Boolean> onceChanged = new HashMap<JTextField, Boolean>();
 
     //Zeigt die Details eines Dienstleistungsgesuchs an
     //TODO Implementation Infos fetchen von IGeraeteverwaltung, vllt. die Infos per Parameter uebergeben sondern hier fetchen
     public DienstleistungsgesuchAnzeigenGUI(String gesuch_ID, String pathToImage, String titel, String beschreibung, Kategorie kategorie, String suchenderID) {
-        JFrame frame = new JFrame("Details des Dienstleistungsgesuchs");
+        frame = new JFrame("Details des Dienstleistungsgesuchs");
         ClientDefaults.insertImageToPanel(imageLabel, pathToImage); //URL zum Bild, z.B. "https://bilder.gartenpaul.de/item/images/456/full/456-R1-M1.jpg"
         frame = ClientDefaults.standardizeFrame(frame, dienstleistungsgesuchAnzeigenGUI);
-        frame.setLocationRelativeTo(null);
 
         ClientDefaults.enhanceTextField(stundenzahlTextField, onceChanged);
 
@@ -72,6 +73,7 @@ public class DienstleistungsgesuchAnzeigenGUI {
         descriptionText.setText("<html><p style=\"width: 600px;\">" + beschreibung + "</p>");
 
         jetztReservierenButton.addActionListener(e -> {
+            frame.dispose();
             DefaultTextWithButton defaultTextWithButton = new DefaultTextWithButton(
                     "Dienstleistungsgesuch annehmen?",
                     "Moechtest du den Gesuch mit dem Titel " + titel + " wirklich annehmen?",
@@ -79,8 +81,10 @@ public class DienstleistungsgesuchAnzeigenGUI {
             defaultTextWithButton.getActionButton().addActionListener(e1 -> {
                 try {
                     Vereinssoftware.dienstleistungsverwaltung.gesuchAnnehmen(gesuch_ID, suchenderID, Vereinssoftware.session.getID(), Integer.parseInt(stundenzahlTextField.getText()));
+                    defaultTextWithButton.closeFrame();
                     DefaultSmallPopup defaultSmallPopup = new DefaultSmallPopup("Anfrage gesendet", "Sie haben die Anfrage erfolgreich gesendet!");
                 } catch (Exception ex) {
+                    defaultTextWithButton.closeFrame();
                     DefaultSmallPopup errorPopup = new DefaultSmallPopup("Fehler bei der Anfrage!", "Es ist ein Fehler aufgetreten: " + ex);
                     throw new RuntimeException(ex);
                 }
