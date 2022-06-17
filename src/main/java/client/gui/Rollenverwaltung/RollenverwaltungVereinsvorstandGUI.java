@@ -1,11 +1,13 @@
 package client.gui.Rollenverwaltung;
 
 import client.ClientDefaults;
+import client.Vereinssoftware;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.rmi.RemoteException;
 
 /**
  * GUI fuer die Rollenverwaltung der Vereinsvorstaende
@@ -54,16 +56,18 @@ public class RollenverwaltungVereinsvorstandGUI {
     }
 
 
-    private void creatTable() {
-        String[][] data = {
-                {"1", "2", "3", "4", "5", "6", "7"},
-        };
+    private void createTable() throws RemoteException {
+        Object[][] data = Vereinssoftware.rollenverwaltung.vorsitzDaten();
+
+
+        String[] columns = {"ID", "Vorname", "Nachname", "E-Mail", "Anschrift", "MitgliedsNr", "TelefonNr", "Spenderstatus", "Stundenkonto", "Gesperrt?", "Mitglied seit"};
 
         table1.setModel(new DefaultTableModel(
-                data,
-                new String[]{"ID", "Name", "E-Mail", "Wohnadresse", "Mitgliedsnummer", "istSpender", "telefonnummer", "Studenkonto"}
+                data, columns)
 
-        ));
 
+        );
+
+        JTable table = new JTable(data, columns);
     }
 }

@@ -181,7 +181,7 @@ public class Profilseite {
 
         ///////// GESUCHE ///////////////////////////////////////////////////////////////////////////
         Object[][] gesuche = Vereinssoftware.dienstleistungsverwaltung.omniGesuchDaten();
-        Object[][] gesucheOfUser = new Object[angebote.length][angebote[0].length];
+        Object[][] gesucheOfUser = new Object[gesuche.length][gesuche[0].length];
         j = 0;
         for (Object[] gesuch : gesuche) {
             if (gesuch[4] == null) {

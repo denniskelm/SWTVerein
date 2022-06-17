@@ -18,8 +18,11 @@ Gabriel Kleebaum
 public interface IRollenverwaltung extends Remote {
 
     Object[] gastListeAnzeigen() throws RemoteException;    //Object[]
+
     Object[] mitgliedListeAnzeigen() throws RemoteException;    //Object[]
+
     Object[] mitarbeiterListeAnzeigen() throws RemoteException; //Object[]
+
     Object[] vorsitzListeAnzeigen() throws RemoteException; //Object[]
 
     void rolleAendern(String mitgliedsID, Rolle rolle) throws RemoteException, Exception;
@@ -55,4 +58,17 @@ public interface IRollenverwaltung extends Remote {
     Mahnung fetchMahnung(String mahnungsID) throws NoSuchObjectException, RemoteException;
 
     public Object[] mahnungAnzeigen(String mahnungsID) throws RemoteException;
+
+    public Object[] mitgliedDaten(String mitgliedsID) throws RemoteException;
+
+    public Object[][] mitgliederDaten() throws RemoteException;
+
+    public Object[][] vorsitzDaten() throws RemoteException;
+
+    public Object[][] mitarbeiterDaten() throws RemoteException;
+
+    public Object[][] gaesteDaten() throws RemoteException;
+
+    public Object[] gastDaten(String mitgliedsID) throws RemoteException;
+
 }

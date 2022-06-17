@@ -43,6 +43,7 @@ public class DienstleistungsangebotBearbeitenGUI {
     private JPanel verfuegbarBisPanel;
     private JFormattedTextField urlTextField;
     private JPanel urlPanel;
+    private JButton angebotLoeschenButton;
 
     private JFrame frame;
 
@@ -93,6 +94,16 @@ public class DienstleistungsangebotBearbeitenGUI {
             angebotBearbeitenGUI(angebotsID, titleTextField.getText(), urlTextField.getText(), beschreibungTextArea.getText(), kategorieComboBox.getSelectedItem().toString(), abTime, bisTime);
 
 
+        });
+
+        angebotLoeschenButton.addActionListener(e -> {
+            try {
+                Vereinssoftware.dienstleistungsverwaltung.angebotLoeschen(angebotsID);
+                new DefaultSmallPopup("Angebot geloescht", "Ihr Angebot mit dem Titel \"" + titel + "\" wurde erfolgreich geloescht!");
+                frame.dispose();
+            } catch (RemoteException ex) {
+                throw new RuntimeException(ex);
+            }
         });
 
     }

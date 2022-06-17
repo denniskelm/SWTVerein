@@ -36,6 +36,8 @@ public class DienstleistungsgesuchBearbeitenGUI {
     private JPanel titlePanel;
     private JFormattedTextField urlTextField;
     private JPanel urlPanel;
+    private JButton gesuchLoeschenButton;
+    private JPanel buttonPanel;
 
     private JFrame frame;
 
@@ -61,6 +63,16 @@ public class DienstleistungsgesuchBearbeitenGUI {
 
             gesuchBearbeiten(gesuchsID, titleTextField.getText(), urlTextField.getText(), beschreibungTextArea.getText(), kategorieComboBox.getSelectedItem().toString());
 
+        });
+
+        gesuchLoeschenButton.addActionListener(e -> {
+            try {
+                Vereinssoftware.dienstleistungsverwaltung.gesuchLoeschen(gesuchsID);
+                new DefaultSmallPopup("Gesuch geloescht", "Ihr Gesuch mit dem Titel \"" + titel + "\" wurde erfolgreich geloescht!");
+                frame.dispose();
+            } catch (RemoteException ex) {
+                throw new RuntimeException(ex);
+            }
         });
 
     }
