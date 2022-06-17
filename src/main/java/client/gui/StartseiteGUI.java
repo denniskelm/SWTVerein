@@ -78,7 +78,7 @@ public class StartseiteGUI {
 
         updateProfilButtons();
 
-        newsText.setText("<html><p style=\"width: 200px\"><small><br/></small>" + Einstellungen.getNeuigkeiten() + " </p>");
+        newsText.setText("<html><p style=\"width: 270px\"><small><br/></small>" + Einstellungen.getNeuigkeiten() + " </p>");
 
 
         //Untertitel setzen mit Namen, falls angemeldet (Gast-Text kommt bei Abmeldung bei repaint wieder)

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="client.gui.Rollenverwaltung.RollenverwaltungMitgliedGUI">
-  <grid id="27dc6" binding="RollenVerwaltungMitglied" layout-manager="GridLayoutManager" row-count="2" column-count="4" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-    <margin top="0" left="0" bottom="0" right="0"/>
+  <grid id="27dc6" binding="RollenVerwaltungMitglied" layout-manager="GridLayoutManager" row-count="3" column-count="4" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+    <margin top="30" left="30" bottom="30" right="30"/>
     <constraints>
       <xy x="20" y="20" width="500" height="400"/>
     </constraints>
@@ -10,14 +10,16 @@
     <children>
       <scrollpane id="b5163">
         <constraints>
-          <grid row="1" column="0" row-span="1" col-span="4" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+          <grid row="2" column="0" row-span="1" col-span="4" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties/>
         <border type="none"/>
         <children>
           <component id="f9a72" class="javax.swing.JTable" binding="table1" default-binding="true">
             <constraints/>
-            <properties/>
+            <properties>
+              <preferredScrollableViewportSize width="800" height="400"/>
+            </properties>
           </component>
         </children>
       </scrollpane>
@@ -53,6 +55,13 @@
           <text value="Gaeste"/>
         </properties>
       </component>
+      <vspacer id="943da">
+        <constraints>
+          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false">
+            <preferred-size width="-1" height="15"/>
+          </grid>
+        </constraints>
+      </vspacer>
     </children>
   </grid>
 </form>
