@@ -13,6 +13,7 @@ Dennis Kelm
 
 import client.ClientDefaults;
 import client.Vereinssoftware;
+import client.gui.Profilseite.Profilseite;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -104,20 +105,22 @@ public class DienstleistungsangebotsVerwaltungGUI {
                 int row = dienstleistungsangeboteTable.rowAtPoint(evt.getPoint());
                 int col = dienstleistungsangeboteTable.columnAtPoint(evt.getPoint());
                 if (row >= 0 && col >= 0) {
-                    System.out.println(row + ", " + col);
-                    //TODO Implementierung Klick auf Zelle
-                    try {
-                        DienstleistungsangebotBearbeitenGUI dienstleistungsangebotBearbeitenGUI = new DienstleistungsangebotBearbeitenGUI(
-                                angebote[row][6].toString(), //ID
-                                angebote[row][0].toString(), //Titel
-                                angebote[row][7].toString(), //pathToImage
-                                angebote[row][1].toString(), //beschreibung
-                                angebote[row][2].toString(), //Kategorie
-                                (LocalDateTime) angebote[row][3], //ab
-                                (LocalDateTime) angebote[row][4] //bis
-                        );
-                    } catch (Exception e) {
-                        throw new RuntimeException(e);
+                    if (col == 6) {
+                        Profilseite profilseite = new Profilseite(angebote[row][5].toString());
+                    } else {
+                        try {
+                            DienstleistungsangebotBearbeitenGUI dienstleistungsangebotBearbeitenGUI = new DienstleistungsangebotBearbeitenGUI(
+                                    angebote[row][6].toString(), //ID
+                                    angebote[row][0].toString(), //Titel
+                                    angebote[row][7].toString(), //pathToImage
+                                    angebote[row][1].toString(), //beschreibung
+                                    angebote[row][2].toString(), //Kategorie
+                                    (LocalDateTime) angebote[row][3], //ab
+                                    (LocalDateTime) angebote[row][4] //bis
+                            );
+                        } catch (Exception e) {
+                            throw new RuntimeException(e);
+                        }
                     }
                 }
             }

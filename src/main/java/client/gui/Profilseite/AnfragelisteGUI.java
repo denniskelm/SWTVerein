@@ -182,11 +182,11 @@ public class AnfragelisteGUI {
                                 Profilseite profilseite = new Profilseite(anfragen[row][0].toString());
                             } else if (col == 8) {
                                 //Annehmen mit DefaultSmallPopup
-                                Vereinssoftware.anfragenVerwaltung.gAnfrageAnnehmen(Vereinssoftware.session.getID(), anfragen[row][9].toString());
+                                Vereinssoftware.anfragenVerwaltung.gAnfrageAnnehmen(Vereinssoftware.session.getID(), anfragen[row][7].toString());
                                 DefaultSmallPopup defaultSmallPopup = new DefaultSmallPopup("Gesuch erfolgreich angenommen!", "Ihre Gesuch wurde nun angenommen!");
                             } else if (col == 9) {
                                 //Ablehnen mit DefaultSmallPopup
-                                Vereinssoftware.anfragenVerwaltung.removeGAnfrage(Vereinssoftware.session.getID(), anfragen[row][9].toString());
+                                Vereinssoftware.anfragenVerwaltung.removeGAnfrage(Vereinssoftware.session.getID(), anfragen[row][7].toString());
                                 DefaultSmallPopup defaultSmallPopup = new DefaultSmallPopup("Gesuch erfolgreich abgelehnt!", "Ihre Gesuch wurde leider abgelehnt!");
                             }
                         }

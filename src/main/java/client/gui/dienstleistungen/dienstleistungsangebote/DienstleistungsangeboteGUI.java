@@ -14,6 +14,7 @@ Dennis Kelm
 import client.ClientDefaults;
 import client.Kategorie;
 import client.Vereinssoftware;
+import client.gui.Profilseite.Profilseite;
 import client.gui.dienstleistungen.dienstleistungsgesuche.DienstleistungsgesuchErstellenGUI;
 
 import javax.swing.*;
@@ -125,24 +126,26 @@ public class DienstleistungsangeboteGUI {
                 int row = dienstleistungsangeboteTable.rowAtPoint(evt.getPoint());
                 int col = dienstleistungsangeboteTable.columnAtPoint(evt.getPoint());
                 if (row >= 0 && col >= 0) {
-                    System.out.println(row + ", " + col);
-                    //TODO Implementierung Klick auf Zelle
-                    try {
-                        System.out.println("d");
-                        DienstleistungsangebotAnzeigenGUI dienstleistungsangebotAnzeigenGUI = new DienstleistungsangebotAnzeigenGUI(
-                                angebote[row][6].toString(), //ID
-                                angebote[row][0].toString(), //Titel
-                                angebote[row][7].toString(), //pathToImage
-                                angebote[row][1].toString(), //beschreibung
-                                Kategorie.valueOf(angebote[row][2].toString()), //Kategorie
-                                (LocalDateTime) angebote[row][3], //ab
-                                (LocalDateTime) angebote[row][4], //bis
-                                (String) angebote[row][5] //PersonenID
+                    if (col == 5) {
+                        Profilseite profilseite = new Profilseite(angebote[row][5].toString());
+                    } else {
+                        try {
+                            System.out.println("d");
+                            DienstleistungsangebotAnzeigenGUI dienstleistungsangebotAnzeigenGUI = new DienstleistungsangebotAnzeigenGUI(
+                                    angebote[row][6].toString(), //ID
+                                    angebote[row][0].toString(), //Titel
+                                    angebote[row][7].toString(), //pathToImage
+                                    angebote[row][1].toString(), //beschreibung
+                                    Kategorie.valueOf(angebote[row][2].toString()), //Kategorie
+                                    (LocalDateTime) angebote[row][3], //ab
+                                    (LocalDateTime) angebote[row][4], //bis
+                                    (String) angebote[row][5] //PersonenID
 
-                        );
-                    } catch (Exception e) {
-                        System.out.println("e");
-                        throw new RuntimeException(e);
+                            );
+                        } catch (Exception e) {
+                            System.out.println("e");
+                            throw new RuntimeException(e);
+                        }
                     }
                 }
             }

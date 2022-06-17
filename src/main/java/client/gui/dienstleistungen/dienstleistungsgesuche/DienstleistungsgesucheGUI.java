@@ -7,6 +7,7 @@ Dennis Kelm
 import client.ClientDefaults;
 import client.Kategorie;
 import client.Vereinssoftware;
+import client.gui.Profilseite.Profilseite;
 import client.gui.dienstleistungen.dienstleistungsangebote.DienstleistungsangebotErstellenGUI;
 
 import javax.swing.*;
@@ -95,20 +96,22 @@ public class DienstleistungsgesucheGUI {
                 int row = dienstleistungsgesucheTable.rowAtPoint(evt.getPoint());
                 int col = dienstleistungsgesucheTable.columnAtPoint(evt.getPoint());
                 if (row >= 0 && col >= 0) {
-                    System.out.println(row + ", " + col);
-                    //TODO Implementierung Klick auf Zelle
-                    try {
-                        DienstleistungsgesuchAnzeigenGUI dienstleistungsgesuchAnzeigenGUI = new DienstleistungsgesuchAnzeigenGUI(
-                                gesuche[row][3].toString(), //ID
-                                gesuche[row][5].toString(), //pathToImage
-                                gesuche[row][0].toString(), //Titel
-                                gesuche[row][1].toString(), //beschreibung
-                                Kategorie.valueOf(gesuche[row][2].toString()), //Kategorie
-                                (String) gesuche[row][4] //PersonenID
+                    if (col == 4) {
+                        Profilseite profilseite = new Profilseite(gesuche[row][4].toString());
+                    } else {
+                        try {
+                            DienstleistungsgesuchAnzeigenGUI dienstleistungsgesuchAnzeigenGUI = new DienstleistungsgesuchAnzeigenGUI(
+                                    gesuche[row][3].toString(), //ID
+                                    gesuche[row][5].toString(), //pathToImage
+                                    gesuche[row][0].toString(), //Titel
+                                    gesuche[row][1].toString(), //beschreibung
+                                    Kategorie.valueOf(gesuche[row][2].toString()), //Kategorie
+                                    (String) gesuche[row][4] //PersonenID
 
-                        );
-                    } catch (Exception e) {
-                        throw new RuntimeException(e);
+                            );
+                        } catch (Exception e) {
+                            throw new RuntimeException(e);
+                        }
                     }
                 }
             }

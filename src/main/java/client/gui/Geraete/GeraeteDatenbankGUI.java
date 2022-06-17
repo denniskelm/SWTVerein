@@ -3,6 +3,7 @@ package client.gui.Geraete;
 import client.ClientDefaults;
 import client.Umlaut;
 import client.Vereinssoftware;
+import client.gui.Profilseite.Profilseite;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -22,7 +23,7 @@ public class GeraeteDatenbankGUI {
 
     private static JFrame frame;
 
-    public GeraeteDatenbankGUI(String title) {
+    public GeraeteDatenbankGUI() {
         frame = new JFrame("Ger" + Umlaut.ae() + "tedatenbank");
         frame = ClientDefaults.standardizeFrame(frame, Geraetedatenbank);
 
@@ -52,15 +53,16 @@ public class GeraeteDatenbankGUI {
         String iD = null;
         if (row >= 0 && col >= 0) {
 
-            if (col != 8)
-                return; // nicht auf Verwalten gedrueckt
+            if (col == 4) {
+                Profilseite profilseite = new Profilseite(model.getValueAt(row, 4).toString());
+            } else {
 
-            System.out.println(row + ", " + col);
-            iD = model.getValueAt(row, 0).toString(); //GeraeteID
-            String gname = model.getValueAt(row, 1).toString(); //Geraet
-            String spender = model.getValueAt(row, 2).toString(); //Spender
-            String ort = model.getValueAt(row, 3).toString(); //Ausgabeort
-            String beschreibung = model.getValueAt(row, 4).toString(); //Geraetebeschreibung
+                if (col != 8)
+                    return; // nicht auf Verwalten gedrueckt
+
+                System.out.println(row + ", " + col);
+                iD = model.getValueAt(row, 0).toString(); //GeraeteID
+            }
         }
 
         GeraeteVerwaltenGUI db = new GeraeteVerwaltenGUI(iD);

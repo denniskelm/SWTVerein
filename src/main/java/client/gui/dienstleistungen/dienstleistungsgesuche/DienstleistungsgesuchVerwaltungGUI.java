@@ -6,6 +6,7 @@ Dennis Kelm
 
 import client.ClientDefaults;
 import client.Vereinssoftware;
+import client.gui.Profilseite.Profilseite;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -85,17 +86,20 @@ public class DienstleistungsgesuchVerwaltungGUI {
                 int row = dienstleistungsgesucheTable.rowAtPoint(evt.getPoint());
                 int col = dienstleistungsgesucheTable.columnAtPoint(evt.getPoint());
                 if (row >= 0 && col >= 0) {
-                    System.out.println(row + ", " + col);
-                    try {
-                        DienstleistungsgesuchBearbeitenGUI dienstleistungsgesuchBearbeitenGUI = new DienstleistungsgesuchBearbeitenGUI(
-                                gesuche[row][3].toString(), //ID
-                                gesuche[row][0].toString(), //Titel
-                                gesuche[row][5].toString(), //pathToImage
-                                gesuche[row][1].toString(), //beschreibung
-                                gesuche[row][2].toString() //Kategorie
-                        );
-                    } catch (Exception e) {
-                        throw new RuntimeException(e);
+                    if (col == 4) {
+                        Profilseite profilseite = new Profilseite(gesuche[row][4].toString());
+                    } else {
+                        try {
+                            DienstleistungsgesuchBearbeitenGUI dienstleistungsgesuchBearbeitenGUI = new DienstleistungsgesuchBearbeitenGUI(
+                                    gesuche[row][3].toString(), //ID
+                                    gesuche[row][0].toString(), //Titel
+                                    gesuche[row][5].toString(), //pathToImage
+                                    gesuche[row][1].toString(), //beschreibung
+                                    gesuche[row][2].toString() //Kategorie
+                            );
+                        } catch (Exception e) {
+                            throw new RuntimeException(e);
+                        }
                     }
                 }
             }

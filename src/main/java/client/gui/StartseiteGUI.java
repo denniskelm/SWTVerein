@@ -119,11 +119,11 @@ public class StartseiteGUI {
         });
 
         geraeteverwaltungButton.addActionListener(e -> {
-            GeraeteDatenbankGUI ghg = new GeraeteDatenbankGUI("Geraetedatenbank");
+            GeraeteDatenbankGUI ghg = new GeraeteDatenbankGUI();
         });
 
         geraeteAnzeigen.addActionListener(e -> {
-            GeraeteListeGUI ghg = new GeraeteListeGUI("Geraeteliste");
+            GeraeteListeGUI ghg = new GeraeteListeGUI();
         });
 
         profilButton.addActionListener(e -> {
