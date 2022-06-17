@@ -64,6 +64,9 @@ public class DienstleistungsangebotErstellenGUI {
             ClientDefaults.enhanceTextField(textField, onceChangedFields);
         }
 
+        beschreibungTextArea.setLineWrap(true);
+        beschreibungTextArea.setWrapStyleWord(true);
+
 
         for (String kategorie :
                 ClientDefaults.getKategorien()) {

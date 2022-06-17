@@ -30,7 +30,6 @@ public class AnfragelisteGUI {
 
     private final Map<JTextField, Boolean> onceChanged = new HashMap<JTextField, Boolean>();
 
-    //TODO Anpassung an Servercode
     public AnfragelisteGUI() {
         JFrame frame = new JFrame("Alle Dienstleistungsangebote");
         try {
