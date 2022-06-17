@@ -24,17 +24,28 @@ public interface IDienstleistungsverwaltung extends Remote {
 
     String angebotErstellen(String titel, String beschreibung, String kategorie, LocalDateTime ab, LocalDateTime bis, String imageUrl, String ersteller) throws RemoteException, Exception;
 
-    void gesuchLoeschen(String gesuchsID) throws RemoteException;
-    void angebotLoeschen(String angebotsID) throws RemoteException;
+    boolean gesuchLoeschen(String gesuchsID) throws RemoteException;
+
+    boolean angebotLoeschen(String angebotsID) throws RemoteException;
+
     void gesuchAendern(String gesuchsID, Dienstleistungsgesuchdaten attr, Object wert) throws RemoteException;
+
     void angebotAendern(String angebotsID, Dienstleistungsangebotdaten attr, Object wert) throws RemoteException;
+
     void gesuchAnnehmen(String gesuchsID, String ersteller, String nutzer, int stunden) throws RemoteException, Exception;
+
     void angebotAnnehmen(String gesuchsID, String ersteller, String nutzer, int stunden) throws RemoteException, Exception;
+
     Object[] getAngeboteInformationen(String geraeteID) throws RemoteException;
+
     Object[] getGesucheInformationen(String geraeteID) throws RemoteException;
+
     Object[][] omniAngebotDaten() throws NoSuchObjectException, RemoteException;
+
     Object[][] omniGesuchDaten() throws NoSuchObjectException, RemoteException;
+
     public int anzahlAngebote() throws RemoteException;
+
     public int anzahlGesuche() throws RemoteException;
 
 }
