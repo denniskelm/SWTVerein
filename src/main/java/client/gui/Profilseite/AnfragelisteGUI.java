@@ -20,7 +20,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.Map;
 
-//Erstellt das GUI für die Dienstleistungsangebote, wo Nutzer alle Angebote einsehen können (Verwaltung ist extra)
+//Erstellt das GUI für die Anfrageliste des gerade angemeldeten Nutzers
 public class AnfragelisteGUI {
     private JPanel anfragelistePanel;
     private JScrollPane bigTableScrollPanel;
@@ -40,7 +40,6 @@ public class AnfragelisteGUI {
         }
 
         frame = ClientDefaults.standardizeFrame(frame, this.anfragelistePanel);
-        frame.setLocationRelativeTo(null);
 
         ClientDefaults.enhanceTextField(suchenTextField, onceChanged);
     }
@@ -91,7 +90,6 @@ public class AnfragelisteGUI {
             if (anfrage[0] == null) {
                 break;
             }
-
 
             if (i < angebots_anfragen.length) {
 

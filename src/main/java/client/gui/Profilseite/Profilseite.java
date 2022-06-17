@@ -13,6 +13,7 @@ Dennis Kelm
 
 import client.ClientDefaults;
 import client.Einstellungen;
+import client.Umlaut;
 import client.Vereinssoftware;
 
 import javax.swing.*;
@@ -22,6 +23,10 @@ import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.rmi.NoSuchObjectException;
+import java.rmi.RemoteException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Arrays;
 import java.util.Objects;
 
 //TODO Was macht diese Klasse?
@@ -86,12 +91,32 @@ public class Profilseite {
             });
         }
 
+        //E-Mail richtig setzen
+        try {
+            emailText.setText(Vereinssoftware.rollenverwaltung.getMitgliedsMail(personenID));
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
+        //Stundenzahl richtig setzen
+        try {
+            stundenkontostandText.setText(Vereinssoftware.rollenverwaltung.getStundenzahl(personenID) + " Stunden");
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
+        //Mahnungen richtig setzen
+
         JFrame frame = new JFrame("Profilseite");
-        generateTable();
+        try {
+            generateTable(personenID);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
         frame = ClientDefaults.standardizeFrame(frame, eigeneprofilseitePanel);
     }
 
-    private void generateTable() {
+    private void generateTable(String personenID) throws RuntimeException, RemoteException {
         DefaultTableModel model = new DefaultTableModel() {
 
             @Override
@@ -108,20 +133,115 @@ public class Profilseite {
                 "Typ",
                 "Titel",
                 "Beschreibung",
+                "Kategorie",
                 "Verfuegbar ab",
-                "Verfuegbar bis"
+                "Verfuegbar bis",
+                "Leihfrist",
+                "Status"
         };
         ClientDefaults.createColumnsFromArray(columns, model);
 
-        //TODO Alle Geraete, Dienstleistungsgesuche und Dienstleistungsangebote abfragen und jeweils Laengen feststellen / in ein Array zusammenfassen & Typ abfragen
+        ///////// ANGEBOTE ///////////////////////////////////////////////////////////////////////////
+        Object[][] angebote = Vereinssoftware.dienstleistungsverwaltung.omniAngebotDaten();
+        Object[][] angeboteOfUser = new Object[angebote.length][angebote[0].length];
+        int j = 0;
+        for (Object[] angebot : angebote) {
+            if (angebot[5] == null) {
+                break;
+            }
 
-        model.addRow(new Object[]{
-                "Dienstleistungsgesuch",
-                "Gartenzaun reparieren",
-                "Ich brauche unbedingt Hilfe bei meinem Gartenzaun, und bin leider nicht ausreichend qualifiziert, den Zaun selber zu streichen",
-                "07.05.2022",
-                "14.05.2022"
-        });
+            if (Objects.equals(angebot[5].toString(), personenID)) {
+                angeboteOfUser[j] = angebot;
+                j++;
+            }
+        }
+
+        for (Object[] angebot : angeboteOfUser) {
+            if (angebot[0] == null) {
+                break;
+            }
+
+            LocalDateTime abTime = ((LocalDateTime) angebot[3]);
+            String ab = abTime.format(DateTimeFormatter.ISO_LOCAL_DATE);
+
+            LocalDateTime bisTime = ((LocalDateTime) angebot[4]);
+            String bis = bisTime.format(DateTimeFormatter.ISO_LOCAL_DATE);
+
+            model.addRow(new Object[]{
+                    "Angebot",
+                    angebot[0],
+                    angebot[1],
+                    angebot[2],
+                    ab,
+                    bis,
+                    "-",
+                    "-"
+            });
+        }
+
+        ///////// GESUCHE ///////////////////////////////////////////////////////////////////////////
+        Object[][] gesuche = Vereinssoftware.dienstleistungsverwaltung.omniGesuchDaten();
+        Object[][] gesucheOfUser = new Object[angebote.length][angebote[0].length];
+        j = 0;
+        for (Object[] gesuch : gesuche) {
+            if (gesuch[4] == null) {
+                break;
+            }
+
+            if (Objects.equals(gesuch[4].toString(), personenID)) {
+                for (int i = 0; i < gesuch.length; i++) {
+                    gesucheOfUser[j][i] = gesuch[i];
+                }
+                j++;
+            }
+        }
+
+        for (Object[] gesuch : gesucheOfUser) {
+            if (gesuch[0] == null)
+                break;
+
+            model.addRow(new Object[]{
+                    "Gesuch",
+                    gesuch[0],
+                    gesuch[1],
+                    gesuch[2],
+                    "-",
+                    "-",
+                    "-",
+                    "-",
+            });
+        }
+
+        ///////// GERAETE ///////////////////////////////////////////////////////////////////////////
+        Object[][] geraete = Vereinssoftware.geraeteverwaltung.omniGeraeteDaten();
+        Object[][] geraeteOfUser = new Object[geraete.length][geraete[0].length];
+        j = 0;
+        for (Object[] geraet : geraete) {
+            if (geraet[5] == null) {
+                break;
+            }
+
+            if (Objects.equals(geraet[5].toString(), personenID)) {
+                geraeteOfUser[j] = geraet;
+                j++;
+            }
+        }
+
+        for (Object[] geraet : geraeteOfUser) {
+            if (geraet[0] == null)
+                break;
+
+            model.addRow(new Object[]{
+                    "Ger" + Umlaut.ae() + "t",
+                    geraet[1],
+                    geraet[2],
+                    geraet[3],
+                    "-",
+                    "-",
+                    geraet[5],
+                    geraet[6],
+            });
+        }
 
         profilseiteEintraegeTable.addMouseListener(new java.awt.event.MouseAdapter() {
             @Override
@@ -129,9 +249,7 @@ public class Profilseite {
                 int row = profilseiteEintraegeTable.rowAtPoint(evt.getPoint());
                 int col = profilseiteEintraegeTable.columnAtPoint(evt.getPoint());
                 if (row >= 0 && col >= 0) {
-                    System.out.println(row + ", " + col);
-                    //TODO Implementierung Klick auf Zelle ++ Erkennen ob Geraet oder nicht
-                    //DienstleistungsangebotAnzeigenGUI dienstleistungsangebotAnzeigenGUI = new DienstleistungsangebotAnzeigenGUI(/* getAngebotsID usw */)
+                    //TODO low priority Die Gesuche, Dienstleistungen etc. anklickbar machen
                 }
             }
         });

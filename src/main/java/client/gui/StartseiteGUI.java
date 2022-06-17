@@ -103,7 +103,7 @@ public class StartseiteGUI {
                             "%20ein%20Ger%C3%A4t%20spenden!&body=Liebe%20Vereinsmitarbeiter%2C%0D%0A%0D%0Aich%20m%C3%" +
                             "B6chte%20unserem%20Verein%20ein%20Ger%C3%A4t%20spenden!%0D%0A%0D%0AGer%C3%A4tename%3A%20" +
                             "HIER%20GER%C3%84TENAME%20EINGEBEN%0D%0A%0D%0AHIER%20WEITERE%20INFOS%20EINGEBEN" +
-                            "%0D%0A%0D%0ALiebe%20Gr%C3%BC%C3%9Fe%0D%0A" + Vereinssoftware.rollenverwaltung.getMitgliedsNamen(Vereinssoftware.session.getID());
+                            "%0D%0A%0D%0ALiebe%20Gr%C3%BC%C3%9Fe%0D%0ANAME%20EINF%C3%9CGEN";
                     URI mailto = new URI(link);
                     desktop.mail(mailto);
                 } catch (Exception ex) {

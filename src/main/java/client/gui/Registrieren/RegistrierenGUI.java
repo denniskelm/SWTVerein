@@ -40,7 +40,7 @@ public class RegistrierenGUI {
     private static JFrame frame;
 
     public RegistrierenGUI() {
-        frame = new JFrame("Login");
+        frame = new JFrame("Registrieren");
         frame = ClientDefaults.standardizeFrame(frame, Registrieren);
 
 

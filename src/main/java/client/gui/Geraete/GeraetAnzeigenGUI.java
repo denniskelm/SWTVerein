@@ -12,8 +12,10 @@ Dennis Kelm
 */
 
 import client.ClientDefaults;
+import client.Vereinssoftware;
 
 import javax.swing.*;
+import java.rmi.NoSuchObjectException;
 
 //TODO Was macht diese Klasse?
 public class GeraetAnzeigenGUI {
@@ -37,22 +39,29 @@ public class GeraetAnzeigenGUI {
 
     //Zeigt die Geraetedetailinformationen an - wird noch implementiert
     //TODO Implementation Infos fetchen von IGeraeteverwaltung, vllt. die Infos per Parameter uebergeben sondern hier fetchen
-    public GeraetAnzeigenGUI(String geraeteID, String pathToImage, String titel, String spender, String raum, int reservierungen, int leihfrist, String beschreibung) {
+    public GeraetAnzeigenGUI(String geraeteID, String pathToImage, String titel, String spender, String raum, int reservierungen, int leihfrist, String beschreibung, String kategorie) {
         JFrame frame = new JFrame("Geraetedetails");
         ClientDefaults.insertImageToPanel(imageLabel, pathToImage); //URL zum Bild, z.B. "https://bilder.gartenpaul.de/item/images/456/full/456-R1-M1.jpg"
         frame = ClientDefaults.standardizeFrame(frame, geraetAnzeigenGUI);
 
         //Anpassen der Texte
-        headlineLabel.setText("TODO TITEL"); //sowas wie Vereinssoftware.dienstleistungsverwaltung.getGeraetInformation(String geraeteID)[0]
+        headlineLabel.setText(titel); //sowas wie Vereinssoftware.dienstleistungsverwaltung.getGeraetInformation(String geraeteID)[0]
         metaInfoText1.setText("Spender: " + spender);
         metaInfoText2.setText("Raum: " + raum);
         metaInfoText3.setText("Aktuell " + reservierungen + " Reservierungen");
         metaInfoText4.setText("Leihfrist:  " + leihfrist + " Tage");
 
-        descriptionText.setText("<html><p style=\"width: 600px;\">" + beschreibung + "</p>");
+        descriptionText.setText("<html><p style=\"width: 600px;\"> <b>Kategorie: " + kategorie + "</b><br/>" + beschreibung + "</p>");
 
         jetztReservierenButton.addActionListener(e -> {
-            //TODO Implemtierung Reservierung hinzufuegen
+            try {
+                GeraetReservierenGUI geraetReservierenGUI = new GeraetReservierenGUI(
+                        geraeteID,
+                        Vereinssoftware.session.getID());
+            } catch (NoSuchObjectException ex) {
+                throw new RuntimeException(ex);
+            }
+
         });
     }
 
