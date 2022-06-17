@@ -25,25 +25,12 @@ public class GeraeteListeGUI {
     private JScrollPane scrollPane;
     private JTextField kategorieTextField;
     private JTextField sucheTextField;
-    private JButton geraetHinzufuegenButton;
     private DefaultTableModel model;
 
     private static JFrame frame;
 
     public GeraeteListeGUI(String title) {
-        frame = new JFrame("Ger" + Umlaut.ae() + "teliste");
-        frame = ClientDefaults.standardizeFrame(frame, GeraeteListe);
 
-        createTable();
-
-        //TODO Geraet hinzufuegen
-        geraetHinzufuegenButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                GeraetHinzufuegenGUI GeraetHinz = new GeraetHinzufuegenGUI();
-                frame.setVisible(false);
-            }
-        });
 
         // clickyclick
         Geraeteliste.addMouseListener(new java.awt.event.MouseAdapter() {
