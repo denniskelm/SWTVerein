@@ -93,10 +93,6 @@ public class GeraetHinzufuegenGUI {
                 } else {
                     DefaultSmallPopup defaultSmallPopup = new DefaultSmallPopup("Falsche URL", "Die Bild-URL, die du eingegeben hast, ist falsch!");
                 }
-
-                DefaultSmallPopup defaultSmallPopup = new DefaultSmallPopup("Geraet erfolgreich hinzugefuegt", "Das Geraet wurde erfolgreich der Datenbank hinzugefuegt!");
-
-                frame.dispose();
             }
         });
     }
