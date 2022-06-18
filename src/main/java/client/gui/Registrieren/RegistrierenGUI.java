@@ -38,8 +38,6 @@ public class RegistrierenGUI {
     private JButton registrierenButton;
     private JPanel vornamePanel;
 
-    public static final Pattern VALID_EMAIL_ADDRESS_REGEX = Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
-
     //TODO Hinweise hinzufuegen
     // funktionalitaet hinzufuegen
     // optimieren
@@ -68,48 +66,56 @@ public class RegistrierenGUI {
         for (JTextField textField : allTextFields)
             ClientDefaults.enhanceTextField(textField, onceChanged);
 
-        //Prueft hier, ob 1. was eingegeben wurde und 2. ob noch was leer ist
-        for (JTextField textField : allTextFields) {
-            String eingabe = textField.getText();
-
-            if (Objects.equals(eingabe, "Eingeben...") || Objects.equals(eingabe, "")) {
-                new DefaultSmallPopup("Falsche Eingaben", "Du hast einen Fehler bei der Eingabe gemacht!");
-                return;
-            }
-
-        }
-
         //reg (succ)
         registrierenButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
+                //Prueft hier, ob 1. was eingegeben wurde und 2. ob noch was leer ist
+                for (JTextField textField : allTextFields) {
+                    String eingabe = textField.getText();
+
+                    if (Objects.equals(eingabe, "Eingeben...") || Objects.equals(eingabe, "")) {
+                        new DefaultSmallPopup("Falsche Eingaben", "Du hast einen Fehler bei der Eingabe gemacht!");
+                        return;
+                    }
+
+                }
+
+                // Passwörter auf Gleichheit überprüfen
                 if (!String.valueOf(passwortTextField.getPassword()).equals(String.valueOf(passwortWiederholungTextField.getPassword()))) {
                     new DefaultSmallPopup("Hinweis", "Die eingegebenen Passw" + Umlaut.oe() + "rter sind nicht identisch!");
                     return;
                 }
 
+                // Telefonnummer darf nur Ziffern und '+' enthalten
                 if (!telefonnummerTextField.getText().matches("[0-9]+")) {
                     new DefaultSmallPopup("Hinweis", "Die eingegebene Telefonnummer ist falsch!");
                     return;
                 }
 
-                if (!mitgliedsnummerTextField.getText().matches("[0-9]+")) {
+                // Mitgliedsnummer darf nur Ziffern enthalten
+                if (!mitgliedsnummerTextField.getText().matches("[0-9]")) {
                     new DefaultSmallPopup("Hinweis", "Die eingegebene Mitgliedsnummer ist falsch!");
                     return;
                 }
 
+                // Email auf Richtigkeit überprüfen (also text@text.text)
+                Pattern VALID_EMAIL_ADDRESS_REGEX = Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
                 Matcher matcher = VALID_EMAIL_ADDRESS_REGEX.matcher(eMailTextField.getText());
+
                 if (!matcher.find()) {
                     new DefaultSmallPopup("Hinweis", "Die eingegebene E-Mail ist falsch!");
                     return;
                 }
 
+                // Überprüfen, ob E-Mail schon registriert ist
                 if (Vereinssoftware.rollenverwaltung.existiertEMail(eMailTextField.getText())) {
                     new DefaultSmallPopup("Hinweis", "Die eingegebene E-Mail existiert bereits!");
                     return;
                 }
 
+                // wenn alles funktioniert hat, dann registrieren
                 try {
                     Vereinssoftware.rollenverwaltung.gastHinzufuegen(nachnameTextField.getText(),
                             vornameTextField.getText(),
