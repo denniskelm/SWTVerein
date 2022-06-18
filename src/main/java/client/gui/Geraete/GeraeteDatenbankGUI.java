@@ -105,8 +105,6 @@ public class GeraeteDatenbankGUI {
 
             Datenbank.setModel(model);
 
-            JTable table = new JTable(model);
-
         } catch (RemoteException e) {
             System.out.println("Fehler");
             throw new RuntimeException(e);

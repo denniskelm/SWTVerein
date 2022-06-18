@@ -47,16 +47,17 @@ public class DienstleistungsangeboteGUI {
         }
 
         frame = ClientDefaults.standardizeFrame(frame, this.dienstleistungsangebotePanel);
-        frame.setLocationRelativeTo(null);
 
         ClientDefaults.enhanceTextField(suchenTextField, onceChanged);
 
         dienstleistungsangebotErstellenButton.addActionListener(e -> {
-            DienstleistungsangebotErstellenGUI dienstleistungsangebotErstellenGUI = new DienstleistungsangebotErstellenGUI();
+            frame.dispose();
+            new DienstleistungsangebotErstellenGUI();
         });
 
         dienstleistungsgesuchErstellenButton.addActionListener(e -> {
-            DienstleistungsgesuchErstellenGUI dienstleistungsgesuchErstellenGUI = new DienstleistungsgesuchErstellenGUI();
+            frame.dispose();
+            new DienstleistungsgesuchErstellenGUI();
         });
     }
 
@@ -131,7 +132,6 @@ public class DienstleistungsangeboteGUI {
                         Profilseite profilseite = new Profilseite(angebote[row][5].toString());
                     } else {
                         try {
-                            System.out.println("d");
                             DienstleistungsangebotAnzeigenGUI dienstleistungsangebotAnzeigenGUI = new DienstleistungsangebotAnzeigenGUI(
                                     angebote[row][6].toString(), //ID
                                     angebote[row][0].toString(), //Titel

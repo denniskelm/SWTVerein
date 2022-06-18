@@ -62,6 +62,31 @@ public class RollenverwaltungVereinsvorstandGUI {
         Object[][] data = Vereinssoftware.rollenverwaltung.vorsitzDaten();
         String[] columns = {"ID", "Vorname", "Nachname", "E-Mail", "Anschrift", "MitgliedsNr", "TelefonNr", "Spenderstatus", "Stundenkonto", "Gesperrt?", "Mitglied seit"};
 
-        table1.setModel(new DefaultTableModel(data, columns));
+        //macht Tabelle fuer den Nutzer unbearbeitbar
+        DefaultTableModel model = new DefaultTableModel() {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                //macht Tabelle fuer den Nutzer unbearbeitbar
+                return false;
+            }
+        };
+
+        ClientDefaults.createColumnsFromArray(columns, model);
+
+        for (Object[] vorsitz : data) {
+
+            model.addRow(new Object[]{
+                    vorsitz[0],
+                    vorsitz[1],
+                    vorsitz[2],
+                    vorsitz[3],
+                    vorsitz[4],
+                    vorsitz[5],
+                    vorsitz[6],
+                    vorsitz[7],
+            });
+        }
+
+        table1.setModel(model);
     }
 }

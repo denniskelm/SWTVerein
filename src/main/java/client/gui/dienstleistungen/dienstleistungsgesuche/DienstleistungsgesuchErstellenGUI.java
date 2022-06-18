@@ -37,8 +37,10 @@ public class DienstleistungsgesuchErstellenGUI {
     private final Map<JTextField, Boolean> onceChangedFields = new HashMap<JTextField, Boolean>();
     private final Map<JTextArea, Boolean> onceChangedAreas = new HashMap<JTextArea, Boolean>();
 
+    private static JFrame frame;
+
     public DienstleistungsgesuchErstellenGUI() {
-        JFrame frame = new JFrame("Dienstleistungsgesuch erstellen");
+        frame = new JFrame("Dienstleistungsgesuch erstellen");
         frame = ClientDefaults.standardizeFrame(frame, this.dienstleistungsgesuchErstellenPanel);
         JTextField[] allTextFields = new JTextField[]{
                 titleTextField,
@@ -84,7 +86,9 @@ public class DienstleistungsgesuchErstellenGUI {
         //Prueft gleich noch, ob die URL wirklich eine URL ist
         if (allFieldsValid && ClientDefaults.checkIfValidURL(urlToImage)) {
             try {
+                frame.dispose();
                 Vereinssoftware.dienstleistungsverwaltung.gesuchErstellen(titel, beschreibung, kategorie, urlToImage, Vereinssoftware.session.getID());
+                new DienstleistungsgesucheGUI();
                 DefaultSmallPopup smallPopup = new DefaultSmallPopup("Gesuch erfolgreich erstellt", "Ihr Dienstleistungsgesuch wurde erfolgreich erstellt!");
             } catch (Exception e) {
                 throw new RuntimeException(e);

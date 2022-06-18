@@ -53,9 +53,8 @@ public class GeraeteVerwaltenGUI {
         this.geraeteID = geraeteID;
 
         try {
-            System.out.println("a");
             Object[][] geraeteDaten = Vereinssoftware.geraeteverwaltung.omniGeraeteDaten();
-            System.out.println("b");
+
             for (Object[] g : geraeteDaten)
                 if (g[0].equals(geraeteID)) {
                     geraeteInfos = g;
@@ -69,11 +68,10 @@ public class GeraeteVerwaltenGUI {
 
         try {
             Object[][] resListe = (Object[][]) geraeteInfos[9];
-            System.out.println("a" + resListe.length);
 
             if (resListe.length > 0) {
                 ausleiherName = Vereinssoftware.rollenverwaltung.getMitgliedsNamen((String) resListe[0][0]);
-                LocalDateTime ausgeliehenBis = ((LocalDateTime) resListe[0][2]).plusDays(Long.valueOf(String.valueOf(geraeteInfos[5])));
+                LocalDateTime ausgeliehenBis = ((LocalDateTime) resListe[0][2]).plusDays(Long.parseLong(geraeteInfos[5].toString()));
                 ausleihDauer = LocalDateTime.now().until(ausgeliehenBis, ChronoUnit.DAYS) + " Tage";
             }
         } catch (Exception e) {
@@ -90,7 +88,6 @@ public class GeraeteVerwaltenGUI {
         aktuellerEntleiherTextField.setText(ausleiherName);
         verbliebendeLeihdauerTextField.setText(ausleihDauer);
 
-        // TODO noch keine GUI
         reservierungslisteAnzeigenButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
