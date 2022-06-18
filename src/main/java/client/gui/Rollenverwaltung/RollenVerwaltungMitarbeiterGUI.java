@@ -120,7 +120,7 @@ public class RollenVerwaltungMitarbeiterGUI {
                         userIstVorsitz = false;
                     }
 
-                    if (userIstVorsitz) {
+                    if (userIstVorsitz && (col == 11 || col == 12)) {
                         //Klick auf die Mahnung-Zelle
                         if (col == 11) {
                             new RolleAuswaehlenGUI(nutzerId);
