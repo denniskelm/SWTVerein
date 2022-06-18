@@ -138,15 +138,15 @@ public class StartseiteGUI {
         });
 
         loginButton.addActionListener(e -> {
-            LoginGUI loginGUI = new LoginGUI();
+            new LoginGUI();
         });
 
         registrierenButton.addActionListener(e -> {
-            RegistrierenGUI registrierenGUI = new RegistrierenGUI();
+            new RegistrierenGUI();
         });
 
         rollenverwaltungButton.addActionListener(e -> {
-            RollenVerwaltungGastGUI rollenVerwaltungGastGUI = new RollenVerwaltungGastGUI();
+            new RollenVerwaltungGastGUI();
         });
 
         logoutButton.addActionListener(e -> {

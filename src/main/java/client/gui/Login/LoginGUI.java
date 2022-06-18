@@ -29,12 +29,7 @@ public class LoginGUI {
     private JButton loginButton;
     private JButton registrierenButton;
     private JPasswordField passwortTextField;
-
     private Map<JTextField, Boolean> onceChanged = new HashMap<>();
-
-    //TODO error msg hinzufuegen falls login falsch (via DefaultSmallPopup)
-    // funktionalitaet hinzufuegen
-    // optimieren
 
     private static JFrame frame;
 
@@ -81,8 +76,6 @@ public class LoginGUI {
 
         });
 
-
     }
-
 
 }

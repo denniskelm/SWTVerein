@@ -18,9 +18,6 @@ public class GeraeteDatenbankGUI {
     private JButton geraetHinzufuegenButton;
     private DefaultTableModel model;
 
-    //TODO Suche
-    // in geraeteDB einfuegen
-
     private static JFrame frame;
 
     public GeraeteDatenbankGUI() {
@@ -31,7 +28,6 @@ public class GeraeteDatenbankGUI {
 
         createTable();
 
-        //TODO Geraete Hinzufuegen
         geraetHinzufuegenButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
