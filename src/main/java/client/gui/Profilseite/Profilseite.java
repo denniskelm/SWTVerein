@@ -138,105 +138,118 @@ public class Profilseite {
         };
         ClientDefaults.createColumnsFromArray(columns, model);
 
+        int j = 0;
+
         ///////// ANGEBOTE ///////////////////////////////////////////////////////////////////////////
         Object[][] angebote = Vereinssoftware.dienstleistungsverwaltung.omniAngebotDaten();
-        Object[][] angeboteOfUser = new Object[angebote.length][angebote[0].length];
-        int j = 0;
-        for (Object[] angebot : angebote) {
-            if (angebot[5] == null) {
-                break;
+        if (angebote.length != 0) {
+            Object[][] angeboteOfUser = new Object[angebote.length][angebote[0].length];
+            j = 0;
+            for (Object[] angebot : angebote) {
+                if (angebot[5] == null) {
+                    break;
+                }
+
+                if (Objects.equals(angebot[5].toString(), personenID)) {
+                    angeboteOfUser[j] = angebot;
+                    j++;
+                }
             }
 
-            if (Objects.equals(angebot[5].toString(), personenID)) {
-                angeboteOfUser[j] = angebot;
-                j++;
+            for (Object[] angebot : angeboteOfUser) {
+                if (angebot[0] == null)
+                    break;
+
+                LocalDateTime abTime = ((LocalDateTime) angebot[3]);
+                String ab = abTime.format(DateTimeFormatter.ISO_LOCAL_DATE);
+
+                LocalDateTime bisTime = ((LocalDateTime) angebot[4]);
+                String bis = bisTime.format(DateTimeFormatter.ISO_LOCAL_DATE);
+
+                model.addRow(new Object[]{
+                        "Angebot",
+                        angebot[0],
+                        angebot[1],
+                        angebot[2],
+                        ab,
+                        bis,
+                        "-",
+                        "-"
+                });
             }
         }
 
-        for (Object[] angebot : angeboteOfUser) {
-            if (angebot[0] == null)
-                break;
-
-            LocalDateTime abTime = ((LocalDateTime) angebot[3]);
-            String ab = abTime.format(DateTimeFormatter.ISO_LOCAL_DATE);
-
-            LocalDateTime bisTime = ((LocalDateTime) angebot[4]);
-            String bis = bisTime.format(DateTimeFormatter.ISO_LOCAL_DATE);
-
-            model.addRow(new Object[]{
-                    "Angebot",
-                    angebot[0],
-                    angebot[1],
-                    angebot[2],
-                    ab,
-                    bis,
-                    "-",
-                    "-"
-            });
-        }
 
         ///////// GESUCHE ///////////////////////////////////////////////////////////////////////////
         Object[][] gesuche = Vereinssoftware.dienstleistungsverwaltung.omniGesuchDaten();
-        Object[][] gesucheOfUser = new Object[gesuche.length][gesuche[0].length];
-        j = 0;
-        for (Object[] gesuch : gesuche) {
-            if (gesuch[4] == null) {
-                break;
-            }
 
-            if (Objects.equals(gesuch[4].toString(), personenID)) {
-                for (int i = 0; i < gesuch.length; i++) {
-                    gesucheOfUser[j][i] = gesuch[i];
+        if (gesuche.length != 0) {
+            Object[][] gesucheOfUser = new Object[gesuche.length][gesuche[0].length];
+            j = 0;
+            for (Object[] gesuch : gesuche) {
+                if (gesuch[4] == null) {
+                    break;
                 }
-                j++;
+
+                if (Objects.equals(gesuch[4].toString(), personenID)) {
+                    for (int i = 0; i < gesuch.length; i++) {
+                        gesucheOfUser[j][i] = gesuch[i];
+                    }
+                    j++;
+                }
+            }
+
+            for (Object[] gesuch : gesucheOfUser) {
+                if (gesuch[0] == null)
+                    break;
+
+                model.addRow(new Object[]{
+                        "Gesuch",
+                        gesuch[0],
+                        gesuch[1],
+                        gesuch[2],
+                        "-",
+                        "-",
+                        "-",
+                        "-"
+                });
             }
         }
 
-        for (Object[] gesuch : gesucheOfUser) {
-            if (gesuch[0] == null)
-                break;
-
-            model.addRow(new Object[]{
-                    "Gesuch",
-                    gesuch[0],
-                    gesuch[1],
-                    gesuch[2],
-                    "-",
-                    "-",
-                    "-",
-                    "-"
-            });
-        }
 
         ///////// GERAETE ///////////////////////////////////////////////////////////////////////////
         Object[][] geraete = Vereinssoftware.geraeteverwaltung.omniGeraeteDaten();
-        Object[][] geraeteOfUser = new Object[geraete.length][geraete[0].length];
-        j = 0;
-        for (Object[] geraet : geraete) {
-            if (geraet[4] == null) {
-                break;
+
+        if (geraete.length == 0) {
+            Object[][] geraeteOfUser = new Object[geraete.length][geraete[0].length];
+            j = 0;
+            for (Object[] geraet : geraete) {
+                if (geraet[4] == null) {
+                    break;
+                }
+
+                if (Objects.equals(geraet[4].toString(), personenID)) {
+                    geraeteOfUser[j] = geraet;
+                    j++;
+                }
             }
 
-            if (Objects.equals(geraet[4].toString(), personenID)) {
-                geraeteOfUser[j] = geraet;
-                j++;
+            for (Object[] geraet : geraeteOfUser) {
+                if (geraet[0] == null)
+                    break;
+
+                model.addRow(new Object[]{
+                        "Ger" + Umlaut.ae() + "t",
+                        geraet[1],
+                        geraet[2],
+                        geraet[3],
+                        "-",
+                        "-",
+                        geraet[5],
+                        geraet[6],
+                });
             }
         }
 
-        for (Object[] geraet : geraeteOfUser) {
-            if (geraet[0] == null)
-                break;
-
-            model.addRow(new Object[]{
-                    "Ger" + Umlaut.ae() + "t",
-                    geraet[1],
-                    geraet[2],
-                    geraet[3],
-                    "-",
-                    "-",
-                    geraet[5],
-                    geraet[6],
-            });
-        }
     }
 }
