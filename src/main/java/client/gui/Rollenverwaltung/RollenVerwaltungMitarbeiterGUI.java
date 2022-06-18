@@ -113,15 +113,15 @@ public class RollenVerwaltungMitarbeiterGUI {
                 if (row >= 0 && col >= 0) {
                     String nutzerId = model.getValueAt(row, col).toString();
 
-                    //Klick auf die Mahnung-Zelle
+                    //Klick auf die Rollenverwaltung-Zelle
                     if(col == 11) {
-                        new MahnungsverwaltungGUI(nutzerId);
+                        new RolleAuswaehlenGUI(nutzerId);
                     }
 
-                    //Klick auf die Rollenzeile
+                    //Klick auf die Mahnungsverwaltung-Zeile
                     else if(col == 12) {
-                        //TODO Rollenfenster öffnen
-                        new RolleAuswaehlenGUI(nutzerId);
+
+                        new MahnungsverwaltungGUI(nutzerId);
                     }
                 }
             }

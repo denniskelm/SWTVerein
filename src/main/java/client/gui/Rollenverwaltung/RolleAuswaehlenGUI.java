@@ -105,20 +105,5 @@ public class RolleAuswaehlenGUI {
         }
 
 
-        OKButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if()
-                Vereinssoftware.rollenverwaltung.rolleAendern(mitgliedsID, );
-
-            }
-        });
-
-        abbrechenButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
-            }
-        });
     }
 }
