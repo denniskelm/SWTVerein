@@ -2,6 +2,8 @@ package client.gui.Mahnung;
 
 import client.ClientDefaults;
 import client.Vereinssoftware;
+import client.gui.DefaultSmallPopup;
+import client.gui.Rollenverwaltung.RollenverwaltungMitgliedGUI;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -19,6 +21,8 @@ import java.time.format.DateTimeFormatter;
  * Hauptautor
  *
  * @author Gia Huy Hans Tran
+ * @author Gabriel Kleebaum
+ * @author Ole Adelmann
  * <p>
  * Kleine Verbesserungen
  * @author Dennis Kelm
@@ -29,6 +33,7 @@ public class MahnungsverwaltungGUI {
     private JButton erstellenButton;
     private JTextField verfallsdatumTextField;
     private JTextField GrundfuerMahnungTextfield;
+    private JLabel mahnungenAmountText;
 
     private static JFrame frame;
 
@@ -44,7 +49,7 @@ public class MahnungsverwaltungGUI {
         KeyListener buttonAktivierenListener = new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {
-                if(GrundfuerMahnungTextfield.getText().length() > 0 && verfallsdatumTextField.getText().length() > 0)
+                if (GrundfuerMahnungTextfield.getText().length() > 0 && verfallsdatumTextField.getText().length() > 0)
                     erstellenButton.setEnabled(true);
                 else
                     erstellenButton.setEnabled(false);
@@ -67,7 +72,11 @@ public class MahnungsverwaltungGUI {
                     DateTimeFormatter formatter = DateTimeFormatter.ISO_LOCAL_DATE;
                     LocalDateTime verfallsdatum = LocalDate.parse(verfallsdatumTextField.getText(), formatter).atTime(12, 0, 0);
                     Vereinssoftware.rollenverwaltung.mahnungErstellen(mitgliedsID, GrundfuerMahnungTextfield.getText(), verfallsdatum);
-                } catch (RemoteException ex) {
+                    frame.dispose();
+                    new RollenverwaltungMitgliedGUI();
+                    new DefaultSmallPopup("Mahnung erstellt", "Mahnung für das Mitglied " + Vereinssoftware.rollenverwaltung.getMitgliedsNamen(mitgliedsID) + " erfolgreich erstellt!");
+                } catch (Exception ex) {
+                    new DefaultSmallPopup("Mahnung: Fehler", "Mahnung nicht erstellt wegen des Fehlers " + ex.getMessage());
                     throw new RuntimeException(ex);
                 }
             }

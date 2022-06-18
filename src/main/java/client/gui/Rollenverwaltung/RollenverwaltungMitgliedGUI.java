@@ -91,7 +91,9 @@ public class RollenverwaltungMitgliedGUI {
                    "Rolle " + Umlaut.ae() + "ndern",
                    "Mahnung erstellen"
            });
+
        }
+
 
        table1.setModel(model);
 
@@ -112,6 +114,7 @@ public class RollenverwaltungMitgliedGUI {
                    //Klick auf die Rollenzeile
                    else if(col == 12) {
                        new MahnungsverwaltungGUI(nutzerId);
+                       frame.dispose();
                    }
                }
            }

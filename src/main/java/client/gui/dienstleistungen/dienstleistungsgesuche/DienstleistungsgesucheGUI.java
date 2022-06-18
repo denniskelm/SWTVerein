@@ -97,7 +97,7 @@ public class DienstleistungsgesucheGUI {
                 int row = dienstleistungsgesucheTable.rowAtPoint(evt.getPoint());
                 int col = dienstleistungsgesucheTable.columnAtPoint(evt.getPoint());
                 if (row >= 0 && col >= 0) {
-                    if (col == 4) {
+                    if (col == 3) {
                         Profilseite profilseite = new Profilseite(gesuche[row][4].toString());
                     } else {
                         try {

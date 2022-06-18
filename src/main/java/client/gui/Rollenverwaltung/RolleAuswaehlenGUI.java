@@ -96,9 +96,10 @@ public class RolleAuswaehlenGUI {
                     } else if ((LoeschenButton.isSelected() && MahnerRolle == Rolle.VORSITZ && GemahnterRolle != Rolle.VORSITZ) ||
                             (LoeschenButton.isSelected() && GemahnterRolle != Rolle.VORSITZ && GemahnterRolle != Rolle.MITARBEITER)) {
                         try {
-                            Vereinssoftware.rollenverwaltung.nutzerAusAlterListeEntfernen(mitgliedsID, GemahnterRolle);
                             new DefaultSmallPopup("Nutzer erfolgreich gel" + Umlaut.oe() + "scht",
-                                    "Der Nutzer " + Vereinssoftware.rollenverwaltung.getMitgliedsNamen(mitgliedsID) + " wurde erfolgreich gel" + Umlaut.oe() + "scht!");
+                                    "Der Nutzer wurde erfolgreich gel" + Umlaut.oe() + "scht!");
+                            Vereinssoftware.rollenverwaltung.nutzerEntfernen(mitgliedsID);
+
                             frame.dispose();
                         } catch (Exception ex) {
                             new DefaultSmallPopup("Fehler",

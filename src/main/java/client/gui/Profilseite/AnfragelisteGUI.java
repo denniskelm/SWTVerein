@@ -176,8 +176,8 @@ public class AnfragelisteGUI {
                             if (col < 7) {
                                 new DienstleistungsgesuchAnzeigenGUI(
                                         anfragen[row][1].toString(),
+                                        anfragen[row][6].toString(),
                                         anfragen[row][3].toString(),
-                                        anfragen[row][8].toString(),
                                         anfragen[row][4].toString(),
                                         Kategorie.valueOf(anfragen[row][5].toString()),
                                         anfragen[row][0].toString());

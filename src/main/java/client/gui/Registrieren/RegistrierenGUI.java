@@ -113,9 +113,13 @@ public class RegistrierenGUI {
                 }
 
                 // Überprüfen, ob E-Mail schon registriert ist
-                if (Vereinssoftware.rollenverwaltung.existiertEMail(eMailTextField.getText())) {
-                    new DefaultSmallPopup("Hinweis", "Die eingegebene E-Mail existiert bereits!");
-                    return;
+                try {
+                    if (Vereinssoftware.rollenverwaltung.existiertEMail(eMailTextField.getText())) {
+                        new DefaultSmallPopup("Hinweis", "Die eingegebene E-Mail existiert bereits!");
+                        return;
+                    }
+                } catch (RemoteException ex) {
+                    throw new RuntimeException(ex);
                 }
 
                 // wenn alles funktioniert hat, dann registrieren

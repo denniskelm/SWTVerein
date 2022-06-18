@@ -93,7 +93,7 @@ public class RollenVerwaltungMitarbeiterGUI {
                     mitarbeiter[6],
                     mitarbeiter[7],
                     mitarbeiter[8],
-                    (Boolean.getBoolean(mitarbeiter[9].toString()) ? "Ja" : "Nein"),
+                    mitarbeiter[9],
                     mitarbeiter[10],
                     "Rolle " + Umlaut.ae() + "ndern",
                     "Mahnung erstellen"
@@ -129,8 +129,11 @@ public class RollenVerwaltungMitarbeiterGUI {
 
 
                         //Klick auf die Rollenzeile
-                        else if (col == 12)
+                        else if (col == 12) {
                             new MahnungsverwaltungGUI(nutzerId);
+                            frame.dispose();
+                        }
+
                     } else {
                         new DefaultSmallPopup("Keine Berechtigung!", "Sie haben keine Berechtigung, die Rolle für diese Person zu " + Umlaut.ae() + "ndern!");
                     }
