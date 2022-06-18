@@ -96,8 +96,8 @@ public class RollenVerwaltungMitarbeiterGUI {
                     mitarbeiter[8],
                     mitarbeiter[9],
                     mitarbeiter[10],
-                    "Mahnung erstellen",
-                    "Rolle " + Umlaut.ae() + "ndern"
+                    "Rolle " + Umlaut.ae() + "ndern",
+                    "Mahnung erstellen"
 
             });
         }
