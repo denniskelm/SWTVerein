@@ -63,7 +63,10 @@ public class LoginGUI {
                     //Daten anzeigen
                     Vereinssoftware.getStartseite().updateProfilButtons();
                 } catch (Exception ex) {
-                    new DefaultSmallPopup("Hinweis", "E-Mail-Adresse und/oder Passwort sind falsch, Fehler " + ex);
+                    if (ex.getMessage().contains(""))
+                        new DefaultSmallPopup("Hinweis", "Du bist gesperrt");
+                    else
+                        new DefaultSmallPopup("Hinweis", "E-Mail-Adresse und/oder Passwort sind falsch, Fehler " + ex);
                 }
 
             }
