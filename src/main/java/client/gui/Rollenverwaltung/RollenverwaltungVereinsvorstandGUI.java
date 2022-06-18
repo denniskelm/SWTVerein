@@ -5,8 +5,6 @@ import client.Vereinssoftware;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.rmi.RemoteException;
 
 /**
@@ -31,43 +29,39 @@ public class RollenverwaltungVereinsvorstandGUI {
 
     public RollenverwaltungVereinsvorstandGUI() {
 
+        try {
+            createTable();
+        } catch (RemoteException e) {
+            throw new RuntimeException(e);
+        }
+
         frame = new JFrame("Rollenverwaltung - Vereinsvorstand");
         frame = ClientDefaults.standardizeFrame(frame, RollenVerwaltungVereinsVorstand);
 
 
         // geht auf Mitglied
         mitgliedButton.addActionListener(e -> {
-            RollenverwaltungMitgliedGUI Mitglied = new RollenverwaltungMitgliedGUI();
+            new RollenverwaltungMitgliedGUI();
             frame.dispose();
         });
+
         // geht auf Mitarbeiter
-
         mitarbeiterButton.addActionListener(e -> {
-            RollenVerwaltungMitarbeiterGUI Mitarbeiter = new RollenVerwaltungMitarbeiterGUI();
+            new RollenVerwaltungMitarbeiterGUI();
             frame.dispose();
         });
-
 
         // geht auf Gaeste
         gaesteButton.addActionListener(e -> {
-            RollenVerwaltungGastGUI Gast = new RollenVerwaltungGastGUI();
+            new RollenVerwaltungGastGUI();
             frame.dispose();
         });
     }
 
-
     private void createTable() throws RemoteException {
         Object[][] data = Vereinssoftware.rollenverwaltung.vorsitzDaten();
-
-
         String[] columns = {"ID", "Vorname", "Nachname", "E-Mail", "Anschrift", "MitgliedsNr", "TelefonNr", "Spenderstatus", "Stundenkonto", "Gesperrt?", "Mitglied seit"};
 
-        table1.setModel(new DefaultTableModel(
-                data, columns)
-
-
-        );
-
-        JTable table = new JTable(data, columns);
+        table1.setModel(new DefaultTableModel(data, columns));
     }
 }

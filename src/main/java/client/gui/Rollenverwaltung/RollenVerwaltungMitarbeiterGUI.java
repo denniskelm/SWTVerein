@@ -5,8 +5,6 @@ import client.Vereinssoftware;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.rmi.RemoteException;
 
 /**
@@ -42,40 +40,29 @@ public class RollenVerwaltungMitarbeiterGUI {
 
 
         // geht auf Mitglied
-
         mitgliederButton.addActionListener(e -> {
-            RollenverwaltungMitgliedGUI Mitglied = new RollenverwaltungMitgliedGUI();
+            new RollenverwaltungMitgliedGUI();
             frame.dispose();
         });
 
         // geht auf Vereinsvorstand
         VereinsvorstaendeButton.addActionListener(e -> {
-            RollenverwaltungVereinsvorstandGUI Vorstand = new RollenverwaltungVereinsvorstandGUI();
+            new RollenverwaltungVereinsvorstandGUI();
             frame.dispose();
         });
         // geht auf Gaeste
         gaesteButton.addActionListener(e -> {
-            RollenVerwaltungGastGUI Gast = new RollenVerwaltungGastGUI();
+            new RollenVerwaltungGastGUI();
             frame.dispose();
         });
 
-
     }
-
 
     private void createTable() throws RemoteException {
         Object[][] data = Vereinssoftware.rollenverwaltung.mitarbeiterDaten();
-
-
         String[] columns = {"ID", "Vorname", "Nachname", "E-Mail", "Anschrift", "MitgliedsNr", "TelefonNr", "Spenderstatus", "Stundenkonto", "Gesperrt?", "Mitglied seit"};
 
-        table1.setModel(new DefaultTableModel(
-                data, columns)
-
-
-        );
-
-        JTable table = new JTable(data, columns);
+        table1.setModel(new DefaultTableModel(data, columns));
     }
 }
 

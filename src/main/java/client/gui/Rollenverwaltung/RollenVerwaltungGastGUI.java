@@ -6,8 +6,6 @@ import client.Vereinssoftware;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.rmi.RemoteException;
 
 /**
@@ -32,28 +30,6 @@ public class RollenVerwaltungGastGUI {
     public static JFrame frame;
 
     public RollenVerwaltungGastGUI() {
-        frame = new JFrame("Rollenverwaltung - G" + Umlaut.ae() + "ste");
-        frame = ClientDefaults.standardizeFrame(frame, RollenverwaltungGast);
-
-
-        // geht auf Mitglied
-        mitgliederButton.addActionListener(e -> {
-            RollenverwaltungMitgliedGUI Mitglied = new RollenverwaltungMitgliedGUI();
-            frame.dispose();
-        });
-
-        // geht auf Mitarbeiter
-        mitarbeiterButton.addActionListener(e -> {
-            RollenVerwaltungMitarbeiterGUI Mitarbeiter = new RollenVerwaltungMitarbeiterGUI();
-            frame.dispose();
-        });
-
-
-        // geht auf Vereinsvorstand
-        vereinsvorstaendeButton.addActionListener(e -> {
-            RollenverwaltungVereinsvorstandGUI Vorstand = new RollenverwaltungVereinsvorstandGUI();
-            frame.dispose();
-        });
 
         try {
             createTable();
@@ -61,21 +37,35 @@ public class RollenVerwaltungGastGUI {
             throw new RuntimeException(e);
         }
 
+        frame = new JFrame("Rollenverwaltung - G" + Umlaut.ae() + "ste");
+        frame = ClientDefaults.standardizeFrame(frame, RollenverwaltungGast);
+
+
+        // geht auf Mitglied
+        mitgliederButton.addActionListener(e -> {
+            new RollenverwaltungMitgliedGUI();
+            frame.dispose();
+        });
+
+        // geht auf Mitarbeiter
+        mitarbeiterButton.addActionListener(e -> {
+            new RollenVerwaltungMitarbeiterGUI();
+            frame.dispose();
+        });
+
+
+        // geht auf Vereinsvorstand
+        vereinsvorstaendeButton.addActionListener(e -> {
+            new RollenverwaltungVereinsvorstandGUI();
+            frame.dispose();
+        });
 
     }
 
     private void createTable() throws RemoteException {
         Object[][] data = Vereinssoftware.rollenverwaltung.gaesteDaten();
-
-
         String[] columns = {"ID", "Vorname", "Nachname", "E-Mail", "Anschrift", "MitgliedsNr", "TelefonNr"};
 
-        table1.setModel(new DefaultTableModel(
-                data, columns)
-
-
-        );
-
-        JTable table = new JTable(data, columns);
+        table1.setModel(new DefaultTableModel(data, columns));
     }
 }
