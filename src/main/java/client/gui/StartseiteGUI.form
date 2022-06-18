@@ -439,32 +439,6 @@
             </properties>
             <border type="none" title="Vereinsverwaltung"/>
             <children>
-              <component id="b00af" class="javax.swing.JButton" binding="dienstleistungsgesuchsverwaltungButton">
-                <constraints>
-                  <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
-                    <preferred-size width="-1" height="40"/>
-                  </grid>
-                </constraints>
-                <properties>
-                  <background color="-1"/>
-                  <font size="16" style="1"/>
-                  <foreground color="-899290"/>
-                  <text value="Dienstleistungsgesuche"/>
-                </properties>
-              </component>
-              <component id="88e1a" class="javax.swing.JButton" binding="dienstleistungsangebotsverwaltungButton">
-                <constraints>
-                  <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
-                    <preferred-size width="-1" height="40"/>
-                  </grid>
-                </constraints>
-                <properties>
-                  <background color="-1"/>
-                  <font size="16" style="1"/>
-                  <foreground color="-10146637"/>
-                  <text value="Dienstleistungsangebote"/>
-                </properties>
-              </component>
               <component id="bc92f" class="javax.swing.JButton" binding="geraeteverwaltungButton">
                 <constraints>
                   <grid row="7" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
@@ -517,6 +491,32 @@
                   <font size="16" style="1"/>
                   <foreground color="-15947895"/>
                   <text value="Rollenverwaltung"/>
+                </properties>
+              </component>
+              <component id="88e1a" class="javax.swing.JButton" binding="dienstleistungsangebotsverwaltungButton">
+                <constraints>
+                  <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
+                    <preferred-size width="-1" height="40"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <background color="-1"/>
+                  <font size="16" style="1"/>
+                  <foreground color="-899290"/>
+                  <text value="Dienstleistungsangebote"/>
+                </properties>
+              </component>
+              <component id="b00af" class="javax.swing.JButton" binding="dienstleistungsgesuchsverwaltungButton">
+                <constraints>
+                  <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
+                    <preferred-size width="-1" height="40"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <background color="-1"/>
+                  <font size="16" style="1"/>
+                  <foreground color="-10146637"/>
+                  <text value="Dienstleistungsgesuche"/>
                 </properties>
               </component>
             </children>

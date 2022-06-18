@@ -44,11 +44,13 @@ public class DienstleistungsangebotErstellenGUI {
     private JFormattedTextField urlTextField;
     private JPanel urlPanel;
 
+    private static JFrame frame;
+
     private final Map<JTextField, Boolean> onceChangedFields = new HashMap<JTextField, Boolean>();
     private final Map<JTextArea, Boolean> onceChangedAreas = new HashMap<JTextArea, Boolean>();
 
     public DienstleistungsangebotErstellenGUI() {
-        JFrame frame = new JFrame("Dienstleistungsangebot erstellen");
+        frame = new JFrame("Dienstleistungsangebot erstellen");
         frame = ClientDefaults.standardizeFrame(frame, this.dienstleistungsangebotErstellenPanel);
         JTextField[] allTextFields = new JTextField[]{
                 titleTextField,
@@ -100,7 +102,9 @@ public class DienstleistungsangebotErstellenGUI {
         //Prueft gleich noch, ob die URL wirklich eine URL ist
         if (allFieldsValid && ClientDefaults.checkIfValidURL(urlToImage)) {
             try {
+                frame.dispose();
                 Vereinssoftware.dienstleistungsverwaltung.angebotErstellen(titel, beschreibung, kategorie, abTime, bisTime, urlToImage, Vereinssoftware.session.getID());
+                new DienstleistungsangeboteGUI();
                 DefaultSmallPopup smallPopup = new DefaultSmallPopup("Angebot erfolgreich erstellt", "Ihr Dienstleistungsangebot wurde erfolgreich erstellt!");
             } catch (Exception e) {
                 throw new RuntimeException(e);
