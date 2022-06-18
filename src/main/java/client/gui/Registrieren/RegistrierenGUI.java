@@ -88,14 +88,16 @@ public class RegistrierenGUI {
                     return;
                 }
 
-                // Telefonnummer darf nur Ziffern und '+' enthalten
-                if (!telefonnummerTextField.getText().matches("[0-9]+")) {
+                try {
+                    Integer.parseInt(telefonnummerTextField.getText());
+                } catch (NumberFormatException ex) {
                     new DefaultSmallPopup("Hinweis", "Die eingegebene Telefonnummer ist falsch!");
                     return;
                 }
 
-                // Mitgliedsnummer darf nur Ziffern enthalten
-                if (!mitgliedsnummerTextField.getText().matches("[0-9]+")) {
+                try {
+                    Integer.parseInt(mitgliedsnummerTextField.getText());
+                } catch (NumberFormatException ex) {
                     new DefaultSmallPopup("Hinweis", "Die eingegebene Mitgliedsnummer ist falsch!");
                     return;
                 }

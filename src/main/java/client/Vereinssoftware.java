@@ -20,6 +20,7 @@ import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.util.Enumeration;
+import java.util.prefs.Preferences;
 
 //Klasse, die das Programm startet
 public class Vereinssoftware {
@@ -38,6 +39,7 @@ public class Vereinssoftware {
         initializeUISettings();
 
         session = new Session();
+
 
         //RMI ermoeglichen
         try {

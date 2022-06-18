@@ -172,7 +172,20 @@ public class StartseiteGUI {
      * Ändert die Sichtbarkeit der Buttons "Profilseite", "Login", "Registrieren"
      */
     public void updateProfilButtons() {
-        System.out.println("Eingeloggt: " + isLoggedIn());
+
+
+        try {
+            Object[] loginData = Vereinssoftware.rollenverwaltung.login(Vereinssoftware.rollenverwaltung.getMitgliedsMail(Vereinssoftware.session.getID()), Vereinssoftware.session.getPasswort());
+            String userId = loginData[0].toString();
+            Rolle rolle = Rolle.valueOf(loginData[1].toString());
+
+            Vereinssoftware.session.setID(userId);
+            Vereinssoftware.session.setRolle(rolle);
+
+            System.out.println("Eingeloggt: " + isLoggedIn() + " mit Rolle " + Vereinssoftware.session.getRolle());
+        } catch (Exception e) {
+            System.out.println("Nicht angemeldet");
+        }
 
         profilButton.setVisible(isLoggedIn());
         loginButton.setVisible(!isLoggedIn());

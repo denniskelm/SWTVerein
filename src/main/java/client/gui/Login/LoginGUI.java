@@ -45,7 +45,8 @@ public class LoginGUI {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    Object[] loginData = Vereinssoftware.rollenverwaltung.login(eMailAdresseTextField.getText(), String.valueOf(passwortTextField.getPassword()));
+                    String passwort = String.valueOf(passwortTextField.getPassword());
+                    Object[] loginData = Vereinssoftware.rollenverwaltung.login(eMailAdresseTextField.getText(), passwort);
 
                     //Daten auslesen und in Session speichern
                     String userId = loginData[0].toString();
@@ -54,6 +55,8 @@ public class LoginGUI {
                     Vereinssoftware.session.setID(userId);
                     Vereinssoftware.session.setRolle(rolle);
                     Vereinssoftware.session.setMitgliedsName(Vereinssoftware.rollenverwaltung.getMitgliedsNamen(userId));
+
+                    Vereinssoftware.session.setPasswort(passwort);
 
                     frame.dispose();
 
