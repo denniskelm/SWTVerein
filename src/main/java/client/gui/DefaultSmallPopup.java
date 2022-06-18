@@ -15,7 +15,7 @@ import client.ClientDefaults;
 
 import javax.swing.*;
 
-//TODO Was macht diese Klasse?
+//Kleines Fenster fuer viele Klassen mit kleinem Hinweis Text
 public class DefaultSmallPopup extends JFrame {
     private JPanel defaultPanel;
     private JScrollPane textScrollbar;

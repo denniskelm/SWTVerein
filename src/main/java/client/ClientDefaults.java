@@ -20,7 +20,7 @@ import java.net.URL;
 import java.util.Arrays;
 import java.util.Map;
 
-//TODO Was macht diese Klasse?
+//Macht viele globale Einstellungen des Clients
 public class ClientDefaults {
 
     //Nimmt einen frame und das dazugehoerige Panel der Klasse und nimmt grundlegende Einstellungen vor
