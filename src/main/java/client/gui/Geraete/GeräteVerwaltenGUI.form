@@ -106,7 +106,7 @@
           <grid row="12" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <text value="Gerät Ausgeben"/>
+          <text value="Geraet ausgeben"/>
         </properties>
       </component>
       <component id="c45eb" class="javax.swing.JButton" binding="geraetLoeschenButton">
@@ -307,16 +307,19 @@
           <grid row="7" column="4" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
         </constraints>
       </vspacer>
-      <vspacer id="cc4ac">
-        <constraints>
-          <grid row="9" column="4" row-span="3" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
-        </constraints>
-      </vspacer>
       <vspacer id="b5b9f">
         <constraints>
           <grid row="3" column="6" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
         </constraints>
       </vspacer>
+      <component id="6fbf1" class="javax.swing.JButton" binding="geraetAnnehmenButton">
+        <constraints>
+          <grid row="10" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Geraet annehmen"/>
+        </properties>
+      </component>
     </children>
   </grid>
 </form>

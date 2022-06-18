@@ -74,6 +74,7 @@ public class StartseiteGUI {
         newsHeadline.setText("Neuigkeiten und Ank" + Umlaut.ue() + "ndigungen");
         welcomeBigHeadline.setText("Willkommen! Was m" + Umlaut.oe() + "chten Sie tun?");
         geraeteAnzeigen.setText("Jetzt alle Ger" + Umlaut.ae() + "te anzeigen");
+        geraeteverwaltungButton.setText("Ger" + Umlaut.ae() + "tedatenbank");
 
         vereinsnameText.setText(Einstellungen.getVereinsname());
 
@@ -137,15 +138,15 @@ public class StartseiteGUI {
         });
 
         loginButton.addActionListener(e -> {
-            LoginGUI loginGUI = new LoginGUI();
+            new LoginGUI();
         });
 
         registrierenButton.addActionListener(e -> {
-            RegistrierenGUI registrierenGUI = new RegistrierenGUI();
+            new RegistrierenGUI();
         });
 
         rollenverwaltungButton.addActionListener(e -> {
-            RollenVerwaltungGastGUI rollenVerwaltungGastGUI = new RollenVerwaltungGastGUI();
+            new RollenVerwaltungGastGUI();
         });
 
         logoutButton.addActionListener(e -> {

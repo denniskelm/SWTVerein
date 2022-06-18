@@ -143,8 +143,6 @@ public class DienstleistungsangeboteGUI {
                                     (String) angebote[row][5] //PersonenID
 
                             );
-
-                            frame.dispose();
                         } catch (Exception e) {
                             System.out.println("e");
                             throw new RuntimeException(e);

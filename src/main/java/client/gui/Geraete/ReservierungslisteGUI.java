@@ -1,13 +1,6 @@
 package client.gui.Geraete;
 /*
 @author
-TODO Raphael Kleebaum
-TODO Jonny Schlutter
-TODO Gabriel Kleebaum
-TODO Mhd Esmail Kanaan
-TODO Gia Huy Hans Tran
-TODO Ole Bjoern Adelmann
-TODO Bastian Reichert
 Dennis Kelm
 */
 
@@ -46,7 +39,6 @@ public class ReservierungslisteGUI {
         }
 
         frame = ClientDefaults.standardizeFrame(frame, this.dienstleistungsangebotePanel);
-        frame.setLocationRelativeTo(null);
 
         ClientDefaults.enhanceTextField(suchenTextField, onceChanged);
     }

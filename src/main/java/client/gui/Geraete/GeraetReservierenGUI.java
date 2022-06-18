@@ -77,17 +77,6 @@ public class GeraetReservierenGUI {
                 frame.dispose();
             }
         });
-/*
-        //exisitiert net meht
-        //TODO Geraet existiert net mehr
-        jaButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                DefaultSmallPopup smallPopup = new DefaultSmallPopup("Hinweis",
-                        "Dieses Geraet existiert nicht mehr");
-            }
-        });
-*/
 
     }
 }

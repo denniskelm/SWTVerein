@@ -47,7 +47,6 @@ public class DienstleistungsgesuchErstellenGUI {
                 urlTextField
         };
 
-        frame.setLocationRelativeTo(null);
 
         for (JTextField textField :
                 allTextFields) {

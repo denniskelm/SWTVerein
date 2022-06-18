@@ -8,6 +8,7 @@ import shared.communication.IAusleiher;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.rmi.RemoteException;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 /**
@@ -54,22 +55,31 @@ public class VerleihhistorieGUI {
         Object[][] alleGeraeteDaten = Vereinssoftware.geraeteverwaltung.omniGeraeteDaten();
 
         for (Object[] geraeteDaten : alleGeraeteDaten) {
-            if (geraeteID.equals(geraeteDaten[0].toString())) {
-                ArrayList<IAusleiher> historie = (ArrayList<IAusleiher>) geraeteDaten[8];
+            if (geraeteDaten[0] == null)
+                break;
 
-                if (historie.size() == 0) {
+            if (geraeteID.equals(geraeteDaten[0].toString())) {
+                Object[][] historie = (Object[][]) geraeteDaten[8];
+
+                if (historie.length == 0) {
                     data = new String[][]{{"Historie ist leer", "", "", ""}};
                     break;
                 }
 
-                data = new String[historie.size()][4];
+                data = new String[historie.length][4];
 
-                for (int i = 0; i < historie.size(); i++) {
-                    IAusleiher a = historie.get(i);
-                    data[i][0] = ""; // TODO
-                    data[i][1] = a.getMitgliedsID();
-                    data[i][2] = a.getFristBeginn().toString();
-                    data[i][3] = a.getFristBeginn().plusDays((long) geraeteDaten[5]).toString();
+                for (int i = 0; i < historie.length; i++) {
+                    Object[] ausleiher = historie[i];
+
+                    try {
+                        data[i][0] = Vereinssoftware.rollenverwaltung.getMitgliedsNamen(String.valueOf(ausleiher[0]));
+                        data[i][1] = String.valueOf(ausleiher[0]);
+                        data[i][2] = ((LocalDateTime) ausleiher[2]).toString();
+                        data[i][3] = ((LocalDateTime) ausleiher[2]).plusDays(Long.parseLong(geraeteDaten[5].toString())).toString();
+                    } catch (Exception e) {
+                        throw new RuntimeException(e);
+                    }
+
                 }
 
                 break;
