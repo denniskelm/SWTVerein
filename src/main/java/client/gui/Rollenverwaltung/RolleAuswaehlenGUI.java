@@ -64,7 +64,11 @@ public class RolleAuswaehlenGUI {
                     } else if ((MitarbeiterButton.isSelected() && MahnerRolle == Rolle.VORSITZ && GemahnterRolle != Rolle.VORSITZ) ||
                             (MitarbeiterButton.isSelected() && GemahnterRolle != Rolle.VORSITZ && GemahnterRolle != Rolle.MITARBEITER)) {
                         try {
-                            Vereinssoftware.rollenverwaltung.rolleAendern(mitgliedsID, Rolle.MITARBEITER );
+                            Vereinssoftware.rollenverwaltung.rolleAendern(mitgliedsID, Rolle.MITARBEITER);
+                            frame.dispose();
+                            new DefaultSmallPopup("Rolle erfolgreich ge" + Umlaut.ae() + "ndert",
+                                    "Die Rolle von " + Vereinssoftware.rollenverwaltung.getMitgliedsNamen(mitgliedsID) + " wurde erfolgreich ge" + Umlaut.ae() + "ndert!");
+                            new RollenVerwaltungMitarbeiterGUI();
                         } catch (Exception ex) {
                             if (ex.getMessage().contains("Der Nutzer hat diese Rolle bereits.")) {
                                 new DefaultSmallPopup("Fehler", "Der Nutzer hat diese Rolle bereits.");
@@ -72,13 +76,13 @@ public class RolleAuswaehlenGUI {
 
                             throw new RuntimeException(ex);
                         }
-                    }
-                    else
-                        new DefaultSmallPopup("Fehlende Berechtigung", "Dafür fehlt Ihnen die Berechtigung.");
-
-                    if(VereinsvorstandButton.isSelected() && MahnerRolle == Rolle.VORSITZ) {
+                    } else if (VereinsvorstandButton.isSelected() && MahnerRolle == Rolle.VORSITZ) {
                         try {
-                            Vereinssoftware.rollenverwaltung.rolleAendern(mitgliedsID, Rolle.VORSITZ );
+                            Vereinssoftware.rollenverwaltung.rolleAendern(mitgliedsID, Rolle.VORSITZ);
+                            frame.dispose();
+                            new DefaultSmallPopup("Rolle erfolgreich ge" + Umlaut.ae() + "ndert",
+                                    "Die Rolle von " + Vereinssoftware.rollenverwaltung.getMitgliedsNamen(mitgliedsID) + " wurde erfolgreich ge" + Umlaut.ae() + "ndert!");
+                            new RollenverwaltungVereinsvorstandGUI();
                         } catch (Exception ex) {
                             if (ex.getMessage().contains("Der Nutzer hat diese Rolle bereits.")) {
                                 new DefaultSmallPopup("Fehler", "Der Nutzer hat diese Rolle bereits.");
@@ -86,13 +90,8 @@ public class RolleAuswaehlenGUI {
 
                             throw new RuntimeException(ex);
                         }
-                    }
-                    else
-                        new DefaultSmallPopup("Fehlende Berechtigung", "Dafür fehlt Ihnen die Berechtigung.");
-
-
-                    if((LoeschenButton.isSelected() && MahnerRolle == Rolle.VORSITZ && GemahnterRolle != Rolle.VORSITZ) ||
-                            (MitgliedButton.isSelected() && GemahnterRolle != Rolle.VORSITZ && GemahnterRolle != Rolle.MITARBEITER)) {
+                    } else if ((LoeschenButton.isSelected() && MahnerRolle == Rolle.VORSITZ && GemahnterRolle != Rolle.VORSITZ) ||
+                            (LoeschenButton.isSelected() && GemahnterRolle != Rolle.VORSITZ && GemahnterRolle != Rolle.MITARBEITER)) {
                         try {
                             Vereinssoftware.rollenverwaltung.nutzerAusAlterListeEntfernen(mitgliedsID, GemahnterRolle);
                             new DefaultSmallPopup("Nutzer erfolgreich gel" + Umlaut.oe() + "scht",
@@ -103,7 +102,8 @@ public class RolleAuswaehlenGUI {
                                     "Fehler: " + ex.getMessage());
                             throw new RuntimeException(ex);
                         }
-                    }
+                    } else
+                        new DefaultSmallPopup("Fehlende Berechtigung", "Dafür fehlt Ihnen die Berechtigung.");
 
                 }
             });
@@ -113,6 +113,7 @@ public class RolleAuswaehlenGUI {
                 public void actionPerformed(ActionEvent e) {
 
                     frame.dispose();
+
 
                 }
             });

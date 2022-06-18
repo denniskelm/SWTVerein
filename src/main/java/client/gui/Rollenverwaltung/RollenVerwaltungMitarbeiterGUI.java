@@ -109,7 +109,8 @@ public class RollenVerwaltungMitarbeiterGUI {
                 int row = table1.rowAtPoint(evt.getPoint());
                 int col = table1.columnAtPoint(evt.getPoint());
                 if (row >= 0 && col >= 0) {
-                    String nutzerId = model.getValueAt(row, col).toString();;
+                    String nutzerId = model.getValueAt(row, 0).toString();
+                    ;
 
                     //Bestimmen, ob der Nutzer Vorsitz ist
                     boolean userIstVorsitz = false;
