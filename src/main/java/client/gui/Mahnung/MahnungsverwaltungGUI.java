@@ -1,10 +1,13 @@
 package client.gui.Mahnung;
 
 import client.ClientDefaults;
+import client.Vereinssoftware;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.rmi.RemoteException;
+import java.time.LocalDateTime;
 
 /**
  * GUI fuer das Verwalten von Mahnungen
@@ -24,6 +27,7 @@ public class MahnungsverwaltungGUI {
     private JTextField GrundfuerMahnungTextfield;
 
     private static JFrame frame;
+
 
     public MahnungsverwaltungGUI(String mitgliedsID) {
         frame = new JFrame("Mahnung erstellen");
