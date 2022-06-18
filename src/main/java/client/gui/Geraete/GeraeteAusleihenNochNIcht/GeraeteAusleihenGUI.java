@@ -41,14 +41,14 @@ public class GeraeteAusleihenGUI extends JFrame {
         jetztReservierenButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                DefaultTextWithButton textWithButton = new DefaultTextWithButton("Hinweis",
+                new DefaultTextWithButton("Hinweis",
                         "Dieses Geraet ist erfolgreich von Ihnen ausgeliehen. Die Leihfrist ist nun gestartet.",
                         "Bestaetigen");
 
             }
         });
 
-        // Ausgeliehen ( Mitarbeiter)
+        // Ausgeliehen (Mitarbeiter)
 
         //TODO funktionalitaet
         // (PersonenName)
@@ -57,7 +57,7 @@ public class GeraeteAusleihenGUI extends JFrame {
         jetztReservierenButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                AusgeliehenMitarbeiterGUI SchonAusgeliehen = new AusgeliehenMitarbeiterGUI("Hinweis");
+                new AusgeliehenMitarbeiterGUI("Hinweis");
             }
         });
 
@@ -66,7 +66,7 @@ public class GeraeteAusleihenGUI extends JFrame {
         jetztReservierenButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                DefaultSmallPopup smallPopup = new DefaultSmallPopup("Hinweis", "Sie haben bereits <Anzahl> Geraete ausgeliehen bzw. reserviert.");
+                new DefaultSmallPopup("Hinweis", "Sie haben bereits <Anzahl> Geraete ausgeliehen bzw. reserviert.");
             }
         });
 
@@ -75,7 +75,7 @@ public class GeraeteAusleihenGUI extends JFrame {
         jetztReservierenButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                DefaultSmallPopup smallPopup = new DefaultSmallPopup("Hinweis",
+                new DefaultSmallPopup("Hinweis",
                         "Sie sind aufgrund mehrerer Mahnungen fuer das Reservieren von Geraeten gesperrt. " +
                                 "Melden Sie sich gegebenfalls bei einem Vereinsmitarbeiter.");
             }
@@ -85,18 +85,11 @@ public class GeraeteAusleihenGUI extends JFrame {
         jetztReservierenButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                DefaultTextWithButton textWithButton = new DefaultTextWithButton("Hinweis",
-                        "Sie haben noch keinen Zugriff auf diese Funktion",
+                new DefaultTextWithButton("Hinweis", "Sie haben noch keinen Zugriff auf diese Funktion",
                         "Jetzt registrieren");
 
             }
         });
 
-
-    }
-
-    public static void main(String[] args) {
-        JFrame frame = new GeraeteAusleihenGUI("Geraet Ausleihen");
-        frame.setVisible(true);
     }
 }

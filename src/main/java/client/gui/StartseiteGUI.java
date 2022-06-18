@@ -87,13 +87,13 @@ public class StartseiteGUI {
 
 
         dienstleistungsangeboteButton.addActionListener(e -> {
-            DienstleistungsangeboteGUI dienstleistungsangeboteGUI = new DienstleistungsangeboteGUI();
+            new DienstleistungsangeboteGUI();
         });
         dienstleistungsgesucheButton.addActionListener(e -> {
-            DienstleistungsgesucheGUI dienstleistungsgesucheGUI = new DienstleistungsgesucheGUI();
+            new DienstleistungsgesucheGUI();
         });
         dienstleistungsangebotsverwaltungButton.addActionListener(e -> {
-            DienstleistungsangebotsVerwaltungGUI dienstleistungsangebotsVerwaltungGUI = new DienstleistungsangebotsVerwaltungGUI();
+            new DienstleistungsangebotsVerwaltungGUI();
         });
 
         geraetHinzufuegen.addActionListener(e -> {
@@ -117,20 +117,20 @@ public class StartseiteGUI {
         });
 
         dienstleistungsgesuchsverwaltungButton.addActionListener(e -> {
-            DienstleistungsgesuchVerwaltungGUI dienstleistungsangebotsVerwaltungGUI = new DienstleistungsgesuchVerwaltungGUI();
+            new DienstleistungsgesuchVerwaltungGUI();
         });
 
         geraeteverwaltungButton.addActionListener(e -> {
-            GeraeteDatenbankGUI ghg = new GeraeteDatenbankGUI();
+            new GeraeteDatenbankGUI();
         });
 
         geraeteAnzeigen.addActionListener(e -> {
-            GeraeteListeGUI ghg = new GeraeteListeGUI();
+            new GeraeteListeGUI();
         });
 
         profilButton.addActionListener(e -> {
             try {
-                Profilseite profilseite = new Profilseite(Vereinssoftware.session.getID());
+                new Profilseite(Vereinssoftware.session.getID());
             } catch (NoSuchObjectException ex) {
                 throw new RuntimeException(ex);
             }

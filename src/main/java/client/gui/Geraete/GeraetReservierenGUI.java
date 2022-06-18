@@ -49,7 +49,6 @@ public class GeraetReservierenGUI {
                             "Sie haben dieses Geraet erfolgreich reserviert");
 
                 } catch (Exception ex) {
-                    //throw new RuntimeException(ex);
 
                     if (ex instanceof NoPermissionException) {
                         DefaultSmallPopup smallPopup = new DefaultSmallPopup("Hinweis",
@@ -79,24 +78,6 @@ public class GeraetReservierenGUI {
             }
         });
 /*
-        //max. an Reser. erreicht
-        //TODO max. Res. erreicht
-        jaButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                DefaultSmallPopup smallPopup = new DefaultSmallPopup("Hinweis",
-                        "Sie haben bereits die maximale Anzahl an Reservierungen erreicht\n");
-            }
-        });
-
-        //erfolgreich
-        jaButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                DefaultSmallPopup smallPopup = new DefaultSmallPopup("Hinweis",
-                        "Sie haben dieses Geraet erfolgreich reserviert");
-            }
-        });
         //exisitiert net meht
         //TODO Geraet existiert net mehr
         jaButton.addActionListener(new ActionListener() {

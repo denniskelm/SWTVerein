@@ -1,6 +1,7 @@
 package client.gui.Registrieren;
 
 import client.ClientDefaults;
+import client.Umlaut;
 import client.Vereinssoftware;
 import client.gui.DefaultSmallPopup;
 
@@ -83,6 +84,32 @@ public class RegistrierenGUI {
             @Override
             public void actionPerformed(ActionEvent e) {
 
+                if (!String.valueOf(passwortTextField.getPassword()).equals(String.valueOf(passwortWiederholungTextField.getPassword()))) {
+                    new DefaultSmallPopup("Hinweis", "Die eingegebenen Passw" + Umlaut.oe() + "rter sind nicht identisch!");
+                    return;
+                }
+
+                if (!telefonnummerTextField.getText().matches("[0-9]+")) {
+                    new DefaultSmallPopup("Hinweis", "Die eingegebene Telefonnummer ist falsch!");
+                    return;
+                }
+
+                if (!mitgliedsnummerTextField.getText().matches("[0-9]+")) {
+                    new DefaultSmallPopup("Hinweis", "Die eingegebene Mitgliedsnummer ist falsch!");
+                    return;
+                }
+
+                Matcher matcher = VALID_EMAIL_ADDRESS_REGEX.matcher(eMailTextField.getText());
+                if (!matcher.find()) {
+                    new DefaultSmallPopup("Hinweis", "Die eingegebene E-Mail ist falsch!");
+                    return;
+                }
+
+                if (Vereinssoftware.rollenverwaltung.existiertEMail(eMailTextField.getText())) {
+                    new DefaultSmallPopup("Hinweis", "Die eingegebene E-Mail existiert bereits!");
+                    return;
+                }
+
                 try {
                     Vereinssoftware.rollenverwaltung.gastHinzufuegen(nachnameTextField.getText(),
                             vornameTextField.getText(),
@@ -96,8 +123,7 @@ public class RegistrierenGUI {
                     throw new RuntimeException(ex);
                 }
 
-                DefaultSmallPopup smallPopup = new DefaultSmallPopup("Hinweis", "     Sie haben sich\n" +
-                        "erfolgreich registriert.\n" +
+                new DefaultSmallPopup("Hinweis", "     Sie haben sich\n erfolgreich registriert.\n" +
                         "Schicken Sie noch Ihre Registrierungsdaten und Ihre Mitgliedsbescheinigung an mitarbeiter@vereinev.de");
 
                 frame.dispose();
@@ -105,64 +131,5 @@ public class RegistrierenGUI {
             }
         });
 
-
-        /*
-
-        //reg pw nicht ueberein
-
-        registrierenButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                DefaultSmallPopup smallPopup = new DefaultSmallPopup("Hinweis", "Eingegebene Passwoerter sind nicht identisch");
-            }
-        });
-
-        //reg * markierung nicht ausgefluellt
-
-        registrierenButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                DefaultSmallPopup smallPopup = new DefaultSmallPopup("Hinweis", "Bitte fuellen Sie alle mit einem '*' markierten Felder aus.");
-            }
-        });
-
-        //reg Email exists
-
-        registrierenButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                DefaultSmallPopup smallPopup = new DefaultSmallPopup("Hinweis", "Diese E-Mail-Adresse existiert bereits");
-            }
-        });
-
-        //reg email invalid
-
-        registrierenButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                DefaultSmallPopup smallPopup = new DefaultSmallPopup("Hinweis", "Diese E-Mail-Adresse ist ungueltig");
-            }
-        });
-
-        //reg telenummer invalid
-
-        registrierenButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                DefaultSmallPopup smallPopup = new DefaultSmallPopup("Hinweis", "Telfennummer ist ungueltig");
-            }
-        });
-
-        //reg Mitgliedsnummer invalid
-
-        registrierenButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                DefaultSmallPopup smallPopup = new DefaultSmallPopup("Hinweis", "Mitgliedsnummer ist ungueltig");
-            }
-        });
-
-
-         */
     }
 }

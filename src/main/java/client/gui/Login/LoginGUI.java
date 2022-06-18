@@ -35,14 +35,12 @@ public class LoginGUI {
     //TODO error msg hinzufuegen falls login falsch (via DefaultSmallPopup)
     // funktionalitaet hinzufuegen
     // optimieren
-    // pw textfield hinzufuegen
 
     private static JFrame frame;
 
     public LoginGUI() {
         frame = new JFrame("Login");
         frame = ClientDefaults.standardizeFrame(frame, Login);
-
 
         ClientDefaults.enhanceTextField(eMailAdresseTextField, onceChanged);
         ClientDefaults.enhanceTextField(passwortTextField, onceChanged);
@@ -58,17 +56,14 @@ public class LoginGUI {
                     String userId = loginData[0].toString();
                     Rolle rolle = Rolle.valueOf(loginData[1].toString());
 
-                    System.out.println("Rolle " + rolle);
-
                     Vereinssoftware.session.setID(userId);
                     Vereinssoftware.session.setRolle(rolle);
-
                     Vereinssoftware.session.setMitgliedsName(Vereinssoftware.rollenverwaltung.getMitgliedsNamen(userId));
 
                     //Daten anzeigen
                     Vereinssoftware.getStartseite().updateProfilButtons();
                 } catch (Exception ex) {
-                    DefaultSmallPopup smallPopup = new DefaultSmallPopup("Hinweis", "E-Mail-Adresse und/oder Passwort sind falsch, Fehler " + ex);
+                    new DefaultSmallPopup("Hinweis", "E-Mail-Adresse und/oder Passwort sind falsch, Fehler " + ex);
                 }
 
                 frame.dispose();
@@ -76,26 +71,13 @@ public class LoginGUI {
             }
         });
 
-        // Login Button (succ)
-
-
-       /* loginButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
-            }
-        });
-        */
-
-
         // Registrieren Button
         registrierenButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                RegistrierenGUI registrierenGUI = new RegistrierenGUI();
-                frame.setVisible(false);
+                new RegistrierenGUI();
+                frame.dispose();
             }
-
 
         });
 

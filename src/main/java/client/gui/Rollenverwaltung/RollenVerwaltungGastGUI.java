@@ -53,7 +53,6 @@ public class RollenVerwaltungGastGUI {
             frame.dispose();
         });
 
-
         // geht auf Vereinsvorstand
         vereinsvorstaendeButton.addActionListener(e -> {
             new RollenverwaltungVereinsvorstandGUI();
@@ -66,7 +65,6 @@ public class RollenVerwaltungGastGUI {
         Object[][] data = Vereinssoftware.rollenverwaltung.gaesteDaten();
         String[] columns = {"ID", "Vorname", "Nachname", "E-Mail", "Anschrift", "MitgliedsNr", "TelefonNr"};
 
-        //macht Tabelle fuer den Nutzer unbearbeitbar
         DefaultTableModel model = new DefaultTableModel() {
             @Override
             public boolean isCellEditable(int row, int column) {

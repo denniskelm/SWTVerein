@@ -80,6 +80,5 @@ public class VerleihhistorieGUI {
                 data, columns)
         );
 
-        JTable table = new JTable(data, columns);
     }
 }

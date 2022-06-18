@@ -43,13 +43,12 @@ public class Profilseite {
     private JLabel mahnungenText;
     private JTable profilseiteEintraegeTable;
     private JScrollPane profilseiteEintraegeScrollPanel;
-
-    private boolean ownProfilseite = false;
-    private String mitgliedsID;
+    private JLabel spenderText;
 
     public Profilseite(String personenID) {
+        boolean ownProfilseite;
         try {
-            this.ownProfilseite = Objects.equals(personenID, Vereinssoftware.session.getID());
+            ownProfilseite = Objects.equals(personenID, Vereinssoftware.session.getID());
         } catch (NoSuchObjectException e) {
             throw new RuntimeException(e);
         }
@@ -130,9 +129,8 @@ public class Profilseite {
                 return false;
             }
         };
-        profilseiteEintraegeTable.setModel(model);
 
-        //set TableCellRenderer into a specified JTable column class
+        profilseiteEintraegeTable.setModel(model);
 
         String[] columns = new String[]{
                 "Typ",
@@ -162,9 +160,8 @@ public class Profilseite {
         }
 
         for (Object[] angebot : angeboteOfUser) {
-            if (angebot[0] == null) {
+            if (angebot[0] == null)
                 break;
-            }
 
             LocalDateTime abTime = ((LocalDateTime) angebot[3]);
             String ab = abTime.format(DateTimeFormatter.ISO_LOCAL_DATE);

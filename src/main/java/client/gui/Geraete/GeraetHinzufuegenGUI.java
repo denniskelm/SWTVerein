@@ -68,7 +68,7 @@ public class GeraetHinzufuegenGUI {
                                 imageTextField.getText()}) {
                     if (Objects.equals(eingabe, "Eingeben...") || Objects.equals(eingabe, "")) {
                         allFieldsValid = false;
-                        DefaultSmallPopup defaultSmallPopup = new DefaultSmallPopup("Falsche Eingaben", "Du hast einen Fehler bei der Eingabe gemacht!");
+                        new DefaultSmallPopup("Falsche Eingaben", "Du hast einen Fehler bei der Eingabe gemacht!");
                     }
                 }
 
@@ -91,9 +91,8 @@ public class GeraetHinzufuegenGUI {
                                 "Es ist beim Erstellen des Ge" + Umlaut.ae() + "ts ein Fehler aufgetreten: " + ex);
                         throw new RuntimeException(ex);
                     }
-                } else {
-                    DefaultSmallPopup defaultSmallPopup = new DefaultSmallPopup("Falsche URL", "Die Bild-URL, die du eingegeben hast, ist falsch!");
-                }
+                } else
+                    new DefaultSmallPopup("Falsche URL", "Die Bild-URL, die du eingegeben hast, ist falsch!");
             }
         });
     }

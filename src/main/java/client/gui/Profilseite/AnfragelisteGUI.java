@@ -133,14 +133,13 @@ public class AnfragelisteGUI {
             i++;
         }
 
-
         anfragelisteTable.addMouseListener(new java.awt.event.MouseAdapter() {
             @Override
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 int row = anfragelisteTable.rowAtPoint(evt.getPoint());
                 int col = anfragelisteTable.columnAtPoint(evt.getPoint());
                 if (row >= 0 && col >= 0) {
-                    System.out.println(row + ", " + col);
+
                     try {
                         if (row < angebots_anfragen.length) {
                             if (col < 7) {
@@ -159,13 +158,13 @@ public class AnfragelisteGUI {
                                                 anfragen[row][0].toString());
                             } else if (col == 7) {
                                 //Profilseite
-                                Profilseite profilseite = new Profilseite(anfragen[row][0].toString());
+                                new Profilseite(anfragen[row][0].toString());
                             } else if (col == 8) {
                                 //Annehmen mit DefaultSmallPopup
                                 Vereinssoftware.anfragenVerwaltung.aAnfrageAnnehmen(Vereinssoftware.session.getID(), anfragen[row][9].toString());
                                 frame.dispose();
-                                AnfragelisteGUI anfragelisteGUI = new AnfragelisteGUI();
-                                DefaultSmallPopup defaultSmallPopup = new DefaultSmallPopup("Anfrage erfolgreich angenommen!", "Ihre Anfrage wurde nun angenommen!");
+                                new AnfragelisteGUI();
+                                new DefaultSmallPopup("Anfrage erfolgreich angenommen!", "Ihre Anfrage wurde nun angenommen!");
                             } else if (col == 9) {
                                 //Ablehnen mit DefaultSmallPopup
                                 Vereinssoftware.anfragenVerwaltung.removeAAnfrage(Vereinssoftware.session.getID(), anfragen[row][9].toString());
@@ -175,23 +174,22 @@ public class AnfragelisteGUI {
                             }
                         } else {
                             if (col < 7) {
-                                DienstleistungsgesuchAnzeigenGUI dienstleistungsangebotAnzeigenGUI =
-                                        new DienstleistungsgesuchAnzeigenGUI(
-                                                anfragen[row][1].toString(),
-                                                anfragen[row][3].toString(),
-                                                anfragen[row][8].toString(),
-                                                anfragen[row][4].toString(),
-                                                Kategorie.valueOf(anfragen[row][5].toString()),
-                                                anfragen[row][0].toString());
-                            } else if (col == 7) {
+                                new DienstleistungsgesuchAnzeigenGUI(
+                                        anfragen[row][1].toString(),
+                                        anfragen[row][3].toString(),
+                                        anfragen[row][8].toString(),
+                                        anfragen[row][4].toString(),
+                                        Kategorie.valueOf(anfragen[row][5].toString()),
+                                        anfragen[row][0].toString());
+                            } else if (col == 7)
                                 //Profilseite
-                                Profilseite profilseite = new Profilseite(anfragen[row][0].toString());
-                            } else if (col == 8) {
+                                new Profilseite(anfragen[row][0].toString());
+                            else if (col == 8) {
                                 //Annehmen mit DefaultSmallPopup
                                 Vereinssoftware.anfragenVerwaltung.gAnfrageAnnehmen(Vereinssoftware.session.getID(), anfragen[row][7].toString());
                                 frame.dispose();
-                                AnfragelisteGUI anfragelisteGUI = new AnfragelisteGUI();
-                                DefaultSmallPopup defaultSmallPopup = new DefaultSmallPopup("Gesuch erfolgreich angenommen!", "Ihre Gesuch wurde nun angenommen!");
+                                new AnfragelisteGUI();
+                                new DefaultSmallPopup("Gesuch erfolgreich angenommen!", "Ihre Gesuch wurde nun angenommen!");
                             } else if (col == 9) {
                                 //Ablehnen mit DefaultSmallPopup
                                 Vereinssoftware.anfragenVerwaltung.removeGAnfrage(Vereinssoftware.session.getID(), anfragen[row][7].toString());

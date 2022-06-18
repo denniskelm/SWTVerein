@@ -36,7 +36,7 @@ public class GeraeteDatenbankGUI {
             @Override
             public void actionPerformed(ActionEvent e) {
                 frame.dispose();
-                GeraetHinzufuegenGUI ghg = new GeraetHinzufuegenGUI();
+                new GeraetHinzufuegenGUI();
             }
         });
 
@@ -51,20 +51,19 @@ public class GeraeteDatenbankGUI {
 
         int row = Datenbank.rowAtPoint(evt.getPoint());
         int col = Datenbank.columnAtPoint(evt.getPoint());
-        String iD = null;
+        String iD;
         if (row >= 0 && col >= 0) {
 
             if (col == 4) {
-                Profilseite profilseite = new Profilseite(model.getValueAt(row, 4).toString());
+                new Profilseite(model.getValueAt(row, 4).toString());
             } else {
                 System.out.println(row + ", " + col);
                 iD = model.getValueAt(row, 0).toString(); //GeraeteID
 
-                GeraeteVerwaltenGUI db = new GeraeteVerwaltenGUI(iD);
+                new GeraeteVerwaltenGUI(iD);
                 GeraeteDatenbankGUI.frame.dispose();
             }
         }
-
 
     }
 

@@ -38,7 +38,7 @@ public class ReservierungslisteGUI {
 
     public ReservierungslisteGUI(String geraeteID) {
         frame = new JFrame("Alle Dienstleistungsangebote");
-        //try {
+
         try {
             this.generateTable(geraeteID);
         } catch (Exception e) {
@@ -63,8 +63,6 @@ public class ReservierungslisteGUI {
         };
         reservierungslisteTable.setModel(model);
 
-        //set TableCellRenderer into a specified JTable column class
-
         String[] columns = new String[]{
                 "Ausleiher",
                 "Reservierdatum",
@@ -78,21 +76,18 @@ public class ReservierungslisteGUI {
 
 
         for (Object[] reservierung : reservierungsliste) {
-            if (reservierung[0] == null) {
+            if (reservierung[0] == null)
                 break;
-            }
 
             LocalDateTime fristbeginn = ((LocalDateTime) reservierung[2]);
             String fristbeginnText = fristbeginn.format(DateTimeFormatter.ISO_LOCAL_DATE);
 
-            LocalDateTime reservierdatum = ((LocalDateTime) reservierung[1]);
             String reservierdatumText = fristbeginn.format(DateTimeFormatter.ISO_LOCAL_DATE);
 
             String abgegeben = "Nein";
 
             String abgabedatum = fristbeginn.plusDays(Long.parseLong(Vereinssoftware.geraeteverwaltung.getGeraeteInformationen(geraeteID)[5].toString()))
                     .format(DateTimeFormatter.ISO_LOCAL_DATE);
-
 
             if ((boolean) reservierung[3]) {
                 abgegeben = "Ja";
@@ -114,7 +109,7 @@ public class ReservierungslisteGUI {
                 int col = reservierungslisteTable.columnAtPoint(evt.getPoint());
                 if (row >= 0 && col >= 0) {
                     if (col == 0) {
-                        Profilseite profilseite = new Profilseite(reservierungsliste[row][0].toString());
+                        new Profilseite(reservierungsliste[row][0].toString());
                     }
                 }
             }
@@ -123,6 +118,5 @@ public class ReservierungslisteGUI {
         //////////// SUCHE //////////////////////
         ClientDefaults.addSearchFunctionality(reservierungslisteTable, suchenTextField);
     }
-
 
 }
