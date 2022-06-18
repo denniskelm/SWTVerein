@@ -105,6 +105,12 @@ public class Profilseite {
 
         //Mahnungen richtig setzen
 
+        try {
+            mahnungenText.setText(Vereinssoftware.rollenverwaltung.anzahlMahnungenVonNutzer(Vereinssoftware.session.getID()) + " Mahnungen");
+        } catch (RemoteException e) {
+            throw new RuntimeException(e);
+        }
+
         JFrame frame = new JFrame("Profilseite");
         try {
             generateTable(personenID);

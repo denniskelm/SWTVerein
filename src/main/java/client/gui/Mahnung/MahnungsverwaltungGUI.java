@@ -42,6 +42,14 @@ public class MahnungsverwaltungGUI {
         frame = new JFrame("Mahnung erstellen");
         frame = ClientDefaults.standardizeFrame(frame, MahnungVerwaltung);
 
+        // Anzahl der Mahnungen anzeigen
+
+        try {
+            mahnungenAmountText.setText(Vereinssoftware.rollenverwaltung.anzahlMahnungenVonNutzer(mitgliedsID) + " Mahnung/en");
+        } catch (RemoteException e) {
+            throw new RuntimeException(e);
+        }
+
 
         //Button erst aktivieren, wenn Grund und Datum eingegeben
         erstellenButton.setEnabled(false);
