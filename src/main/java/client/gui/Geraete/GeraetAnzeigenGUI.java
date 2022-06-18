@@ -1,13 +1,6 @@
 package client.gui.Geraete;
 /*
 @author
-TODO Raphael Kleebaum
-TODO Jonny Schlutter
-TODO Gabriel Kleebaum
-TODO Mhd Esmail Kanaan
-TODO Gia Huy Hans Tran
-TODO Ole Bjoern Adelmann
-TODO Bastian Reichert
 Dennis Kelm
 */
 
@@ -17,7 +10,7 @@ import client.Vereinssoftware;
 import javax.swing.*;
 import java.rmi.NoSuchObjectException;
 
-//TODO Was macht diese Klasse?
+//Zeigt die Detailinformationen eines Geraets an
 public class GeraetAnzeigenGUI {
     private JPanel geraetAnzeigenGUI;
     private JLabel headlineLabel;

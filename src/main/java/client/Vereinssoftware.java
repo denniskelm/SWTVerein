@@ -1,13 +1,7 @@
 package client;
 /*
 @author
-TODO Raphael Kleebaum
-TODO Jonny Schlutter
 Gabriel Kleebaum
-TODO Mhd Esmail Kanaan
-TODO Gia Huy Hans Tran
-TODO Ole Bjoern Adelmann
-TODO Bastian Reichert
 Dennis Kelm
 */
 
