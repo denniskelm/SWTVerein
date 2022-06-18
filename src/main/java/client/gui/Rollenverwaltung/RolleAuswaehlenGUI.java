@@ -51,9 +51,10 @@ public class RolleAuswaehlenGUI {
                         try {
                             Vereinssoftware.rollenverwaltung.rolleAendern(mitgliedsID, Rolle.MITGLIED);
                             frame.dispose();
+                            new RollenverwaltungMitgliedGUI();
                             new DefaultSmallPopup("Rolle erfolgreich ge" + Umlaut.ae() + "ndert",
                                     "Die Rolle von " + Vereinssoftware.rollenverwaltung.getMitgliedsNamen(mitgliedsID) + " wurde erfolgreich ge" + Umlaut.ae() + "ndert!");
-                            new RollenverwaltungMitgliedGUI();
+
                         } catch (Exception ex) {
                             if (ex.getMessage().contains("Der Nutzer hat diese Rolle bereits.")) {
                                 new DefaultSmallPopup("Fehler", "Der Nutzer hat diese Rolle bereits.");
@@ -66,9 +67,10 @@ public class RolleAuswaehlenGUI {
                         try {
                             Vereinssoftware.rollenverwaltung.rolleAendern(mitgliedsID, Rolle.MITARBEITER);
                             frame.dispose();
+                            new RollenVerwaltungMitarbeiterGUI();
                             new DefaultSmallPopup("Rolle erfolgreich ge" + Umlaut.ae() + "ndert",
                                     "Die Rolle von " + Vereinssoftware.rollenverwaltung.getMitgliedsNamen(mitgliedsID) + " wurde erfolgreich ge" + Umlaut.ae() + "ndert!");
-                            new RollenVerwaltungMitarbeiterGUI();
+
                         } catch (Exception ex) {
                             if (ex.getMessage().contains("Der Nutzer hat diese Rolle bereits.")) {
                                 new DefaultSmallPopup("Fehler", "Der Nutzer hat diese Rolle bereits.");
@@ -80,9 +82,10 @@ public class RolleAuswaehlenGUI {
                         try {
                             Vereinssoftware.rollenverwaltung.rolleAendern(mitgliedsID, Rolle.VORSITZ);
                             frame.dispose();
+                            new RollenverwaltungVereinsvorstandGUI();
                             new DefaultSmallPopup("Rolle erfolgreich ge" + Umlaut.ae() + "ndert",
                                     "Die Rolle von " + Vereinssoftware.rollenverwaltung.getMitgliedsNamen(mitgliedsID) + " wurde erfolgreich ge" + Umlaut.ae() + "ndert!");
-                            new RollenverwaltungVereinsvorstandGUI();
+
                         } catch (Exception ex) {
                             if (ex.getMessage().contains("Der Nutzer hat diese Rolle bereits.")) {
                                 new DefaultSmallPopup("Fehler", "Der Nutzer hat diese Rolle bereits.");
@@ -113,7 +116,7 @@ public class RolleAuswaehlenGUI {
                 public void actionPerformed(ActionEvent e) {
 
                     frame.dispose();
-
+                    new RollenVerwaltungGastGUI();
 
                 }
             });

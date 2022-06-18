@@ -1,6 +1,7 @@
 package client.gui.Registrieren;
 
 import client.ClientDefaults;
+import client.Einstellungen;
 import client.Umlaut;
 import client.Vereinssoftware;
 import client.gui.DefaultSmallPopup;
@@ -89,7 +90,7 @@ public class RegistrierenGUI {
                 }
 
                 try {
-                    Integer.parseInt(telefonnummerTextField.getText());
+                    Long.parseLong(telefonnummerTextField.getText());
                 } catch (NumberFormatException ex) {
                     new DefaultSmallPopup("Hinweis", "Die eingegebene Telefonnummer ist falsch!");
                     return;
@@ -132,7 +133,7 @@ public class RegistrierenGUI {
                 }
 
                 new DefaultSmallPopup("Hinweis", "     Sie haben sich\n erfolgreich registriert.\n" +
-                        "Schicken Sie noch Ihre Registrierungsdaten und Ihre Mitgliedsbescheinigung an mitarbeiter@vereinev.de");
+                        "Schicken Sie noch Ihre Registrierungsdaten und Ihre Mitgliedsbescheinigung an " + Einstellungen.getKontaktmailadresse());
 
                 frame.dispose();
 

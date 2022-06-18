@@ -173,7 +173,7 @@ public class StartseiteGUI {
      */
     public void updateProfilButtons() {
 
-
+        //Test auf Einloggen
         try {
             Object[] loginData = Vereinssoftware.rollenverwaltung.login(Vereinssoftware.rollenverwaltung.getMitgliedsMail(Vereinssoftware.session.getID()), Vereinssoftware.session.getPasswort());
             String userId = loginData[0].toString();
