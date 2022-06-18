@@ -102,8 +102,11 @@ public class RollenVerwaltungGastGUI {
                     String nutzerId = model.getValueAt(row, col).toString();
 
                     //Klick auf die Rollenverwaltung-Zelle
-                    if (col == 8)
+                    if (col == 8) {
                         new RolleAuswaehlenGUI(nutzerId);
+                        frame.dispose();
+                    }
+
                 }
             }
 

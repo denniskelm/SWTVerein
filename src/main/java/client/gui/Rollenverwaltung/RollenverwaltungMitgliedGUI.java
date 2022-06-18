@@ -106,6 +106,7 @@ public class RollenverwaltungMitgliedGUI {
                    //Klick auf die Mahnung-Zelle
                    if(col == 11) {
                        new RolleAuswaehlenGUI(nutzerId);
+                       frame.dispose();
                    }
 
                    //Klick auf die Rollenzeile

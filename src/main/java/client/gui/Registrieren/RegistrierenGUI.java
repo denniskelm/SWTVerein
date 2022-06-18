@@ -95,7 +95,7 @@ public class RegistrierenGUI {
                 }
 
                 // Mitgliedsnummer darf nur Ziffern enthalten
-                if (!mitgliedsnummerTextField.getText().matches("[0-9]")) {
+                if (!mitgliedsnummerTextField.getText().matches("[0-9]+")) {
                     new DefaultSmallPopup("Hinweis", "Die eingegebene Mitgliedsnummer ist falsch!");
                     return;
                 }

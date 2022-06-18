@@ -119,10 +119,12 @@ public class RollenverwaltungVereinsvorstandGUI {
 
                     //Klick auf die Mahnung-Zelle
                     if(col == 11) {
-                        if(userIstVorsitz)
+                        if (userIstVorsitz) {
                             new RolleAuswaehlenGUI(nutzerId);
-                        else
+                            frame.dispose();
+                        } else {
                             new DefaultSmallPopup("Keine Berechtigung!", "Sie haben keine Berechtigung, die Rolle für diese Person zu " + Umlaut.ae() + "ndern!");
+                        }
                     }
                 }
             }

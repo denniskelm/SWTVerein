@@ -18,8 +18,9 @@ import java.rmi.RemoteException;
  * Hauptautor
  *
  * @author Gia Huy Hans Tran
- * <p>
- * Kleine Verbesserungen
+ * @author Ole Adelmann
+ * @author Gabriel Kleebaum
+ * @author Raphael Kleebaum
  * @author Dennis Kelm
  */
 public class RolleAuswaehlenGUI {
@@ -48,19 +49,27 @@ public class RolleAuswaehlenGUI {
                     if((MitgliedButton.isSelected() && MahnerRolle == Rolle.VORSITZ && GemahnterRolle != Rolle.VORSITZ) ||
                             (MitgliedButton.isSelected() && GemahnterRolle != Rolle.VORSITZ && GemahnterRolle != Rolle.MITARBEITER)) {
                         try {
-                            Vereinssoftware.rollenverwaltung.rolleAendern(mitgliedsID, Rolle.MITGLIED );
+                            Vereinssoftware.rollenverwaltung.rolleAendern(mitgliedsID, Rolle.MITGLIED);
+                            frame.dispose();
+                            new DefaultSmallPopup("Rolle erfolgreich ge" + Umlaut.ae() + "ndert",
+                                    "Die Rolle von " + Vereinssoftware.rollenverwaltung.getMitgliedsNamen(mitgliedsID) + " wurde erfolgreich ge" + Umlaut.ae() + "ndert!");
+                            new RollenverwaltungMitgliedGUI();
                         } catch (Exception ex) {
+                            if (ex.getMessage().contains("Der Nutzer hat diese Rolle bereits.")) {
+                                new DefaultSmallPopup("Fehler", "Der Nutzer hat diese Rolle bereits.");
+                            }
+
                             throw new RuntimeException(ex);
                         }
-                    }
-                    else
-                        new DefaultSmallPopup("Fehlende Berechtigung", "Dafür fehlt Ihnen die Berechtigung.");
-
-                    if((MitarbeiterButton.isSelected() && MahnerRolle == Rolle.VORSITZ && GemahnterRolle != Rolle.VORSITZ) ||
+                    } else if ((MitarbeiterButton.isSelected() && MahnerRolle == Rolle.VORSITZ && GemahnterRolle != Rolle.VORSITZ) ||
                             (MitarbeiterButton.isSelected() && GemahnterRolle != Rolle.VORSITZ && GemahnterRolle != Rolle.MITARBEITER)) {
                         try {
                             Vereinssoftware.rollenverwaltung.rolleAendern(mitgliedsID, Rolle.MITARBEITER );
                         } catch (Exception ex) {
+                            if (ex.getMessage().contains("Der Nutzer hat diese Rolle bereits.")) {
+                                new DefaultSmallPopup("Fehler", "Der Nutzer hat diese Rolle bereits.");
+                            }
+
                             throw new RuntimeException(ex);
                         }
                     }
@@ -71,6 +80,10 @@ public class RolleAuswaehlenGUI {
                         try {
                             Vereinssoftware.rollenverwaltung.rolleAendern(mitgliedsID, Rolle.VORSITZ );
                         } catch (Exception ex) {
+                            if (ex.getMessage().contains("Der Nutzer hat diese Rolle bereits.")) {
+                                new DefaultSmallPopup("Fehler", "Der Nutzer hat diese Rolle bereits.");
+                            }
+
                             throw new RuntimeException(ex);
                         }
                     }
@@ -82,7 +95,12 @@ public class RolleAuswaehlenGUI {
                             (MitgliedButton.isSelected() && GemahnterRolle != Rolle.VORSITZ && GemahnterRolle != Rolle.MITARBEITER)) {
                         try {
                             Vereinssoftware.rollenverwaltung.nutzerAusAlterListeEntfernen(mitgliedsID, GemahnterRolle);
-                        } catch (RemoteException ex) {
+                            new DefaultSmallPopup("Nutzer erfolgreich gel" + Umlaut.oe() + "scht",
+                                    "Der Nutzer " + Vereinssoftware.rollenverwaltung.getMitgliedsNamen(mitgliedsID) + " wurde erfolgreich gel" + Umlaut.oe() + "scht!");
+                            frame.dispose();
+                        } catch (Exception ex) {
+                            new DefaultSmallPopup("Fehler",
+                                    "Fehler: " + ex.getMessage());
                             throw new RuntimeException(ex);
                         }
                     }
@@ -98,8 +116,6 @@ public class RolleAuswaehlenGUI {
 
                 }
             });
-        } catch (NoSuchObjectException e) {
-            throw new RuntimeException(e);
         } catch (RemoteException e) {
             throw new RuntimeException(e);
         }

@@ -119,10 +119,13 @@ public class RollenVerwaltungMitarbeiterGUI {
                         userIstVorsitz = false;
                     }
 
-                    if(userIstVorsitz) {
+                    if (userIstVorsitz) {
                         //Klick auf die Mahnung-Zelle
-                        if(col == 11)
+                        if (col == 11) {
                             new RolleAuswaehlenGUI(nutzerId);
+                            frame.dispose();
+                        }
+
 
                         //Klick auf die Rollenzeile
                         else if (col == 12)

@@ -9,7 +9,9 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.rmi.RemoteException;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 /**
  * GUI fuer das Verwalten von Mahnungen
@@ -62,7 +64,9 @@ public class MahnungsverwaltungGUI {
         erstellenButton.addActionListener(e -> {
             if(e.getSource() == erstellenButton) {
                 try {
-                    Vereinssoftware.rollenverwaltung.mahnungErstellen(mitgliedsID, GrundfuerMahnungTextfield.getText(), LocalDateTime.parse(verfallsdatumTextField.getText()));
+                    DateTimeFormatter formatter = DateTimeFormatter.ISO_LOCAL_DATE;
+                    LocalDateTime verfallsdatum = LocalDate.parse(verfallsdatumTextField.getText(), formatter).atTime(12, 0, 0);
+                    Vereinssoftware.rollenverwaltung.mahnungErstellen(mitgliedsID, GrundfuerMahnungTextfield.getText(), verfallsdatum);
                 } catch (RemoteException ex) {
                     throw new RuntimeException(ex);
                 }
