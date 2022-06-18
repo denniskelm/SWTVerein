@@ -2,6 +2,7 @@ package client.gui.Rollenverwaltung;
 
 import client.ClientDefaults;
 import client.Umlaut;
+import client.Vereinssoftware;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -28,19 +29,19 @@ public class RolleAuswaehlenGUI {
 
     public static JFrame frame;
 
-    public RolleAuswaehlenGUI() {
+    public RolleAuswaehlenGUI(String mitgliedsID) {
 
         frame = new JFrame("Rolle " + Umlaut.ae() + "ndern");
         frame = ClientDefaults.standardizeFrame(frame, RolleAuswaehlen);
 
 
 
-        // TODO JRadioButton
-
 
         OKButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                if()
+                Vereinssoftware.rollenverwaltung.rolleAendern(mitgliedsID, );
 
             }
         });
