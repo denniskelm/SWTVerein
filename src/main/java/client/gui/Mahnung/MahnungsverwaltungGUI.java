@@ -59,18 +59,15 @@ public class MahnungsverwaltungGUI {
         GrundfuerMahnungTextfield.addKeyListener(buttonAktivierenListener);
 
         //Mahnung auf Knopfdruck erstellen
-        erstellenButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if(e.getSource() == erstellenButton) {
-                    try {
-                        Vereinssoftware.rollenverwaltung.mahnungErstellen(mitgliedsID, GrundfuerMahnungTextfield.getText(), LocalDateTime.parse(verfallsdatumTextField.getText()));
-                    } catch (RemoteException ex) {
-                        throw new RuntimeException(ex);
-                    }
+        erstellenButton.addActionListener(e -> {
+            if(e.getSource() == erstellenButton) {
+                try {
+                    Vereinssoftware.rollenverwaltung.mahnungErstellen(mitgliedsID, GrundfuerMahnungTextfield.getText(), LocalDateTime.parse(verfallsdatumTextField.getText()));
+                } catch (RemoteException ex) {
+                    throw new RuntimeException(ex);
                 }
-
             }
+
         });
 
     }

@@ -1,7 +1,9 @@
 package client.gui.Rollenverwaltung;
 
 import client.ClientDefaults;
+import client.Umlaut;
 import client.Vereinssoftware;
+import client.gui.Mahnung.MahnungsverwaltungGUI;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -54,11 +56,13 @@ public class RollenverwaltungMitgliedGUI {
             new RollenVerwaltungGastGUI();
             frame.dispose();
         });
+
+        mitgliedButton.requestFocus();
     }
 
    private void createTable() throws RemoteException {
        Object[][] data = Vereinssoftware.rollenverwaltung.mitgliederDaten();
-       String[] columns = {"ID", "Vorname", "Nachname", "E-Mail", "Anschrift", "MitgliedsNr", "TelefonNr", "Spenderstatus", "Stundenkonto", "Gesperrt?", "Mitglied seit", ""};
+       String[] columns = {"ID", "Vorname", "Nachname", "E-Mail", "Anschrift", "MitgliedsNr", "TelefonNr", "Spenderstatus", "Stundenkonto", "Gesperrt?", "Mitglied seit", "Rolle", "Mahnung"};
 
        DefaultTableModel model = new DefaultTableModel() {
            @Override
@@ -81,10 +85,36 @@ public class RollenverwaltungMitgliedGUI {
                    mitglied[5],
                    mitglied[6],
                    mitglied[7],
+                   mitglied[8],
+                   (Boolean.getBoolean(mitglied[9].toString()) ? "Ja" : "Nein"),
+                   mitglied[10],
+                   "Rolle " + Umlaut.ae() + "ndern",
+                   "Mahnung erstellen"
            });
        }
 
        table1.setModel(model);
+
+       table1.addMouseListener(new java.awt.event.MouseAdapter() {
+           @Override
+           public void mouseClicked(java.awt.event.MouseEvent evt) {
+               int row = table1.rowAtPoint(evt.getPoint());
+               int col = table1.columnAtPoint(evt.getPoint());
+               if (row >= 0 && col >= 0) {
+                   String nutzerId = model.getValueAt(row, col).toString();
+
+                   //Klick auf die Mahnung-Zelle
+                   if(col == 11) {
+                       new RolleAuswaehlenGUI(nutzerId);
+                   }
+
+                   //Klick auf die Rollenzeile
+                   else if(col == 12) {
+                       new MahnungsverwaltungGUI(nutzerId);
+                   }
+               }
+           }
+       });
    }
 }
 

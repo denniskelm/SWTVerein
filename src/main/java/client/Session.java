@@ -8,14 +8,8 @@ import java.util.prefs.Preferences;
 
 /*
 @author
-TODO Raphael Kleebaum
-TODO Jonny Schlutter
 Gabriel Kleebaum
 Mhd Esmail Kanaan
-TODO Gia Huy Hans Tran
-TODO Ole Bjoern Adelmann
-TODO Bastian Reichert
-TODO Dennis Kelm
 */
 
 //Diese Klasse speichert (Nutzer-)Daten auf dem PC des Nutzers

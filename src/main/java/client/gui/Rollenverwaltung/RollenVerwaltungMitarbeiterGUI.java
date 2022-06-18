@@ -1,14 +1,12 @@
 package client.gui.Rollenverwaltung;
 
-import client.ClientDefaults;
-import client.Kategorie;
-import client.Umlaut;
-import client.Vereinssoftware;
+import client.*;
 import client.gui.DefaultSmallPopup;
 import client.gui.Mahnung.MahnungsverwaltungGUI;
 import client.gui.Profilseite.AnfragelisteGUI;
 import client.gui.Profilseite.Profilseite;
 import client.gui.dienstleistungen.dienstleistungsangebote.DienstleistungsangebotAnzeigenGUI;
+import server.users.Rolle;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -67,6 +65,7 @@ public class RollenVerwaltungMitarbeiterGUI {
             frame.dispose();
         });
 
+        mitarbeiterButton.requestFocus();
     }
 
     private void createTable() throws RemoteException {
@@ -94,11 +93,10 @@ public class RollenVerwaltungMitarbeiterGUI {
                     mitarbeiter[6],
                     mitarbeiter[7],
                     mitarbeiter[8],
-                    mitarbeiter[9],
+                    (Boolean.getBoolean(mitarbeiter[9].toString()) ? "Ja" : "Nein"),
                     mitarbeiter[10],
                     "Rolle " + Umlaut.ae() + "ndern",
                     "Mahnung erstellen"
-
             });
         }
 
@@ -111,17 +109,26 @@ public class RollenVerwaltungMitarbeiterGUI {
                 int row = table1.rowAtPoint(evt.getPoint());
                 int col = table1.columnAtPoint(evt.getPoint());
                 if (row >= 0 && col >= 0) {
-                    String nutzerId = model.getValueAt(row, col).toString();
+                    String nutzerId = model.getValueAt(row, col).toString();;
 
-                    //Klick auf die Rollenverwaltung-Zelle
-                    if(col == 11) {
-                        new RolleAuswaehlenGUI(nutzerId);
+                    //Bestimmen, ob der Nutzer Vorsitz ist
+                    boolean userIstVorsitz = false;
+                    try {
+                        userIstVorsitz = Vereinssoftware.session.getRolle().equals(Rolle.VORSITZ);
+                    } catch (NoSuchObjectException e) {
+                        userIstVorsitz = false;
                     }
 
-                    //Klick auf die Mahnungsverwaltung-Zeile
-                    else if(col == 12) {
+                    if(userIstVorsitz) {
+                        //Klick auf die Mahnung-Zelle
+                        if(col == 11)
+                            new RolleAuswaehlenGUI(nutzerId);
 
-                        new MahnungsverwaltungGUI(nutzerId);
+                        //Klick auf die Rollenzeile
+                        else if (col == 12)
+                            new MahnungsverwaltungGUI(nutzerId);
+                    } else {
+                        new DefaultSmallPopup("Keine Berechtigung!", "Sie haben keine Berechtigung, die Rolle für diese Person zu " + Umlaut.ae() + "ndern!");
                     }
                 }
             }
