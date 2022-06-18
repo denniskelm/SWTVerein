@@ -58,7 +58,7 @@ public class RollenverwaltungMitgliedGUI {
 
    private void createTable() throws RemoteException {
        Object[][] data = Vereinssoftware.rollenverwaltung.mitgliederDaten();
-       String[] columns = {"ID", "Vorname", "Nachname", "E-Mail", "Anschrift", "MitgliedsNr", "TelefonNr", "Spenderstatus", "Stundenkonto", "Gesperrt?", "Mitglied seit"};
+       String[] columns = {"ID", "Vorname", "Nachname", "E-Mail", "Anschrift", "MitgliedsNr", "TelefonNr", "Spenderstatus", "Stundenkonto", "Gesperrt?", "Mitglied seit", ""};
 
        DefaultTableModel model = new DefaultTableModel() {
            @Override

@@ -19,7 +19,6 @@ import java.awt.event.ActionListener;
  */
 public class RolleAuswaehlenGUI {
     private JPanel RolleAuswaehlen;
-    private JTextField IDhiereinfuegen;
     private JButton OKButton;
     private JButton abbrechenButton;
     private JRadioButton MitgliedButton;
@@ -34,7 +33,7 @@ public class RolleAuswaehlenGUI {
         frame = ClientDefaults.standardizeFrame(frame, RolleAuswaehlen);
 
 
-        // TODO ID anzeigen
+
         // TODO JRadioButton
 
 
