@@ -55,13 +55,13 @@ public class LoginGUI {
                     Vereinssoftware.session.setRolle(rolle);
                     Vereinssoftware.session.setMitgliedsName(Vereinssoftware.rollenverwaltung.getMitgliedsNamen(userId));
 
+                    frame.dispose();
+
                     //Daten anzeigen
                     Vereinssoftware.getStartseite().updateProfilButtons();
                 } catch (Exception ex) {
                     new DefaultSmallPopup("Hinweis", "E-Mail-Adresse und/oder Passwort sind falsch, Fehler " + ex);
                 }
-
-                frame.dispose();
 
             }
         });
