@@ -120,7 +120,7 @@ public class RegistrierenGUI {
                     Vereinssoftware.rollenverwaltung.gastHinzufuegen(nachnameTextField.getText(),
                             vornameTextField.getText(),
                             eMailTextField.getText(),
-                            passwortTextField.getText(),
+                            String.valueOf(passwortTextField.getPassword()),
                             anschriftTextField.getText(),
                             mitgliedsnummerTextField.getText(),
                             telefonnummerTextField.getText(),
