@@ -66,6 +66,32 @@ public class RollenVerwaltungGastGUI {
         Object[][] data = Vereinssoftware.rollenverwaltung.gaesteDaten();
         String[] columns = {"ID", "Vorname", "Nachname", "E-Mail", "Anschrift", "MitgliedsNr", "TelefonNr"};
 
-        table1.setModel(new DefaultTableModel(data, columns));
+        //macht Tabelle fuer den Nutzer unbearbeitbar
+        DefaultTableModel model = new DefaultTableModel() {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                //macht Tabelle fuer den Nutzer unbearbeitbar
+                return false;
+            }
+        };
+
+        ClientDefaults.createColumnsFromArray(columns, model);
+
+        for (Object[] gast : data) {
+
+            model.addRow(new Object[]{
+                    gast[0],
+                    gast[1],
+                    gast[2],
+                    gast[3],
+                    gast[4],
+                    gast[5],
+                    gast[6],
+                    gast[7],
+            });
+        }
+
+        table1.setModel(model);
+
     }
 }

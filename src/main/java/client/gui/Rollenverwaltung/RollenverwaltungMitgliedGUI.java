@@ -24,6 +24,7 @@ public class RollenverwaltungMitgliedGUI {
     private JButton mitarbeiterButton;
     private JButton vereinsvorstandButton;
     private JButton gaesteButton;
+
     private static JFrame frame;
 
     public RollenverwaltungMitgliedGUI() {
@@ -56,11 +57,36 @@ public class RollenverwaltungMitgliedGUI {
     }
 
    private void createTable() throws RemoteException {
-        Object[][] data = Vereinssoftware.rollenverwaltung.mitgliederDaten();
-        String[] columns = {"ID", "Vorname", "Nachname", "E-Mail", "Anschrift", "MitgliedsNr", "TelefonNr", "Spenderstatus", "Stundenkonto", "Gesperrt?", "Mitglied seit"};
+       Object[][] data = Vereinssoftware.rollenverwaltung.mitgliederDaten();
+       String[] columns = {"ID", "Vorname", "Nachname", "E-Mail", "Anschrift", "MitgliedsNr", "TelefonNr", "Spenderstatus", "Stundenkonto", "Gesperrt?", "Mitglied seit"};
 
-        table1.setModel(new DefaultTableModel(data, columns));
-    }
+       //macht Tabelle fuer den Nutzer unbearbeitbar
+       DefaultTableModel model = new DefaultTableModel() {
+           @Override
+           public boolean isCellEditable(int row, int column) {
+               //macht Tabelle fuer den Nutzer unbearbeitbar
+               return false;
+           }
+       };
+
+       ClientDefaults.createColumnsFromArray(columns, model);
+
+       for (Object[] mitglied : data) {
+
+           model.addRow(new Object[]{
+                   mitglied[0],
+                   mitglied[1],
+                   mitglied[2],
+                   mitglied[3],
+                   mitglied[4],
+                   mitglied[5],
+                   mitglied[6],
+                   mitglied[7],
+           });
+       }
+
+       table1.setModel(model);
+   }
 }
 
 
