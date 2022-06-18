@@ -24,6 +24,7 @@ public class RolleAuswaehlenGUI {
     private JRadioButton MitgliedButton;
     private JRadioButton MitarbeiterButton;
     private JRadioButton VereinsvorstandButton;
+    private JRadioButton LoeschenButton;
 
     public static JFrame frame;
 
