@@ -46,7 +46,6 @@ public class ReservierungslisteGUI {
         }
 
         frame = ClientDefaults.standardizeFrame(frame, this.dienstleistungsangebotePanel);
-        frame.setLocationRelativeTo(null);
 
         ClientDefaults.enhanceTextField(suchenTextField, onceChanged);
     }

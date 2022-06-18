@@ -5,7 +5,6 @@ import client.Umlaut;
 import client.Vereinssoftware;
 import client.gui.DefaultSmallPopup;
 import server.geraetemodul.Geraetedaten;
-import shared.communication.IAusleiher;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -13,8 +12,15 @@ import java.awt.event.ActionListener;
 import java.rmi.RemoteException;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
-import java.util.ArrayList;
 
+
+/**
+ * @author Raphael Kleebaum
+ * @author Gia Huy Hans Tran
+ * @author Dennis Kelm
+ * <p>
+ * Zeigt die GUI fuer die Verwaltung der GUI an
+ */
 public class GeraeteVerwaltenGUI {
     private JPanel GeraetVerwalten;
     private JTextField geraetnameTextField;
@@ -40,6 +46,7 @@ public class GeraeteVerwaltenGUI {
     private JButton speichernButton;
     private JButton geraetAusgebenButton;
     private JButton geraetLoeschenButton;
+    private JButton geraetAnnehmenButton;
     private final String geraeteID;
     private Object[] geraeteInfos;
 
@@ -98,6 +105,18 @@ public class GeraeteVerwaltenGUI {
             }
         });
 
+        geraetAnnehmenButton.addActionListener(e -> {
+            try {
+                Vereinssoftware.geraeteverwaltung.geraetAnnehmen(geraeteID);
+                new DefaultSmallPopup("Annahme erfolgreich",
+                        "Sie haben die Zur" + Umlaut.ue() + "cknahme des Ger" + Umlaut.ae() + "ts erfolgreich registriert!");
+            } catch (Exception ex) {
+                new DefaultSmallPopup("Annahme nicht erfolgreich",
+                        "Bei der Registrierung der Annahme wurde folgender Fehler festgestellt: " + ex);
+                throw new RuntimeException(ex);
+            }
+        });
+
         speichernButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -137,7 +156,11 @@ public class GeraeteVerwaltenGUI {
             public void actionPerformed(ActionEvent e) {
                 try {
                     Vereinssoftware.geraeteverwaltung.geraetAusgeben(geraeteID);
+                    new DefaultSmallPopup("Ausgabe erfolgreich",
+                            "Sie haben die Ausgabe des Ger" + Umlaut.ae() + "ts " + geraetnameTextField.getText() + " erfolgreich registriert!");
                 } catch (Exception ex) {
+                    new DefaultSmallPopup("Fehler",
+                            "Bei der Registrierung der Ausgabe wurde folgender Fehler festgestellt: " + ex);
                     throw new RuntimeException(ex);
                 }
             }

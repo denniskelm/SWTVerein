@@ -109,8 +109,6 @@ public class DienstleistungsgesucheGUI {
                                     Kategorie.valueOf(gesuche[row][2].toString()), //Kategorie
                                     (String) gesuche[row][4] //PersonenID
                             );
-
-                            frame.dispose();
                         } catch (Exception e) {
                             throw new RuntimeException(e);
                         }

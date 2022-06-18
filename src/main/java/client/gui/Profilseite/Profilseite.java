@@ -55,7 +55,7 @@ public class Profilseite {
 
         //Spendertext anzeigen
         try {
-            spenderText.setVisible(!Vereinssoftware.rollenverwaltung.istSpender(personenID));
+            spenderText.setVisible(Vereinssoftware.rollenverwaltung.istSpender(personenID));
         } catch (RemoteException e) {
             throw new RuntimeException(e);
         }

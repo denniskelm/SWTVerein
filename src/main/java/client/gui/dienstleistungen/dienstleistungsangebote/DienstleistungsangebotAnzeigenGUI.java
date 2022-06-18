@@ -48,7 +48,6 @@ public class DienstleistungsangebotAnzeigenGUI {
         frame = new JFrame("Details des Dienstleistungsangebots");
         ClientDefaults.insertImageToPanel(imageLabel, pathToImage); //URL zum Bild, z.B. "https://bilder.gartenpaul.de/item/images/456/full/456-R1-M1.jpg"
         frame = ClientDefaults.standardizeFrame(frame, dienstleistungsangebotAnzeigenGUI);
-        frame.setLocationRelativeTo(null);
 
         //Anpassen der Texte
         headlineLabel.setText(titel); //sowas wie Vereinssoftware.dienstleistungsverwaltung.getGeraetInformation(String geraeteID)[0]
