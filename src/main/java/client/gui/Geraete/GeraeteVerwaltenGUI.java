@@ -52,6 +52,8 @@ public class GeraeteVerwaltenGUI {
 
         this.geraeteID = geraeteID;
 
+        geraetLoeschenButton.setText("Ger" + Umlaut.ae() + "t l" + Umlaut.oe() + "schen");
+
         try {
             Object[][] geraeteDaten = Vereinssoftware.geraeteverwaltung.omniGeraeteDaten();
 

@@ -6,6 +6,7 @@ Dennis Kelm
 
 import client.ClientDefaults;
 import client.Kategorie;
+import client.Umlaut;
 import client.Vereinssoftware;
 import client.gui.DefaultSmallPopup;
 import client.gui.dienstleistungen.dienstleistungsangebote.DienstleistungsangebotAnzeigenGUI;
@@ -20,7 +21,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.Map;
 
-//Erstellt das GUI für die Anfrageliste des gerade angemeldeten Nutzers
+//Erstellt das GUI fuer die Anfrageliste des gerade angemeldeten Nutzers
 public class AnfragelisteGUI {
     private JPanel anfragelistePanel;
     private JScrollPane bigTableScrollPanel;
@@ -40,6 +41,8 @@ public class AnfragelisteGUI {
             throw new RuntimeException(e);
         }
 
+        infoText.setText("<html><b>Tipp:</b> Klicken Sie in der Anfragenliste auf die W" + Umlaut.oe() + "rter <b>\"Annehmen\"</b> bzw. <b>\"Ablehnen\"</b>");
+
         frame = ClientDefaults.standardizeFrame(frame, this.anfragelistePanel);
 
         ClientDefaults.enhanceTextField(suchenTextField, onceChanged);
@@ -51,7 +54,7 @@ public class AnfragelisteGUI {
 
             @Override
             public boolean isCellEditable(int row, int column) {
-                //macht Tabelle für den Nutzer unbearbeitbar
+                //macht Tabelle fuer den Nutzer unbearbeitbar
                 return false;
             }
         };
@@ -167,8 +170,8 @@ public class AnfragelisteGUI {
                                 //Ablehnen mit DefaultSmallPopup
                                 Vereinssoftware.anfragenVerwaltung.removeAAnfrage(Vereinssoftware.session.getID(), anfragen[row][9].toString());
                                 frame.dispose();
-                                AnfragelisteGUI anfragelisteGUI = new AnfragelisteGUI();
-                                DefaultSmallPopup defaultSmallPopup = new DefaultSmallPopup("Anfrage erfolgreich abgelehnt!", "Ihre Anfrage wurde leider abgelehnt!");
+                                new AnfragelisteGUI();
+                                new DefaultSmallPopup("Anfrage erfolgreich abgelehnt!", "Die Anfrage wurde erfolgreich abgelehnt!");
                             }
                         } else {
                             if (col < 7) {
@@ -193,8 +196,8 @@ public class AnfragelisteGUI {
                                 //Ablehnen mit DefaultSmallPopup
                                 Vereinssoftware.anfragenVerwaltung.removeGAnfrage(Vereinssoftware.session.getID(), anfragen[row][7].toString());
                                 frame.dispose();
-                                AnfragelisteGUI anfragelisteGUI = new AnfragelisteGUI();
-                                DefaultSmallPopup defaultSmallPopup = new DefaultSmallPopup("Gesuch erfolgreich abgelehnt!", "Ihre Gesuch wurde leider abgelehnt!");
+                                new AnfragelisteGUI();
+                                new DefaultSmallPopup("Gesuch erfolgreich abgelehnt!", "Die Anfrage wurde erfolgreich abgelehnt!");
                             }
                         }
                     } catch (Exception e) {

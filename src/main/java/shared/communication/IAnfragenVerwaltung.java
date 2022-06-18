@@ -11,7 +11,7 @@ import java.rmi.NoSuchObjectException;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 
-// Interface, um RMI für Klasse AnfragenVerwaltung zu ermöglichen
+// Interface, um RMI fuer Klasse AnfragenVerwaltung zu ermoeglichen
 public interface IAnfragenVerwaltung extends Remote {
     Object[][] omniAngebotsAnfrageDaten(String nid) throws Exception;
 

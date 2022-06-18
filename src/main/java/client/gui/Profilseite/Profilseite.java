@@ -54,14 +54,19 @@ public class Profilseite {
             throw new RuntimeException(e);
         }
 
-        this.mitgliedsID = personenID;
+        //Spendertext anzeigen
+        try {
+            spenderText.setVisible(!Vereinssoftware.rollenverwaltung.istSpender(personenID));
+        } catch (RemoteException e) {
+            throw new RuntimeException(e);
+        }
 
-        if (this.ownProfilseite) {
-            XXButton.setText("Anfragen"); //TODO Wie viele Anfragen?
+        if (ownProfilseite) {
+            XXButton.setText("Anfrageliste");
             XXButton.addActionListener(e -> {
-                AnfragelisteGUI anfragelisteGUI = new AnfragelisteGUI();
+                new AnfragelisteGUI();
             });
-            nameText.setText("Ihre Profilseite");
+            nameText.setText("Ihnen");
         } else {
             //Namen des Mitglieds der Profilseite anzeigen
             try {
@@ -77,7 +82,7 @@ public class Profilseite {
                 if (Desktop.isDesktopSupported()
                         && (desktop = Desktop.getDesktop()).isSupported(Desktop.Action.MAIL)) {
                     try {
-                        String link = "mailto:" + Vereinssoftware.rollenverwaltung.getMitgliedsMail(mitgliedsID) +
+                        String link = "mailto:" + Vereinssoftware.rollenverwaltung.getMitgliedsMail(personenID) +
                                 "?subject=Kontaktanfrage%20aus%20dem%20Verein&body=Hallo%20MITGLIEDSNAME%2C%0D%0A%0D" +
                                 "%0A%0D%0AMit%20freundlichen%20Gr%C3%BC%C3%9Fen%0D%0A";// + Vereinssoftware.rollenverwaltung.getMitgliedsNamen(Vereinssoftware.session.getID()))
                         URI mailto = new URI(link);

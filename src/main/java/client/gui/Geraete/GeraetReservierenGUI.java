@@ -24,19 +24,21 @@ public class GeraetReservierenGUI {
     private JPanel GeraetReservieren;
     private JButton jaButton;
     private JButton neinButton;
+    private JLabel askText;
     private final String geraeteID;
     private final String ausleiherID;
+
+    private static JFrame frame;
 
     public GeraetReservierenGUI(String geraeteID, String ausleiherID) {
         this.geraeteID = geraeteID;
         this.ausleiherID = ausleiherID;
 
-        JFrame frame = new JFrame("Ger" + Umlaut.ae() + "t reservieren");
+        frame = new JFrame("Ger" + Umlaut.ae() + "t reservieren");
         frame = ClientDefaults.standardizeFrame(frame, GeraetReservieren);
 
+        askText.setText("M" + Umlaut.oe() + "chten Sie dieses Ger" + Umlaut.ae() + "t reservieren?");
 
-        //Exit(ja)
-        JFrame finalFrame = frame;
         jaButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -63,7 +65,7 @@ public class GeraetReservierenGUI {
                                 "Ein Fehler ist aufgetreten\n");
                     }
 
-                    finalFrame.dispose();
+                    frame.dispose();
 
 
                 }
@@ -73,7 +75,7 @@ public class GeraetReservierenGUI {
         neinButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                finalFrame.dispose();
+                frame.dispose();
             }
         });
 /*

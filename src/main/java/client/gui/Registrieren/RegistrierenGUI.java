@@ -8,6 +8,11 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.rmi.RemoteException;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * GUI fuer das Registrieren von Gaesten
@@ -27,9 +32,12 @@ public class RegistrierenGUI {
     private JTextField mitgliedsnummerTextField;
     private JTextField telefonnummerTextField;
     private JTextField eMailTextField;
-    private JTextField passwortTextField;
-    private JTextField passwortWiederholungTextField;
+    private JPasswordField passwortTextField;
+    private JPasswordField passwortWiederholungTextField;
     private JButton registrierenButton;
+    private JPanel vornamePanel;
+
+    public static final Pattern VALID_EMAIL_ADDRESS_REGEX = Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
 
     //TODO Hinweise hinzufuegen
     // funktionalitaet hinzufuegen
@@ -39,10 +47,36 @@ public class RegistrierenGUI {
 
     private static JFrame frame;
 
+    private Map<JTextField, Boolean> onceChanged = new HashMap<>();
+
     public RegistrierenGUI() {
         frame = new JFrame("Registrieren");
         frame = ClientDefaults.standardizeFrame(frame, Registrieren);
 
+        JTextField[] allTextFields = {
+                vornameTextField,
+                nachnameTextField,
+                anschriftTextField,
+                anschriftTextField,
+                mitgliedsnummerTextField,
+                eMailTextField,
+                passwortTextField,
+                passwortWiederholungTextField
+        };
+
+        for (JTextField textField : allTextFields)
+            ClientDefaults.enhanceTextField(textField, onceChanged);
+
+        //Prueft hier, ob 1. was eingegeben wurde und 2. ob noch was leer ist
+        for (JTextField textField : allTextFields) {
+            String eingabe = textField.getText();
+
+            if (Objects.equals(eingabe, "Eingeben...") || Objects.equals(eingabe, "")) {
+                new DefaultSmallPopup("Falsche Eingaben", "Du hast einen Fehler bei der Eingabe gemacht!");
+                return;
+            }
+
+        }
 
         //reg (succ)
         registrierenButton.addActionListener(new ActionListener() {
