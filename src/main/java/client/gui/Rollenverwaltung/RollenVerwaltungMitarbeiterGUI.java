@@ -1,14 +1,22 @@
 package client.gui.Rollenverwaltung;
 
 import client.ClientDefaults;
+import client.Kategorie;
+import client.Umlaut;
 import client.Vereinssoftware;
+import client.gui.DefaultSmallPopup;
 import client.gui.Mahnung.MahnungsverwaltungGUI;
+import client.gui.Profilseite.AnfragelisteGUI;
+import client.gui.Profilseite.Profilseite;
+import client.gui.dienstleistungen.dienstleistungsangebote.DienstleistungsangebotAnzeigenGUI;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.rmi.NoSuchObjectException;
 import java.rmi.RemoteException;
+import java.time.LocalDateTime;
 
 /**
  * GUI fuer die Rollenverwaltung der Mitarbeiter
@@ -76,23 +84,6 @@ public class RollenVerwaltungMitarbeiterGUI {
         ClientDefaults.createColumnsFromArray(columns, model);
 
         for (Object[] mitarbeiter : data) {
-
-            JButton mahnungButton = new JButton("Mahnung");
-            mahnungButton.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    new MahnungsverwaltungGUI(mitarbeiter[0].toString());
-                }
-            });
-
-            JButton rollenButton = new JButton("Rolle");
-            rollenButton.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-
-                }
-            });
-
             model.addRow(new Object[]{
                     mitarbeiter[0],
                     mitarbeiter[1],
@@ -102,12 +93,39 @@ public class RollenVerwaltungMitarbeiterGUI {
                     mitarbeiter[5],
                     mitarbeiter[6],
                     mitarbeiter[7],
-                    rollenButton,
-                    mahnungButton
+                    mitarbeiter[8],
+                    mitarbeiter[9],
+                    mitarbeiter[10],
+                    "Mahnung erstellen",
+                    "Rolle " + Umlaut.ae() + "ndern"
+
             });
         }
 
         table1.setModel(model);
+
+
+        table1.addMouseListener(new java.awt.event.MouseAdapter() {
+            @Override
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                int row = table1.rowAtPoint(evt.getPoint());
+                int col = table1.columnAtPoint(evt.getPoint());
+                if (row >= 0 && col >= 0) {
+                    String nutzerId = model.getValueAt(row, col).toString();
+
+                    //Klick auf die Mahnung-Zelle
+                    if(col == 11) {
+                        new MahnungsverwaltungGUI(nutzerId);
+                    }
+
+                    //Klick auf die Rollenzeile
+                    else if(col == 12) {
+                        //TODO Rollenfenster öffnen
+                        new RolleAuswaehlenGUI(nutzerId);
+                    }
+                }
+            }
+        });
     }
 }
 

@@ -37,12 +37,9 @@ public class MahnungsverwaltungGUI {
         //Button erst aktivieren, wenn Grund und Datum eingegeben
         erstellenButton.setEnabled(false);
 
-        ActionListener buttonAktivierenListener = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if(GrundfuerMahnungTextfield.getText() != null && verfallsdatumTextField.getText() != null){
-                    erstellenButton.setEnabled(true);
-                }
+        ActionListener buttonAktivierenListener = e -> {
+            if(GrundfuerMahnungTextfield.getText().length() > 0 && verfallsdatumTextField.getText().length() > 0){
+                erstellenButton.setEnabled(true);
             }
         };
 
