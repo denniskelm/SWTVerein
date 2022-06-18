@@ -116,7 +116,7 @@ public class RolleAuswaehlenGUI {
                 public void actionPerformed(ActionEvent e) {
 
                     frame.dispose();
-
+                    new RollenVerwaltungGastGUI();
 
                 }
             });

@@ -172,6 +172,8 @@ public class StartseiteGUI {
      * Ändert die Sichtbarkeit der Buttons "Profilseite", "Login", "Registrieren"
      */
     public void updateProfilButtons() {
+
+        //Test auf Einloggen
         try {
             Object[] loginData = Vereinssoftware.rollenverwaltung.login(Vereinssoftware.rollenverwaltung.getMitgliedsMail(Vereinssoftware.session.getID()), Vereinssoftware.session.getPasswort());
             String userId = loginData[0].toString();
