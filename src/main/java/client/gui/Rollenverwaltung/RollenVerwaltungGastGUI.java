@@ -64,7 +64,7 @@ public class RollenVerwaltungGastGUI {
 
     private void createTable() throws RemoteException {
         Object[][] data = Vereinssoftware.rollenverwaltung.gaesteDaten();
-        String[] columns = {"ID", "Vorname", "Nachname", "E-Mail", "Anschrift", "MitgliedsNr", "TelefonNr"};
+        String[] columns = {"ID", "Vorname", "Nachname", "E-Mail", "Anschrift", "MitgliedsNr", "TelefonNr", "Spender?", "Rolle"};
 
         DefaultTableModel model = new DefaultTableModel() {
             @Override
@@ -87,10 +87,26 @@ public class RollenVerwaltungGastGUI {
                     gast[5],
                     gast[6],
                     gast[7],
+                    "Rolle " + Umlaut.ae() + "ndern"
             });
         }
 
         table1.setModel(model);
 
+        table1.addMouseListener(new java.awt.event.MouseAdapter() {
+            @Override
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                int row = table1.rowAtPoint(evt.getPoint());
+                int col = table1.columnAtPoint(evt.getPoint());
+                if (row >= 0 && col >= 0) {
+                    String nutzerId = model.getValueAt(row, col).toString();
+
+                    //Klick auf die Rollenverwaltung-Zelle
+                    if (col == 8)
+                        new RolleAuswaehlenGUI(nutzerId);
+                }
+            }
+
+        });
     }
 }
