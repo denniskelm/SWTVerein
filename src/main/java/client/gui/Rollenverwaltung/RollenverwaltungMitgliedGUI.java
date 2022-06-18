@@ -101,7 +101,7 @@ public class RollenverwaltungMitgliedGUI {
                int row = table1.rowAtPoint(evt.getPoint());
                int col = table1.columnAtPoint(evt.getPoint());
                if (row >= 0 && col >= 0) {
-                   String nutzerId = model.getValueAt(row, col).toString();
+                   String nutzerId = model.getValueAt(row, 0).toString();
 
                    //Klick auf die Mahnung-Zelle
                    if(col == 11) {

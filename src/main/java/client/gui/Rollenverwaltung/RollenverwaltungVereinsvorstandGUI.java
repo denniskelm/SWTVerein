@@ -43,6 +43,8 @@ public class RollenverwaltungVereinsvorstandGUI {
         frame = new JFrame("Rollenverwaltung - Vereinsvorstand");
         frame = ClientDefaults.standardizeFrame(frame, RollenVerwaltungVereinsVorstand);
 
+       // System.out.println(data[0][1]);
+
 
         // geht auf Mitglied
         mitgliedButton.addActionListener(e -> {
