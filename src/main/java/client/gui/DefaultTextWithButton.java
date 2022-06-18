@@ -8,7 +8,7 @@ import client.ClientDefaults;
 
 import javax.swing.*;
 
-//TODO Was macht diese Klasse?
+//Standardfenster fuer Text mit einem Bestaetigungsbutton
 public class DefaultTextWithButton {
     private JPanel defaultTextWithButtonPanel;
     private JScrollPane textScrollbar;
