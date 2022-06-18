@@ -204,7 +204,7 @@ public class Profilseite {
                     "-",
                     "-",
                     "-",
-                    "-",
+                    "-"
             });
         }
 
