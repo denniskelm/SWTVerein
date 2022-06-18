@@ -89,7 +89,7 @@ public class RegistrierenGUI {
                 }
 
                 try {
-                    Integer.parseInt(telefonnummerTextField.getText());
+                    Long.parseLong(telefonnummerTextField.getText());
                 } catch (NumberFormatException ex) {
                     new DefaultSmallPopup("Hinweis", "Die eingegebene Telefonnummer ist falsch!");
                     return;
