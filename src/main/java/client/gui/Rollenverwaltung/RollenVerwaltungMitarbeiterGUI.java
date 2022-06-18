@@ -84,23 +84,6 @@ public class RollenVerwaltungMitarbeiterGUI {
         ClientDefaults.createColumnsFromArray(columns, model);
 
         for (Object[] mitarbeiter : data) {
-
-            JButton mahnungButton = new JButton("Mahnung");
-            mahnungButton.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    new MahnungsverwaltungGUI(mitarbeiter[0].toString());
-                }
-            });
-
-            JButton rollenButton = new JButton("Rolle");
-            rollenButton.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-
-                }
-            });
-
             model.addRow(new Object[]{
                     mitarbeiter[0],
                     mitarbeiter[1],
@@ -110,8 +93,12 @@ public class RollenVerwaltungMitarbeiterGUI {
                     mitarbeiter[5],
                     mitarbeiter[6],
                     mitarbeiter[7],
-                    rollenButton,
-                    mahnungButton
+                    mitarbeiter[8],
+                    mitarbeiter[9],
+                    mitarbeiter[10],
+                    "Mahnung erstellen",
+                    "Rolle " + Umlaut.ae() + "ndern"
+
             });
         }
 
