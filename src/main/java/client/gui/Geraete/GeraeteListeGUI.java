@@ -4,6 +4,7 @@ import client.ClientDefaults;
 import client.Kategorie;
 import client.Umlaut;
 import client.Vereinssoftware;
+import client.gui.DefaultSmallPopup;
 import client.gui.Profilseite.Profilseite;
 import client.gui.dienstleistungen.dienstleistungsangebote.DienstleistungsangebotAnzeigenGUI;
 
@@ -78,19 +79,15 @@ public class GeraeteListeGUI {
             GeraeteTable.addMouseListener(new java.awt.event.MouseAdapter() {
                 @Override
                 public void mouseClicked(java.awt.event.MouseEvent evt) {
-                    System.out.println("mouselistener");
                     int row = GeraeteTable.rowAtPoint(evt.getPoint());
                     int col = GeraeteTable.columnAtPoint(evt.getPoint());
-                    System.out.println(row + ", " + col + " Geräteliste");
-                    String iD;
                     if (row >= 0 && col >= 0) {
                         if (col == 3)
                             new Profilseite(geraete[row][4].toString());
                         else {
-                            iD = model.getValueAt(row, 0).toString(); //GeraeteID
-                            System.out.println("id: " + iD);
 
-                            if (iD == null) return; // TODO Exception
+                            if (model.getValueAt(row, 0).toString() == null)
+                                new DefaultSmallPopup("Hinweis", "Ein Fehler ist aufgetreten.");
 
                             new GeraetAnzeigenGUI(
                                     geraete[row][0].toString(),
