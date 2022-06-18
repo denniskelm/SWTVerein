@@ -9,6 +9,7 @@ Gabriel Kleebaum
 
 import client.ClientDefaults;
 import client.Kategorie;
+import client.Umlaut;
 import client.Vereinssoftware;
 import client.gui.DefaultSmallPopup;
 import client.gui.DefaultTextWithButton;
@@ -18,7 +19,6 @@ import java.rmi.NoSuchObjectException;
 import java.util.HashMap;
 import java.util.Map;
 
-//TODO Was macht diese Klasse?
 public class DienstleistungsgesuchAnzeigenGUI {
     private JPanel dienstleistungsgesuchAnzeigenGUI;
     private JLabel headlineLabel;
@@ -44,7 +44,6 @@ public class DienstleistungsgesuchAnzeigenGUI {
     private static Map<JTextField, Boolean> onceChanged = new HashMap<JTextField, Boolean>();
 
     //Zeigt die Details eines Dienstleistungsgesuchs an
-    //TODO Implementation Infos fetchen von IGeraeteverwaltung, vllt. die Infos per Parameter uebergeben sondern hier fetchen
     public DienstleistungsgesuchAnzeigenGUI(String gesuch_ID, String pathToImage, String titel, String beschreibung, Kategorie kategorie, String suchenderID) {
         frame = new JFrame("Details des Dienstleistungsgesuchs");
         ClientDefaults.insertImageToPanel(imageLabel, pathToImage); //URL zum Bild, z.B. "https://bilder.gartenpaul.de/item/images/456/full/456-R1-M1.jpg"
@@ -76,8 +75,8 @@ public class DienstleistungsgesuchAnzeigenGUI {
             frame.dispose();
             DefaultTextWithButton defaultTextWithButton = new DefaultTextWithButton(
                     "Dienstleistungsgesuch annehmen?",
-                    "Moechtest du den Gesuch mit dem Titel " + titel + " wirklich annehmen?",
-                    "Jetzt annehmen!");
+                    "M" + Umlaut.oe() + "chten Sie dem Gesuch mit dem Titel " + titel + " wirklich eine Anfrage senden?",
+                    "Jetzt Hilfe anbieten!");
             defaultTextWithButton.getActionButton().addActionListener(e1 -> {
                 try {
                     Vereinssoftware.dienstleistungsverwaltung.gesuchAnnehmen(gesuch_ID, suchenderID, Vereinssoftware.session.getID(), Integer.parseInt(stundenzahlTextField.getText()));

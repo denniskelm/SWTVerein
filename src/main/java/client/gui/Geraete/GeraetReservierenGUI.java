@@ -24,18 +24,21 @@ public class GeraetReservierenGUI {
     private JPanel GeraetReservieren;
     private JButton jaButton;
     private JButton neinButton;
+    private JLabel askText;
     private final String geraeteID;
     private final String ausleiherID;
+
+    private static JFrame frame;
 
     public GeraetReservierenGUI(String geraeteID, String ausleiherID) {
         this.geraeteID = geraeteID;
         this.ausleiherID = ausleiherID;
 
-        JFrame frame = new JFrame("Ger" + Umlaut.ae() + "t reservieren");
+        frame = new JFrame("Ger" + Umlaut.ae() + "t reservieren");
         frame = ClientDefaults.standardizeFrame(frame, GeraetReservieren);
 
+        askText.setText("M" + Umlaut.oe() + "chten Sie dieses Ger" + Umlaut.ae() + "t reservieren?");
 
-        //Exit(ja)
         jaButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -46,7 +49,6 @@ public class GeraetReservierenGUI {
                             "Sie haben dieses Geraet erfolgreich reserviert");
 
                 } catch (Exception ex) {
-                    //throw new RuntimeException(ex);
 
                     if (ex instanceof NoPermissionException) {
                         DefaultSmallPopup smallPopup = new DefaultSmallPopup("Hinweis",
@@ -62,6 +64,8 @@ public class GeraetReservierenGUI {
                                 "Ein Fehler ist aufgetreten\n");
                     }
 
+                    frame.dispose();
+
 
                 }
             }
@@ -70,28 +74,10 @@ public class GeraetReservierenGUI {
         neinButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                frame.dispose();
             }
         });
 /*
-        //max. an Reser. erreicht
-        //TODO max. Res. erreicht
-        jaButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                DefaultSmallPopup smallPopup = new DefaultSmallPopup("Hinweis",
-                        "Sie haben bereits die maximale Anzahl an Reservierungen erreicht\n");
-            }
-        });
-
-        //erfolgreich
-        jaButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                DefaultSmallPopup smallPopup = new DefaultSmallPopup("Hinweis",
-                        "Sie haben dieses Geraet erfolgreich reserviert");
-            }
-        });
         //exisitiert net meht
         //TODO Geraet existiert net mehr
         jaButton.addActionListener(new ActionListener() {

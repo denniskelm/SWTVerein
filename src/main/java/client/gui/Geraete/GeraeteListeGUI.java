@@ -82,17 +82,17 @@ public class GeraeteListeGUI {
                     int row = GeraeteTable.rowAtPoint(evt.getPoint());
                     int col = GeraeteTable.columnAtPoint(evt.getPoint());
                     System.out.println(row + ", " + col + " Geräteliste");
-                    String iD = null;
+                    String iD;
                     if (row >= 0 && col >= 0) {
-                        if (col == 3) {
-                            Profilseite profilseite = new Profilseite(geraete[row][4].toString());
-                        } else {
+                        if (col == 3)
+                            new Profilseite(geraete[row][4].toString());
+                        else {
                             iD = model.getValueAt(row, 0).toString(); //GeraeteID
                             System.out.println("id: " + iD);
 
                             if (iD == null) return; // TODO Exception
 
-                            GeraetAnzeigenGUI geraetAnzeigenGUI = new GeraetAnzeigenGUI(
+                            new GeraetAnzeigenGUI(
                                     geraete[row][0].toString(),
                                     geraete[row][10].toString(),
                                     geraete[row][1].toString(),

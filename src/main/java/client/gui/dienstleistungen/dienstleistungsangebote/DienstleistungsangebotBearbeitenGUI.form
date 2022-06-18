@@ -194,7 +194,7 @@
             </constraints>
             <properties>
               <font size="16"/>
-              <text value="Angebot aendern"/>
+              <text value="Angebot bearbeiten"/>
             </properties>
           </component>
           <component id="ffd9b" class="javax.swing.JButton" binding="angebotLoeschenButton">

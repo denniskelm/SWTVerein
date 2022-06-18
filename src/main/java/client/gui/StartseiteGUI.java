@@ -15,9 +15,7 @@ import server.users.Rolle;
 
 import javax.swing.*;
 import java.awt.*;
-import java.io.IOException;
 import java.net.URI;
-import java.net.URISyntaxException;
 import java.rmi.NoSuchObjectException;
 
 /**
@@ -54,6 +52,7 @@ public class StartseiteGUI {
     private JLabel subtitleHeaderText;
     private JLabel firstRightText;
     private JButton logoutButton;
+    private JLabel secondLeftDescriptionText;
 
 
     //Fuegt Funktionalitaet der Startseite hinzu
@@ -68,6 +67,8 @@ public class StartseiteGUI {
         headlineRightMainMenu.setText("<html>Wir <b>helfen</b> uns nat" + Umlaut.ue() + "rlich <b>gegenseitig</b>!</html>");
         headlineLeftMainMenu.setText("<html>M" + Umlaut.oe() + "chten Sie ein <b>Ger" + Umlaut.ae() + "t ausleihen</b>?");
         firstLeftDescriptionText.setText("<html><p style=\"width:300px\">Sehen Sie sich einfach alle Ger" + Umlaut.ae() + "te an, die wir Ihnen zum Verleih zur Verf" + Umlaut.ue() + "gung stellen!</p>");
+        secondLeftDescriptionText.setText("<html><p style=\"width:300px\">Sie haben Ger" + Umlaut.ae() + "te " + Umlaut.ue() + "brig? " +
+                "Dann spenden Sie sie uns! Wir werden Sie f" + Umlaut.ue() + "r Ihr Engagement auf Ihrer Profilseite w" + Umlaut.ue() + "rdigen!</p>");
         secondLeftHeadline.setText("<html>... oder lieber ein <b>Ger" + Umlaut.ae() + "t spenden</b>?</html>");
         firstRightText.setText("<html><p style=\"width:300px\">Hier finden Sie alle Angebote von Mitgliedern, die Ihnen bei Ihrer Arbeit unter die Arme greifen m" + Umlaut.oe() + "chten!</p>");
         newsHeadline.setText("Neuigkeiten und Ank" + Umlaut.ue() + "ndigungen");
@@ -86,13 +87,13 @@ public class StartseiteGUI {
 
 
         dienstleistungsangeboteButton.addActionListener(e -> {
-            DienstleistungsangeboteGUI dienstleistungsangeboteGUI = new DienstleistungsangeboteGUI();
+            new DienstleistungsangeboteGUI();
         });
         dienstleistungsgesucheButton.addActionListener(e -> {
-            DienstleistungsgesucheGUI dienstleistungsgesucheGUI = new DienstleistungsgesucheGUI();
+            new DienstleistungsgesucheGUI();
         });
         dienstleistungsangebotsverwaltungButton.addActionListener(e -> {
-            DienstleistungsangebotsVerwaltungGUI dienstleistungsangebotsVerwaltungGUI = new DienstleistungsangebotsVerwaltungGUI();
+            new DienstleistungsangebotsVerwaltungGUI();
         });
 
         geraetHinzufuegen.addActionListener(e -> {
@@ -116,20 +117,20 @@ public class StartseiteGUI {
         });
 
         dienstleistungsgesuchsverwaltungButton.addActionListener(e -> {
-            DienstleistungsgesuchVerwaltungGUI dienstleistungsangebotsVerwaltungGUI = new DienstleistungsgesuchVerwaltungGUI();
+            new DienstleistungsgesuchVerwaltungGUI();
         });
 
         geraeteverwaltungButton.addActionListener(e -> {
-            GeraeteDatenbankGUI ghg = new GeraeteDatenbankGUI();
+            new GeraeteDatenbankGUI();
         });
 
         geraeteAnzeigen.addActionListener(e -> {
-            GeraeteListeGUI ghg = new GeraeteListeGUI();
+            new GeraeteListeGUI();
         });
 
         profilButton.addActionListener(e -> {
             try {
-                Profilseite profilseite = new Profilseite(Vereinssoftware.session.getID());
+                new Profilseite(Vereinssoftware.session.getID());
             } catch (NoSuchObjectException ex) {
                 throw new RuntimeException(ex);
             }

@@ -28,7 +28,6 @@ public class DefaultSmallPopup extends JFrame {
         frame = ClientDefaults.standardizeFrame(frame, defaultPanel);
         frame.setLocationRelativeTo(null);
 
-
     }
 
 

@@ -43,25 +43,29 @@ public class Profilseite {
     private JLabel mahnungenText;
     private JTable profilseiteEintraegeTable;
     private JScrollPane profilseiteEintraegeScrollPanel;
-
-    private boolean ownProfilseite = false;
-    private String mitgliedsID;
+    private JLabel spenderText;
 
     public Profilseite(String personenID) {
+        boolean ownProfilseite;
         try {
-            this.ownProfilseite = Objects.equals(personenID, Vereinssoftware.session.getID());
+            ownProfilseite = Objects.equals(personenID, Vereinssoftware.session.getID());
         } catch (NoSuchObjectException e) {
             throw new RuntimeException(e);
         }
 
-        this.mitgliedsID = personenID;
+        //Spendertext anzeigen
+        try {
+            spenderText.setVisible(!Vereinssoftware.rollenverwaltung.istSpender(personenID));
+        } catch (RemoteException e) {
+            throw new RuntimeException(e);
+        }
 
-        if (this.ownProfilseite) {
-            XXButton.setText("Anfragen"); //TODO Wie viele Anfragen?
+        if (ownProfilseite) {
+            XXButton.setText("Anfrageliste");
             XXButton.addActionListener(e -> {
-                AnfragelisteGUI anfragelisteGUI = new AnfragelisteGUI();
+                new AnfragelisteGUI();
             });
-            nameText.setText("Ihre Profilseite");
+            nameText.setText("Ihnen");
         } else {
             //Namen des Mitglieds der Profilseite anzeigen
             try {
@@ -77,7 +81,7 @@ public class Profilseite {
                 if (Desktop.isDesktopSupported()
                         && (desktop = Desktop.getDesktop()).isSupported(Desktop.Action.MAIL)) {
                     try {
-                        String link = "mailto:" + Vereinssoftware.rollenverwaltung.getMitgliedsMail(mitgliedsID) +
+                        String link = "mailto:" + Vereinssoftware.rollenverwaltung.getMitgliedsMail(personenID) +
                                 "?subject=Kontaktanfrage%20aus%20dem%20Verein&body=Hallo%20MITGLIEDSNAME%2C%0D%0A%0D" +
                                 "%0A%0D%0AMit%20freundlichen%20Gr%C3%BC%C3%9Fen%0D%0A";// + Vereinssoftware.rollenverwaltung.getMitgliedsNamen(Vereinssoftware.session.getID()))
                         URI mailto = new URI(link);
@@ -125,9 +129,8 @@ public class Profilseite {
                 return false;
             }
         };
-        profilseiteEintraegeTable.setModel(model);
 
-        //set TableCellRenderer into a specified JTable column class
+        profilseiteEintraegeTable.setModel(model);
 
         String[] columns = new String[]{
                 "Typ",
@@ -157,9 +160,8 @@ public class Profilseite {
         }
 
         for (Object[] angebot : angeboteOfUser) {
-            if (angebot[0] == null) {
+            if (angebot[0] == null)
                 break;
-            }
 
             LocalDateTime abTime = ((LocalDateTime) angebot[3]);
             String ab = abTime.format(DateTimeFormatter.ISO_LOCAL_DATE);

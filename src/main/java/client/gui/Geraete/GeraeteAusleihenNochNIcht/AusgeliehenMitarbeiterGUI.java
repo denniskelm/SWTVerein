@@ -14,9 +14,9 @@ public class AusgeliehenMitarbeiterGUI extends JFrame {
     public AusgeliehenMitarbeiterGUI(String title) {
         super(title);
 
-        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        this.setContentPane(panel1);
-        this.pack();
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        setContentPane(panel1);
+        pack();
         setLocationRelativeTo(null);
 
         //TODO Reservieren
@@ -40,8 +40,4 @@ public class AusgeliehenMitarbeiterGUI extends JFrame {
         });
     }
 
-    public static void main(String[] args) {
-        JFrame frame = new AusgeliehenMitarbeiterGUI("Hinweis");
-        frame.setVisible(true);
-    }
 }

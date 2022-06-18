@@ -52,6 +52,8 @@ public class DienstleistungsangebotBearbeitenGUI {
         frame = new JFrame("Dienstleistungsangebot bearbeiten");
         frame = ClientDefaults.standardizeFrame(frame, this.dienstleistungsangebotBearbeitenPanel);
 
+        angebotLoeschenButton.setText("Angebot l" + Umlaut.oe() + "schen");
+
         try {
             Object[] info = Vereinssoftware.dienstleistungsverwaltung.getAngeboteInformationen(angebotsID);
             String abString = ab.format(DateTimeFormatter.ISO_LOCAL_DATE);

@@ -132,7 +132,7 @@
             </constraints>
             <properties>
               <font size="16"/>
-              <text value="Gesuch aendern"/>
+              <text value="Gesuch bearbeiten"/>
             </properties>
           </component>
           <component id="9b303" class="javax.swing.JButton" binding="gesuchLoeschenButton">

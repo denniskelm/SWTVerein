@@ -6,6 +6,7 @@ Dennis Kelm
 
 import client.ClientDefaults;
 import client.Kategorie;
+import client.Umlaut;
 import client.Vereinssoftware;
 import client.gui.DefaultSmallPopup;
 import client.gui.DefaultTextWithButton;
@@ -75,9 +76,9 @@ public class DienstleistungsangebotAnzeigenGUI {
             frame.dispose();
             try {
                 DefaultTextWithButton defaultTextWithButton = new DefaultTextWithButton("Anfrage senden?",
-                        "Moechten Sie die Anfrage wirklich an " +
+                        "M" + Umlaut.oe() + "chten Sie die Anfrage wirklich an " +
                                 Vereinssoftware.rollenverwaltung.getMitgliedsNamen(personen_ID) + " senden?",
-                        "Anfrage absenden");
+                        "Jetzt Anfrage absenden!");
 
                 defaultTextWithButton.getActionButton().addActionListener(e1 -> {
                     try {

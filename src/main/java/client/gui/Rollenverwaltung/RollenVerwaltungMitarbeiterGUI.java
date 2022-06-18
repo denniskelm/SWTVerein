@@ -65,7 +65,6 @@ public class RollenVerwaltungMitarbeiterGUI {
         Object[][] data = Vereinssoftware.rollenverwaltung.mitarbeiterDaten();
         String[] columns = {"ID", "Vorname", "Nachname", "E-Mail", "Anschrift", "MitgliedsNr", "TelefonNr", "Spenderstatus", "Stundenkonto", "Gesperrt?", "Mitglied seit", "Rolle", "Mahnung"};
 
-        //macht Tabelle fuer den Nutzer unbearbeitbar
         DefaultTableModel model = new DefaultTableModel() {
             @Override
             public boolean isCellEditable(int row, int column) {

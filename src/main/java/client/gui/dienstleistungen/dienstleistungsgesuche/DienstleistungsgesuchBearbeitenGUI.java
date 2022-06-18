@@ -51,6 +51,8 @@ public class DienstleistungsgesuchBearbeitenGUI {
             kategorieComboBox.addItem(kategorie);
         }
 
+        gesuchLoeschenButton.setText("Gesuch l" + Umlaut.oe() + "schen");
+
 
         gesuchBearbeitenButton.addActionListener(e -> {
 
@@ -61,7 +63,7 @@ public class DienstleistungsgesuchBearbeitenGUI {
         gesuchLoeschenButton.addActionListener(e -> {
             try {
                 Vereinssoftware.dienstleistungsverwaltung.gesuchLoeschen(gesuchsID);
-                new DefaultSmallPopup("Gesuch geloescht", "Ihr Gesuch mit dem Titel \"" + titel + "\" wurde erfolgreich geloescht!");
+                new DefaultSmallPopup("Gesuch geloescht", "Ihr Gesuch mit dem Titel \"" + titel + "\" wurde erfolgreich gel" + Umlaut.oe() + "scht!");
                 frame.dispose();
             } catch (RemoteException ex) {
                 throw new RuntimeException(ex);

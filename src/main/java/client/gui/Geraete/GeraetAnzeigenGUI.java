@@ -64,9 +64,7 @@ public class GeraetAnzeigenGUI {
 
         jetztReservierenButton.addActionListener(e -> {
             try {
-                GeraetReservierenGUI geraetReservierenGUI = new GeraetReservierenGUI(
-                        geraeteID,
-                        Vereinssoftware.session.getID());
+                new GeraetReservierenGUI(geraeteID, Vereinssoftware.session.getID());
             } catch (NoSuchObjectException ex) {
                 throw new RuntimeException(ex);
             }
