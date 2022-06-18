@@ -36,6 +36,7 @@ public class GeraetReservierenGUI {
 
 
         //Exit(ja)
+        JFrame finalFrame = frame;
         jaButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -62,6 +63,8 @@ public class GeraetReservierenGUI {
                                 "Ein Fehler ist aufgetreten\n");
                     }
 
+                    finalFrame.dispose();
+
 
                 }
             }
@@ -70,7 +73,7 @@ public class GeraetReservierenGUI {
         neinButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                finalFrame.dispose();
             }
         });
 /*
