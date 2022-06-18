@@ -68,7 +68,7 @@ public class StartseiteGUI {
         headlineLeftMainMenu.setText("<html>M" + Umlaut.oe() + "chten Sie ein <b>Ger" + Umlaut.ae() + "t ausleihen</b>?");
         firstLeftDescriptionText.setText("<html><p style=\"width:300px\">Sehen Sie sich einfach alle Ger" + Umlaut.ae() + "te an, die wir Ihnen zum Verleih zur Verf" + Umlaut.ue() + "gung stellen!</p>");
         secondLeftDescriptionText.setText("<html><p style=\"width:300px\">Sie haben Ger" + Umlaut.ae() + "te " + Umlaut.ue() + "brig? " +
-                "Dann spenden Sie sie uns! Wir werden Sie f" + Umlaut.ue() + "r Ihr Engagement auf Ihrer Profilseite w" + Umlaut.ue() + "rdigen!</p>");
+                "Dann spenden Sie sie uns! Wir werden Sie f" + Umlaut.ue() + "r Ihr Engagement auf Ihrer Profilseite w" + Umlaut.ue() + "rdigen! Sie k" + Umlaut.oe() + "nnen uns hier auch direkt kontaktieren</p>");
         secondLeftHeadline.setText("<html>... oder lieber ein <b>Ger" + Umlaut.ae() + "t spenden</b>?</html>");
         firstRightText.setText("<html><p style=\"width:300px\">Hier finden Sie alle Angebote von Mitgliedern, die Ihnen bei Ihrer Arbeit unter die Arme greifen m" + Umlaut.oe() + "chten!</p>");
         newsHeadline.setText("Neuigkeiten und Ank" + Umlaut.ue() + "ndigungen");
