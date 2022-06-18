@@ -18,7 +18,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.Map;
 
-//TODO Was macht diese Klasse?
+//Zeigt die GUI fuer ein Dienstleistungsangebot an mit zahlreichen Detailinformationen (und dem Bild)
 public class DienstleistungsangebotAnzeigenGUI {
     private JPanel dienstleistungsangebotAnzeigenGUI;
     private JLabel headlineLabel;

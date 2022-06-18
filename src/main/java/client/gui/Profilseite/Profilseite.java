@@ -1,13 +1,6 @@
 package client.gui.Profilseite;
 /*
 @author
-TODO Raphael Kleebaum
-TODO Jonny Schlutter
-TODO Gabriel Kleebaum
-TODO Mhd Esmail Kanaan
-TODO Gia Huy Hans Tran
-TODO Ole Bjoern Adelmann
-TODO Bastian Reichert
 Dennis Kelm
 */
 
@@ -29,7 +22,8 @@ import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.Objects;
 
-//TODO Was macht diese Klasse?
+//Zeigt die Profilseite eines Nutzers an (nicht unbedingt die eigene)
+//mit zahlreichen Informationen (insbesondere die Gesuche, Angebote und gespendeten Geraete)
 public class Profilseite {
     private JPanel namePanel;
     private JLabel nameText;
@@ -244,16 +238,5 @@ public class Profilseite {
                     geraet[6],
             });
         }
-
-        profilseiteEintraegeTable.addMouseListener(new java.awt.event.MouseAdapter() {
-            @Override
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                int row = profilseiteEintraegeTable.rowAtPoint(evt.getPoint());
-                int col = profilseiteEintraegeTable.columnAtPoint(evt.getPoint());
-                if (row >= 0 && col >= 0) {
-                    //TODO low priority Die Gesuche, Dienstleistungen etc. anklickbar machen
-                }
-            }
-        });
     }
 }
