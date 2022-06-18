@@ -1,10 +1,15 @@
 package client.gui.Rollenverwaltung;
 
 import client.ClientDefaults;
+import client.Umlaut;
 import client.Vereinssoftware;
+import client.gui.DefaultSmallPopup;
+import client.gui.Mahnung.MahnungsverwaltungGUI;
+import server.users.Rolle;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import java.rmi.NoSuchObjectException;
 import java.rmi.RemoteException;
 
 /**
@@ -56,11 +61,13 @@ public class RollenverwaltungVereinsvorstandGUI {
             new RollenVerwaltungGastGUI();
             frame.dispose();
         });
+
+        vereinsvorstaendeButton.requestFocus();
     }
 
     private void createTable() throws RemoteException {
         Object[][] data = Vereinssoftware.rollenverwaltung.vorsitzDaten();
-        String[] columns = {"ID", "Vorname", "Nachname", "E-Mail", "Anschrift", "MitgliedsNr", "TelefonNr", "Spenderstatus", "Stundenkonto", "Gesperrt?", "Mitglied seit"};
+        String[] columns = {"ID", "Vorname", "Nachname", "E-Mail", "Anschrift", "MitgliedsNr", "TelefonNr", "Spenderstatus", "Stundenkonto", "Gesperrt?", "Mitglied seit", "Rolle"};
 
         DefaultTableModel model = new DefaultTableModel() {
             @Override
@@ -83,9 +90,40 @@ public class RollenverwaltungVereinsvorstandGUI {
                     vorsitz[5],
                     vorsitz[6],
                     vorsitz[7],
+                    vorsitz[8],
+                    (Boolean.getBoolean(vorsitz[9].toString()) ? "Ja" : "Nein"),
+                    vorsitz[10],
+                    "Rolle " + Umlaut.ae() + "ndern"
             });
         }
 
         table1.setModel(model);
+
+        table1.addMouseListener(new java.awt.event.MouseAdapter() {
+            @Override
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                int row = table1.rowAtPoint(evt.getPoint());
+                int col = table1.columnAtPoint(evt.getPoint());
+                if (row >= 0 && col >= 0) {
+                    String nutzerId = model.getValueAt(row, col).toString();
+
+                    //Bestimmen, ob der Nutzer Vorsitz ist
+                    boolean userIstVorsitz = false;
+                    try {
+                        userIstVorsitz = Vereinssoftware.session.getRolle().equals(Rolle.VORSITZ);
+                    } catch (NoSuchObjectException e) {
+                        userIstVorsitz = false;
+                    }
+
+                    //Klick auf die Mahnung-Zelle
+                    if(col == 11) {
+                        if(userIstVorsitz)
+                            new RolleAuswaehlenGUI(nutzerId);
+                        else
+                            new DefaultSmallPopup("Keine Berechtigung!", "Sie haben keine Berechtigung, die Rolle für diese Person zu " + Umlaut.ae() + "ndern!");
+                    }
+                }
+            }
+        });
     }
 }

@@ -59,6 +59,7 @@ public class RollenVerwaltungGastGUI {
             frame.dispose();
         });
 
+        gaesteButton.requestFocus();
     }
 
     private void createTable() throws RemoteException {

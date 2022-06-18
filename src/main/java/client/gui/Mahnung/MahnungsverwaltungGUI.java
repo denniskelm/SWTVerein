@@ -6,6 +6,8 @@ import client.Vereinssoftware;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.rmi.RemoteException;
 import java.time.LocalDateTime;
 
@@ -37,28 +39,35 @@ public class MahnungsverwaltungGUI {
         //Button erst aktivieren, wenn Grund und Datum eingegeben
         erstellenButton.setEnabled(false);
 
-        ActionListener buttonAktivierenListener = e -> {
-            if(GrundfuerMahnungTextfield.getText().length() > 0 && verfallsdatumTextField.getText().length() > 0){
-                erstellenButton.setEnabled(true);
+        KeyListener buttonAktivierenListener = new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                if(GrundfuerMahnungTextfield.getText().length() > 0 && verfallsdatumTextField.getText().length() > 0)
+                    erstellenButton.setEnabled(true);
+                else
+                    erstellenButton.setEnabled(false);
             }
+
+            @Override
+            public void keyPressed(KeyEvent e) { }
+
+            @Override
+            public void keyReleased(KeyEvent e) { }
         };
 
-        verfallsdatumTextField.addActionListener(buttonAktivierenListener);
-        GrundfuerMahnungTextfield.addActionListener(buttonAktivierenListener);
+        verfallsdatumTextField.addKeyListener(buttonAktivierenListener);
+        GrundfuerMahnungTextfield.addKeyListener(buttonAktivierenListener);
 
         //Mahnung auf Knopfdruck erstellen
-        erstellenButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if(e.getSource() == erstellenButton) {
-                    try {
-                        Vereinssoftware.rollenverwaltung.mahnungErstellen(mitgliedsID, GrundfuerMahnungTextfield.getText(), LocalDateTime.parse(verfallsdatumTextField.getText()));
-                    } catch (RemoteException ex) {
-                        throw new RuntimeException(ex);
-                    }
+        erstellenButton.addActionListener(e -> {
+            if(e.getSource() == erstellenButton) {
+                try {
+                    Vereinssoftware.rollenverwaltung.mahnungErstellen(mitgliedsID, GrundfuerMahnungTextfield.getText(), LocalDateTime.parse(verfallsdatumTextField.getText()));
+                } catch (RemoteException ex) {
+                    throw new RuntimeException(ex);
                 }
-
             }
+
         });
 
     }
